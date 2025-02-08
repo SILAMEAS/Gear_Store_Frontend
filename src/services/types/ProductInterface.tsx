@@ -13,5 +13,6 @@ export interface IProductResponse {
   description: string,
   price: number,
   stock: number,
-  orders:Array<string>
+  orders:Array<string>,
+  image:string|null
 }

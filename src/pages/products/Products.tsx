@@ -16,12 +16,21 @@ const Products = () => {
         link: "https://www.example.com/gaming-headset"
     };
     return (
-        <Stack direction={'row'} flexWrap={'wrap'}>
-            {
-                currentData?.contents?.map(item=><div id={`${item.id}`}>
-                    <GamingAccessoryCard {...exampleAccessory} addToCart={()=>{}}/>
-                </div>)
-            }
+        <Stack justifyContent={'center'} alignItems={'center'} width={'100%'} direction={'row'} flexWrap={'wrap'} gap={'10px'}>
+                {currentData?.contents?.map((item) => (
+                    <Stack
+                        key={item.id}
+                        sx={{
+                            width: "auto",
+                            height: "400px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}
+                    >
+                        <GamingAccessoryCard {...exampleAccessory} title={item.name} description={item.description} price={Number(item.price)} image={item?.image!==null?item.image:exampleAccessory.image} addToCart={()=>{}}/>
+                    </Stack>
+                ))}
         </Stack>
     );
 };

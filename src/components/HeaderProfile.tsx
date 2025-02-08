@@ -1,14 +1,5 @@
-import { Logout, PersonAdd, Settings } from "@mui/icons-material";
-import {
-  Avatar,
-  Box,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Tooltip,
-} from "@mui/material";
+import {Logout, PersonAdd, Settings} from "@mui/icons-material";
+import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Stack, Tooltip,} from "@mui/material";
 import React from "react";
 
 const HeaderProfile = () => {
@@ -34,9 +25,9 @@ const HeaderProfile = () => {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
-              sx={{ width: 32, height: 32, bgcolor: "black", fontSize: "14px" }}
+              sx={{ width: 32, height: 32, bgcolor: "white", fontSize: "14px" }}
             >
-              M
+              <Stack color={'black'}>H</Stack>
             </Avatar>
           </IconButton>
         </Tooltip>

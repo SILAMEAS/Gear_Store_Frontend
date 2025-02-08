@@ -1,4 +1,4 @@
-import { Box, ThemeProvider } from "@mui/material";
+import {Box, Stack, ThemeProvider} from "@mui/material";
 import AppHeader from "./Header.tsx";
 import AppContent from "./Content.tsx";
 import AppFooter from "./Footer.tsx";
@@ -16,19 +16,14 @@ const AppLayout = () => {
         }}
       >
         <AppHeader />
-        <Box
+        <Stack
           sx={{
-            maxWidth: "1080px",
             width: "100%",
           }}
         >
-          <br />
           <AppContent />
-          <br />
-          <br />
-          <br />
           <AppFooter />
-        </Box>
+        </Stack>
       </Box>
     </ThemeProvider>
   );

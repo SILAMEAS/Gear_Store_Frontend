@@ -1,13 +1,11 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import {AppBar, Box, Button, IconButton, Toolbar, Typography,} from "@mui/material";
+import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
 import HeaderCart from "../../../components/HeaderCart";
 import HeaderProfile from "../../../components/HeaderProfile";
-import {useNavigate} from "react-router-dom";
 
 const menuItems = ["Home", "About", "Services", "Contact"];
 
 const AppHeader = () => {
-  const navigate = useNavigate();
 
   const toggleDrawer = (open: boolean) => {
       console.log(open)
@@ -17,11 +15,11 @@ const AppHeader = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: "#fff",
-        boxShadow: "none",
+        backgroundColor: "black",
+        boxShadow: "2px",
         width: "100%",
-        maxWidth: "1080px",
         margin: "0 auto",
+          py:'10px'
       }}
     >
       <Toolbar
@@ -30,20 +28,18 @@ const AppHeader = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          variant="h6"
-          component="div"
-          color="black"
-          sx={{ cursor: "pointer" }}
-          onClick={() => navigate("/")}
-        >
-          App
-        </Typography>
+       <Stack width={'150px'}>
+           <img
+               src={`logo.png`}
+               alt={'logo.png'}
+               loading="lazy"
+           />
+       </Stack>
 
         {/* Desktop Menu: Buttons for each menu item */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
           {menuItems.map((item) => (
-            <Button key={item} sx={{ color: "black", textTransform: "none" }}>
+            <Button key={item} sx={{ color: "white", textTransform: "none" }}>
               {item}
             </Button>
           ))}

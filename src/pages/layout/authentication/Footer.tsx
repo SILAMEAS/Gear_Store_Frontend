@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import {Box, Typography} from "@mui/material";
 
 const AppFooter = () => {
   return (
@@ -18,7 +18,7 @@ const AppFooter = () => {
       }}
     >
       <Typography variant="body2" color="textSecondary">
-        &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+        &copy; {new Date().getFullYear()} LA STORE. All rights reserved.
       </Typography>
     </Box>
   );

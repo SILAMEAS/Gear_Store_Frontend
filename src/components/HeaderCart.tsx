@@ -1,5 +1,5 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { Badge, ButtonProps, IconButton } from "@mui/material";
+import {Badge, ButtonProps, IconButton} from "@mui/material";
 
 const HeaderCart = (props: ButtonProps) => {
   const defaultStyle = {
@@ -10,7 +10,7 @@ const HeaderCart = (props: ButtonProps) => {
   return (
     <IconButton {...props} sx={defaultStyle}>
       <Badge badgeContent={4} color="primary">
-        <ShoppingCartOutlinedIcon />
+        <ShoppingCartOutlinedIcon sx={{color:'white'}}/>
       </Badge>
     </IconButton>
   );

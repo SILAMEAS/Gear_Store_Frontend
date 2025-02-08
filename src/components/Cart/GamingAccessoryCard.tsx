@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import {Box, CardActionArea, CardMedia, IconButton, Rating} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import TruncatedText from "../TruncatedText.tsx";
 
 export interface IGamingAccessory {
     image: string;
@@ -29,7 +30,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                             addToCart,
                                                                         }) => {
     return (
-        <Card sx={{ maxWidth: 345, margin: 2, display: "flex", flexDirection: "column", height: "100%" }}>
+        <Card sx={{width:'300px', margin: 2, display: "flex", flexDirection: "column", height: "100%" }}>
             <CardActionArea component="a" href={link} target="_blank" rel="noopener noreferrer">
                 <CardMedia
                     component="img"
@@ -38,9 +39,9 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                     alt="green iguana"
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {title}
-                    </Typography>
+                    <div style={{ width: '300px' }}> {/* Parent container with a specific width */}
+                        <TruncatedText text= {title} />
+                    </div>
                     <Typography variant="body2" color="text.secondary" noWrap>
                         {description}
                     </Typography>
