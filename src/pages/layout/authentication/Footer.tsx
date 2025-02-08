@@ -14,7 +14,7 @@ const AppFooter = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        boxShadow: "0px -2px 5px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px -2px 5px rgba(0, 0, 0, 0.1)"
       }}
     >
       <Typography variant="body2" color="textSecondary">

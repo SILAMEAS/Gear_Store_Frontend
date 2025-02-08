@@ -1,5 +1,4 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
+import {AppBar, Box, Button, Stack, Toolbar,} from "@mui/material";
 import HeaderCart from "../../../components/HeaderCart";
 import HeaderProfile from "../../../components/HeaderProfile";
 
@@ -7,9 +6,9 @@ const menuItems = ["Home", "About", "Services", "Contact"];
 
 const AppHeader = () => {
 
-  const toggleDrawer = (open: boolean) => {
-      console.log(open)
-  };
+  // const toggleDrawer = (open: boolean) => {
+  //     console.log(open)
+  // };
 
   return (
     <AppBar
@@ -19,16 +18,27 @@ const AppHeader = () => {
         boxShadow: "2px",
         width: "100%",
         margin: "0 auto",
-          py:'10px'
+          py:'10px',
+          height:100
       }}
     >
       <Toolbar
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
+            position:"relative"
         }}
       >
        <Stack width={'150px'}>
+           {/* Mobile Menu: Menu Icon */}
+           {/*<IconButton*/}
+           {/*    edge="end"*/}
+           {/*    aria-label="menu"*/}
+           {/*    onClick={() => toggleDrawer(true)}*/}
+           {/*    sx={{ display: { xs: "block", md: "none" },position:'absolute' }}*/}
+           {/*>*/}
+           {/*    <MenuIcon sx={{color:"white"}}/>*/}
+           {/*</IconButton>*/}
            <img
                src={`logo.png`}
                alt={'logo.png'}
@@ -51,15 +61,6 @@ const AppHeader = () => {
           <HeaderProfile />
         </Box>
 
-        {/* Mobile Menu: Menu Icon */}
-        <IconButton
-          edge="end"
-          aria-label="menu"
-          onClick={() => toggleDrawer(true)}
-          sx={{ display: { xs: "block", md: "none" } }}
-        >
-          <MenuIcon />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );

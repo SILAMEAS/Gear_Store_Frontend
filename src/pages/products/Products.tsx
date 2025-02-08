@@ -1,37 +1,34 @@
 import {useGetAllProductsQuery} from "../../services/productApi.ts";
-import {GamingAccessoryCard, IGamingAccessory} from "../../components/Cart/GamingAccessoryCard.tsx";
+import {GamingAccessoryCard} from "../../components/Cart/GamingAccessoryCard.tsx";
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
+import React from "react";
 import {Stack} from "@mui/material";
 
 const Products = () => {
-    const {currentData}=useGetAllProductsQuery({limit:10,page:1});
-    if(currentData){
-        console.log("currentData",currentData)
-    }
-    const exampleAccessory: IGamingAccessory = {
-        image: "https://resource.logitech.com/content/dam/gaming/en/products/astro-a50-x/product-gallery/astro-a50-x-black-gallery-1.png",
-        title: "Gaming Headset",
-        description: "Immersive sound with noise cancellation.  A really long description to test the noWrap functionality.",
-        price: 99.99,
-        rating: 4.5,
-        link: "https://www.example.com/gaming-headset"
-    };
+    const [page, setPage] = React.useState(1);
+    const {currentData}=useGetAllProductsQuery({limit:12,page:page});
+
     return (
-        <Stack justifyContent={'center'} alignItems={'center'} width={'100%'} direction={'row'} flexWrap={'wrap'} gap={'10px'}>
+        <Stack justifyContent={'space-between'} alignItems={'center'} spacing={2} pb={8}>
+            <Grid container columns={{ xs: 12, sm: 12, md: 12,lg:12 }}>
                 {currentData?.contents?.map((item) => (
-                    <Stack
-                        key={item.id}
-                        sx={{
-                            width: "auto",
-                            height: "400px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <GamingAccessoryCard {...exampleAccessory} title={item.name} description={item.description} price={Number(item.price)} image={item?.image!==null?item.image:exampleAccessory.image} addToCart={()=>{}}/>
-                    </Stack>
+                    <Grid item xs={12} sm={6} md={4} lg={3} xl={12} key={item.id} p={1}>
+                        <GamingAccessoryCard
+                            title={item.name}
+                            description={item.description}
+                            price={Number(item.price)}
+                            rating={item.rating}
+                            link={'/'}
+                            image={item?.image!==null?item.image:
+                                "https://resource.logitech.com/content/dam/gaming/en/products/astro-a50-x/product-gallery/astro-a50-x-black-gallery-1.png"}
+                            addToCart={()=>{}}/>
+                    </Grid>
                 ))}
+            </Grid>
+            <Pagination count={currentData?.totalPages} page={page} onChange={(_e, value) => setPage(value)} />
         </Stack>
+
     );
 };
 

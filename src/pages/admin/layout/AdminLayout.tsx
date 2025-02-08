@@ -12,11 +12,12 @@ const xThemeComponents = {
 };
 
 const AdminLayout = (props: { disableCustomTheme?: boolean }) => {
+    console.log('AdminLayout')
 
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex" ,bgcolor:"red"}}>
         {/*<SideMenu />*/}
         {/*<AppNavbar />*/}
         <Box
