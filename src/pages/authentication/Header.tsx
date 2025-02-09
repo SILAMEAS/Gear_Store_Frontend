@@ -2,14 +2,12 @@ import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
 import HeaderCart from "../../components/Cart/HeaderCart.tsx";
 import HeaderProfile from "../../components/profiles/HeaderProfile.tsx";
 import MenuIcon from "@mui/icons-material/Menu";
+import DrawerCustom from "../../components/Drawer/DrawerCustom.tsx";
+import UILogo from "../../utils/ui/UILogo.tsx";
 
-const menuItems = ["Home", "About", "Services", "Contact"];
+export const menuItems = ["Home", "About", "Services", "Contact"];
 
 const AppHeader = () => {
-
-  const toggleDrawer = (open: boolean) => {
-      console.log(open)
-  };
 
   return (
     <AppBar
@@ -19,37 +17,36 @@ const AppHeader = () => {
         boxShadow: "2px",
         width: "100%",
         margin: "0 auto",
+          p:0,
           py:'10px',
-          height:100
+          height: {sm:80,md:100}
       }}
     >
       <Toolbar
         sx={{
           justifyContent: "space-between",
-          alignItems: "center",
-            position:"relative"
+          alignItems: "center"
         }}
       >
-          <Stack justifyContent={'center'} direction={'row'}>
-              {/* Mobile Menu: Menu Icon */}
-              <IconButton
+          {/** Mobile UI */}
+          <Stack justifyContent={'center'} direction={'row'} alignItems={'center'}>
+              <DrawerCustom
+                  renderButton={<IconButton
                   edge="end"
                   aria-label="menu"
-                  onClick={() => toggleDrawer(true)}
                   sx={{ display: { xs: "visible", md: "none" }}}
               >
                   <MenuIcon sx={{color:"white"}}/>
-              </IconButton>
-              <Stack width={'150px'}>
-                  <img
-                      src={`logo.png`}
-                      alt={'logo.png'}
-                      loading="lazy"
-                  />
-              </Stack>
+              </IconButton>}
+                  anchor={'left'}>
+                  <Stack>
+                      <UILogo  sx={{ display: { xs: "block", md: "none" }}}/>
+                  </Stack>
+              </DrawerCustom>
+             <UILogo/>
           </Stack>
 
-        {/* Desktop Menu: Buttons for each menu item */}
+        {/** Desk Top UI */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
           {menuItems.map((item) => (
             <Button key={item} sx={{ color: "white", textTransform: "none" }}>

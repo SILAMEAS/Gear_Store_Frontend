@@ -1,8 +1,8 @@
 import {Box, Stack, ThemeProvider} from "@mui/material";
 import AppHeader from "./Header.tsx";
-import AppContent from "./Content.tsx";
 import AppFooter from "./Footer.tsx";
 import theme from "../../theme/theme.tsx";
+import AppContent from "./Content.tsx";
 
 const AppLayout = () => {
   return (
