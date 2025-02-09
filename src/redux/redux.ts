@@ -1,11 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {setupListeners} from "@reduxjs/toolkit/query";
 import {useDispatch, useSelector} from "react-redux";
-import {applicationSlice} from "./redux/store/application.ts";
-import {adminApi} from "./redux/services/adminApi.ts";
-import {cartApi} from "./redux/services/cartApi.ts";
-import {productApi} from "./redux/services/productApi";
-import {userApi} from "./redux/services/userApi";
+import {applicationSlice} from "./store/application.ts";
+import {adminApi} from "./services/adminApi.ts";
+import {cartApi} from "./services/cartApi.ts";
+import {productApi} from "./services/productApi.ts";
+import {userApi} from "./services/userApi.ts";
 
 export const store = configureStore({
   reducer: {

@@ -1,9 +1,11 @@
 import {Logout, PersonAdd, Settings} from "@mui/icons-material";
 import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Stack, Tooltip,} from "@mui/material";
 import React from "react";
+import useGetLocalStorage from "../../utils/hooks/useGetLocalStorage.tsx";
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const {refresh_token}=useGetLocalStorage();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -15,22 +17,24 @@ const HeaderProfile = () => {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-          >
-            <Avatar
-              sx={{ width: 32, height: 32, bgcolor: "white", fontSize: "14px" }}
+        {refresh_token&&
+          <Tooltip title="Account settings">
+            <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
             >
-              <Stack color={'black'}>H</Stack>
-            </Avatar>
-          </IconButton>
-        </Tooltip>
+              <Avatar
+                  sx={{ width: 32, height: 32, bgcolor: "white", fontSize: "14px" }}
+              >
+                <Stack color={'black'}>H</Stack>
+              </Avatar>
+            </IconButton>
+          </Tooltip>
+        }
       </Box>
       <Menu
         anchorEl={anchorEl}

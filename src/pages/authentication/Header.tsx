@@ -38,9 +38,18 @@ const AppHeader = () => {
               >
                   <MenuIcon sx={{color:"white"}}/>
               </IconButton>}
-                  anchor={'left'}>
+                  anchor={'left'}
+                  bgcolor={'black'}
+              >
                   <Stack>
                       <UILogo  sx={{ display: { xs: "block", md: "none" }}}/>
+                      <Stack sx={{ display: { xs: "flex", md: "none" }, gap: 2 }}>
+                          {menuItems.map((item) => (
+                              <Button key={item} sx={{ color: "white", textTransform: "none" }}>
+                                  {item}
+                              </Button>
+                          ))}
+                      </Stack>
                   </Stack>
               </DrawerCustom>
              <UILogo/>
@@ -55,11 +64,11 @@ const AppHeader = () => {
           ))}
         </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Stack direction={'row'} sx={{ alignItems: "center" }}>
           {/* <SearchInput /> */}
           <HeaderCart />
           <HeaderProfile />
-        </Box>
+        </Stack>
 
       </Toolbar>
     </AppBar>

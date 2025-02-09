@@ -1,6 +1,6 @@
 import {Alert, Snackbar, Stack} from "@mui/material";
 import {useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "./redux.ts";
+import {useAppDispatch, useAppSelector} from "./redux/redux.ts";
 import {dispatchSnackbar} from "./redux/store/application.ts";
 import AppRouter from "./router";
 import {useRefreshTokenMutation} from "./redux/services/userApi.ts";

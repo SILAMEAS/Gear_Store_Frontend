@@ -9,7 +9,7 @@ import {useLoginMutation} from "../../redux/services/userApi.ts";
 import {snackbarError} from "../../utils/common/common.ts";
 
 interface ILogin {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -18,7 +18,7 @@ const AppLogin = () => {
   const [showPassword, setShowPassword] = useState(true);
   const formData = useForm<ILogin>({
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -27,23 +27,23 @@ const AppLogin = () => {
   const [login, { isLoading: loginLoading }] = useLoginMutation();
 
   const handleShowPassword = () => (showPassword ? "password" : "text");
-  const validateEmail = (email: string) => {
-    if (email) {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(email)) {
-        return "Please match the requested format";
-      }
-    } else {
-      return undefined;
-    }
-  };
+  // const validateEmail = (email: string) => {
+  //   if (email) {
+  //     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  //     if (!emailRegex.test(email)) {
+  //       return "Please match the requested format";
+  //     }
+  //   } else {
+  //     return undefined;
+  //   }
+  // };
   const handleLogin = async (data: ILogin) => {
     return login(data)
       .unwrap()
       .then((res) => {
         if (res) {
           // dispatch(dispatchUserInfo(res));
-          localStorage.setItem("refresh_token", res.refresh_token);
+          localStorage.setItem("refresh_token", res.refresh);
           navigate("/admin");
         }
       })
@@ -73,18 +73,18 @@ const AppLogin = () => {
             LOGIN
           </Typography>
           <Stack>
-            <Typography variant="body2">Email</Typography>
+            <Typography variant="body2">Username</Typography>
             <InputText
               formData={formData}
-              name="email"
-              placeholder="Email"
-              error={formData.formState.errors["email"]}
+              name="username"
+              placeholder="Username"
+              error={formData.formState.errors["username"]}
               rules={{
                 required: {
                   value: true,
-                  message: "Email is required",
+                  message: "Username is required",
                 },
-                validate: (val: string) => validateEmail(val),
+                // validate: (val: string) => validateEmail(val),
               }}
             />
           </Stack>

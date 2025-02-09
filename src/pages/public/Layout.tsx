@@ -1,45 +1,31 @@
-import {Box, Stack} from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import {alpha} from "@mui/material/styles";
-import {Outlet} from "react-router-dom";
-import AppTheme from "../../theme/AdminTheme.tsx";
-import {chartsCustomizations} from "../../theme/charts.ts";
-import {dataGridCustomizations} from "../../theme/dataGrid.ts";
+import {Box, Stack, ThemeProvider} from "@mui/material";
+import theme from "../../theme/theme.tsx";
+import AppHeader from "../authentication/Header.tsx";
+import AppContent from "../authentication/Content.tsx";
+import AppFooter from "../authentication/Footer.tsx";
 
-const xThemeComponents = {
-  ...chartsCustomizations,
-  ...dataGridCustomizations,
-};
-
-const AppPublicLayout = (props: { disableCustomTheme?: boolean }) => {
+const AppPublicLayout = () => {
   return (
-    <AppTheme {...props} themeComponents={xThemeComponents}>
-      <CssBaseline enableColorScheme />
-      <Box sx={{ display: "flex" }}>
-        <Box
-          component="main"
-          sx={(theme) => ({
-            flexGrow: 1,
-            backgroundColor: theme.vars
-              ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
-              : alpha(theme.palette.background.default, 1),
-            overflow: "auto",
-          })}
-        >
-          <Stack
-            spacing={2}
-            sx={{
-              alignItems: "center",
-              mx: 3,
-              pb: 5,
-              mt: { xs: 8, md: 0 },
-            }}
+      <ThemeProvider theme={theme}>
+          <Box
+              sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  minHeight: "100vh",
+                  alignItems: "center",
+              }}
           >
-            <Outlet />
-          </Stack>
-        </Box>
-      </Box>
-    </AppTheme>
+              <AppHeader />
+              <Stack
+                  sx={{
+                      width: "100%",
+                  }}
+              >
+                  <AppContent />
+                  <AppFooter />
+              </Stack>
+          </Box>
+      </ThemeProvider>
   );
 };
 

@@ -1,4 +1,4 @@
-import {store} from "../../redux.ts";
+import {store} from "../../redux/redux.ts";
 import {dispatchSnackbar} from "../../redux/store/application.ts";
 import {IErrorConnection, IErrorType} from "../../redux/store/type.ts";
 
