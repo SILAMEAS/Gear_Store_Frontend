@@ -1,17 +1,12 @@
 import * as React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import type { ThemeOptions } from "@mui/material/styles";
-import { inputsCustomizations } from "./share-theme/customization/inputs";
-import { dataDisplayCustomizations } from "./share-theme/customization/dataDisplay";
-import { feedbackCustomizations } from "./share-theme/customization/feedback";
-import { navigationCustomizations } from "./share-theme/customization/navigation";
-import { surfacesCustomizations } from "./share-theme/customization/surfaces";
-import {
-  colorSchemes,
-  typography,
-  shadows,
-  shape,
-} from "./share-theme/themePrimitives.ts";
+import type {ThemeOptions} from "@mui/material/styles";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {inputsCustomizations} from "./customization/inputs.tsx";
+import {dataDisplayCustomizations} from "./customization/dataDisplay.tsx";
+import {feedbackCustomizations} from "./customization/feedback.tsx";
+import {navigationCustomizations} from "./customization/navigation.tsx";
+import {surfacesCustomizations} from "./customization/surfaces.ts";
+import {colorSchemes, shadows, shape, typography,} from "./share-theme/themePrimitives.ts";
 
 interface AppThemeProps {
   children: React.ReactNode;

@@ -2,9 +2,9 @@ import {Box, Stack} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import {alpha} from "@mui/material/styles";
 import {Outlet} from "react-router-dom";
-import AppTheme from "../AdminTheme.tsx";
-import {chartsCustomizations} from "../theme/charts.ts";
-import {dataGridCustomizations} from "../theme/dataGrid.ts";
+import AppTheme from "../../theme/AdminTheme.tsx";
+import {chartsCustomizations} from "../../theme/charts.ts";
+import {dataGridCustomizations} from "../../theme/dataGrid.ts";
 
 const xThemeComponents = {
   ...chartsCustomizations,

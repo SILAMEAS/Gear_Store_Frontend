@@ -1,8 +1,8 @@
 import {Route, Routes} from "react-router-dom";
 import AdminHome from "./pages/admin/AdminHome.tsx";
-import AdminLayout from "./pages/admin/layout/AdminLayout.tsx";
+import AdminLayout from "./pages/admin/AdminLayout.tsx";
 import AppLogin from "./pages/form/AppLogin.tsx";
-import AppLayout from "./pages/layout/authentication/Layout.tsx";
+import AppLayout from "./pages/authentication/Layout.tsx";
 import AppPublicLayout from "./pages/public/Layout.tsx";
 import Products from "./pages/public/products/Products.tsx";
 

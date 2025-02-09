@@ -5,8 +5,8 @@ import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import InputText from "../../components/Input/InputText.tsx";
-import {useLoginMutation} from "../../services/userApi.ts";
-import {snackbarError} from "../../utils/common.ts";
+import {useLoginMutation} from "../../redux/services/userApi.ts";
+import {snackbarError} from "../../utils/common/common.ts";
 
 interface ILogin {
   email: string;

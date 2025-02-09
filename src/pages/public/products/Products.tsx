@@ -1,4 +1,4 @@
-import {useGetAllProductsQuery} from "../../../services/productApi.ts";
+import {useGetAllProductsQuery} from "../../../redux/services/productApi.ts";
 import {GamingAccessoryCard} from "../../../components/Cart/GamingAccessoryCard.tsx";
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';

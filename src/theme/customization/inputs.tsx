@@ -1,12 +1,12 @@
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
-import { outlinedInputClasses } from "@mui/material/OutlinedInput";
-import { alpha, Components, Theme } from "@mui/material/styles";
-import { svgIconClasses } from "@mui/material/SvgIcon";
-import { toggleButtonClasses } from "@mui/material/ToggleButton";
-import { toggleButtonGroupClasses } from "@mui/material/ToggleButtonGroup";
-import { brand, gray } from "../themePrimitives.ts";
+import {outlinedInputClasses} from "@mui/material/OutlinedInput";
+import {alpha, Components, Theme} from "@mui/material/styles";
+import {svgIconClasses} from "@mui/material/SvgIcon";
+import {toggleButtonClasses} from "@mui/material/ToggleButton";
+import {toggleButtonGroupClasses} from "@mui/material/ToggleButtonGroup";
+import {brand, gray} from "../share-theme/themePrimitives.ts";
 
 export const inputsCustomizations: Components<Theme> = {
   MuiButtonBase: {

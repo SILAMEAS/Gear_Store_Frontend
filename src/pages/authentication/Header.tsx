@@ -1,6 +1,6 @@
 import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
-import HeaderCart from "../../../components/HeaderCart";
-import HeaderProfile from "../../../components/HeaderProfile";
+import HeaderCart from "../../components/Cart/HeaderCart.tsx";
+import HeaderProfile from "../../components/profiles/HeaderProfile.tsx";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const menuItems = ["Home", "About", "Services", "Contact"];
