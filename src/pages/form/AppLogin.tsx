@@ -4,7 +4,7 @@ import {Box, Button, CircularProgress, InputAdornment, Link, Stack, Typography,}
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import InputText from "../../components/Input/InputText";
+import InputText from "../../components/Input/InputText.tsx";
 import {useLoginMutation} from "../../services/userApi.ts";
 import {snackbarError} from "../../utils/common.ts";
 

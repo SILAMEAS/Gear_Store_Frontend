@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import {Box, CardActionArea, CardMedia, IconButton, Rating} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import TruncatedText from "../TruncatedText.tsx";
+import TruncatedText from "../Text/TruncatedText.tsx";
 
 export interface IGamingAccessory {
     image: string;
@@ -30,7 +30,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                             addToCart,
                                                                         }) => {
     return (
-        <Card sx={{width:'100%', display: "flex", flexDirection: "column", height: "450px" }}>
+        <Card sx={{width:'100%', display: "flex", flexDirection: "column", height: "500px" }}>
             <CardActionArea component="a" href={link} target="_blank" rel="noopener noreferrer">
                 <CardMedia
                     component="img"

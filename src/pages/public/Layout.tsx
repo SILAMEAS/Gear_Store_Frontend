@@ -1,14 +1,10 @@
-import { Box, Stack } from "@mui/material";
-import type {} from "@mui/x-date-pickers/themeAugmentation";
-import type {} from "@mui/x-charts/themeAugmentation";
-import type {} from "@mui/x-data-grid/themeAugmentation";
-import type {} from "@mui/x-tree-view/themeAugmentation";
+import {Box, Stack} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { alpha } from "@mui/material/styles";
-import { Outlet } from "react-router-dom";
-import AppTheme from "../../admin/AdminTheme.tsx";
-import { chartsCustomizations } from "../../admin/theme/charts.ts";
-import { dataGridCustomizations } from "../../admin/theme/dataGrid.ts";
+import {alpha} from "@mui/material/styles";
+import {Outlet} from "react-router-dom";
+import AppTheme from "../admin/AdminTheme.tsx";
+import {chartsCustomizations} from "../admin/theme/charts.ts";
+import {dataGridCustomizations} from "../admin/theme/dataGrid.ts";
 
 const xThemeComponents = {
   ...chartsCustomizations,

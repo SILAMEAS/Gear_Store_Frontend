@@ -1,14 +1,15 @@
-import {AppBar, Box, Button, Stack, Toolbar,} from "@mui/material";
+import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
 import HeaderCart from "../../../components/HeaderCart";
 import HeaderProfile from "../../../components/HeaderProfile";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const menuItems = ["Home", "About", "Services", "Contact"];
 
 const AppHeader = () => {
 
-  // const toggleDrawer = (open: boolean) => {
-  //     console.log(open)
-  // };
+  const toggleDrawer = (open: boolean) => {
+      console.log(open)
+  };
 
   return (
     <AppBar
@@ -29,22 +30,24 @@ const AppHeader = () => {
             position:"relative"
         }}
       >
-       <Stack width={'150px'}>
-           {/* Mobile Menu: Menu Icon */}
-           {/*<IconButton*/}
-           {/*    edge="end"*/}
-           {/*    aria-label="menu"*/}
-           {/*    onClick={() => toggleDrawer(true)}*/}
-           {/*    sx={{ display: { xs: "block", md: "none" },position:'absolute' }}*/}
-           {/*>*/}
-           {/*    <MenuIcon sx={{color:"white"}}/>*/}
-           {/*</IconButton>*/}
-           <img
-               src={`logo.png`}
-               alt={'logo.png'}
-               loading="lazy"
-           />
-       </Stack>
+          <Stack justifyContent={'center'} direction={'row'}>
+              {/* Mobile Menu: Menu Icon */}
+              <IconButton
+                  edge="end"
+                  aria-label="menu"
+                  onClick={() => toggleDrawer(true)}
+                  sx={{ display: { xs: "visible", md: "none" }}}
+              >
+                  <MenuIcon sx={{color:"white"}}/>
+              </IconButton>
+              <Stack width={'150px'}>
+                  <img
+                      src={`logo.png`}
+                      alt={'logo.png'}
+                      loading="lazy"
+                  />
+              </Stack>
+          </Stack>
 
         {/* Desktop Menu: Buttons for each menu item */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>

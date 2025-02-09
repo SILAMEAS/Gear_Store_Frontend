@@ -1,5 +1,5 @@
-import {useGetAllProductsQuery} from "../../services/productApi.ts";
-import {GamingAccessoryCard} from "../../components/Cart/GamingAccessoryCard.tsx";
+import {useGetAllProductsQuery} from "../../../services/productApi.ts";
+import {GamingAccessoryCard} from "../../../components/Cart/GamingAccessoryCard.tsx";
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import React from "react";
