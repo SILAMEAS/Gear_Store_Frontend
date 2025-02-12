@@ -17,6 +17,6 @@ export interface IProductResponse {
   image:string|null,
   rating:number,
   colors:Array<string>,
-  size:Array<number>,
+  sizes:Array<number>,
   thumbnails:Array<{id:number,image:string}>
 }

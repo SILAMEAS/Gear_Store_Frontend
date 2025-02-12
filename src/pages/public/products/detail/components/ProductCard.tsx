@@ -32,8 +32,8 @@ export default function ProductCard() {
         if (newSize) setSelectedSize(newSize);
     };
     React.useEffect(()=>{
-        if(product?.size&&product?.colors){
-            setSelectedSize(product?.size[0]??90);
+        if(product?.sizes&&product?.colors){
+            setSelectedSize(product?.sizes[0]??90);
             setSelectedColor(product?.colors[0]??"black")
         }
     },[product,isFetching])
