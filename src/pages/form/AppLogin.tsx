@@ -9,7 +9,7 @@ import {useLoginMutation} from "../../redux/services/userApi.ts";
 import {snackbarError} from "../../utils/common/common.ts";
 
 interface ILogin {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -18,7 +18,7 @@ const AppLogin = () => {
   const [showPassword, setShowPassword] = useState(true);
   const formData = useForm<ILogin>({
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
@@ -73,16 +73,16 @@ const AppLogin = () => {
             LOGIN
           </Typography>
           <Stack>
-            <Typography variant="body2">Username</Typography>
+            <Typography variant="body2">email</Typography>
             <InputText
               formData={formData}
-              name="username"
+              name="email"
               placeholder="Username"
-              error={formData.formState.errors["username"]}
+              error={formData.formState.errors["email"]}
               rules={{
                 required: {
                   value: true,
-                  message: "Username is required",
+                  message: "email is required",
                 },
                 // validate: (val: string) => validateEmail(val),
               }}

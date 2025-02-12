@@ -4,7 +4,7 @@ import {Button} from "@mui/material";
 export const UIMenu=()=>{
     const navigate = useNavigate()
     return <>
-        {[{name:"Home",url:"/"},{name:"About",url:"/"}].map((item) => (
+        {[{name:"Home",url:"/"},{name:"Product",url:"/products"},{name:"About",url:"/"}].map((item) => (
             <Button key={item.name} sx={{ color: "white", textTransform: "none" }} onClick={()=>{
                 navigate(item.url)
             }}>

@@ -7,9 +7,9 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl:import.meta.env.VITE_BASE_URL }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
-    login: builder.mutation<any, {username:string,password:string}>({
+    login: builder.mutation<any, {email:string,password:string}>({
       query: (body) => ({
-        url: "/api/token/",
+        url: "/token/",
         method: Method.POST,
         body,
       }),
@@ -17,7 +17,7 @@ export const userApi = createApi({
     /** Get access_token / refresh_token by refresh_token */
     refreshToken: builder.mutation<any, { refreshToken: string }>({
       query: (body) => ({
-        url: "/api/token/refresh/",
+        url: "/token/refresh/",
         method: Method.POST,
         body,
       }),
