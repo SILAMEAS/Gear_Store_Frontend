@@ -1,14 +1,13 @@
-import {AppBar, Box, Button, IconButton, Stack, Toolbar,} from "@mui/material";
+import {AppBar, Box, IconButton, Stack, Toolbar,} from "@mui/material";
 import HeaderCart from "../../components/Cart/HeaderCart.tsx";
 import HeaderProfile from "../../components/profiles/HeaderProfile.tsx";
 import MenuIcon from "@mui/icons-material/Menu";
 import DrawerCustom from "../../components/Drawer/DrawerCustom.tsx";
 import UILogo from "../../utils/ui/UILogo.tsx";
+import {UIMenu} from "../../utils/ui/UIMenu.tsx";
 
-export const menuItems = ["Home", "About", "Services", "Contact"];
 
 const AppHeader = () => {
-
   return (
     <AppBar
       position="sticky"
@@ -18,7 +17,7 @@ const AppHeader = () => {
         width: "100%",
         margin: "0 auto",
           p:0,
-          py:'10px',
+          py:"10px",
           height: {sm:80,md:100}
       }}
     >
@@ -29,7 +28,7 @@ const AppHeader = () => {
         }}
       >
           {/** Mobile UI */}
-          <Stack justifyContent={'center'} direction={'row'} alignItems={'center'}>
+          <Stack justifyContent={"center"} direction={"row"} alignItems={"center"}>
               <DrawerCustom
                   renderButton={<IconButton
                   edge="end"
@@ -38,17 +37,13 @@ const AppHeader = () => {
               >
                   <MenuIcon sx={{color:"white"}}/>
               </IconButton>}
-                  anchor={'left'}
-                  bgcolor={'black'}
+                  anchor={"left"}
+                  bgcolor={"black"}
               >
                   <Stack>
                       <UILogo  sx={{ display: { xs: "block", md: "none" }}}/>
                       <Stack sx={{ display: { xs: "flex", md: "none" }, gap: 2 }}>
-                          {menuItems.map((item) => (
-                              <Button key={item} sx={{ color: "white", textTransform: "none" }}>
-                                  {item}
-                              </Button>
-                          ))}
+                          <UIMenu/>
                       </Stack>
                   </Stack>
               </DrawerCustom>
@@ -57,14 +52,10 @@ const AppHeader = () => {
 
         {/** Desk Top UI */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-          {menuItems.map((item) => (
-            <Button key={item} sx={{ color: "white", textTransform: "none" }}>
-              {item}
-            </Button>
-          ))}
+          <UIMenu/>
         </Box>
 
-        <Stack direction={'row'} sx={{ alignItems: "center" }}>
+        <Stack direction={"row"} sx={{ alignItems: "center" }}>
           {/* <SearchInput /> */}
           <HeaderCart />
           <HeaderProfile />

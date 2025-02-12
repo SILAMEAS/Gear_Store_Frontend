@@ -30,14 +30,14 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                             addToCart,
                                                                         }) => {
     return (
-        <Card sx={{width:'100%', display: "flex", flexDirection: "column", height: "500px" }}>
-            <CardActionArea component="a" href={link} target="_blank" rel="noopener noreferrer">
+        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height: "500px" }}>
+            <CardActionArea component="a" href={link}>
                 <CardMedia
                     component="img"
                     height={300}
                     image={image}
                     alt="green iguana"
-                    sx={{ objectFit: "cover" }}
+                    sx={{ objectFit: "contain" }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <TruncatedText text= {title} />

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IProduct} from "./types/ProductInterface.tsx";
+import {IProduct, IProductResponse} from "./types/ProductInterface.tsx";
 
 export const productApi = createApi({
   reducerPath: "productApi",
@@ -16,9 +16,19 @@ export const productApi = createApi({
       // providesTags: (result) =>
       //   result ? result.data.map(({ id }) => ({ type: "Product", id })) : [],
     }),
+    /** Get products By Id */
+    getProductsById: builder.query<IProductResponse, {id:number}>({
+      query: ({ id }) => ({
+        url: `/${id}`,
+        method: "GET"
+      }),
+      // providesTags: (result) =>
+      //   result ? result.data.map(({ id }) => ({ type: "Product", id })) : [],
+    }),
   }),
 });
 
 export const {
-  useGetAllProductsQuery
+  useGetAllProductsQuery,
+    useGetProductsByIdQuery
 } = productApi;

@@ -6,6 +6,7 @@ import AppLayout from "./pages/authentication/Layout.tsx";
 import AppPublicLayout from "./pages/public/Layout.tsx";
 import Products from "./pages/public/products/Products.tsx";
 import UserHome from "./pages/UserHome.tsx";
+import ProductDetail from "./pages/public/products/detail/ProductDetail.tsx";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ const AppRouter = () => {
       <Route path="/" element={<AppPublicLayout />}>
         <Route path="/login" element={<AppLogin />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
       </Route>
     </Routes>
   );

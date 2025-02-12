@@ -6,8 +6,8 @@ const UILogo = (stackProps:StackProps) => {
         {...stackProps}
     >
         <img
-            src={`logo.png`}
-            alt={'logo.png'}
+            src={"/logo.png"}
+            alt={"logo.png"}
             loading="lazy"
             width={100}
         />
