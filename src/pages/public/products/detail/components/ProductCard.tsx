@@ -37,7 +37,7 @@ export default function ProductCard() {
             setSelectedColor(product?.colors[0]??"black")
         }
     },[product,isFetching])
-    if(isLoading||isFetching){
+    if(isLoading||isFetching||!product){
         return <> loading ...</>
     }
     return (
