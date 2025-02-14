@@ -18,5 +18,6 @@ export interface IProductResponse {
   rating:number,
   colors:Array<string>,
   sizes:Array<number>,
-  thumbnails:Array<{id:number,image:string}>
+  thumbnails:Array<{id:number,image:string}>,
+  isWishlist:boolean
 }

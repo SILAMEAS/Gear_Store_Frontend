@@ -3,7 +3,14 @@ import {IProduct, IProductResponse} from "./types/ProductInterface.tsx";
 
 export const productApi = createApi({
   reducerPath: "productApi",
-  baseQuery: fetchBaseQuery({ baseUrl:import.meta.env.VITE_BASE_URL +"/products" }),
+  baseQuery: fetchBaseQuery({ baseUrl:import.meta.env.VITE_BASE_URL +"/products" ,
+    prepareHeaders: (headers) => {
+      const token =localStorage.getItem("access");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },}),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     /** Get all products */
@@ -13,8 +20,7 @@ export const productApi = createApi({
         method: "GET",
         params: { limit, page },
       }),
-      // providesTags: (result) =>
-      //   result ? result.data.map(({ id }) => ({ type: "Product", id })) : [],
+      providesTags:['Product']
     }),
     /** Get products By Id */
     getProductsById: builder.query<IProductResponse, {id:number}>({

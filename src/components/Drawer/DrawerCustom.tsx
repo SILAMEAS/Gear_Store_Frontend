@@ -32,7 +32,7 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
                     <Box
                         sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
                         role="presentation"
-                        onClick={toggleDrawer(anchor, false)}
+                        // onClick={toggleDrawer(anchor, false)}
                         onKeyDown={toggleDrawer(anchor, false)}
                         height={'100vh'}
                         {...contentsProps}

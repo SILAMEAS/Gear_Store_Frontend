@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {Pagination} from "./types/ProductInterface.tsx";
+import {productApi} from "./productApi.ts";
 
 export const wishlistApi = createApi({
   reducerPath: "wishlistApi",
@@ -31,9 +32,35 @@ export const wishlistApi = createApi({
         method: "POST",
         body
       }),
-      invalidatesTags: ["Wishlist"]
+      invalidatesTags: ["Wishlist"],
+        onQueryStarted: (_, api) => {
+            api.queryFulfilled.then(() => {
+                api.dispatch(
+                    productApi.util.invalidateTags([
+                        "Product"
+                    ]),
+                );
+            });
+        },
     }),
+      /** Add carts */
+      deleteWishlist: builder.mutation<any, {product:number}>({
+          query: ({product}) => ({
+              url: `${product}/remove_wishlist/`,
+              method: "DELETE"
+          }),
+          invalidatesTags: ["Wishlist"],
+          onQueryStarted: (_, api) => {
+              api.queryFulfilled.then(() => {
+                  api.dispatch(
+                      productApi.util.invalidateTags([
+                          "Product"
+                      ]),
+                  );
+              });
+          },
+      }),
   }),
 });
 
-export const { useGetAllWishlistsQuery ,useAddWishlistMutation} = wishlistApi;
+export const { useGetAllWishlistsQuery ,useAddWishlistMutation,useDeleteWishlistMutation} = wishlistApi;

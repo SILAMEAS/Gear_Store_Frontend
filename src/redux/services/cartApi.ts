@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {Pagination} from "./types/ProductInterface.tsx";
+import {productApi} from "./productApi.ts";
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
@@ -16,7 +17,7 @@ export const cartApi = createApi({
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
     /** Get all carts */
-    getAllCarts: builder.query<Pagination<{id:string,product:number,quantity:number}>, any>({
+    getAllCarts: builder.query<Pagination<{id:string,product:number,quantity:number,image:string,name:string,price:number,total_price:number}>, any>({
       query: ({ limit = 10, page = 1 }) => ({
         url: "/",
         method: "GET",
@@ -29,11 +30,28 @@ export const cartApi = createApi({
       query: (body) => ({
         url: "/",
         method: "POST",
-        body
+        body,
       }),
-      invalidatesTags: ["Cart"]
+        onQueryStarted: (_, api) => {
+            api.queryFulfilled.then(() => {
+                api.dispatch(
+                    productApi.util.invalidateTags([
+                       "Product"
+                    ]),
+                );
+            });
+        },
+      invalidatesTags: ["Cart"],
     }),
+      /** delete carts */
+      deleteCart: builder.mutation<any, {cartId:number|string}>({
+          query: ({cartId}) => ({
+              url: `/${cartId}/`,
+              method: "DELETE",
+          }),
+          invalidatesTags: ["Cart"]
+      }),
   }),
 });
 
-export const { useGetAllCartsQuery ,useAddCartMutation} = cartApi;
+export const { useGetAllCartsQuery ,useAddCartMutation,useDeleteCartMutation} = cartApi;
