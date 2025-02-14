@@ -1,40 +1,43 @@
 import {Logout, PersonAdd, Settings} from "@mui/icons-material";
-import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Stack, Tooltip,} from "@mui/material";
+import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip,} from "@mui/material";
 import React from "react";
 import useGetLocalStorage from "../../utils/hooks/useGetLocalStorage.tsx";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import {useNavigate} from "react-router-dom";
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const {refresh_token}=useGetLocalStorage();
+  const {access}=useGetLocalStorage();
   const open = Boolean(anchorEl);
+  const navigate= useNavigate()
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if(access)
     setAnchorEl(event.currentTarget);
+    else
+      navigate("/login")
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const handleLogout=()=>{
+    localStorage.clear();
+    navigate("/login")
+  }
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        {refresh_token&&
-          <Tooltip title="Account settings">
-            <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-            >
-              <Avatar
-                  sx={{ width: 32, height: 32, bgcolor: "white", fontSize: "14px" }}
-              >
-                <Stack color={'black'}>H</Stack>
-              </Avatar>
-            </IconButton>
+        <Tooltip title="Account settings">
+          <IconButton
+          onClick={handleClick}
+          size="small"
+          sx={{ ml: 2 }}
+          aria-controls={open ? "account-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          >
+          <AccountCircleIcon sx={{color:"white"}}/>
+          </IconButton>
           </Tooltip>
-        }
       </Box>
       <Menu
         anchorEl={anchorEl}
@@ -56,7 +59,7 @@ const HeaderProfile = () => {
                 mr: 1,
               },
               "&::before": {
-                content: '""',
+                content: "\"\"",
                 display: "block",
                 position: "absolute",
                 top: 0,
@@ -89,7 +92,7 @@ const HeaderProfile = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

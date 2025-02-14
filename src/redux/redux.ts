@@ -6,6 +6,7 @@ import {adminApi} from "./services/adminApi.ts";
 import {cartApi} from "./services/cartApi.ts";
 import {productApi} from "./services/productApi.ts";
 import {userApi} from "./services/userApi.ts";
+import {wishlistApi} from "./services/wishlistApi.ts";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [cartApi.reducerPath]: cartApi.reducer,
     [adminApi.reducerPath]: adminApi.reducer,
+    [wishlistApi.reducerPath]: wishlistApi.reducer,
     application: applicationSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -21,6 +23,8 @@ export const store = configureStore({
       productApi.middleware,
       cartApi.middleware,
       adminApi.middleware,
+        wishlistApi.middleware
+
     ),
 });
 

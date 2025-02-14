@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import {Box, CardActionArea, CardMedia, IconButton, Rating} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import TruncatedText from "../Text/TruncatedText.tsx";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 export interface IGamingAccessory {
     image: string;
     title: string;
@@ -18,6 +18,7 @@ export interface IGamingAccessory {
 
 interface GamingAccessoryCardProps extends IGamingAccessory {
     addToCart: () => void;
+    addWishList:()=>void
 }
 
 export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> = ({
@@ -28,6 +29,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                             rating,
                                                                             link,
                                                                             addToCart,
+                                                                                      addWishList
                                                                         }) => {
     return (
         <Card sx={{width:"100%", display: "flex", flexDirection: "column", height: "500px" }}>
@@ -54,6 +56,9 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
             </CardActionArea>
             <Box sx={{ display: "flex", justifyContent: "flex-end", padding: 1 }}>
                 <IconButton aria-label="add to cart" onClick={addToCart}>
+                    <FavoriteBorderIcon />
+                </IconButton>
+                <IconButton aria-label="add to cart" onClick={addWishList}>
                     <AddShoppingCartIcon />
                 </IconButton>
             </Box>

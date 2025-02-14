@@ -4,10 +4,14 @@ import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import React from "react";
 import {Stack} from "@mui/material";
+import {useAddCartMutation} from "../../../redux/services/cartApi.ts";
+import {useAddWishlistMutation} from "../../../redux/services/wishlistApi.ts";
 
 const Products = () => {
     const [page, setPage] = React.useState(1);
     const {currentData}=useGetAllProductsQuery({limit:12,page:page});
+    const [addCart]=useAddCartMutation({});
+    const [addWishlist]=useAddWishlistMutation({})
 
     return (
         <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"}>
@@ -22,7 +26,22 @@ const Products = () => {
                             link={`products/${item.id}`}
                             image={item?.image!==null?item.image:
                                 "https://resource.logitech.com/content/dam/gaming/en/products/astro-a50-x/product-gallery/astro-a50-x-black-gallery-1.png"}
-                            addToCart={()=>{}}/>
+                            addToCart={async ()=>{
+                                try {
+                                    console.log("addToCart")
+                                    await addCart({product:item.id}).unwrap()
+                                }catch (e){
+                                    console.error("addToCart : " + e)
+                                }
+                            }}
+                            addWishList={async ()=>{
+                                try {
+                                    console.log("addWishList")
+                                    await addWishlist({product:item.id}).unwrap()
+                                }catch (e){
+                                    console.error("add Wishlist : " + e)
+                                }
+                            }}/>
                     </Grid>
                 ))}
             </Grid>

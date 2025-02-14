@@ -1,11 +1,9 @@
 import {AppBar, Box, IconButton, Stack, Toolbar,} from "@mui/material";
-import HeaderCart from "../../components/Cart/HeaderCart.tsx";
-import HeaderProfile from "../../components/profiles/HeaderProfile.tsx";
 import MenuIcon from "@mui/icons-material/Menu";
 import DrawerCustom from "../../components/Drawer/DrawerCustom.tsx";
 import UILogo from "../../utils/ui/UILogo.tsx";
-import {UIMenu} from "../../utils/ui/UIMenu.tsx";
-
+import {UICenterHeaderMenu} from "../../utils/ui/UICenterHeaderMenu.tsx";
+import UILeftSideHeaderMenu from "../../utils/ui/UILeftSideHeaderMenu.tsx";
 
 const AppHeader = () => {
   return (
@@ -43,7 +41,7 @@ const AppHeader = () => {
                   <Stack>
                       <UILogo  sx={{ display: { xs: "block", md: "none" }}}/>
                       <Stack sx={{ display: { xs: "flex", md: "none" }, gap: 2 }}>
-                          <UIMenu/>
+                          <UICenterHeaderMenu/>
                       </Stack>
                   </Stack>
               </DrawerCustom>
@@ -52,14 +50,10 @@ const AppHeader = () => {
 
         {/** Desk Top UI */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-          <UIMenu/>
+          <UICenterHeaderMenu/>
         </Box>
 
-        <Stack direction={"row"} sx={{ alignItems: "center" }}>
-          {/* <SearchInput /> */}
-          <HeaderCart />
-          <HeaderProfile />
-        </Stack>
+          <UILeftSideHeaderMenu/>
 
       </Toolbar>
     </AppBar>

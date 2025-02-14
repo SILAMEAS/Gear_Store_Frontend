@@ -27,24 +27,24 @@ const AppLogin = () => {
   const [login, { isLoading: loginLoading }] = useLoginMutation();
 
   const handleShowPassword = () => (showPassword ? "password" : "text");
-  // const validateEmail = (email: string) => {
-  //   if (email) {
-  //     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //     if (!emailRegex.test(email)) {
-  //       return "Please match the requested format";
-  //     }
-  //   } else {
-  //     return undefined;
-  //   }
-  // };
+  const validateEmail = (email: string) => {
+    if (email) {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        return "Please match the requested format";
+      }
+    } else {
+      return undefined;
+    }
+  };
   const handleLogin = async (data: ILogin) => {
     return login(data)
       .unwrap()
       .then((res) => {
         if (res) {
-          // dispatch(dispatchUserInfo(res));
           localStorage.setItem("refresh_token", res.refresh);
-          navigate("/admin");
+          localStorage.setItem("access", res.access);
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -84,7 +84,7 @@ const AppLogin = () => {
                   value: true,
                   message: "email is required",
                 },
-                // validate: (val: string) => validateEmail(val),
+                validate: (val: string) => validateEmail(val),
               }}
             />
           </Stack>

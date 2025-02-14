@@ -15,7 +15,7 @@ export const userApi = createApi({
       }),
     }),
     /** Get access_token / refresh_token by refresh_token */
-    refreshToken: builder.mutation<any, { refreshToken: string }>({
+    refreshToken: builder.mutation<any, { refresh: string }>({
       query: (body) => ({
         url: "/token/refresh/",
         method: Method.POST,
@@ -25,7 +25,7 @@ export const userApi = createApi({
     /** Get user by ID **/
     getUserDetail: builder.query<any, any>({
       query: () => ({
-        url: `/user-detail/`,
+        url: "/user-detail/",
         method: Method.GET,
       }),
     }),

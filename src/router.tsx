@@ -5,15 +5,15 @@ import AppLogin from "./pages/form/AppLogin.tsx";
 import AppLayout from "./pages/authentication/Layout.tsx";
 import AppPublicLayout from "./pages/public/Layout.tsx";
 import Products from "./pages/public/products/Products.tsx";
-import UserHome from "./pages/UserHome.tsx";
 import ProductDetail from "./pages/public/products/detail/ProductDetail.tsx";
+import HomeUser from "./pages/user/HomeUser.tsx";
 
 const AppRouter = () => {
   return (
     <Routes>
       {/**================================= User ======================================================== */}
       <Route path="/" element={<AppLayout />}>
-        <Route index element={<UserHome />} />
+        <Route index element={<HomeUser />} />
       </Route>
 
         {/**================================= Admin ======================================================== */}

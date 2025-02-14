@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {Button} from "@mui/material";
 
-export const UIMenu=()=>{
+export const UICenterHeaderMenu=()=>{
     const navigate = useNavigate()
     return <>
         {[{name:"Home",url:"/"},{name:"Product",url:"/products"},{name:"About",url:"/"}].map((item) => (

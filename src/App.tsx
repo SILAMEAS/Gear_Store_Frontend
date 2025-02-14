@@ -13,16 +13,16 @@ function App() {
   useEffect(() => {
     const refreshToken = localStorage.getItem("refresh_token");
     if (refreshToken) {
-      getRefreshToken({ refreshToken })
+      getRefreshToken({ refresh:refreshToken })
         .unwrap()
         .then((res) => {
           if (res) {
-            // dispatch(dispatchUserInfo(res));
-            localStorage.setItem("refresh_token", res.refresh_token);
+            localStorage.setItem("refresh_token", res.refresh);
+              localStorage.setItem("token", res.access);
           }
         });
     }
-  }, []);
+  }, [getRefreshToken]);
 
   if (isLoading) {
     return <>loading ...</>;

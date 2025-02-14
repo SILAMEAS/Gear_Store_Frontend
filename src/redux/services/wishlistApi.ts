@@ -1,10 +1,10 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {Pagination} from "./types/ProductInterface.tsx";
 
-export const cartApi = createApi({
-  reducerPath: "cartApi",
+export const wishlistApi = createApi({
+  reducerPath: "wishlistApi",
   baseQuery: fetchBaseQuery({
-      baseUrl: import.meta.env.VITE_BASE_URL +"/cart",
+      baseUrl: import.meta.env.VITE_BASE_URL +"/wishlist",
       prepareHeaders: (headers) => {
           const token =localStorage.getItem("access");
           if (token) {
@@ -13,27 +13,27 @@ export const cartApi = createApi({
           return headers;
       },
   }),
-  tagTypes: ["Cart"],
+  tagTypes: ["Wishlist"],
   endpoints: (builder) => ({
     /** Get all carts */
-    getAllCarts: builder.query<Pagination<{id:string,product:number,quantity:number}>, any>({
+    getAllWishlists: builder.query<Pagination<{id:string,product:number,quantity:number}>, any>({
       query: ({ limit = 10, page = 1 }) => ({
         url: "/",
         method: "GET",
         params: { limit, page },
       }),
-      providesTags: ["Cart"]
+      providesTags: ["Wishlist"]
     }),
     /** Add carts */
-   addCart: builder.mutation<any, {product:number}>({
+   addWishlist: builder.mutation<any, {product:number}>({
       query: (body) => ({
         url: "/",
         method: "POST",
         body
       }),
-      invalidatesTags: ["Cart"]
+      invalidatesTags: ["Wishlist"]
     }),
   }),
 });
 
-export const { useGetAllCartsQuery ,useAddCartMutation} = cartApi;
+export const { useGetAllWishlistsQuery ,useAddWishlistMutation} = wishlistApi;
