@@ -1,17 +1,16 @@
 import {Logout, PersonAdd, Settings} from "@mui/icons-material";
 import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip,} from "@mui/material";
 import React from "react";
-import useGetLocalStorage from "../../utils/hooks/useGetLocalStorage.tsx";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {useNavigate} from "react-router-dom";
+import getToken from "../../utils/local-storage/token/useGetToken.ts";
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const {access}=useGetLocalStorage();
   const open = Boolean(anchorEl);
   const navigate= useNavigate()
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    if(access)
+    if(getToken()?.access)
     setAnchorEl(event.currentTarget);
     else
       navigate("/login")

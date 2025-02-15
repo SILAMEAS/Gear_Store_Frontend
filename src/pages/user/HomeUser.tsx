@@ -1,14 +1,14 @@
-import {AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, Stack} from "@mui/material";
+import {AppBar, Button, Card, CardContent, Container, Grid, Stack, Toolbar, Typography} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import useGetLocalStorage from "../../utils/hooks/useGetLocalStorage.tsx";
+import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import {useNavigate} from "react-router-dom";
+
 const HomeUser = () => {
-    const {access}=useGetLocalStorage();
     const navigate= useNavigate()
-    if(!access){
+    if(!getToken()?.access){
         return <Stack>
             <Typography> Please login to access this page</Typography>
             <Button onClick={()=>navigate("/login")}>Login</Button>

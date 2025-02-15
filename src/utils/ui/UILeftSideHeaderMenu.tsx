@@ -3,10 +3,9 @@ import HeaderCart from "../../components/header/HeaderCart.tsx";
 import HeaderProfile from "../../components/header/HeaderProfile.tsx";
 import HeaderWishlist from "../../components/header/HeaderWishlist.tsx";
 import HeaderSearch from "../../components/header/HeaderSearch.tsx";
-import useGetLocalStorage from "../hooks/useGetLocalStorage.tsx";
+import getToken from "../local-storage/token/useGetToken.ts";
 
 const UILeftSideHeaderMenu = () => {
-    const {access}=useGetLocalStorage();
     return (
         <Stack direction={"row"} sx={{alignItems: "center"}}>
             {/** Search  **/}
@@ -15,7 +14,7 @@ const UILeftSideHeaderMenu = () => {
             <HeaderWishlist/>
             {/** Cart  **/}
             {
-                access&&  <HeaderCart/>
+                getToken()?.access&&  <HeaderCart/>
             }
             {/** Profile  **/}
             <HeaderProfile/>

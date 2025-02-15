@@ -1,13 +1,6 @@
-export interface Pagination<T extends  Record<string, any>>{
-  contents: Array<T>,
-  hasNext:boolean,
-  currentPage:number,
-  total:number
-  totalPages:number
-}
-export interface IProduct extends Pagination<IProductResponse>{}
+import {Pagination} from "./IPagination.ts";
 
-export interface IProductResponse {
+export interface ResProduct {
   id: number,
   name: string,
   description: string,
@@ -21,3 +14,4 @@ export interface IProductResponse {
   thumbnails:Array<{id:number,image:string}>,
   isWishlist:boolean
 }
+export interface ResProducts extends Pagination<ResProduct>{}

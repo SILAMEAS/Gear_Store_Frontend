@@ -1,19 +1,11 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {Pagination} from "./types/ProductInterface.tsx";
+import {createApi} from "@reduxjs/toolkit/query/react";
 import {productApi} from "./productApi.ts";
+import {ReqHeader} from "../ReqHeader.tsx";
+import {Pagination} from "./types/IPagination.ts";
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
-  baseQuery: fetchBaseQuery({
-      baseUrl: import.meta.env.VITE_BASE_URL +"/cart",
-      prepareHeaders: (headers) => {
-          const token =localStorage.getItem("access");
-          if (token) {
-              headers.set("Authorization", `Bearer ${token}`);
-          }
-          return headers;
-      },
-  }),
+  baseQuery: ReqHeader('/cart'),
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
     /** Get all carts */

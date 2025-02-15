@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import InputText from "../../components/Input/InputText.tsx";
 import {useLoginMutation} from "../../redux/services/userApi.ts";
 import {snackbarError} from "../../utils/common/common.ts";
+import {storeToken} from "../../utils/local-storage/token/storeToken.ts";
 
 interface ILogin {
   email: string;
@@ -42,8 +43,8 @@ const AppLogin = () => {
       .unwrap()
       .then((res) => {
         if (res) {
-          localStorage.setItem("refresh_token", res.refresh);
-          localStorage.setItem("access", res.access);
+          /** Store Token  */
+          storeToken(res)
           navigate("/");
         }
       })

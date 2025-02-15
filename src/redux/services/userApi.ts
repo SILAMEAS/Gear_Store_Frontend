@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {Method} from "./types/Method.ts";
+import getToken from "../../utils/local-storage/token/useGetToken.ts";
 
 
 export const userApi = createApi({
@@ -7,7 +8,7 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl:import.meta.env.VITE_BASE_URL }),
   tagTypes: ["User"],
   endpoints: (builder) => ({
-    login: builder.mutation<any, {email:string,password:string}>({
+    login: builder.mutation<{access:string,refresh:string}, {email:string,password:string}>({
       query: (body) => ({
         url: "/token/",
         method: Method.POST,
@@ -25,7 +26,10 @@ export const userApi = createApi({
     /** Get user by ID **/
     getUserDetail: builder.query<any, any>({
       query: () => ({
-        url: "/user-detail/",
+        headers: {
+          ["Authorization"]: `Bearer ${getToken()?.access}`,
+        },
+        url: "/users/info/",
         method: Method.GET,
       }),
     }),

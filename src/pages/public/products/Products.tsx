@@ -30,23 +30,20 @@ const Products = () => {
                                 "https://resource.logitech.com/content/dam/gaming/en/products/astro-a50-x/product-gallery/astro-a50-x-black-gallery-1.png"}
                             addToCart={async ()=>{
                                 try {
-                                    console.log("addToCart")
                                     await addCart({product:item.id}).unwrap()
                                 }catch (e){
-                                    console.error("addToCart : " + e)
+                                    return e
                                 }
                             }}
                             addWishList={async ()=>{
                                 try {
                                     if(item.isWishlist) {
-                                        console.log('delete')
                                         await deleteWishlist({product:item.id}).unwrap()
                                     }else{
-                                        console.log('add')
                                         await addWishlist({product:item.id}).unwrap()
                                     }
                                 }catch (e){
-                                    console.error("add Wishlist : " + e)
+                                    return e
                                 }
                             }}/>
                     </Grid>

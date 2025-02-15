@@ -1,6 +1,7 @@
 import {Card, CardActionArea, CardContent, CardMedia, Link, Typography} from "@mui/material";
-import {IProductResponse} from "../../../../../redux/services/types/ProductInterface.tsx";
-const Product = (props: IProductResponse) => {
+import {ResProduct} from "../../../../../redux/services/types/ProductInterface.tsx";
+
+const Product = (props: ResProduct) => {
     return (
         <Link href={`/products/${props.id}`}>
             <Card sx={{minWidth:250, maxWidth: 350, m: 0, cursor: "pointer" }}>
