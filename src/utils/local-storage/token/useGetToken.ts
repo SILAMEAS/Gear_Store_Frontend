@@ -1,12 +1,7 @@
 const getToken = () => {
-    const tokenString =localStorage.getItem("token");
-    if(!tokenString){
-        console.error('useGetToken is problem');
-        return
-    }
-    const token:{access:string,refresh:string}=JSON.parse(tokenString);
-    console.log('token',token)
-    return  {refresh_token:token.refresh,access:token?.access}
+    const refresh =localStorage.getItem("refresh");
+    const access =localStorage.getItem("access");
+    return  {refresh,access}
 };
 
 export default getToken;

@@ -3,11 +3,9 @@ import theme from "../../theme/theme.tsx";
 import AppHeader from "../authentication/Header.tsx";
 import AppContent from "../authentication/Content.tsx";
 import AppFooter from "../authentication/Footer.tsx";
-import {useGetUserDetailQuery} from "../../redux/services/userApi.ts";
 
 const AppPublicLayout = () => {
-    const Me=useGetUserDetailQuery({});
-    console.log(Me?.currentData)
+    console.log('AppPublicLayout')
   return (
       <ThemeProvider theme={theme}>
           <Box

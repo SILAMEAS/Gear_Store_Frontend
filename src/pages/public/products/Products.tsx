@@ -1,4 +1,3 @@
-import {useGetAllProductsQuery} from "../../../redux/services/productApi.ts";
 import {GamingAccessoryCard} from "../../../components/Cart/GamingAccessoryCard.tsx";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
@@ -6,6 +5,7 @@ import React from "react";
 import {Stack} from "@mui/material";
 import {useAddCartMutation} from "../../../redux/services/cartApi.ts";
 import {useAddWishlistMutation, useDeleteWishlistMutation} from "../../../redux/services/wishlistApi.ts";
+import {useGetAllProductsQuery} from "../../../redux/services/productApi.ts";
 
 const Products = () => {
     const [page, setPage] = React.useState(1);
@@ -13,6 +13,7 @@ const Products = () => {
     const [addCart]=useAddCartMutation({});
     const [addWishlist]=useAddWishlistMutation({});
     const [deleteWishlist]=useDeleteWishlistMutation({})
+
 
     return (
         <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"}>

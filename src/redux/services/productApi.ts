@@ -1,11 +1,12 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {ResProduct, ResProducts} from "./types/ProductInterface.tsx";
 import {ReqPage} from "./types/IPagination.ts";
-import {ReqHeader} from "../ReqHeader.tsx";
+import {ReqHeader, ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
+import getToken from "../../utils/local-storage/token/useGetToken.ts";
 
 export const productApi = createApi({
   reducerPath: "productApi",
-  baseQuery:ReqHeader('/products'),
+  baseQuery:getToken().access? ReqHeader('/products'):ReqHeaderOnlyBaseUrl('/products'),
   tagTypes: ["Product"],
   endpoints: (builder) => ({
     /** Get all products */

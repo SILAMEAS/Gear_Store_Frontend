@@ -15,7 +15,7 @@ export interface IGamingAccessory {
     price: number;
     rating: number;
     link: string;
-    isWishlist:boolean
+    isWishlist:any
 }
 
 
@@ -35,8 +35,9 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                                       addWishList,
                                                                                       isWishlist
                                                                         }) => {
+    const isWishlistString=typeof isWishlist=='string'
     return (
-        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height: "500px" }}>
+        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"450px": "500px" }}>
             <CardActionArea component="a" href={link}>
                 <CardMedia
                     component="img"
@@ -58,7 +59,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                     </Box>
                 </CardContent>
             </CardActionArea>
-            <Box sx={{ display: "flex", justifyContent: "flex-end", padding: 1 }}>
+            <Box sx={{ display:isWishlistString?"none": "flex", justifyContent: "flex-end", padding: 1 }}>
                 <IconButton aria-label="add to cart" onClick={addWishList}>
                     {
                         isWishlist? <FavoriteOutlined sx={{color:"red"}}/>:

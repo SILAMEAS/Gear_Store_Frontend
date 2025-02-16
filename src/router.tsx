@@ -7,24 +7,25 @@ import AppPublicLayout from "./pages/public/Layout.tsx";
 import Products from "./pages/public/products/Products.tsx";
 import ProductDetail from "./pages/public/products/detail/ProductDetail.tsx";
 import HomeUser from "./pages/user/HomeUser.tsx";
+import {RouteConstant} from "./constants/Route.ts";
 
 const AppRouter = () => {
   return (
     <Routes>
       {/**================================= User ======================================================== */}
-      <Route path="/" element={<AppLayout />}>
+      <Route path={RouteConstant.HOME} element={<AppLayout />}>
         <Route index element={<HomeUser />} />
       </Route>
 
         {/**================================= Admin ======================================================== */}
-      <Route path="/admin" element={<AdminLayout />}>
+      <Route path={RouteConstant.ADMIN} element={<AdminLayout />}>
         <Route index element={<AdminHome />} />
       </Route>
         {/**================================= Public ======================================================== */}
-      <Route path="/" element={<AppPublicLayout />}>
-        <Route path="/login" element={<AppLogin />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
+      <Route path={RouteConstant.HOME} element={<AppPublicLayout />}>
+        <Route path={RouteConstant.LOGIN} element={<AppLogin />} />
+          <Route path={RouteConstant.PRODUCT} element={<Products />} />
+          <Route path={RouteConstant.PRODUCT_ID} element={<ProductDetail />} />
       </Route>
     </Routes>
   );

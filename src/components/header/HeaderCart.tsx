@@ -1,29 +1,28 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import {Badge, Box, Button, ButtonProps, Card, CardContent, IconButton, Typography} from "@mui/material";
+import {Badge, Box, Button, Card, CardContent, IconButton, Typography} from "@mui/material";
 import DrawerCustom from "../Drawer/DrawerCustom.tsx";
 import {useDeleteCartMutation, useGetAllCartsQuery} from "../../redux/services/cartApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EmptyCart from "../../utils/ui/empty/EmptyCart.tsx";
+import {BoxProps} from "@mui/material/Box";
+import getToken from "../../utils/local-storage/token/useGetToken.ts";
 
-const HeaderCart = (props: ButtonProps) => {
+const HeaderCart = (props: Readonly<BoxProps>) => {
   const defaultStyle = {
     color: "primary.main",
     p: 0,
   };
-  const {currentData,isLoading}=useGetAllCartsQuery({});
+  const {currentData}=useGetAllCartsQuery({},{skip:!getToken().access});
   const [deleteCart]=useDeleteCartMutation({})
-    if(!currentData||isLoading){
-        return  <>loading ...</>
-    }
     let subtotal = 0;
   return (
       <DrawerCustom
-          renderButton={<IconButton {...props} sx={defaultStyle}>
-              <Badge badgeContent={currentData.total} color="primary">
-                  <ShoppingCartOutlinedIcon sx={{color:"white"}}/>
+          renderButton={<Box sx={defaultStyle} {...props}>
+              <Badge badgeContent={currentData?.total??0} color="primary">
+                  <ShoppingCartOutlinedIcon sx={{color:getToken().access? "white":"grey"}}/>
               </Badge>
-          </IconButton>}
+          </Box>}
           anchor={"right"}
           bgcolor={"white"}
       >
@@ -34,10 +33,10 @@ const HeaderCart = (props: ButtonProps) => {
                       <Typography variant="h6">Shopping Cart</Typography>
                   </Box>
 
-                  {currentData?.contents?.length<=0? <EmptyCart/>:
+                  {currentData?.contents?.length && currentData?.contents?.length<=0? <EmptyCart/>:
                       (  currentData?.contents?.map(item=>{
                           subtotal = subtotal+item.total_price;
-                          return  <Card sx={{ mt: 2, display: "flex", alignItems: "center", p: 1 }}>
+                          return  <Card sx={{ mt: 2, display: "flex", alignItems: "center", p: 1 }} key={item.id}>
                               <img src={item.image} alt={item.image} width={60} height={60} style={{ borderRadius: 8 }} />
                               <CardContent sx={{ flexGrow: 1 }}>
                                   <Typography variant="body1">{item.name}</Typography>

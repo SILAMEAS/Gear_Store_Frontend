@@ -13,3 +13,8 @@ export const ReqHeader=(route:string)=>{
         },
     })
 }
+export const ReqHeaderOnlyBaseUrl=(route:string)=>{
+    return fetchBaseQuery({
+        baseUrl: import.meta.env.VITE_BASE_URL +route
+    })
+}

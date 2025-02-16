@@ -12,6 +12,6 @@ export interface ResProduct {
   colors:Array<string>,
   sizes:Array<number>,
   thumbnails:Array<{id:number,image:string}>,
-  isWishlist:boolean
+  isWishlist:boolean|string
 }
 export interface ResProducts extends Pagination<ResProduct>{}

@@ -1,4 +1,4 @@
-import {AppBar, Box, IconButton, Stack, Toolbar,} from "@mui/material";
+import {AppBar, Box, Stack, Toolbar,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DrawerCustom from "../../components/Drawer/DrawerCustom.tsx";
 import UILogo from "../../utils/ui/UILogo.tsx";
@@ -28,13 +28,13 @@ const AppHeader = () => {
           {/** Mobile UI */}
           <Stack justifyContent={"center"} direction={"row"} alignItems={"center"}>
               <DrawerCustom
-                  renderButton={<IconButton
-                  edge="end"
-                  aria-label="menu"
+                  renderButton={<Box
+                  // edge="end"
+                  // aria-label="menu"
                   sx={{ display: { xs: "visible", md: "none" }}}
               >
                   <MenuIcon sx={{color:"white"}}/>
-              </IconButton>}
+              </Box>}
                   anchor={"left"}
                   bgcolor={"black"}
               >

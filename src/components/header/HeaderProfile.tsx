@@ -4,16 +4,14 @@ import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {useNavigate} from "react-router-dom";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
+import LoginIcon from '@mui/icons-material/Login';
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const navigate= useNavigate()
+  const navigate= useNavigate();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    if(getToken()?.access)
     setAnchorEl(event.currentTarget);
-    else
-      navigate("/login")
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -21,6 +19,17 @@ const HeaderProfile = () => {
   const handleLogout=()=>{
     localStorage.clear();
     navigate("/login")
+  }
+  if(!getToken().access){
+    return <IconButton
+        size="small"
+        sx={{ ml: 2 }}
+        onClick={()=>{
+            navigate("/login")
+        }}
+    >
+      <LoginIcon sx={{color:"white"}}/>
+    </IconButton>
   }
   return (
     <React.Fragment>

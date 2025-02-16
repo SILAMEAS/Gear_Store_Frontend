@@ -1,3 +1,7 @@
+import getToken from "./useGetToken.ts";
+
 export const storeToken = (res:Record<string, any>) => {
-    localStorage.setItem("token", JSON.stringify(res));
+    if(!getToken().refresh)
+        localStorage.setItem("refresh", res.refresh);
+    localStorage.setItem("access", res.access);
 };
