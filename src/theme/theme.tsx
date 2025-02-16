@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import {createTheme} from "@mui/material";
 
 // Augmenting the theme with custom types
 declare module "@mui/material/styles" {
@@ -68,7 +68,7 @@ const theme = createTheme({
       fontSize: "0.8rem",
     },
   },
-  spacing: 8, // Base spacing unit for margins and padding
+  // spacing: 8, // Base spacing unit for margins and padding
 });
 
 export default theme;

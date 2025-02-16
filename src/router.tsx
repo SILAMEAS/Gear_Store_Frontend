@@ -12,6 +12,10 @@ import {PublicRoute} from "./pages/protect-route/PublicRoute.tsx";
 import SignUp from "./pages/form/SignUp.tsx";
 import Products from "./pages/page-share/products/Products.tsx";
 import ProductDetail from "./pages/page-share/products/detail/components/ProductDetail.tsx";
+import AdminCartPage from "./pages/admin/admin-page/AdminCartPage.tsx";
+import AdminCategoryPage from "./pages/admin/admin-page/AdminCategoryPage.tsx";
+import AdminOrdersPage from "./pages/admin/admin-page/AdminOrdersPage.tsx";
+import AdminRatingPage from "./pages/admin/admin-page/AdminRatingPage.tsx";
 
 
 export const routesConfig = [
@@ -113,7 +117,19 @@ export const routesConfig = [
                     },
                     {
                         path: Route.admin.CART,
-                        element: <> Admin Cart</>,
+                        element: <AdminCartPage/>
+                    },
+                    {
+                        path: Route.admin.ORDER,
+                        element: <AdminOrdersPage/>
+                    },
+                    {
+                        path: Route.admin.CATEGORY,
+                        element: <AdminCategoryPage/>
+                    },
+                    {
+                        path: Route.admin.RATE,
+                        element: <AdminRatingPage/>
                     },
                 ],
             },

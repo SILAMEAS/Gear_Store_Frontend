@@ -21,7 +21,7 @@ import {useParams} from "react-router-dom";
 
 export default function ProductCard() {
     const param=useParams();
-    const {currentData:product,isLoading,isFetching}=useGetProductsByIdQuery({id:Number(param.id)},{skip:!param.id})
+    const {currentData:product}=useGetProductsByIdQuery({id:Number(param.id)},{skip:!param.id})
     const [selectedSize, setSelectedSize] = useState<any>();
     const [selectedColor, setSelectedColor] = useState<any>();
 
@@ -36,10 +36,7 @@ export default function ProductCard() {
             setSelectedSize(product?.sizes[0]??90);
             setSelectedColor(product?.colors[0]??"black")
         }
-    },[product,isFetching])
-    if(isLoading||isFetching||!product){
-        return <> loading ...</>
-    }
+    },[product])
     return (
         <Card sx={{ width: "100%", maxWidth: "1200px", margin: "auto", p: 2 }}>
             <CardContent>
@@ -48,8 +45,8 @@ export default function ProductCard() {
                     <Grid item xs={12} md={6}>
                         <Box sx={{ position: "relative", width: "100%", textAlign: "center" }}>
                             <img
-                                src={product.image??""}
-                                alt={product.name??""}
+                                src={product?.image??""}
+                                alt={product?.name??""}
                                 style={{
                                     width: "100%",
                                     maxWidth: "400px",
@@ -81,19 +78,19 @@ export default function ProductCard() {
                     {/* Right Side: Product Details */}
                     <Grid item xs={12} md={6}>
                         <Typography variant="h4" fontWeight="bold">
-                            {product.name}
+                            {product?.name}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary" sx={{ mb: 2 }}>
-                            {product.description}
+                            {product?.description}
                         </Typography>
 
                         {/* Rating */}
-                        <Rating value={product.rating} precision={0.5} readOnly sx={{ mb: 2 }} />
+                        <Rating value={product?.rating??0} precision={0.5} readOnly sx={{ mb: 2 }} />
 
                         {/* Colors */}
                         <Typography variant="subtitle1">Select Color</Typography>
                         <Stack direction="row" spacing={1} sx={{ mb: 3 }}>
-                            {product.colors.map((color) => (
+                            {product?.colors.map((color) => (
                                 <Box
                                     key={color}
                                     onClick={() => setSelectedColor(color)}
@@ -112,7 +109,7 @@ export default function ProductCard() {
                         {/* Sizes */}
                         <Typography variant="subtitle1">Select Size</Typography>
                         <ToggleButtonGroup value={selectedSize} exclusive onChange={handleSizeChange} sx={{ mb: 3 }}>
-                            {product.sizes.map((size) => (
+                            {product?.sizes.map((size) => (
                                 <ToggleButton key={size} value={size} sx={{ minWidth: "50px" }}>
                                     {size}
                                 </ToggleButton>
@@ -121,7 +118,7 @@ export default function ProductCard() {
 
                         {/* Price */}
                         <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3 }}>
-                            ${product.price}
+                            ${product?.price??0}
                         </Typography>
 
                         {/* Buttons */}

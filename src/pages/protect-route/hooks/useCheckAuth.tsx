@@ -24,9 +24,6 @@ const useCheckAuth = () => {
              }
          }
      },[userDetail,isFetching])
-    if(isFetching){
-        return <>loading ... </>
-    }
 };
 
 export default useCheckAuth;

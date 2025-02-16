@@ -11,8 +11,9 @@ const PublicLayout = () => {
               sx={{
                   display: "flex",
                   flexDirection: "column",
-                  minHeight: "100vh",
+                  maxHeight: "98vh",
                   alignItems: "center",
+                  overflow:"hidden"
               }}
           >
               <AppHeader />
@@ -21,7 +22,7 @@ const PublicLayout = () => {
                       width: "100%",
                   }}
               >
-                  <AppContent />
+                      <AppContent />
                   <AppFooter />
               </Stack>
           </Box>

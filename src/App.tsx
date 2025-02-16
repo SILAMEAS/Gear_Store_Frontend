@@ -3,10 +3,7 @@ import AppProvider from "./theme/AppProvider.tsx";
 import {useProtectedRoute} from "./utils/hooks/useProtectedRoute.tsx";
 
 function App() {
-const {resultRefreshToken,resultUserDetail}=useProtectedRoute();
-  if (resultRefreshToken.isLoading||resultUserDetail.isLoading) {
-    return <>loading ...</>;
-  }
+ useProtectedRoute();
 
   return (
       <AppProvider>
