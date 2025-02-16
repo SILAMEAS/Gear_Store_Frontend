@@ -33,7 +33,15 @@ export const routesConfig = [
             {
                 path: Route.public.SIGN_UP,
                 element: <SignUp/>,
-            }
+            },
+            {
+                path: Route.public.HOME,
+                element: <>HOME PUBLIC</>,
+            },
+            {
+                path: Route.public.ABOUT,
+                element: <>ABOUT PUBLIC</>,
+            },
             ]
     },
     {
@@ -90,6 +98,18 @@ export const routesConfig = [
                     {
                         path: Route.admin.HOME,
                         element: <AdminHome />,
+                    },
+                    {
+                        path: Route.admin.PRODUCT,
+                        element: <Products />,
+                    },
+                    {
+                        path: Route.admin.PRODUCT_ID,
+                        element: <ProductDetail />,
+                    },
+                    {
+                        path: Route.admin.CART,
+                        element: <> Admin Cart</>,
                     },
                 ],
             },

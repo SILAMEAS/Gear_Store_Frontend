@@ -18,7 +18,8 @@ const HeaderProfile = () => {
   };
   const handleLogout=()=>{
     localStorage.clear();
-    navigate("/login")
+    navigate("/login");
+    window.location.reload();
   }
   if(!getToken().access){
     return <IconButton

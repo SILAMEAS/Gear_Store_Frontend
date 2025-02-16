@@ -3,7 +3,6 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {Box, Button, CircularProgress, InputAdornment, Link, Stack, Typography,} from "@mui/material";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
-import {useNavigate} from "react-router-dom";
 import InputText from "../../components/Input/InputText.tsx";
 import {useLoginMutation} from "../../redux/services/userApi.ts";
 import {snackbarError} from "../../utils/common/common.ts";
@@ -16,7 +15,6 @@ interface ILogin {
 
 const Login = () => {
   console.log('login')
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(true);
   const formData = useForm<ILogin>({
     defaultValues: {
@@ -46,7 +44,7 @@ const Login = () => {
         if (res) {
           /** Store Token  */
           storeToken(res)
-          navigate("/");
+          window.location.reload()
         }
       })
       .catch((err) => {

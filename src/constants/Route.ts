@@ -10,14 +10,16 @@ export const Route={
         RATE:"/admin/rating"
     },
     public:{
+        HOME:"/home",
         PRODUCT:"/products",
         PRODUCT_ID:"/products/:id",
         SIGN_UP:"/sign-up",
         LOGIN:"/login",
+        ABOUT:"/about"
     },
     endUser:{
-        HOME:'/end-user',
-        PRODUCT:"/end-user/products",
-        PRODUCT_ID:"/end-user/products/:id",
+        HOME:'/user',
+        PRODUCT:"/user/products",
+        PRODUCT_ID:"/user/products/:id",
     }
 }

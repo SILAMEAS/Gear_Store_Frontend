@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import DrawerCustom from "../../../components/Drawer/DrawerCustom.tsx";
 import UILogo from "../header-navigation/UILogo.tsx";
 import {UICenterHeaderMenu} from "../header-navigation/UICenterHeaderMenu.tsx";
-import UILeftSideHeaderMenu from "../header-navigation/UILeftSideHeaderMenu.tsx";
+import UIRightSideHeaderMenu from "../header-navigation/UIRightSideHeaderMenu.tsx";
 
 const AppHeader = () => {
   return (
@@ -51,7 +51,7 @@ const AppHeader = () => {
           <UICenterHeaderMenu/>
         </Box>
 
-          <UILeftSideHeaderMenu/>
+          <UIRightSideHeaderMenu/>
 
       </Toolbar>
     </AppBar>

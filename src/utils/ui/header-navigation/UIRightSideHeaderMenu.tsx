@@ -6,7 +6,7 @@ import HeaderCart from "../../../components/header/HeaderCart.tsx";
 import HeaderProfile from "../../../components/header/HeaderProfile.tsx";
 import useCheckUrl from "../../hooks/useCheckUrl.tsx";
 
-const UILeftSideHeaderMenu = () => {
+const UIRightSideHeaderMenu = () => {
     const {IsLoginPage}=useCheckUrl();
     return (
         <Stack minWidth={'80px'} direction={"row"} sx={{alignItems: "center"}}>
@@ -28,4 +28,4 @@ const UILeftSideHeaderMenu = () => {
     );
 };
 
-export default UILeftSideHeaderMenu;
+export default UIRightSideHeaderMenu;

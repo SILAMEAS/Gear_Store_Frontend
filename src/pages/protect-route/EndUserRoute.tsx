@@ -1,22 +1,14 @@
 import UserLayout from "../user/UserLayout.tsx";
-import {useGetUserDetailQuery} from "../../redux/services/userApi.ts";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import {Navigate} from "react-router-dom";
-import {Route} from "../../constants/Route.ts";
+import {useAppSelector} from "../../redux/redux.ts";
+import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 
 export const EndUserRoute = () => {
-    const {currentData,isLoading,isFetching}=useGetUserDetailQuery({},{skip:!getToken()?.access});
-    if(isFetching||isLoading){
-        return <> loading ... </>
-    }
-    if(currentData?.is_active){
-        if(currentData?.is_superuser){
-            return <Navigate to={Route.admin.HOME} replace/>
-        }
-        return <Navigate to={Route.endUser.HOME} replace/>
-    }
-    if(!currentData){
-        return <Navigate to={Route.public.LOGIN} replace/>
-    }
-    return <UserLayout />
+    const role = useAppSelector(state => state.application.role);
+    const {navigate}=useGlobalHook();
+    if(role==='admin'){
+        navigate('/admin')
+    }else if(role==='public'){
+        navigate('/login')
+    }else
+        return role==='user'&& <UserLayout />
 };

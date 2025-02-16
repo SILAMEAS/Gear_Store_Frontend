@@ -6,7 +6,8 @@ export interface IApplication {
   productCurrentPage: number;
   snackbarMessage: string | null;
   snackbarStatus: ISnackbarStatus;
-  userDetail:ResUserDetail|null
+  userDetail:ResUserDetail|null;
+  role: 'user' | 'admin' | 'public';
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";

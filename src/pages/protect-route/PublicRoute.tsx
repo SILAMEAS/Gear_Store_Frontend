@@ -1,18 +1,16 @@
 import PublicLayout from "../page-share/products/PublicLayout.tsx";
-import {useGetUserDetailQuery} from "../../redux/services/userApi.ts";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import {Navigate} from "react-router-dom";
-import {Route} from "../../constants/Route.ts";
+import {useAppSelector} from "../../redux/redux.ts";
+import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
+import {useProtectedRoute} from "../../utils/hooks/useProtectedRoute.tsx";
 // App config provider
 export const PublicRoute = () => {
-    const {currentData,isLoading,isFetching}=useGetUserDetailQuery({},{skip:!getToken()?.access});
-    if(isFetching||isLoading){
-        return <> loading ... </>
-    }
-    if(currentData?.is_superuser){
-        return <Navigate to={Route.admin.HOME} replace/>
-    }else if(!currentData?.is_superuser && currentData?.is_active){
-        return <Navigate to={Route.endUser.HOME} replace/>
+    useProtectedRoute();
+    const role = useAppSelector(state => state.application.role);
+    const {navigate}=useGlobalHook();
+    if(role==='admin'){
+        navigate('/admin')
+    }else if(role=='user'){
+        navigate('/user')
     }else
-        return <PublicLayout/>
+        return role==='public'&& <PublicLayout/>
 };

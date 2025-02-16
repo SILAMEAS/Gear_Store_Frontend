@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IApplication, ISnackbarStatus} from "./type.ts";
 import {ResUserDetail} from "../services/types/IUserApi.tsx";
 
@@ -8,7 +8,8 @@ const initialState: IApplication = {
   snackbarStatus: "error",
   deleteProductId: null,
   deleteUserId: null,
-  userDetail:null
+  userDetail:null,
+  role: 'public'
 
   // user: null,
 };
@@ -50,12 +51,20 @@ export const applicationSlice = createSlice({
     setUserDetail: (state, { payload }: { payload: ResUserDetail }) => {
       state.userDetail = payload;
     },
+    setRole: (state, action: PayloadAction<'user' | 'admin' | 'public'>) => {
+      state.role = action.payload;
+    },
+    resetRole: (state) => {
+      state.role = 'public'; // Reset to default
+    },
   },
 });
 
 export const {
   dispatchSnackbar,
-  setUserDetail
+  setUserDetail,
+    setRole,
+    resetRole
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

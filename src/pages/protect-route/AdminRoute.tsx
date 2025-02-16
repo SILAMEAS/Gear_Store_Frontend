@@ -1,20 +1,14 @@
 import AdminLayout from "../admin/AdminLayout.tsx";
-import {useGetUserDetailQuery} from "../../redux/services/userApi.ts";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import {Navigate} from "react-router-dom";
-import {Route} from "../../constants/Route.ts";
+import {useAppSelector} from "../../redux/redux.ts";
+import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 
 export const AdminRoute = () => {
-    const {currentData,isFetching,isLoading}=useGetUserDetailQuery({},{skip:!getToken()?.access});
-    if(currentData?.is_active){
-        if(!currentData?.is_superuser)
-            return <Navigate to={Route.endUser.HOME} replace/>
-    }
-    if(!currentData){
-        return <Navigate to={Route.public.LOGIN} replace/>
-    }
-    if(isFetching||isLoading){
-        return <> loading ... </>
-    }
-    return <AdminLayout />
+    const role = useAppSelector(state => state.application.role);
+    const {navigate}=useGlobalHook();
+    if(role==='user'){
+        navigate('/user')
+    }else if(role=='public'){
+        navigate('/login')
+    }else
+        return role==='admin'&& <AdminLayout />
 };

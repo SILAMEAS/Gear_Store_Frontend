@@ -42,4 +42,5 @@ export const {
   useLoginMutation,
   useGetUserDetailQuery,
   useRefreshTokenMutation,
+    useLazyGetUserDetailQuery
 } = userApi;
