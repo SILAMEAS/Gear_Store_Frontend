@@ -32,6 +32,7 @@ export const userApi = createApi({
         },
         url: "/users/info/",
         method: Method.GET,
+
       }),
     }),
   }),

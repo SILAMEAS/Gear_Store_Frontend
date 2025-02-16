@@ -8,7 +8,7 @@ import {Navigator} from "./utils/common/Navigator.tsx";
 import UserHome from "./pages/user/UserHome.tsx";
 import {AdminRoute} from "./pages/protect-route/AdminRoute.tsx";
 import AdminHome from "./pages/admin/AdminHome.tsx";
-import PublicRoute from "./pages/protect-route/PublicRoute.tsx";
+import {PublicRoute} from "./pages/protect-route/PublicRoute.tsx";
 import SignUp from "./pages/form/SignUp.tsx";
 import Products from "./pages/page-share/products/Products.tsx";
 import ProductDetail from "./pages/page-share/products/detail/components/ProductDetail.tsx";
