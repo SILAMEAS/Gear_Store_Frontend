@@ -1,6 +1,6 @@
 import {cleanPath} from "../common/cleaPath.ts";
-import {RouteConstant} from "../../constants/Route.ts";
 import useGlobalHook from "./useGlobalHook.tsx";
+import {Route} from "../../constants/Route.ts";
 
 
 const useCheckUrl = () => {
@@ -11,7 +11,7 @@ const useCheckUrl = () => {
     /**                             LOGIN Page                                          */
     /** =============================================================================== */
     const IsLoginPage = Boolean(
-        pathnameRemoveLastSlash === RouteConstant.LOGIN,
+        pathnameRemoveLastSlash === Route.public.LOGIN,
     );
     return {
         /** =============================================================================== */

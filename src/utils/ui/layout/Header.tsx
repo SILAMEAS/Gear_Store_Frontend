@@ -1,9 +1,9 @@
 import {AppBar, Box, Stack, Toolbar,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import DrawerCustom from "../../components/Drawer/DrawerCustom.tsx";
-import UILogo from "../../utils/ui/UILogo.tsx";
-import {UICenterHeaderMenu} from "../../utils/ui/UICenterHeaderMenu.tsx";
-import UILeftSideHeaderMenu from "../../utils/ui/UILeftSideHeaderMenu.tsx";
+import DrawerCustom from "../../../components/Drawer/DrawerCustom.tsx";
+import UILogo from "../header-navigation/UILogo.tsx";
+import {UICenterHeaderMenu} from "../header-navigation/UICenterHeaderMenu.tsx";
+import UILeftSideHeaderMenu from "../header-navigation/UILeftSideHeaderMenu.tsx";
 
 const AppHeader = () => {
   return (
@@ -29,8 +29,6 @@ const AppHeader = () => {
           <Stack justifyContent={"center"} direction={"row"} alignItems={"center"}>
               <DrawerCustom
                   renderButton={<Box
-                  // edge="end"
-                  // aria-label="menu"
                   sx={{ display: { xs: "visible", md: "none" }}}
               >
                   <MenuIcon sx={{color:"white"}}/>

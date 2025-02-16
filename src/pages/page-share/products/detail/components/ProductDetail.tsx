@@ -1,5 +1,5 @@
 import {Stack} from "@mui/material";
-import ProductCard from "./components/ProductCard.tsx";
+import ProductCard from "./ProductCard.tsx";
 
 const ProductDetail = () => {
     return (

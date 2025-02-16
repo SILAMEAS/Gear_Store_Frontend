@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IApplication, ISnackbarStatus} from "./type.ts";
+import {ResUserDetail} from "../services/types/IUserApi.tsx";
 
 const initialState: IApplication = {
   productCurrentPage: 1,
@@ -7,6 +8,8 @@ const initialState: IApplication = {
   snackbarStatus: "error",
   deleteProductId: null,
   deleteUserId: null,
+  userDetail:null
+
   // user: null,
 };
 
@@ -44,17 +47,15 @@ export const applicationSlice = createSlice({
     clearDeleteUserId: (state) => {
       state.deleteUserId = null;
     },
+    setUserDetail: (state, { payload }: { payload: ResUserDetail }) => {
+      state.userDetail = payload;
+    },
   },
 });
 
 export const {
-  clearDeleteUserId,
-  dispatchDeleteUserId,
-  // dispatchUserInfo,
-  dispatchDeleteProductId,
-  dispatchProductCurrentPage,
   dispatchSnackbar,
-  clearDeleteProductId,
+  setUserDetail
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

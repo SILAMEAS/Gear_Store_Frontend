@@ -26,6 +26,7 @@ export const store = configureStore({
         wishlistApi.middleware
 
     ),
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 setupListeners(store.dispatch);

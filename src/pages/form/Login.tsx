@@ -14,7 +14,8 @@ interface ILogin {
   password: string;
 }
 
-const AppLogin = () => {
+const Login = () => {
+  console.log('login')
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(true);
   const formData = useForm<ILogin>({
@@ -156,4 +157,4 @@ const AppLogin = () => {
   );
 };
 
-export default AppLogin;
+export default Login;

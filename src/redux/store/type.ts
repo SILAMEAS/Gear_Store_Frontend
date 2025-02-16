@@ -1,3 +1,4 @@
+import {ResUserDetail} from "../services/types/IUserApi.tsx";
 
 export interface IApplication {
   deleteProductId: number | null;
@@ -5,6 +6,7 @@ export interface IApplication {
   productCurrentPage: number;
   snackbarMessage: string | null;
   snackbarStatus: ISnackbarStatus;
+  userDetail:ResUserDetail|null
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";

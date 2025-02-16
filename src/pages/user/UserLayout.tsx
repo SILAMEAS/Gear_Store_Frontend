@@ -1,11 +1,13 @@
 import {Box, Stack, ThemeProvider} from "@mui/material";
 import theme from "../../theme/theme.tsx";
-import AppHeader from "../authentication/Header.tsx";
-import AppContent from "../authentication/Content.tsx";
-import AppFooter from "../authentication/Footer.tsx";
+import AppHeader from "../../utils/ui/layout/Header.tsx";
+import AppContent from "../../utils/ui/layout/Content.tsx";
+import AppFooter from "../../utils/ui/layout/Footer.tsx";
 
-const AppPublicLayout = () => {
-    console.log('AppPublicLayout')
+
+const UserLayout = () => {
+    console.log('UserLayout')
+
   return (
       <ThemeProvider theme={theme}>
           <Box
@@ -30,4 +32,4 @@ const AppPublicLayout = () => {
   );
 };
 
-export default AppPublicLayout;
+export default UserLayout;
