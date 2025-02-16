@@ -5,7 +5,6 @@ import AppContent from "../../../utils/ui/layout/Content.tsx";
 import AppFooter from "../../../utils/ui/layout/Footer.tsx";
 
 const PublicLayout = () => {
-    console.log('PublicLayout')
   return (
       <ThemeProvider theme={theme}>
           <Box

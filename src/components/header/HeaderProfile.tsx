@@ -5,6 +5,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {useNavigate} from "react-router-dom";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import LoginIcon from '@mui/icons-material/Login';
+import {Route} from "../../constants/Route.ts";
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -18,7 +19,7 @@ const HeaderProfile = () => {
   };
   const handleLogout=()=>{
     localStorage.clear();
-    navigate("/login");
+    navigate(Route.public.LOGIN);
     window.location.reload();
   }
   if(!getToken().access){
@@ -26,7 +27,7 @@ const HeaderProfile = () => {
         size="small"
         sx={{ ml: 2 }}
         onClick={()=>{
-            navigate("/login")
+            navigate(Route.public.LOGIN)
         }}
     >
       <LoginIcon sx={{color:"white"}}/>

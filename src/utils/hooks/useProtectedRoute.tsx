@@ -4,10 +4,13 @@ import getToken from "../local-storage/token/useGetToken.ts";
 import {storeToken} from "../local-storage/token/storeToken.ts";
 import {store} from "../../redux/redux.ts";
 import {setRole} from "../../redux/store/application.ts";
+import useGlobalHook from "./useGlobalHook.tsx";
+import {EnumRole} from "../../redux/store/type.ts";
 
 export const useProtectedRoute=()=>{
     const [getRefreshToken, resultRefreshToken] = useRefreshTokenMutation();
     const [userDetail,resultUserDetail]=useLazyGetUserDetailQuery();
+    const {location}=useGlobalHook();
 
     useEffect(() => {
         const refreshToken = getToken()?.refresh;
@@ -19,16 +22,15 @@ export const useProtectedRoute=()=>{
                         storeToken(res);
 
                         userDetail({}).unwrap().then(r=>{
-                            console.log("USER",r);
                             if(r.is_superuser){
-                                store.dispatch(setRole('admin'));
+                                store.dispatch(setRole(EnumRole.ADMIN));
                             }else {
-                                store.dispatch(setRole('user'));
+                                store.dispatch(setRole(EnumRole.USER));
                             }
                         })
                     }
                 });
         }
-    }, [getRefreshToken]);
+    }, [location,getRefreshToken]);
     return {resultRefreshToken,resultUserDetail}
 }

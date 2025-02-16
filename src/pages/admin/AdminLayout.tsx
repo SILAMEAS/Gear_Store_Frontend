@@ -12,7 +12,6 @@ const xThemeComponents = {
 };
 
 const AdminLayout = (props: { disableCustomTheme?: boolean }) => {
-    console.log('AdminLayout')
 
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>

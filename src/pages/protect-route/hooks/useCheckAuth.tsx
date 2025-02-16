@@ -10,7 +10,6 @@ const useCheckAuth = () => {
     const {currentData:userDetail,isFetching}=useGetUserDetailQuery({},{skip:!getToken()?.access});
     const {navigate}=useGlobalHook()
      React.useLayoutEffect(()=>{
-         console.log('user',userDetail)
          if(!userDetail){
               navigate(Route.public.LOGIN)
          }

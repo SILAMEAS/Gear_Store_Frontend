@@ -14,7 +14,6 @@ interface ILogin {
 }
 
 const Login = () => {
-  console.log('login')
   const [showPassword, setShowPassword] = useState(true);
   const formData = useForm<ILogin>({
     defaultValues: {
@@ -48,7 +47,6 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log("err", err)
         snackbarError(err);
       });
   };

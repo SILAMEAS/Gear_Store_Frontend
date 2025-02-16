@@ -19,6 +19,15 @@ export const routesConfig = [
         element: <PublicRoute/>,
         children: [
             {
+                index: true,
+                element: (
+                    <Navigate
+                        to={`${Navigator(Route.public.PRODUCT).pathname}`}
+                        replace
+                    />
+                ),
+            },
+            {
                 path: Route.public.LOGIN,
                 element: <Login/>,
             },
@@ -53,11 +62,6 @@ export const routesConfig = [
         element: <App />,
         errorElement: <NotFound404 />,
         children: [
-            // {
-            //     index: true,
-            //     path: Route.LOGIN,
-            //     element: <Login />,
-            // },
             /** End user-Route */
             {
                 path: '/',

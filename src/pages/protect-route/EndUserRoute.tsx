@@ -1,14 +1,15 @@
 import UserLayout from "../user/UserLayout.tsx";
 import {useAppSelector} from "../../redux/redux.ts";
-import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
+import {Route} from "../../constants/Route.ts";
+import {Navigate} from "react-router-dom";
+import {EnumRole} from "../../redux/store/type.ts";
 
 export const EndUserRoute = () => {
     const role = useAppSelector(state => state.application.role);
-    const {navigate}=useGlobalHook();
-    if(role==='admin'){
-        navigate('/admin')
-    }else if(role==='public'){
-        navigate('/login')
+    if(role===EnumRole.ADMIN){
+        return <Navigate to={Route.admin.HOME} replace />
+    }else if(role===EnumRole.PUBLIC){
+        return <Navigate to={Route.public.LOGIN} replace />
     }else
-        return role==='user'&& <UserLayout />
+        return role===EnumRole.USER&& <UserLayout />
 };

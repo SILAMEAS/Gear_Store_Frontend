@@ -6,7 +6,6 @@ import AppFooter from "../../utils/ui/layout/Footer.tsx";
 
 
 const UserLayout = () => {
-    console.log('UserLayout')
 
   return (
       <ThemeProvider theme={theme}>
