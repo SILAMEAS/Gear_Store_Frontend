@@ -11,12 +11,14 @@ const AppHeader = () => {
       position="sticky"
       sx={{
         backgroundColor: "black",
-        boxShadow: "2px",
+        boxShadow: 3,
         width: "100%",
         margin: "0 auto",
           p:0,
           py:"10px",
-          height: {sm:80,md:100}
+          height: {sm:80,md:100},
+          borderBottom:1,
+          borderColor:"white"
       }}
     >
       <Toolbar

@@ -3,23 +3,20 @@ import NotFound404 from "./NotFound404.tsx";
 import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
-import {EnumRole} from "./redux/store/type.ts";
 import {
     AdminCartPage,
     AdminCategoryPage,
     AdminHome,
-    AdminLayout,
     AdminOrdersPage,
     AdminRatingPage,
     HomePublic,
     Login,
     ProductDetail,
-    Products,
     ProtectedRoute,
     SignUp,
     UserHome,
-    UserLayout
 } from "./routerLazy.ts"
+import LayoutProduct from "./pages/public/product/LayoutProduct.tsx";
 
 
 export const routesConfig = [
@@ -41,7 +38,7 @@ export const routesConfig = [
             },
             {
                 path: Route.public.PRODUCT,
-                element:<Products/>,
+                element:<LayoutProduct/>,
             },
             {
                 path: Route.public.PRODUCT_ID,
@@ -73,7 +70,7 @@ export const routesConfig = [
             /** End user-Route */
             {
                 path: "/",
-                element: <ProtectedRoute protectedUrlWithRole={EnumRole.USER} render={<UserLayout/>}/>,
+                element: <ProtectedRoute/>,
                 children: [
                     {
                         index: true,
@@ -90,7 +87,7 @@ export const routesConfig = [
                     },
                     {
                         path: Route.endUser.PRODUCT,
-                        element: <Products />,
+                        element: <LayoutProduct />,
                     },
                     {
                         path: Route.endUser.PRODUCT_ID,
@@ -101,7 +98,7 @@ export const routesConfig = [
             /** Admin-Route */
             {
                 path: "/",
-                element: <ProtectedRoute protectedUrlWithRole={EnumRole.ADMIN} render={<AdminLayout/>}/>,
+                element: <ProtectedRoute/>,
                 children: [
                     {
                         index: true,
@@ -113,7 +110,7 @@ export const routesConfig = [
                     },
                     {
                         path: Route.admin.PRODUCT,
-                        element: <Products />,
+                        element: <LayoutProduct />,
                     },
                     {
                         path: Route.admin.PRODUCT_ID,

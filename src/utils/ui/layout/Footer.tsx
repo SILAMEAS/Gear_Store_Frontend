@@ -9,7 +9,7 @@ const AppFooter = () => {
         bottom: 0,
         right: -20,
         width: "100%",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "black",
         padding: "10px 20px",
         display: "flex",
         alignItems: "center",
@@ -17,7 +17,7 @@ const AppFooter = () => {
         boxShadow: "0px -2px 5px rgba(0, 0, 0, 0.1)"
       }}
     >
-      <Typography variant="body2" color="textSecondary">
+      <Typography variant="body2" color="white">
         &copy; {new Date().getFullYear()} LA STORE. All rights reserved.
       </Typography>
     </Box>

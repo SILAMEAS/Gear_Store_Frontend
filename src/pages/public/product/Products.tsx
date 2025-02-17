@@ -6,6 +6,7 @@ import {Stack} from "@mui/material";
 import {useAddCartMutation} from "../../../redux/services/cartApi.ts";
 import {useAddWishlistMutation, useDeleteWishlistMutation} from "../../../redux/services/wishlistApi.ts";
 import {useGetAllProductsQuery} from "../../../redux/services/productApi.ts";
+import {StyleCustom} from "../../../styles/StyleCustom.tsx";
 
 const Products = () => {
     const [page, setPage] = React.useState(1);
@@ -16,10 +17,10 @@ const Products = () => {
 
 
     return (
-        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"}>
-            <Grid container columns={{ xs: 12, sm: 12, md: 12,lg:12 }}>
+        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"} width={'100%'} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
+            <Grid container columns={{ xs: 12, sm: 12, md: 12,lg:12 }} gap={2}>
                 {currentData?.contents?.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={12} key={item.id} p={1}>
+                    <Grid item xs={12} sm={6} md={4} lg={2.8} xl={12} key={item.id} p={1}>
                         <GamingAccessoryCard
                             isWishlist={item.isWishlist}
                             title={item.name}
@@ -50,9 +51,14 @@ const Products = () => {
                     </Grid>
                 ))}
             </Grid>
-            <Pagination count={currentData?.totalPages} page={page} onChange={(_e, value) => setPage(value)} />
+            <Pagination
+                count={currentData?.totalPages} page={page}
+                onChange={(_e, value) => setPage(value)}
+                sx={{
+                    bgcolor:"white"
+                }}
+            />
         </Stack>
-
     );
 };
 

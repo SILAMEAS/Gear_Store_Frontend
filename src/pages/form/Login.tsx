@@ -1,15 +1,15 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
-  Box,
-  Button,
-  CircularProgress,
-  InputAdornment,
-  Link,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme
+    Box,
+    Button,
+    CircularProgress,
+    InputAdornment,
+    Link,
+    Stack,
+    Typography,
+    useMediaQuery,
+    useTheme
 } from "@mui/material";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
@@ -73,6 +73,7 @@ const Login = () => {
             justifyContent: "center",
             height: "100vh",
             px: 2,
+              bgcolor:"white"
           }}
       >
         <form onSubmit={formData.handleSubmit(handleLogin)} id="login-form" style={{ width: "100%", maxWidth: "400px" }}>

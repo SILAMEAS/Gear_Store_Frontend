@@ -37,7 +37,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                         }) => {
     const isWishlistString=typeof isWishlist=='string'
     return (
-        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"450px": "500px" }}>
+        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"450px": "500px",bgcolor:"black",color:"white",border:1,p:"10px",borderRadius:"10px"}}>
             <CardActionArea component="a" href={link}>
                 <CardMedia
                     component="img"
@@ -52,10 +52,10 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                         {description}
                     </Typography>
                     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 1 }}>
-                        <Typography variant="h6" color="primary">
+                        <Typography variant="h6" color="white">
                             ${price.toFixed(2)} {/* Format price to two decimal places */}
                         </Typography>
-                        <Rating name="read-only" value={rating} precision={0.5} readOnly />
+                        <Rating name="read-only" value={rating} precision={0.5} readOnly sx={{color:"black",bgcolor:"white"}}/>
                     </Box>
                 </CardContent>
             </CardActionArea>
@@ -63,11 +63,11 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                 <IconButton aria-label="add to cart" onClick={addWishList}>
                     {
                         isWishlist? <FavoriteOutlined sx={{color:"red"}}/>:
-                            <FavoriteBorderIcon  />
+                            <FavoriteBorderIcon sx={{color:"white"}}  />
                     }
                 </IconButton>
                 <IconButton aria-label="add to cart" onClick={addToCart}>
-                    <AddShoppingCartIcon />
+                    <AddShoppingCartIcon  sx={{color:"white"}} />
                 </IconButton>
             </Box>
         </Card>

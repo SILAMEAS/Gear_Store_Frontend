@@ -14,6 +14,6 @@ const AdminCategoryPage=lazy(()=>import("./pages/admin/admin-page/AdminCategoryP
 const AdminOrdersPage=lazy(()=>import( "./pages/admin/admin-page/AdminOrdersPage.tsx"))
 const AdminRatingPage=lazy(()=>import( "./pages/admin/admin-page/AdminRatingPage.tsx"))
 const HomePublic=lazy(()=>import("./pages/public/home/HomePublic.tsx"))
-
-
-export {Products,Login,UserHome,ProductDetail,HomePublic,AdminHome, AdminLayout, UserLayout, AdminRatingPage, AdminOrdersPage, AdminCartPage, AdminCategoryPage, SignUp, ProtectedRoute}
+const LayoutProducts =lazy(()=>import('./pages/public/product/LayoutProduct.tsx'))
+const PublicLayout=lazy(()=>import("./pages/public/PublicLayout.tsx"))
+export {PublicLayout,LayoutProducts,Products,Login,UserHome,ProductDetail,HomePublic,AdminHome, AdminLayout, UserLayout, AdminRatingPage, AdminOrdersPage, AdminCartPage, AdminCategoryPage, SignUp, ProtectedRoute}

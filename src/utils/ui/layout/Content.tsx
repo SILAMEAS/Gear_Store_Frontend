@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {Stack} from "@mui/material";
 
-const AppContent = () => <Stack height={"calc(100vh - 150px)"} py={"10px"} px={"50px"} overflow={"auto"}>
+const AppContent = () => <Stack height={"calc(100vh - 140px)"} overflow={"hidden"} bgcolor={'black'}>
     <Outlet />
 </Stack>
 

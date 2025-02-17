@@ -7,18 +7,13 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+    Stack,
     styled,
 } from "@mui/material"
 import {ExpandLess, ExpandMore} from "@mui/icons-material"
 import {useState} from "react"
+import {StyleCustom} from "../../styles/StyleCustom.tsx";
 
-const StyledBox = styled(Box)(({ theme }) => ({
-    width: 240,
-    backgroundColor: "#121212",
-    color: "#fff",
-    height: "100vh",
-    padding: theme.spacing(2),
-}))
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     padding: 0,
@@ -88,7 +83,7 @@ export default function FilterSidebar() {
     }
 
     return (
-        <StyledBox>
+        <Stack width={"200px"} p={'20px'} overflow={'auto'} sx={{...StyleCustom.scrollNormal}}>
             {filterSections.map((section) => (
                 <Box key={section.title}>
                     <ListItemButton
@@ -166,7 +161,7 @@ export default function FilterSidebar() {
                     </Collapse>
                 </Box>
             ))}
-        </StyledBox>
+        </Stack>
     )
 }
 
