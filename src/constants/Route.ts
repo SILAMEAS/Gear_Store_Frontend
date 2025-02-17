@@ -1,3 +1,5 @@
+import {EnumRole} from "../redux/store/type.ts";
+
 export const Route={
     ROOT:"/",
     admin:{
@@ -18,8 +20,13 @@ export const Route={
         ABOUT:"/about"
     },
     endUser:{
-        HOME:'/user',
+        HOME:"/user",
         PRODUCT:"/user/products",
         PRODUCT_ID:"/user/products/:id",
     }
 }
+export const RedirectUrlByRole = {
+    [EnumRole.ADMIN]: Route.admin.HOME,
+    [EnumRole.USER]: Route.endUser.HOME,
+    [EnumRole.PUBLIC]: Route.public.HOME,
+};

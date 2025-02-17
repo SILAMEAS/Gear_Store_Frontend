@@ -4,14 +4,11 @@ import getToken from "../local-storage/token/useGetToken.ts";
 import {storeToken} from "../local-storage/token/storeToken.ts";
 import {store} from "../../redux/redux.ts";
 import {setRole} from "../../redux/store/application.ts";
-import useGlobalHook from "./useGlobalHook.tsx";
 import {EnumRole} from "../../redux/store/type.ts";
 
 export const useProtectedRoute=()=>{
     const [getRefreshToken, resultRefreshToken] = useRefreshTokenMutation();
     const [userDetail,resultUserDetail]=useLazyGetUserDetailQuery();
-    const {location}=useGlobalHook();
-
     useEffect(() => {
         const refreshToken = getToken()?.refresh;
         if (refreshToken) {
@@ -31,6 +28,6 @@ export const useProtectedRoute=()=>{
                     }
                 });
         }
-    }, [location,getRefreshToken]);
+    }, [getRefreshToken]);
     return {resultRefreshToken,resultUserDetail}
 }

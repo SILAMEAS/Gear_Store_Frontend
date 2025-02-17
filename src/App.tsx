@@ -1,14 +1,8 @@
-import {Outlet} from 'react-router-dom';
-import AppProvider from "./theme/AppProvider.tsx";
-import {useProtectedRoute} from "./utils/hooks/useProtectedRoute.tsx";
+import {Outlet} from "react-router-dom";
 
 function App() {
- useProtectedRoute();
-
   return (
-      <AppProvider>
-          <Outlet />
-      </AppProvider>
+      <Outlet />
   );
 }
 

@@ -1,26 +1,30 @@
 import {Route} from "./constants/Route.ts";
 import NotFound404 from "./NotFound404.tsx";
 import App from "./App.tsx";
-import Login from "./pages/form/Login.tsx";
-import {EndUserRoute} from "./pages/protect-route/EndUserRoute.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
-import UserHome from "./pages/user/UserHome.tsx";
-import {AdminRoute} from "./pages/protect-route/AdminRoute.tsx";
-import AdminHome from "./pages/admin/AdminHome.tsx";
-import {PublicRoute} from "./pages/protect-route/PublicRoute.tsx";
-import SignUp from "./pages/form/SignUp.tsx";
-import Products from "./pages/page-share/products/Products.tsx";
-import ProductDetail from "./pages/page-share/products/detail/components/ProductDetail.tsx";
-import AdminCartPage from "./pages/admin/admin-page/AdminCartPage.tsx";
-import AdminCategoryPage from "./pages/admin/admin-page/AdminCategoryPage.tsx";
-import AdminOrdersPage from "./pages/admin/admin-page/AdminOrdersPage.tsx";
-import AdminRatingPage from "./pages/admin/admin-page/AdminRatingPage.tsx";
+import {EnumRole} from "./redux/store/type.ts";
+import {
+    AdminCartPage,
+    AdminCategoryPage,
+    AdminHome,
+    AdminLayout,
+    AdminOrdersPage,
+    AdminRatingPage,
+    HomePublic,
+    Login,
+    ProductDetail,
+    Products,
+    ProtectedRoute,
+    SignUp,
+    UserHome,
+    UserLayout
+} from "./routerLazy.ts"
 
 
 export const routesConfig = [
     {
-        element: <PublicRoute/>,
+        element: <ProtectedRoute/>,
         children: [
             {
                 index: true,
@@ -33,11 +37,11 @@ export const routesConfig = [
             },
             {
                 path: Route.public.LOGIN,
-                element: <Login/>,
+                element: <Login />,
             },
             {
                 path: Route.public.PRODUCT,
-                element: <Products/>,
+                element:<Products/>,
             },
             {
                 path: Route.public.PRODUCT_ID,
@@ -49,7 +53,7 @@ export const routesConfig = [
             },
             {
                 path: Route.public.HOME,
-                element: <>HOME PUBLIC</>,
+                element: <HomePublic/>,
             },
             {
                 path: Route.public.ABOUT,
@@ -58,7 +62,7 @@ export const routesConfig = [
             ]
     },
     {
-        path: '*',
+        path: "*",
         element: <NotFound404 />,
     },
     {
@@ -68,8 +72,8 @@ export const routesConfig = [
         children: [
             /** End user-Route */
             {
-                path: '/',
-                element: <EndUserRoute />,
+                path: "/",
+                element: <ProtectedRoute protectedUrlWithRole={EnumRole.USER} render={<UserLayout/>}/>,
                 children: [
                     {
                         index: true,
@@ -82,7 +86,7 @@ export const routesConfig = [
                     },
                     {
                         path: Route.endUser.HOME,
-                        element: <UserHome />,
+                        element:  <UserHome />,
                     },
                     {
                         path: Route.endUser.PRODUCT,
@@ -96,8 +100,8 @@ export const routesConfig = [
             },
             /** Admin-Route */
             {
-                path: '/',
-                element: <AdminRoute />,
+                path: "/",
+                element: <ProtectedRoute protectedUrlWithRole={EnumRole.ADMIN} render={<AdminLayout/>}/>,
                 children: [
                     {
                         index: true,

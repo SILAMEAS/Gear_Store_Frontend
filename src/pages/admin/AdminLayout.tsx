@@ -14,27 +14,27 @@ const xThemeComponents = {
 const AdminLayout = (props: { disableCustomTheme?: boolean }) => {
 
   return (
-    <AppTheme {...props} themeComponents={xThemeComponents}>
-        <Box
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                minHeight: "100vh",
-                alignItems: "center",
-            }}
-        >
-            <AppHeader />
-            <Stack
+        <AppTheme {...props} themeComponents={xThemeComponents}>
+            <Box
                 sx={{
-                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    minHeight: "100vh",
+                    alignItems: "center",
                 }}
             >
-                <Outlet />
-                <AppFooter />
-            </Stack>
-        </Box>
+                <AppHeader />
+                <Stack
+                    sx={{
+                        width: "100%",
+                    }}
+                >
+                    <Outlet />
+                    <AppFooter />
+                </Stack>
+            </Box>
 
-    </AppTheme>
+        </AppTheme>
   );
 };
 
