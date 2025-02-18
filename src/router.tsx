@@ -12,20 +12,18 @@ import {
     HomePublic,
     Login,
     ProductDetail,
-    ProtectedRoute,
     SignUp,
     UserHome,
+    LayoutProduct,
+    PublicRoute,
+    EndUserRoute,
+    AdminRoute
 } from "./routerLazy.ts"
-import LayoutProduct from "./pages/public/product/LayoutProduct.tsx";
-import {EnumRole} from "./redux/store/type.ts";
-import PublicLayout from "./pages/public/PublicLayout.tsx";
-import UserLayout from "./pages/user/UserLayout.tsx";
-import AdminLayout from "./pages/admin/AdminLayout.tsx";
 
 
 export const routesConfig = [
     {
-        element: <ProtectedRoute protectedUrlWithRole={EnumRole.PUBLIC} render={<PublicLayout/>}/>,
+        element: <PublicRoute/>,
         children: [
             {
                 index: true,
@@ -74,7 +72,7 @@ export const routesConfig = [
             /** End user-Route */
             {
                 path: "/",
-                element: <ProtectedRoute protectedUrlWithRole={EnumRole.USER} render={<UserLayout/>}/>,
+                element: <EndUserRoute/>,
                 children: [
                     {
                         index: true,
@@ -102,7 +100,7 @@ export const routesConfig = [
             /** Admin-Route */
             {
                 path: "/",
-                element: <ProtectedRoute protectedUrlWithRole={EnumRole.ADMIN} render={<AdminLayout/>}/>,
+                element: <AdminRoute/>,
                 children: [
                     {
                         index: true,

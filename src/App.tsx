@@ -1,8 +1,11 @@
 import {Outlet} from "react-router-dom";
+import {AppProvider} from "./routerLazy.ts";
 
 function App() {
   return (
-      <Outlet />
+      <AppProvider>
+        <Outlet />
+      </AppProvider>
   );
 }
 

@@ -22,7 +22,7 @@ export interface IErrorType {
   status: number;
 }
 export enum EnumRole{
-  USER='user',
-  ADMIN='admin',
-  PUBLIC='public'
+  USER="user",
+  ADMIN="admin",
+  PUBLIC="public"
 }
