@@ -17,7 +17,6 @@ export const useProtectedRoute=()=>{
                 .then((res) => {
                     if (res) {
                         storeToken(res);
-
                         userDetail({}).unwrap().then(r=>{
                             if(r.is_superuser){
                                 store.dispatch(setRole(EnumRole.ADMIN));
