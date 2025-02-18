@@ -54,9 +54,7 @@ const Products = () => {
             <Pagination
                 count={currentData?.totalPages} page={page}
                 onChange={(_e, value) => setPage(value)}
-                sx={{
-                    bgcolor:"white"
-                }}
+
             />
         </Stack>
     );

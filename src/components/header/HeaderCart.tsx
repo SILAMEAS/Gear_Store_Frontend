@@ -1,5 +1,5 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import {Badge, Box, Button, Card, CardContent, IconButton, Typography} from "@mui/material";
+import {Badge, Box, Button, Card, CardContent, CircularProgress, IconButton, Typography} from "@mui/material";
 import DrawerCustom from "../Drawer/DrawerCustom.tsx";
 import {useDeleteCartMutation, useGetAllCartsQuery} from "../../redux/services/cartApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -14,7 +14,7 @@ const HeaderCart = (props: Readonly<BoxProps>) => {
     p: 0,
   };
   const {currentData}=useGetAllCartsQuery({},{skip:!getToken().access});
-  const [deleteCart]=useDeleteCartMutation({})
+  const [deleteCart,resultDelete]=useDeleteCartMutation({})
     let subtotal = 0;
   return (
       <DrawerCustom
@@ -24,7 +24,9 @@ const HeaderCart = (props: Readonly<BoxProps>) => {
               </Badge>
           </Box>}
           anchor={"right"}
-          bgcolor={"white"}
+          bgcolor={"black"}
+          py={"20px"}
+          px={"50px"}
       >
               <Box p={2} maxWidth={400} mx="auto" borderRadius={2} boxShadow={2}>
                   {/* Header */}
@@ -36,7 +38,7 @@ const HeaderCart = (props: Readonly<BoxProps>) => {
                   {currentData?.contents?.length && currentData?.contents?.length<=0? <EmptyCart/>:
                       (  currentData?.contents?.map(item=>{
                           subtotal = subtotal+item.total_price;
-                          return  <Card sx={{ mt: 2, display: "flex", alignItems: "center", p: 1 }} key={item.id}>
+                          return  <Card sx={{ mt: 2, display: "flex", alignItems: "center", px: 1 }} key={item.id} >
                               <img src={item.image} alt={item.image} width={60} height={60} style={{ borderRadius: 8 }} />
                               <CardContent sx={{ flexGrow: 1 }}>
                                   <Typography variant="body1">{item.name}</Typography>
@@ -44,19 +46,22 @@ const HeaderCart = (props: Readonly<BoxProps>) => {
                               </CardContent>
                               <IconButton color="error" onClick={async ()=>{
                                   try {
-                                      await deleteCart({cartId:item.id}).unwrap()
+                                      await deleteCart({cartId:item.id}).unwrap();
                                   }catch (e){
-                                      console.error('Delete Cart ',e)
+                                      console.error("Delete Cart ",e)
                                   }
-                              }}>
-                                  <DeleteIcon />
+                              }}
+                              sx={{cursor:"pointer"}}>
+                                  {
+                                      resultDelete.isLoading?<CircularProgress/>:  <DeleteIcon sx={{color:"red"}}/>
+                                  }
                               </IconButton>
                           </Card>
                       })
                   )}
 
                   {/* Subtotal & Actions */}
-                  <Box mt={2} p={2} bgcolor="grey.100" borderRadius={2}>
+                  <Box mt={2} p={2} bgcolor="black" borderRadius={2}>
                       <Typography variant="subtitle2" fontWeight="bold">SUBTOTAL:</Typography>
                       <Typography variant="h6" fontWeight="bold">${subtotal.toFixed(2)}</Typography>
                   </Box>

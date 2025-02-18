@@ -35,16 +35,16 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                                       addWishList,
                                                                                       isWishlist
                                                                         }) => {
-    const isWishlistString=typeof isWishlist=='string'
+    const isWishlistString=typeof isWishlist=="string"
     return (
         <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"450px": "500px",bgcolor:"black",color:"white",border:1,p:"10px",borderRadius:"10px"}}>
-            <CardActionArea component="a" href={link}>
+            <CardActionArea component="a" href={link} sx={{px:"20px"}}>
                 <CardMedia
                     component="img"
                     height={300}
                     image={image}
                     alt="green iguana"
-                    sx={{ objectFit: "contain" }}
+                    sx={{ objectFit: "contain" ,pb:"30px"}}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <TruncatedText text= {title} />
@@ -55,11 +55,11 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                         <Typography variant="h6" color="white">
                             ${price.toFixed(2)} {/* Format price to two decimal places */}
                         </Typography>
-                        <Rating name="read-only" value={rating} precision={0.5} readOnly sx={{color:"black",bgcolor:"white"}}/>
+                        <Rating name="read-only" value={rating} precision={0.5} readOnly/>
                     </Box>
                 </CardContent>
             </CardActionArea>
-            <Box sx={{ display:isWishlistString?"none": "flex", justifyContent: "flex-end", padding: 1 }}>
+            <Box sx={{ display:isWishlistString?"none": "flex", justifyContent: "flex-end", padding: 1,gap:2 }}>
                 <IconButton aria-label="add to cart" onClick={addWishList}>
                     {
                         isWishlist? <FavoriteOutlined sx={{color:"red"}}/>:

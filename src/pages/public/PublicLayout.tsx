@@ -3,8 +3,10 @@ import theme from "../../theme/theme.tsx";
 import AppHeader from "../../utils/ui/layout/Header.tsx";
 import AppContent from "../../utils/ui/layout/Content.tsx";
 import AppFooter from "../../utils/ui/layout/Footer.tsx";
+import useCheckUrl from "../../utils/hooks/useCheckUrl.tsx";
 
 const PublicLayout = () => {
+    const {IsLoginPage}=useCheckUrl();
   return (
       <ThemeProvider theme={theme}>
           <Box
@@ -16,7 +18,9 @@ const PublicLayout = () => {
                   overflow:"hidden"
               }}
           >
-              <AppHeader />
+              {
+                  !IsLoginPage&&  <AppHeader />
+              }
               <Stack
                   sx={{
                       width: "100%",

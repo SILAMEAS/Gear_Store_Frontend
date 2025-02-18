@@ -1,6 +1,6 @@
-import * as React from 'react';
-import {PropsWithChildren} from 'react';
-import Box, {BoxProps} from '@mui/material/Box';
+import * as React from "react";
+import {PropsWithChildren} from "react";
+import Box, {BoxProps} from "@mui/material/Box";
 import {Anchor, DefaultAnchorTemporaryDrawer, PropsDrawerCustom} from "./type.ts";
 import {Button, Drawer} from "@mui/material";
 
@@ -10,9 +10,9 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
         (anchor: Anchor, open: boolean) =>
             (event: React.KeyboardEvent | React.MouseEvent) => {
                 if (
-                    event.type === 'keydown' &&
-                    ((event as React.KeyboardEvent).key === 'Tab' ||
-                        (event as React.KeyboardEvent).key === 'Shift')
+                    event.type === "keydown" &&
+                    ((event as React.KeyboardEvent).key === "Tab" ||
+                        (event as React.KeyboardEvent).key === "Shift")
                 ) {
                     return;
                 }
@@ -30,11 +30,11 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
                     onClose={toggleDrawer(anchor, false)}
                 >
                     <Box
-                        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-                        role="presentation"
+                        sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+                        // role="banner"
                         // onClick={toggleDrawer(anchor, false)}
                         onKeyDown={toggleDrawer(anchor, false)}
-                        height={'100vh'}
+                        height={"100vh"}
                         {...contentsProps}
                     >
                        <> {children}</>

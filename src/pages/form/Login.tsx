@@ -17,6 +17,8 @@ import InputText from "../../components/Input/InputText.tsx";
 import {useLoginMutation} from "../../redux/services/userApi.ts";
 import {snackbarError} from "../../utils/common/common.ts";
 import {storeToken} from "../../utils/local-storage/token/storeToken.ts";
+import {Route} from "../../constants/Route.ts";
+import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 
 interface ILogin {
   email: string;
@@ -24,6 +26,7 @@ interface ILogin {
 }
 
 const Login = () => {
+    const {navigate}=useGlobalHook();
   const [showPassword, setShowPassword] = useState(true);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -128,7 +131,7 @@ const Login = () => {
                 <Typography variant="body2">Forgot password?</Typography>
               </Link>
               <Link href="#" color="info">
-                <Typography variant="body2">Sign Up!</Typography>
+                <Typography variant="body2" onClick={()=>navigate(Route.public.SIGN_UP)}>Sign Up!</Typography>
               </Link>
             </Stack>
             <Stack>
