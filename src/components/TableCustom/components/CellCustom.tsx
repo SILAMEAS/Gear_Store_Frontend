@@ -23,7 +23,7 @@ export default function CellCustom<R extends Record<string, any>>(
                 height: "auto",
                 "&:hover": {
                   /** when we hover on row will color main Color for them and opacity 10 **/
-                  backgroundColor:  "white",
+                  backgroundColor:  "black",
                   color: " #fff !important",
                 },
               },
