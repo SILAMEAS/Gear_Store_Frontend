@@ -10,7 +10,7 @@ import {StyleCustom} from "../../../styles/StyleCustom.tsx";
 
 const Products = () => {
     const [page, setPage] = React.useState(1);
-    const {currentData}=useGetAllProductsQuery({limit:12,page:page});
+    const {currentData}=useGetAllProductsQuery({pageSize:10,page:page});
     const [addCart]=useAddCartMutation({});
     const [addWishlist]=useAddWishlistMutation({});
     const [deleteWishlist]=useDeleteWishlistMutation({})

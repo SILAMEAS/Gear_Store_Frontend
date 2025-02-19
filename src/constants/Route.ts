@@ -4,12 +4,18 @@ export const Route={
     ROOT:"/",
     admin:{
         HOME: "/admin",
+        DASHBOARD:"/admin/dashboard",
         CART:"/admin/carts",
         PRODUCT:"/admin/products",
         PRODUCT_ID:"/admin/products/:id",
         ORDER:"/admin/orders",
         CATEGORY:"/admin/categories",
-        RATE:"/admin/rating"
+        RATE:"/admin/rating",
+        USER:"/admin/users",
+        PAYMENT:"/admin/payment",
+        HELP:"/admin/help",
+        SETTING:"/admin/settings",
+        ADD_USER:"/admin/add-user"
     },
     public:{
         HOME:"/home",

@@ -1,7 +1,7 @@
-import { SelectChangeEvent, Stack } from "@mui/material";
-import { ITableCustom } from "./types.ts";
-import { TablePaginateReBuild } from "./TablePaginateReBuild.tsx";
-import { SelectDropDownPage } from "./SelectDropDownPage.tsx";
+import {SelectChangeEvent, Stack} from "@mui/material";
+import {ITableCustom} from "./types.ts";
+import {TablePaginateReBuild} from "./TablePaginateReBuild.tsx";
+import {SelectDropDownPage} from "./SelectDropDownPage.tsx";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 type typePick =
@@ -48,7 +48,7 @@ export default function PaginationTableCustom<
             py={"10px"}
             position={paginationCollapse ? "sticky" : "relative"} // Sticky pagination when collapsed
             bottom={0}
-            bgcolor="white" // Keep background color to avoid overlap issues
+            bgcolor="inherit" // Keep background color to avoid overlap issues
             zIndex={1000} // Ensures it stays on top if needed
           >
             {/* Select dropdown for rows per page */}

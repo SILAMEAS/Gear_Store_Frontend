@@ -1,5 +1,5 @@
 import {Divider, TableCell, TableRow} from "@mui/material";
-import { HeadCellCustom, ICellCustom } from "./types.ts";
+import {HeadCellCustom, ICellCustom} from "./types.ts";
 import uniqueArray from "../utils/uniqueArray.ts";
 
 export default function CellCustom<R extends Record<string, any>>(
@@ -58,7 +58,7 @@ export default function CellCustom<R extends Record<string, any>>(
                       px: item.id === "action" ? "20px" : "inherit",
                       bgcolor: selected.includes(row.id)
                         ? "#D6056A10"
-                        :"white",
+                        :"inherit",
                       borderBottom: row?.showExtendsRow ? "none" : "",
                     },
                     ...(Array.isArray(tableBodyCellProps.sx)

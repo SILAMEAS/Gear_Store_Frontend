@@ -4,20 +4,26 @@ import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
 import {
+    AdminAddUserPage,
     AdminCartPage,
     AdminCategoryPage,
+    AdminHelpPage,
     AdminHome,
     AdminOrdersPage,
+    AdminPaymentPage,
+    AdminProductsPage,
     AdminRatingPage,
+    AdminRoute,
+    AdminSettingPage,
+    AdminUserPage,
+    EndUserRoute,
     HomePublic,
+    LayoutProduct,
     Login,
     ProductDetail,
-    SignUp,
-    UserHome,
-    LayoutProduct,
     PublicRoute,
-    EndUserRoute,
-    AdminRoute
+    SignUp,
+    UserHome
 } from "./routerLazy.ts"
 
 
@@ -112,11 +118,7 @@ export const routesConfig = [
                     },
                     {
                         path: Route.admin.PRODUCT,
-                        element: <LayoutProduct />,
-                    },
-                    {
-                        path: Route.admin.PRODUCT_ID,
-                        element: <ProductDetail />,
+                        element: <AdminProductsPage />,
                     },
                     {
                         path: Route.admin.CART,
@@ -134,6 +136,26 @@ export const routesConfig = [
                         path: Route.admin.RATE,
                         element: <AdminRatingPage/>
                     },
+                    {
+                        path: Route.admin.USER,
+                        element: <AdminUserPage/>
+                    },
+                    {
+                        path: Route.admin.PAYMENT,
+                        element: <AdminPaymentPage/>
+                    },
+                    {
+                        path: Route.admin.HELP,
+                        element: <AdminHelpPage/>
+                    },
+                    {
+                        path: Route.admin.SETTING,
+                        element: <AdminSettingPage/>
+                    }, {
+                        path: Route.admin.ADD_USER,
+                        element: <AdminAddUserPage/>
+                    }
+
                 ],
             },
         ],

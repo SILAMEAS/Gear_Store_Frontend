@@ -20,7 +20,7 @@ const CTableProducts = <CO extends ResProduct>() =>
         tableFooterType,
     } = useTableCustom<CO>(EnumTableFooterType.pagination);
 
-    const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({page:1,pageSize:10});
+    const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({page:filter.page,pageSize:filter.pageSize},{refetchOnMountOrArgChange:true});
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
             const {contents, page} = propData;
@@ -42,10 +42,9 @@ const CTableProducts = <CO extends ResProduct>() =>
         handleSetVisibleRows(currentData).then(() => {});
     }, [currentData]);
     return (
-        //<TableCustom<DocumentTableInterface, CO>
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
-                height:"100%",
+                height:"calc( 100vh - 150px )",
                 width:"100%"
             }}
             setVisibleRows={setVisibleRows}
@@ -70,14 +69,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                     },
                     tableSortLabelProps: {},
                     render: data => (
-                        <Stack
-                            direction={"row"}
-                            alignItems={"center"}
-                            gap={"15px"} pl={"30px"}>
-                            <Typography>
-                                {data.id}
-                            </Typography>
-                        </Stack>
+                        <img src={`${data.image}`} alt={`${data.image}`} width={60} height={60} style={{ borderRadius: 8 }} />
                     ),
                 },
                 {
@@ -100,6 +92,30 @@ const CTableProducts = <CO extends ResProduct>() =>
                             gap={"15px"} pl={"30px"}>
                             <Typography>
                                 {data.name}
+                            </Typography>
+                        </Stack>
+                    ),
+                },
+                {
+                    id: "price",
+                    disableSort: false,
+                    label: "Price",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"500px",
+                        sx:{
+                            paddingLeft:"30px"
+                        }
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} pl={"30px"}>
+                            <Typography>
+                                {data.price}
                             </Typography>
                         </Stack>
                     ),

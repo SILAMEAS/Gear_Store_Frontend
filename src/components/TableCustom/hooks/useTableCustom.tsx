@@ -1,7 +1,7 @@
 import React from 'react';
 import {TableCellProps} from '@mui/material';
-import { Descending } from '../constant/TableConstant.ts';
-import {  FilterBy, IFilterTableCustom, ISortFieldUser } from '../components/types.ts';
+import {Descending} from '../constant/TableConstant.ts';
+import {FilterBy, IFilterTableCustom, ISortFieldUser} from '../components/types.ts';
 import EnumTableFooterType from '../constant/enum/EnumTableFooterType.ts';
 
 const defaultFilter: IFilterTableCustom = {
@@ -116,16 +116,6 @@ const useTableCustom = <T extends Record<string, any>>(
       };
     }
   };
-  React.useEffect(() => {
-    console.log("useTableCustom Hook Debug:", {
-      visibleRows,
-      selected,
-      filter,
-      tableFooterType,
-      status,
-      toggle,
-    });
-  }, [visibleRows, selected, filter, tableFooterType, status, toggle]);
   return {
     visibleRows,
     selected,

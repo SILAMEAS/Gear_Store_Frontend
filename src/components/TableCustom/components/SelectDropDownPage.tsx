@@ -8,7 +8,7 @@ import {
   TypographyProps,
 } from "@mui/material";
 import React from "react";
-import { StyleConstant } from "../constant/StyleConstant.tsx";
+import {StyleConstant} from "../constant/StyleConstant.tsx";
 
 
 type ISelectDropDownPage = {

@@ -74,7 +74,7 @@
     import {
     AdminCartPage,
     AdminCategoryPage,
-    AdminHome,
+    AdminDashboard,
     AdminOrdersPage,
     AdminRatingPage,
     HomePublic,
@@ -176,7 +176,7 @@
                         },
                         {
                             path: Route.admin.HOME,
-                            element: <AdminHome />,
+                            element: <AdminDashboard />,
                         },
                         {
                             path: Route.admin.PRODUCT,

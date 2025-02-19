@@ -23,7 +23,7 @@ export const StyleConstant = {
       select: {
         iconDropDownSelectPrimary: {
           ".MuiSvgIcon-root": {
-            color: "primary.main",
+            color: "white",
           },
         },
       },
