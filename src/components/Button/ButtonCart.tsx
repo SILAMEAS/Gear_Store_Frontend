@@ -1,5 +1,5 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { ButtonProps, IconButton } from "@mui/material";
+import {ButtonProps, IconButton} from "@mui/material";
 
 const ButtonCart = (props: ButtonProps) => {
   const defaultStyle = {

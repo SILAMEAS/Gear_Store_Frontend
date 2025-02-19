@@ -1,5 +1,5 @@
-import React from 'react';
-import {Tooltip, Typography} from '@mui/material';
+import React from "react";
+import {Tooltip, Typography} from "@mui/material";
 
 interface TruncatedTextProps {
     text: string;
@@ -9,15 +9,15 @@ interface TruncatedTextProps {
 const TruncatedText: React.FC<TruncatedTextProps> = ({ text, maxLength = 20 }) => {
     const isLong = text.length > maxLength;
     return (
-        <Tooltip title={isLong ? text : ''} arrow>
+        <Tooltip title={isLong ? text : ""} arrow>
             <Typography
                 gutterBottom
                 variant="h5"
                 noWrap
                 sx={{
-                    width: '100%',              // Make the width responsive
-                    overflow: 'hidden',         // Hide overflow text
-                    textOverflow: 'ellipsis',   // Show ellipsis for overflowed text
+                    width: "100%",              // Make the width responsive
+                    overflow: "hidden",         // Hide overflow text
+                    textOverflow: "ellipsis",   // Show ellipsis for overflowed text
                 }}
             >
                 {isLong ? `${text.slice(0, maxLength)}...` : text}
