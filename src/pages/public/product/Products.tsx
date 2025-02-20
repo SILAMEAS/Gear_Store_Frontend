@@ -17,7 +17,7 @@ const Products = () => {
 
 
     return (
-        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"} width={'100%'} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
+        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"} width={"100%"} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
             <Grid container columns={{ xs: 12, sm: 12, md: 12,lg:12 }} gap={2}>
                 {currentData?.contents?.map((item) => (
                     <Grid item xs={12} sm={6} md={4} lg={2.8} xl={12} key={item.id} p={1}>
