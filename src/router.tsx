@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
 import {
-    AdminAddUserPage,
+    AdminCustomerPage,
     AdminCartPage,
     AdminCategoryPage,
     AdminHelpPage,
@@ -151,9 +151,10 @@ export const routesConfig = [
                     {
                         path: Route.admin.SETTING,
                         element: <AdminSettingPage/>
-                    }, {
-                        path: Route.admin.ADD_USER,
-                        element: <AdminAddUserPage/>
+                    },
+                    {
+                        path: Route.admin.CUSTOMER,
+                        element: <AdminCustomerPage/>
                     }
 
                 ],

@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {Button} from "@mui/material";
 import React from "react";
-import {useAppSelector} from "../../../redux/redux.ts";
-import {EnumRole} from "../../../redux/store/type.ts";
-import {MenuUser} from "./menu-center/MenuUser.ts";
-import {MenuPublic} from "./menu-center/MenuPublic.ts";
+import {useAppSelector} from "../../../../redux/redux.ts";
+import {EnumRole} from "../../../../redux/store/type.ts";
+import {MenuUser} from "../MenuUser.ts";
+import {MenuPublic} from "../../public/MenuPublic.ts";
 
 export const UICenterHeaderMenu=()=>{
     const navigate = useNavigate();

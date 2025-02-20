@@ -1,23 +1,32 @@
-import React from 'react';
-import {AppBar, Box, IconButton, InputBase, Toolbar, Typography} from '@mui/material';
+import React, {useState} from "react";
+import {AppBar, Box, IconButton, InputBase, Toolbar, Typography} from "@mui/material";
 import {
     AccountCircle as AccountCircleIcon,
     Notifications as NotificationsIcon,
     Search as SearchIcon
-} from '@mui/icons-material';
+} from "@mui/icons-material";
+import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
 
 const AdminHeader: React.FC = () => {
+    const {location}=useGlobalHook();
+    const [label,setLabel]=useState<string>("Dashboard")
+    React.useEffect(()=>{
+        if(location?.pathname?.split("/")[2]){
+            setLabel(location?.pathname?.split("/")[2])
+        }
+    },[ location?.pathname])
+    console.log(location?.pathname?.split("/")[2])
     return (
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Dashboard
+                    {label.toLocaleUpperCase()}
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                     <InputBase
                         placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                        sx={{ ml: 1, bgcolor: 'background.paper', borderRadius: 1, p: 1 }}
+                        inputProps={{ "aria-label": "search" }}
+                        sx={{ ml: 1, bgcolor: "background.paper", borderRadius: 1, p: 1 }}
                     />
                     <IconButton color="inherit">
                         <SearchIcon />

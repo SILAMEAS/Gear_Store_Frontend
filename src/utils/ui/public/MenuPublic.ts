@@ -1,4 +1,4 @@
-import {Route} from "../../../../constants/Route.ts";
+import {Route} from "../../../constants/Route.ts";
 
 export const MenuPublic=[
     {name:"Home",url:Route.public.HOME},

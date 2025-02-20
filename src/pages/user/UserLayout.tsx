@@ -1,8 +1,8 @@
 import {Box, Stack, ThemeProvider} from "@mui/material";
 import theme from "../../theme/theme.tsx";
-import AppHeader from "../../utils/ui/layout/end-user/Header.tsx";
-import AppContent from "../../utils/ui/layout/end-user/Content.tsx";
-import AppFooter from "../../utils/ui/layout/end-user/Footer.tsx";
+import AppHeader from "../../utils/ui/end-user/layout/Header.tsx";
+import AppContent from "../../utils/ui/end-user/layout/Content.tsx";
+import AppFooter from "../../utils/ui/end-user/layout/Footer.tsx";
 
 
 const UserLayout = () => {

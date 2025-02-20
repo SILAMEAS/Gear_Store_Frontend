@@ -1,6 +1,6 @@
-import {Route} from "../../../../constants/Route.ts";
+import {Route} from "../../../constants/Route.ts";
 import {ReactNode} from "react";
-import {Help, Inventory, Payment, People, PersonAdd, RateReview, Settings, ShoppingCart} from '@mui/icons-material';
+import {Help, Inventory, Payment, People, PersonAdd, RateReview, Settings, ShoppingCart} from "@mui/icons-material";
 
 export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
     {
@@ -9,22 +9,22 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.HOME
     },
     {
-        Title:"Product",
+        Title:"Products",
         Icon:<Inventory />,
         route:Route.admin.PRODUCT
     },
     {
         Title:"Customers",
         Icon:<People />,
-        route:Route.admin.USER
+        route:Route.admin.CUSTOMER
     },
     {
-        Title:"RateReview",
+        Title:"RateReviews",
         Icon:<RateReview />,
         route:Route.admin.RATE
     },
     {
-        Title:"Payment",
+        Title:"Payments",
         Icon:<Payment />,
         route:Route.admin.PAYMENT
     },
@@ -34,14 +34,14 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.SETTING
     },
     {
-        Title:"Help",
+        Title:"Helps",
         Icon:<Help />,
         route:Route.admin.HELP
     },
     {
-        Title:"PersonAdd",
+        Title:"Users",
         Icon:<PersonAdd />,
-        route:Route.admin.ADD_USER
+        route:Route.admin.USER
     },
 
 ]

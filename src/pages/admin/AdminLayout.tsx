@@ -1,8 +1,8 @@
 import {Box, CssBaseline} from "@mui/material";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import AdminHeader from "../../utils/ui/layout/admin/AdminHeader.tsx";
-import AdminSideBar from "../../utils/ui/layout/admin/AdminSideBar.tsx";
-import AdminContent from "../../utils/ui/layout/admin/AdminContent.tsx";
+import AdminHeader from "../../utils/ui/admin/layout/AdminHeader.tsx";
+import AdminSideBar from "../../utils/ui/admin/layout/AdminSideBar.tsx";
+import AdminContent from "../../utils/ui/admin/layout/AdminContent.tsx";
 
 const darkTheme = createTheme({
     palette: {
@@ -14,7 +14,7 @@ const AdminLayout = () => {
       <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <Box sx={{ display: "flex" }}>
-              {/** Side bar **/}
+              {/** Sidebar **/}
               <AdminSideBar />
               <Box component="main" sx={{ flexGrow: 1 }}>
                   {/*** Header  **/}

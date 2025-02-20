@@ -77,11 +77,11 @@
     AdminDashboard,
     AdminOrdersPage,
     AdminRatingPage,
-    HomePublic,
+    PublicHomePage,
     Login,
     ProductDetail,
     SignUp,
-    UserHome,
+    UserHomePage,
     LayoutProduct,
     PublicRoute,
     EndUserRoute,
@@ -120,7 +120,7 @@
                     },
                     {
                         path: Route.public.HOME,
-                        element: <HomePublic/>,
+                        element: <PublicHomePage/>,
                     },
                     {
                         path: Route.public.ABOUT,
@@ -153,7 +153,7 @@
                         },
                         {
                             path: Route.endUser.HOME,
-                            element:  <UserHome />,
+                            element:  <UserHomePage />,
                         },
                         {
                             path: Route.endUser.PRODUCT,

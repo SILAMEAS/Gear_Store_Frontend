@@ -11,11 +11,11 @@ export const Route={
         ORDER:"/admin/orders",
         CATEGORY:"/admin/categories",
         RATE:"/admin/rating",
+        CUSTOMER:"/admin/customers",
         USER:"/admin/users",
         PAYMENT:"/admin/payment",
         HELP:"/admin/help",
-        SETTING:"/admin/settings",
-        ADD_USER:"/admin/add-user"
+        SETTING:"/admin/settings"
     },
     public:{
         HOME:"/home",

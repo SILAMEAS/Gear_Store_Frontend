@@ -3,7 +3,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ReplayIcon from "@mui/icons-material/Replay";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import BackGroundCart from "../../assets/BackGroundCart.jpg"
+import BackGroundCart from "../../../assets/BackGroundCart.jpg"
 
 const benefits = [
     { icon: <LocalShippingIcon />, title: "Free Shipping", description: "Free Shipping to Make Your Shopping Experience Seamless." },
@@ -19,7 +19,7 @@ const categories = [
     { title: "Gaming Controllers", image: "/images/controller.jpg" }
 ];
 
-const UserHome = () => {
+const UserHomePage = () => {
     return   <Box sx={{backgroundImage:BackGroundCart, color: "#fff", py: 5 }}>
         <Container>
             <Grid container spacing={3} justifyContent="center">
@@ -55,4 +55,4 @@ const UserHome = () => {
     </Box>
 }
 
-export default UserHome;
+export default UserHomePage;

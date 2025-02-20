@@ -4,7 +4,7 @@ import DrawerCustom from "../Drawer/DrawerCustom.tsx";
 import {useDeleteCartMutation, useGetAllCartsQuery} from "../../redux/services/cartApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import EmptyCart from "../../utils/ui/layout/end-user/empty/EmptyCart.tsx";
+import EmptyCart from "../../utils/ui/end-user/empty/EmptyCart.tsx";
 import {BoxProps} from "@mui/material/Box";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
 

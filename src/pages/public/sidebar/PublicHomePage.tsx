@@ -1,5 +1,5 @@
 
-const HomePublic = () => {
+const PublicHomePage = () => {
     return (
         <div>
             HomePublic
@@ -7,4 +7,4 @@ const HomePublic = () => {
     );
 };
 
-export default HomePublic;
+export default PublicHomePage;
