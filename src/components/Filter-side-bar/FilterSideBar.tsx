@@ -83,7 +83,7 @@ export default function FilterSidebar() {
     }
 
     return (
-        <Stack width={"200px"} p={'20px'} overflow={'auto'} sx={{...StyleCustom.scrollNormal}}>
+        <Stack width={"100%"} p={"20px"} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
             {filterSections.map((section) => (
                 <Box key={section.title}>
                     <ListItemButton
