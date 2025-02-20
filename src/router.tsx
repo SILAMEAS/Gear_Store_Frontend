@@ -12,7 +12,7 @@ import {
     AdminOrdersPage,
     AdminPaymentPage,
     AdminProductsPage,
-    AdminRatingPage,
+    AdminReviewPage,
     AdminRoute,
     AdminSettingPage,
     AdminUserPage,
@@ -133,8 +133,8 @@ export const routesConfig = [
                         element: <AdminCategoryPage/>
                     },
                     {
-                        path: Route.admin.RATE,
-                        element: <AdminRatingPage/>
+                        path: Route.admin.REVIEW,
+                        element: <AdminReviewPage/>
                     },
                     {
                         path: Route.admin.USER,

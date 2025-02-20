@@ -19,9 +19,9 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.CUSTOMER
     },
     {
-        Title:"RateReviews",
+        Title:"Reviews",
         Icon:<RateReview />,
-        route:Route.admin.RATE
+        route:Route.admin.REVIEW
     },
     {
         Title:"Payments",

@@ -76,7 +76,7 @@
     AdminCategoryPage,
     AdminDashboard,
     AdminOrdersPage,
-    AdminRatingPage,
+    AdminReviewPage,
     PublicHomePage,
     Login,
     ProductDetail,
@@ -200,7 +200,7 @@
                         },
                         {
                             path: Route.admin.RATE,
-                            element: <AdminRatingPage/>
+                            element: <AdminReviewPage/>
                         },
                 ],
             },

@@ -8,7 +8,7 @@ import {useAddWishlistMutation, useDeleteWishlistMutation} from "../../../../red
 import {useGetAllProductsQuery} from "../../../../redux/services/productApi.ts";
 import {StyleCustom} from "../../../../styles/StyleCustom.tsx";
 
-const Products = () => {
+const GridListProducts = () => {
     const [page, setPage] = React.useState(1);
     const {currentData}=useGetAllProductsQuery({pageSize:10,page:page});
     const [addCart]=useAddCartMutation({});
@@ -60,4 +60,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default GridListProducts;

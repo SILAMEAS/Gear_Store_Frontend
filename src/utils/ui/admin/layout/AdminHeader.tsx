@@ -15,7 +15,6 @@ const AdminHeader: React.FC = () => {
             setLabel(location?.pathname?.split("/")[2])
         }
     },[ location?.pathname])
-    console.log(location?.pathname?.split("/")[2])
     return (
         <AppBar position="static">
             <Toolbar>

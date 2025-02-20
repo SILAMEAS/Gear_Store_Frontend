@@ -1,6 +1,6 @@
 import {lazy} from "react";
 
-const Products= lazy(()=>import("./utils/ui/public/table/Products.tsx"));
+const Products= lazy(()=>import("./utils/ui/public/table/GridListProducts.tsx"));
 const Login = lazy(()=>import("./pages/form/Login.tsx"));
 const UserHome= lazy(()=>import( "./pages/user/sidebar/UserHomePage.tsx"))
 const AdminHome=lazy(()=>import( "./pages/admin/sidebar/AdminDashboard.tsx"))
@@ -11,7 +11,7 @@ const ProductDetail=lazy(()=>import( "./utils/ui/public/table/product-detail/com
 const AdminCartPage=lazy(()=>import( "./pages/admin/sidebar/AdminCartPage.tsx"))
 const AdminCategoryPage=lazy(()=>import("./pages/admin/sidebar/AdminCategoryPage.tsx"))
 const AdminOrdersPage=lazy(()=>import( "./pages/admin/sidebar/AdminOrdersPage.tsx"))
-const AdminRatingPage=lazy(()=>import( "./pages/admin/sidebar/AdminRatingPage.tsx"))
+const AdminReviewPage=lazy(()=>import( "./pages/admin/sidebar/AdminReviewPage.tsx"))
 const HomePublic=lazy(()=>import("./pages/public/sidebar/PublicHomePage.tsx"))
 const LayoutProducts =lazy(()=>import("./pages/public/sidebar/PublicProductPage.tsx"))
 const PublicLayout=lazy(()=>import("./pages/public/PublicLayout.tsx"))
@@ -49,7 +49,7 @@ export {
     AdminHome,
     AdminLayout,
     UserLayout,
-    AdminRatingPage,
+    AdminReviewPage,
     AdminOrdersPage,
     AdminCartPage,
     AdminCategoryPage,

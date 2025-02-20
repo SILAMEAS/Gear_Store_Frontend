@@ -1,6 +1,6 @@
 import {Stack} from "@mui/material";
 import FilterSidebar from "../../../components/Filter-side-bar/FilterSideBar.tsx";
-import Products from "../../../utils/ui/public/table/Products.tsx";
+import GridListProducts from "../../../utils/ui/public/table/GridListProducts.tsx";
 import {StyleCustom} from "../../../styles/StyleCustom.tsx";
 
 const LayoutProducts = () => {
@@ -10,7 +10,7 @@ const LayoutProducts = () => {
                 <FilterSidebar/>
             </Stack>
            <Stack width={"100%"} p={"20px"}>
-               <Products/>
+               <GridListProducts/>
            </Stack>
         </Stack>
     );

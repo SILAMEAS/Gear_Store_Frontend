@@ -10,7 +10,7 @@ export const Route={
         PRODUCT_ID:"/admin/products/:id",
         ORDER:"/admin/orders",
         CATEGORY:"/admin/categories",
-        RATE:"/admin/rating",
+        REVIEW:"/admin/reviews",
         CUSTOMER:"/admin/customers",
         USER:"/admin/users",
         PAYMENT:"/admin/payment",
