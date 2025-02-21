@@ -2,8 +2,8 @@ import * as React from "react";
 import {PropsWithChildren} from "react";
 import Box, {BoxProps} from "@mui/material/Box";
 import {Anchor, DefaultAnchorTemporaryDrawer, PropsDrawerCustom} from "./type.ts";
-import {Button, Drawer, IconButton} from "@mui/material";
-import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import {Button, Drawer, IconButton, Stack} from "@mui/material";
+import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
 export default function DrawerCustom({children,anchor,renderButton,...contentsProps}:PropsWithChildren&PropsDrawerCustom&BoxProps) {
     const [anchorTemporaryDrawer, setAnchorTemporaryDrawer] = React.useState(DefaultAnchorTemporaryDrawer);
     const toggleDrawer =
@@ -37,9 +37,13 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
                         height={"100vh"}
                         {...contentsProps}
                     >
-                       <> {children}</>
-                        <IconButton sx={{zIndex:100}} onClick={toggleDrawer(anchor, false)}><KeyboardDoubleArrowUpIcon/></IconButton>
+                       <>
+                           {children}
+                       </>
                     </Box>
+                    <Stack alignItems={"center"} justifyContent={"center"}>
+                        {anchor === "top"&& <IconButton sx={{zIndex:100}} onClick={toggleDrawer(anchor, false)}><KeyboardDoubleArrowUpIcon/></IconButton>}
+                    </Stack>
                 </Drawer>
             </React.Fragment>
         </div>

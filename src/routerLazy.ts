@@ -27,7 +27,9 @@ const AdminHelpPage=lazy(()=>import("./pages/admin/sidebar/AdminHelpPage.tsx"))
 const AdminSettingPage=lazy(()=>import("./pages/admin/sidebar/AdminSettingPage.tsx"))
 const AdminCustomerPage=lazy(()=>import("./pages/admin/sidebar/AdminCustomerPage.tsx"))
 const AdminProductsPage=lazy(()=>import("./pages/admin/sidebar/AdminProductsPage.tsx"))
+const PublicAboutPage=lazy(()=>import("./pages/public/sidebar/PublicAboutPage.tsx"))
 export {
+    PublicAboutPage,
     AdminProductsPage,
     AdminHelpPage,
     AdminSettingPage,

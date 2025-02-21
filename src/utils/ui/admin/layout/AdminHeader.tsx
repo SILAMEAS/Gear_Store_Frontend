@@ -1,11 +1,7 @@
 import React, {useState} from "react";
-import {AppBar, Box, IconButton, InputBase, Toolbar, Typography} from "@mui/material";
-import {
-    AccountCircle as AccountCircleIcon,
-    Notifications as NotificationsIcon,
-    Search as SearchIcon
-} from "@mui/icons-material";
+import {AppBar, Box, Toolbar, Typography} from "@mui/material";
 import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
+import AdminHeaderHandler from "./AdminHeaderHandler.tsx";
 
 const AdminHeader: React.FC = () => {
     const {location}=useGlobalHook();
@@ -13,8 +9,10 @@ const AdminHeader: React.FC = () => {
     React.useEffect(()=>{
         if(location?.pathname?.split("/")[2]){
             setLabel(location?.pathname?.split("/")[2])
+        }else {
+            setLabel("Dashboard")
         }
-    },[ location?.pathname])
+    },[location?.pathname])
     return (
         <AppBar position="static">
             <Toolbar>
@@ -22,20 +20,8 @@ const AdminHeader: React.FC = () => {
                     {label.toLocaleUpperCase()}
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <InputBase
-                        placeholder="Search…"
-                        inputProps={{ "aria-label": "search" }}
-                        sx={{ ml: 1, bgcolor: "background.paper", borderRadius: 1, p: 1 }}
-                    />
-                    <IconButton color="inherit">
-                        <SearchIcon />
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <NotificationsIcon />
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <AccountCircleIcon />
-                    </IconButton>
+                   {/** Handler Header of Admin **/}
+                   <AdminHeaderHandler/>
                 </Box>
             </Toolbar>
         </AppBar>

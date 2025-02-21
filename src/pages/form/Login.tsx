@@ -14,22 +14,18 @@ import {
 import {useState} from "react";
 import {useForm} from "react-hook-form";
 import InputText from "../../components/Input/InputText.tsx";
-import {useLoginMutation} from "../../redux/services/userApi.ts";
-import {snackbarError} from "../../utils/common/common.ts";
-import {storeToken} from "../../utils/local-storage/token/storeToken.ts";
 import {Route} from "../../constants/Route.ts";
 import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
-
-interface ILogin {
-  email: string;
-  password: string;
-}
+import useAuth, {ILogin} from "../../utils/hooks/useAuth.tsx";
+import {validateEmail} from "../../utils/common/validateEmail.ts";
+import ButtonContinueAsGuest from "../../components/Button/ButtonContinueAsGuest.tsx";
 
 const Login = () => {
     const {navigate}=useGlobalHook();
   const [showPassword, setShowPassword] = useState(true);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const {handleLogin,resultLogin:{isLoading:loginLoading}}=useAuth();
 
   const formData = useForm<ILogin>({
     defaultValues: {
@@ -38,34 +34,11 @@ const Login = () => {
     },
   });
 
-  const [login, { isLoading: loginLoading }] = useLoginMutation();
 
   const handleShowPassword = () => (showPassword ? "password" : "text");
 
-  const validateEmail = (email: string) => {
-    if (email) {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(email)) {
-        return "Please match the requested format";
-      }
-    } else {
-      return undefined;
-    }
-  };
 
-  const handleLogin = async (data: ILogin) => {
-    return login(data)
-        .unwrap()
-        .then((res) => {
-          if (res) {
-            storeToken(res);
-            window.location.reload();
-          }
-        })
-        .catch((err) => {
-          snackbarError(err);
-        });
-  };
+
 
   return (
       <Box
@@ -149,6 +122,7 @@ const Login = () => {
               >
                 {loginLoading ? "Logging..." : "Login"}
               </Button>
+                <ButtonContinueAsGuest   onClick={()=>navigate(Route.public.PRODUCT)} />
             </Stack>
           </Stack>
         </form>

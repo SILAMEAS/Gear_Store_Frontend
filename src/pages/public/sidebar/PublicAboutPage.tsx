@@ -1,11 +1,11 @@
 import {Stack} from "@mui/material";
 
-const PublicHomePage = () => {
+const PublicAboutPage = () => {
     return (
         <Stack height={"100%"} width={"100%"} bgcolor={"red"} alignItems={"center"} justifyContent={"center"}>
-            HomePublic
+            PublicAboutPage
         </Stack>
     );
 };
 
-export default PublicHomePage;
+export default PublicAboutPage;

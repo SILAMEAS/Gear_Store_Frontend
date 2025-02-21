@@ -2,32 +2,29 @@ import {Logout, PersonAdd, Settings} from "@mui/icons-material";
 import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip,} from "@mui/material";
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import {useNavigate} from "react-router-dom";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import LoginIcon from '@mui/icons-material/Login';
+import useAuth from "../../utils/hooks/useAuth.tsx";
+import LoginIcon from "@mui/icons-material/Login";
 import {Route} from "../../constants/Route.ts";
-
+import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const {navigate}=useGlobalHook();
   const open = Boolean(anchorEl);
-  const navigate= useNavigate();
+  const {handleLogout}=useAuth();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleLogout=()=>{
-    localStorage.clear();
-    navigate(Route.public.LOGIN);
-    window.location.reload();
-  }
+
   if(!getToken().access){
     return <IconButton
         size="small"
         sx={{ ml: 2 }}
         onClick={()=>{
-            navigate(Route.public.LOGIN)
+          navigate(Route.public.LOGIN)
         }}
     >
       <LoginIcon sx={{color:"white"}}/>

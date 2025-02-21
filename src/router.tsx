@@ -23,7 +23,8 @@ import {
     ProductDetail,
     PublicRoute,
     SignUp,
-    UserHome
+    UserHome,
+    PublicAboutPage
 } from "./routerLazy.ts"
 
 
@@ -62,7 +63,7 @@ export const routesConfig = [
             },
             {
                 path: Route.public.ABOUT,
-                element: <>ABOUT PUBLIC</>,
+                element: <PublicAboutPage/>,
             },
             ]
     },
