@@ -1,10 +1,7 @@
+import CTableOrder from "../../../components/TableCustom/CTable/CTableOrder.tsx";
 
 const AdminOrdersPage = () => {
-    return (
-        <div>
-            AdminOrdersPage
-        </div>
-    );
+    return <CTableOrder/>
 };
 
 export default AdminOrdersPage;

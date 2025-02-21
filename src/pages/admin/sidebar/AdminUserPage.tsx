@@ -1,10 +1,7 @@
+import CTableUser from "../../../components/TableCustom/CTable/CTableUser.tsx";
 
 const AdminUserPage = () => {
-    return (
-        <div>
-            AdminUserPage
-        </div>
-    );
+    return <CTableUser/>
 };
 
 export default AdminUserPage;

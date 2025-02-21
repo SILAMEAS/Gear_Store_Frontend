@@ -1,7 +1,7 @@
+import CTableCustomer from "../../../components/TableCustom/CTable/CTableCustomer.tsx";
+
 const AdminCustomerPage = () => {
-    return <div>
-        AdminCustomerPage
-    </div>
+    return <CTableCustomer/>
 };
 
 export default AdminCustomerPage;

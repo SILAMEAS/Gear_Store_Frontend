@@ -1,4 +1,5 @@
 import {OrderData, ProductData, SalesData} from "../../../pages/admin/sidebar/dashboard/types.ts";
+import {Pagination} from "./IPagination.ts";
 
 export interface ReqDashboard {
     start_date?:Date;
@@ -20,3 +21,16 @@ export interface ResDashboard {
     top_selling_products: ProductData[];
     recent_orders_data:   OrderData[];
 }
+export interface ResOrder {
+    id:         string;
+    user:       string;
+    status:     OrderData["status"],
+    created_at: Date;
+    items:      Item[];
+}
+
+export interface Item {
+    product:  number;
+    quantity: number;
+}
+export interface ResOrders extends Pagination<ResOrder>{}

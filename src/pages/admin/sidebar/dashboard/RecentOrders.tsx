@@ -12,20 +12,8 @@ import {
     Typography,
 } from "@mui/material"
 import {OrderData} from "./types.ts";
+import {getStatusColor} from "../../../../utils/common/getStatusColor.ts";
 
-
-const getStatusColor = (status: OrderData["status"]) => {
-    switch (status) {
-        case "completed":
-            return "success"
-        case "pending":
-            return "warning"
-        case "cancelled":
-            return "error"
-        default:
-            return "default"
-    }
-}
 
 export default function RecentOrders({ orders}:{ orders: OrderData[]}) {
     return (

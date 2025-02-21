@@ -1,12 +1,13 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {createApi} from "@reduxjs/toolkit/query/react";
 import {Method} from "./types/Method.ts";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import {ResUserDetail} from "./types/IUserApi.ts";
+import {ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
 
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({ baseUrl:import.meta.env.VITE_BASE_URL }),
+  baseQuery: ReqHeaderOnlyBaseUrl('/'),
   tagTypes: ["User"],
   endpoints: (builder) => ({
     login: builder.mutation<{access:string,refresh:string}, {email:string,password:string}>({
@@ -42,5 +43,5 @@ export const {
   useLoginMutation,
   useGetUserDetailQuery,
   useRefreshTokenMutation,
-    useLazyGetUserDetailQuery
+    useLazyGetUserDetailQuery,
 } = userApi;
