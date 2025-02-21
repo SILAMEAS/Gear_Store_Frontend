@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {EnumRole, IApplication, ISnackbarStatus} from "./type.ts";
-import {ResUserDetail} from "../services/types/IUserApi.tsx";
+import {ResUserDetail} from "../services/types/IUserApi.ts";
 
 const initialState: IApplication = {
   productCurrentPage: 1,

@@ -5,7 +5,7 @@ import {Pagination} from "./types/IPagination.ts";
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
-  baseQuery: ReqHeader('/cart'),
+  baseQuery: ReqHeader("/cart"),
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
     /** Get all carts */

@@ -2,17 +2,9 @@ import { Card, Typography, Box, useTheme } from "@mui/material"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import {SalesData} from "./types.ts";
 
-const data: SalesData[] = [
-    { date: "Jan", amount: 4000 },
-    { date: "Feb", amount: 3000 },
-    { date: "Mar", amount: 5000 },
-    { date: "Apr", amount: 2780 },
-    { date: "May", amount: 1890 },
-    { date: "Jun", amount: 2390 },
-    { date: "Jul", amount: 3490 },
-]
 
-export default function SalesChart() {
+
+export default function SalesChart({data}: { data:SalesData[] }) {
     const theme = useTheme()
 
     return (

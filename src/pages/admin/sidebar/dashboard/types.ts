@@ -25,9 +25,9 @@ export interface MetricCardProps {
     title: string
     value: string | number
     icon: React.ReactNode
-    trend: number
-    trendLabel: string
-    color: string
+    trend?: number
+    trendLabel?: string
+    color?: string
 }
 
 export interface TicketData { month:string, created: number, solved: number }

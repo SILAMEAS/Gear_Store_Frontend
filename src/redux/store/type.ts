@@ -1,4 +1,4 @@
-import {ResUserDetail} from "../services/types/IUserApi.tsx";
+import {ResUserDetail} from "../services/types/IUserApi.ts";
 
 export interface IApplication {
   deleteProductId: number | null;

@@ -1,6 +1,5 @@
-import { Card, Box, Typography, IconButton } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { TrendingUp, TrendingDown } from "@mui/icons-material"
+import {Box, Card, IconButton, Typography} from "@mui/material"
+import {styled} from "@mui/material/styles"
 import {MetricCardProps} from "./types.ts";
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -21,7 +20,7 @@ const IconWrapper = styled(Box)<{ bgcolor: string }>(({ bgcolor }) => ({
     justifyContent: "center",
 }))
 
-export default function MetricCard({ title, value, icon, trend, trendLabel, color }: MetricCardProps) {
+export default function MetricCard({ title, value, icon, color }: MetricCardProps) {
     return (
         <StyledCard>
             <Box display="flex" justifyContent="space-between" alignItems="flex-start">
@@ -37,20 +36,33 @@ export default function MetricCard({ title, value, icon, trend, trendLabel, colo
                     <IconButton sx={{ color: color, p: 0 }}>{icon}</IconButton>
                 </IconWrapper>
             </Box>
-            <Box display="flex" alignItems="center" mt={2}>
-                {trend >= 0 ? (
-                    <TrendingUp sx={{ color: "success.main", mr: 1 }} />
-                ) : (
-                    <TrendingDown sx={{ color: "error.main", mr: 1 }} />
-                )}
-                <Typography variant="body2" color={trend >= 0 ? "success.main" : "error.main"} mr={1}>
-                    {Math.abs(trend)}%
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {trendLabel}
-                </Typography>
-            </Box>
+            {/**
+             <Box display="flex" alignItems="center" mt={2}>
+             {trend >= 0 ? (
+             <TrendingUp sx={{ color: "success.main", mr: 1 }} />
+             ) : (
+             <TrendingDown sx={{ color: "error.main", mr: 1 }} />
+             )}
+             <Typography variant="body2" color={trend >= 0 ? "success.main" : "error.main"} mr={1}>
+             {Math.abs(trend)}%
+             </Typography>
+             <Typography variant="body2" color="text.secondary">
+             {trendLabel}
+             </Typography>
+             </Box>
+             **/}
+
         </StyledCard>
     )
 }
 
+/**
+     <MetricCard
+     title="Active Orders"
+     value="126"
+     icon={<LocalShipping />}
+     trend={-2.3}
+     trendLabel="vs last month"
+     color="#4caf50"
+     />
+ * */

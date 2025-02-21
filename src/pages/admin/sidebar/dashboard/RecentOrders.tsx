@@ -1,5 +1,8 @@
 import {
+    Avatar,
+    Box,
     Card,
+    Chip,
     Table,
     TableBody,
     TableCell,
@@ -7,38 +10,9 @@ import {
     TableHead,
     TableRow,
     Typography,
-    Chip,
-    Avatar,
-    Box,
 } from "@mui/material"
 import {OrderData} from "./types.ts";
 
-const orders: OrderData[] = [
-    {
-        id: "#ORD-001",
-        customer: "John Doe",
-        product: "Nike Air Max",
-        date: "2024-02-20",
-        amount: 299.99,
-        status: "completed",
-    },
-    {
-        id: "#ORD-002",
-        customer: "Jane Smith",
-        product: "Adidas Ultra Boost",
-        date: "2024-02-20",
-        amount: 179.99,
-        status: "pending",
-    },
-    {
-        id: "#ORD-003",
-        customer: "Mike Johnson",
-        product: "Puma RS-X",
-        date: "2024-02-19",
-        amount: 129.99,
-        status: "cancelled",
-    },
-]
 
 const getStatusColor = (status: OrderData["status"]) => {
     switch (status) {
@@ -53,7 +27,7 @@ const getStatusColor = (status: OrderData["status"]) => {
     }
 }
 
-export default function RecentOrders() {
+export default function RecentOrders({ orders}:{ orders: OrderData[]}) {
     return (
         <Card sx={{ p: 3, bgcolor: "background.paper" }}>
             <Typography variant="h6" gutterBottom>

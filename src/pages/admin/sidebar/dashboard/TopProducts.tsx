@@ -1,31 +1,7 @@
 import { Card, Typography, List, ListItem, ListItemAvatar, ListItemText, Avatar, Box } from "@mui/material"
 import {ProductData} from "./types.ts";
 
-const products: ProductData[] = [
-    {
-        id: "1",
-        name: "Nike Air Max",
-        sold: 352,
-        revenue: 105600,
-        image: "/placeholder.svg",
-    },
-    {
-        id: "2",
-        name: "Adidas Ultra Boost",
-        sold: 278,
-        revenue: 50040,
-        image: "/placeholder.svg",
-    },
-    {
-        id: "3",
-        name: "Puma RS-X",
-        sold: 189,
-        revenue: 24570,
-        image: "/placeholder.svg",
-    },
-]
-
-export default function TopProducts() {
+export default function TopProducts({products}:{products:ProductData[]}) {
     return (
         <Card sx={{ p: 3, bgcolor: "background.paper" }}>
             <Typography variant="h6" gutterBottom>
