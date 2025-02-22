@@ -6,8 +6,8 @@ export interface IApplication {
   productCurrentPage: number;
   snackbarMessage: string | null;
   snackbarStatus: ISnackbarStatus;
-  userDetail:ResUserDetail|null;
-  role: EnumRole;
+  userDetail?:ResUserDetail;
+  // role: EnumRole;
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";
@@ -21,8 +21,8 @@ export interface IErrorType {
   data: any;
   status: number;
 }
-export enum EnumRole{
-  USER="user",
-  ADMIN="admin",
-  PUBLIC="public"
-}
+// export enum EnumRole{
+//   USER="user",
+//   ADMIN="admin",
+//   PUBLIC="public"
+// }

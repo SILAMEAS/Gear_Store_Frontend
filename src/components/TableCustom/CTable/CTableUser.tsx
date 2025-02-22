@@ -128,7 +128,7 @@ const CTableUser = <CO extends ResUser>() =>
                     ),
                 },
                 {
-                    id: "is_staff",
+                    id: "role",
                     disableSort: false,
                     label: "Staff",
                     tableCellProps: {
@@ -146,7 +146,7 @@ const CTableUser = <CO extends ResUser>() =>
                             alignItems={"center"}
                             gap={"15px"} pl={"30px"}>
                             <Typography>
-                                {data.is_staff}
+                                {data.role}
                             </Typography>
                         </Stack>
                     ),

@@ -39,7 +39,7 @@ const AdminDashboard = () => {
   if(isLoading||!currentData){
     return <MainLoading/>
   }
-  return   <Box component="main" sx={{ p:10, bgcolor: "background.default", minHeight: "100vh" }}>
+  return   <Box component="main" sx={{ p:10, minHeight: "100%" }}>
     <Stack height={"100%"}>
       <Grid container spacing={3}>
         {/** Cards  **/}

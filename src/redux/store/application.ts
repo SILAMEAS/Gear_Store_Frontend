@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {EnumRole, IApplication, ISnackbarStatus} from "./type.ts";
+import {createSlice} from "@reduxjs/toolkit";
+import {IApplication, ISnackbarStatus} from "./type.ts";
 import {ResUserDetail} from "../services/types/IUserApi.ts";
 
 const initialState: IApplication = {
@@ -8,10 +8,6 @@ const initialState: IApplication = {
   snackbarStatus: "error",
   deleteProductId: null,
   deleteUserId: null,
-  userDetail:null,
-  role: EnumRole.PUBLIC
-
-  // user: null,
 };
 
 export const applicationSlice = createSlice({
@@ -29,21 +25,13 @@ export const applicationSlice = createSlice({
     },
     setUserDetail: (state, { payload }: { payload: ResUserDetail }) => {
       state.userDetail = payload;
-    },
-    setRole: (state, action: PayloadAction<EnumRole>) => {
-      state.role = action.payload;
-    },
-    resetRole: (state) => {
-      state.role = EnumRole.PUBLIC; // Reset to default
-    },
+    }
   },
 });
 
 export const {
   dispatchSnackbar,
-  setUserDetail,
-    setRole,
-    resetRole
+  setUserDetail
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

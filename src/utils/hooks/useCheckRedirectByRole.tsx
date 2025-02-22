@@ -1,17 +1,16 @@
 import {useAppSelector} from "../../redux/redux.ts";
-import {EnumRole} from "../../redux/store/type.ts";
 import {RedirectUrlByRole} from "../../constants/Route.ts";
 import {Navigate} from "react-router-dom";
 import React from "react";
+import {EnumRole} from "../../redux/services/types/IUserApi.ts";
 
 const useCheckRedirectByRole = () => {
-    const {role}=useAppSelector(state => state.application)
+    const {userDetail}=useAppSelector(state=>state.application);
     const checkDirect =React.useCallback(()=>{
-        if (role) {
-            console.log(role,RedirectUrlByRole[role as EnumRole])
-            return <Navigate to={RedirectUrlByRole[role as EnumRole]} replace />;
+        if (userDetail?.role) {
+            return <Navigate to={RedirectUrlByRole[userDetail?.role as EnumRole]} replace />;
         }
-    },[role])
+    },[userDetail?.role])
     return {checkDirect}
 };
 

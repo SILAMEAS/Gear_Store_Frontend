@@ -3,8 +3,7 @@ import {useEffect} from "react";
 import getToken from "../local-storage/token/useGetToken.ts";
 import {storeToken} from "../local-storage/token/storeToken.ts";
 import {store} from "../../redux/redux.ts";
-import {setRole, setUserDetail} from "../../redux/store/application.ts";
-import {EnumRole} from "../../redux/store/type.ts";
+import {setUserDetail} from "../../redux/store/application.ts";
 
 export const useProtectedRoute=()=>{
     const [getRefreshToken, resultRefreshToken] = useRefreshTokenMutation();
@@ -19,11 +18,6 @@ export const useProtectedRoute=()=>{
                         storeToken(res);
                         userDetail({}).unwrap().then(r=>{
                             store.dispatch(setUserDetail(r))
-                            if(r.is_superuser){
-                                store.dispatch(setRole(EnumRole.ADMIN));
-                            }else {
-                                store.dispatch(setRole(EnumRole.USER));
-                            }
                         })
                     }
                 });

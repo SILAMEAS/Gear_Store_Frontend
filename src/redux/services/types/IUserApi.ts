@@ -1,21 +1,24 @@
 import {Pagination} from "./IPagination.ts";
 
+export enum EnumRole{
+    ADMIN="admin",
+    STAFF="staff",
+    USER="user"
+}
 export interface ResUserDetail {
     id:            string;
     username:      string;
     email:         string;
     first_name:    string;
     last_name:     string;
-    is_staff:      boolean;
-    is_superuser:  boolean;
     is_active:     boolean;
     profile_image: string;
-    role:          string;
+    role:          EnumRole;
     phone:         string;
-    DOB:           string;
+    dob:           string;
     country:       string;
-    City:          string;
-    Postal_Code:   string;
+    city:          string;
+    postal_code:   string;
 }
 
 export interface ResUser {
@@ -23,7 +26,6 @@ export interface ResUser {
     username:     string;
     email:        string;
     is_active:    boolean;
-    is_staff:     boolean;
-    is_superuser: boolean;
+    role : EnumRole
 }
 export interface ResUsers extends Pagination<ResUser>{}

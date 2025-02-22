@@ -43,7 +43,7 @@ export default function ProfileSetting() {
                     <Typography variant="h5">{userDetail?.username}</Typography>
                     <Typography color="text.secondary">{userDetail?.role}</Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {userDetail?.City}, {userDetail?.country}
+                        {userDetail?.city}, {userDetail?.country}
                     </Typography>
                 </Box>
             </Paper>
@@ -61,7 +61,7 @@ export default function ProfileSetting() {
                         <InfoRow label="Last Name" value={userDetail?.last_name} />
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <InfoRow label="Date of Birth" value={userDetail?.DOB}/>
+                        <InfoRow label="Date of Birth" value={userDetail?.dob}/>
                     </Grid>
                     <Grid item xs={12} md={4}>
                         <InfoRow label="Email Address"  value={userDetail?.email} />
@@ -82,13 +82,13 @@ export default function ProfileSetting() {
                 </Box>
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={4}>
-                        <InfoRow label="Country" value="United Kingdom" />
+                        <InfoRow label="Country" value={userDetail?.country} />
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <InfoRow label="City" value="Leeds, East London" />
+                        <InfoRow label="City" value={userDetail?.city} />
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <InfoRow label="Postal Code" value="ERT 1254" />
+                        <InfoRow label="Postal Code" value={userDetail?.postal_code} />
                     </Grid>
                 </Grid>
             </Paper>
