@@ -13,13 +13,13 @@ import {
 } from "@mui/material";
 import {useState} from "react";
 import {useForm} from "react-hook-form";
-import InputText from "../../components/Input/InputText.tsx";
-import {Route} from "../../constants/Route.ts";
-import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
-import useAuth, {ILogin} from "../../utils/hooks/useAuth.tsx";
-import {validateEmail} from "../../utils/common/validateEmail.ts";
-import ButtonContinueAsGuest from "../../components/Button/ButtonContinueAsGuest.tsx";
-import ThemeToggle from "../../theme/toggle/ThemeToggle.tsx";
+import InputText from "../../../components/Input/InputText.tsx";
+import {Route} from "../../../constants/Route.ts";
+import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
+import useAuth, {ILogin} from "../../../utils/hooks/useAuth.tsx";
+import {validateEmail} from "../../../utils/common/validateEmail.ts";
+import ButtonContinueAsGuest from "../../../components/Button/ButtonContinueAsGuest.tsx";
+import ThemeToggle from "../../../theme/toggle/ThemeToggle.tsx";
 
 const Login = () => {
     const {navigate}=useGlobalHook();

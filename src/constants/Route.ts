@@ -34,5 +34,5 @@ export const Route={
 export const RedirectUrlByRole = {
     [EnumRole.ADMIN]: Route.admin.HOME,
     [EnumRole.USER]: Route.endUser.HOME,
-    [EnumRole.STAFF]: Route.admin.HOME,
+    [EnumRole.MODERATOR]: Route.admin.HOME,
 };

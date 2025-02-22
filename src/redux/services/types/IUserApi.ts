@@ -2,7 +2,7 @@ import {Pagination} from "./IPagination.ts";
 
 export enum EnumRole{
     ADMIN="admin",
-    STAFF="staff",
+    MODERATOR="moderator",
     USER="user"
 }
 export interface ResUserDetail {

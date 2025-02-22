@@ -6,7 +6,8 @@ import {IconButton, Stack} from "@mui/material";
 import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
 import {Route} from "../../../../constants/Route.ts";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import Typography from "@mui/material/Typography";
+import CreateUserForm from "../../../../pages/form/admin/create-user/CreateUserForm.tsx";
+
 const AdminHeaderHandler = () => {
     const {pathnameRemoveLastSlash}=useCheckUrl();
     switch (pathnameRemoveLastSlash){
@@ -34,7 +35,7 @@ const AdminHeaderHandler = () => {
                     </IconButton>} anchor={"top"} overflow={"auto"}  sx={{...StyleCustom.scrollNormal}}
                     >
                         <Stack height={"100%"} width={"100%"} justifyContent={"center"} alignItems={"center"}>
-                            <Typography> Add new User</Typography>
+                            <CreateUserForm/>
                         </Stack>
             </DrawerCustom>
         }

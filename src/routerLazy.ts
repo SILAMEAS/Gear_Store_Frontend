@@ -1,12 +1,12 @@
 import {lazy} from "react";
 
 const Products= lazy(()=>import("./utils/ui/public/table/GridListProducts.tsx"));
-const Login = lazy(()=>import("./pages/form/Login.tsx"));
+const Login = lazy(()=>import("./pages/form/public/Login.tsx"));
 const UserHome= lazy(()=>import( "./pages/user/sidebar/UserHomePage.tsx"))
 const AdminHome=lazy(()=>import( "./pages/admin/sidebar/AdminDashboard.tsx"))
 const UserLayout=lazy(()=>import( "./pages/user/UserLayout.tsx"))
 const AdminLayout=lazy(()=>import( "./pages/admin/AdminLayout.tsx"))
-const SignUp=lazy(()=>import( "./pages/form/SignUp.tsx"))
+const SignUp=lazy(()=>import( "./pages/form/public/SignUp.tsx"))
 const ProductDetail=lazy(()=>import( "./utils/ui/public/table/product-detail/components/ProductDetail.tsx"))
 const AdminCartPage=lazy(()=>import( "./pages/admin/sidebar/AdminCartPage.tsx"))
 const AdminCategoryPage=lazy(()=>import("./pages/admin/sidebar/AdminCategoryPage.tsx"))
