@@ -1,7 +1,6 @@
-import {ThemeProvider} from "@mui/material";
 import {PropsWithChildren, Suspense} from "react";
-import theme from "./theme.tsx";
-import {useProtectedRoute} from "../utils/hooks/useProtectedRoute.tsx";
+import {useProtectedRoute} from "../../utils/hooks/useProtectedRoute.tsx";
+import {ThemeProvider} from "./ThemeProvider.tsx";
 
 const AppProvider = ({children}: PropsWithChildren) => {
     const {resultRefreshToken,resultUserDetail}=useProtectedRoute();
@@ -11,7 +10,7 @@ const AppProvider = ({children}: PropsWithChildren) => {
 
     return (
         <Suspense fallback={null}>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider>
                 {children}
             </ThemeProvider>
         </Suspense>

@@ -150,7 +150,7 @@ const PostCard = ({ title, image, description, showMore }: PostCardProps) => {
           justifyContent="space-between"
         >
           <Stack>
-            <Typography variant="body3" component="div">
+            <Typography  component="div">
               {title}
             </Typography>
             <Typography variant="subtitle1" component="div">

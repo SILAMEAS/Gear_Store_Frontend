@@ -1,6 +1,6 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {ReqHeader} from "../ReqHeader.tsx";
-import {ReqDashboard, ResDashboard, ResOrders} from "./types/IAdminApi.ts";
+import {ReqDashboard, ResDashboard, ResOrders, ResPayments} from "./types/IAdminApi.ts";
 import {ResUsers} from "./types/IUserApi.ts";
 import {ReqPage} from "./types/IPagination.ts";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
@@ -55,6 +55,18 @@ export const adminApi = createApi({
 
       }),
     }),
+    /** List Payment **/
+    getPayments: builder.query<ResPayments, ReqPage>({
+      query: ({pageSize,page}) => ({
+        headers: {
+          ["Authorization"]: `Bearer ${getToken()?.access}`,
+        },
+        url: "/payments/",
+        method: Method.GET,
+        params:{pageSize,page}
+
+      }),
+    }),
   }),
 });
 
@@ -62,5 +74,6 @@ export const {
   useGetDashboardQuery,
   useGetUsersQuery,
   useGetCustomerQuery,
-    useGetOrdersQuery
+    useGetOrdersQuery,
+    useGetPaymentsQuery
 } = adminApi;

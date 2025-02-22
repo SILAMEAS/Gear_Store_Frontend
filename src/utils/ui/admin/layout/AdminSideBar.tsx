@@ -5,6 +5,7 @@ import CustomRoute from "../../../../components/Item-Navigate/CustomRoute.tsx";
 import {MenuAdmin} from "../MenuAdmin.tsx";
 import useAuth from "../../../hooks/useAuth.tsx";
 import {Logout} from "@mui/icons-material";
+import ThemeToggle from "../../../../theme/toggle/ThemeToggle.tsx";
 
 const drawerWidth = 240;
 
@@ -33,12 +34,14 @@ const AdminSideBar: React.FC = () => {
                 {/** Sidebar Bottom*/}
                 <List>
                     <Divider sx={{mb:"20px"}}/>
-                    <ListItem onClick={handleLogout} sx={{cursor:"pointer"}}>
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary={"logout"} />
-                    </ListItem>
+                        <ThemeToggle label={'Theme'}/>
+
+                        <ListItem onClick={handleLogout} sx={{cursor:"pointer"}}>
+                            <ListItemIcon>
+                                <Logout fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary={"logout"} />
+                        </ListItem>
                 </List>
             </Stack>
         </Drawer>

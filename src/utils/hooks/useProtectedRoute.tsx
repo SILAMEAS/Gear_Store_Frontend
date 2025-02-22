@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import getToken from "../local-storage/token/useGetToken.ts";
 import {storeToken} from "../local-storage/token/storeToken.ts";
 import {store} from "../../redux/redux.ts";
-import {setRole} from "../../redux/store/application.ts";
+import {setRole, setUserDetail} from "../../redux/store/application.ts";
 import {EnumRole} from "../../redux/store/type.ts";
 
 export const useProtectedRoute=()=>{
@@ -18,6 +18,7 @@ export const useProtectedRoute=()=>{
                     if (res) {
                         storeToken(res);
                         userDetail({}).unwrap().then(r=>{
+                            store.dispatch(setUserDetail(r))
                             if(r.is_superuser){
                                 store.dispatch(setRole(EnumRole.ADMIN));
                             }else {

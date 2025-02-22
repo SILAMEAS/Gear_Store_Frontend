@@ -1,10 +1,6 @@
+import ProfileSetting from "./profile/ProfileSetting.tsx";
 
 const AdminSettingPage = () => {
-    return (
-        <div>
-            AdminSettingPage
-        </div>
-    );
-};
+    return <ProfileSetting/>}
 
 export default AdminSettingPage;

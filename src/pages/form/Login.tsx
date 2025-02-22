@@ -1,11 +1,11 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
-    Box,
     Button,
     CircularProgress,
     InputAdornment,
     Link,
+    Paper,
     Stack,
     Typography,
     useMediaQuery,
@@ -19,6 +19,7 @@ import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 import useAuth, {ILogin} from "../../utils/hooks/useAuth.tsx";
 import {validateEmail} from "../../utils/common/validateEmail.ts";
 import ButtonContinueAsGuest from "../../components/Button/ButtonContinueAsGuest.tsx";
+import ThemeToggle from "../../theme/toggle/ThemeToggle.tsx";
 
 const Login = () => {
     const {navigate}=useGlobalHook();
@@ -41,17 +42,17 @@ const Login = () => {
 
 
   return (
-      <Box
+      <Paper
           sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             height: "100vh",
-            px: 2,
-              bgcolor:"white"
+            px: 2
           }}
       >
+          <ThemeToggle/>
         <form onSubmit={formData.handleSubmit(handleLogin)} id="login-form" style={{ width: "100%", maxWidth: "400px" }}>
           <Stack spacing={3}>
             <Typography
@@ -126,7 +127,7 @@ const Login = () => {
             </Stack>
           </Stack>
         </form>
-      </Box>
+      </Paper>
   );
 };
 

@@ -1,10 +1,7 @@
+import CTablePayment from "../../../components/TableCustom/CTable/CTablePayment.tsx";
 
 const AdminPaymentPage = () => {
-    return (
-        <div>
-            AdminPaymentPage
-        </div>
-    );
+    return <CTablePayment/>
 };
 
 export default AdminPaymentPage;

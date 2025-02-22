@@ -1,10 +1,12 @@
-import {Divider, TableCell, TableRow} from "@mui/material";
+import {Divider, TableCell, TableRow, useTheme} from "@mui/material";
 import {HeadCellCustom, ICellCustom} from "./types.ts";
 import uniqueArray from "../utils/uniqueArray.ts";
+import {alpha} from "@mui/material/styles";
 
 export default function CellCustom<R extends Record<string, any>>(
   props: Readonly<ICellCustom<R>>,
 ) {
+  const theme = useTheme();
   const {visibleRows, handleViewDetailPage, headCells, selected} = props;
   const topEvents = ["action", "typeDownloadDoc"];
   return (
@@ -23,7 +25,7 @@ export default function CellCustom<R extends Record<string, any>>(
                 height: "auto",
                 "&:hover": {
                   /** when we hover on row will color main Color for them and opacity 10 **/
-                  backgroundColor:  "black",
+                  backgroundColor: alpha(theme.palette.primary.main, 0.05),
                   color: " #fff !important",
                 },
               },

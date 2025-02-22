@@ -1,9 +1,9 @@
-import { PublicLayout} from "../../routerLazy.ts";
+import {PublicLayout} from "../../routerLazy.ts";
 import {useProtectedRoute} from "../../utils/hooks/useProtectedRoute.tsx";
 import MainLoading from "../../components/loading/MainLoading.tsx";
 import {useAppSelector} from "../../redux/redux.ts";
 import {EnumRole} from "../../redux/store/type.ts";
-import AppProvider from "../../theme/AppProvider.tsx";
+import AppProvider from "../../theme/provider/AppProvider.tsx";
 import {Navigate} from "react-router-dom";
 import {RedirectUrlByRole} from "../../constants/Route.ts";
 

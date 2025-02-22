@@ -27,27 +27,6 @@ export const applicationSlice = createSlice({
       state.snackbarMessage = payload.message;
       state.snackbarStatus = payload.status;
     },
-    // dispatchUserInfo: (
-    //   state,
-    //   { payload }: { payload: IUserInfoRedux | null },
-    // ) => {
-    //   state.user = payload;
-    // },
-    dispatchDeleteUserId: (state, { payload }: { payload: number }) => {
-      state.deleteUserId = payload;
-    },
-    dispatchDeleteProductId: (state, { payload }: { payload: number }) => {
-      state.deleteProductId = payload;
-    },
-    dispatchProductCurrentPage: (state, { payload }: { payload: number }) => {
-      state.productCurrentPage = payload;
-    },
-    clearDeleteProductId: (state) => {
-      state.deleteProductId = null;
-    },
-    clearDeleteUserId: (state) => {
-      state.deleteUserId = null;
-    },
     setUserDetail: (state, { payload }: { payload: ResUserDetail }) => {
       state.userDetail = payload;
     },
