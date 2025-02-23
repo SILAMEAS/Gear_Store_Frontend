@@ -4,9 +4,9 @@ import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
 import {
-    AdminCustomerPage,
     AdminCartPage,
     AdminCategoryPage,
+    AdminCustomerPage,
     AdminHelpPage,
     AdminHome,
     AdminOrdersPage,
@@ -21,11 +21,14 @@ import {
     LayoutProduct,
     Login,
     ProductDetail,
+    PublicAboutPage,
     PublicRoute,
     SignUp,
-    UserHome,
-    PublicAboutPage
+    UserHome
 } from "./routerLazy.ts"
+import AdminProductDetail from "./pages/admin/sidebar/detail/AdminProductDetail.tsx";
+import AdminCustomerDetail from "./pages/admin/sidebar/detail/AdminCustomerDetail.tsx";
+import AdminUserDetail from "./pages/admin/sidebar/detail/AdminUserDetail.tsx";
 
 
 export const routesConfig = [
@@ -122,6 +125,10 @@ export const routesConfig = [
                         element: <AdminProductsPage />,
                     },
                     {
+                        path: Route.admin.PRODUCT_ID,
+                        element: <AdminProductDetail />,
+                    },
+                    {
                         path: Route.admin.CART,
                         element: <AdminCartPage/>
                     },
@@ -142,6 +149,10 @@ export const routesConfig = [
                         element: <AdminUserPage/>
                     },
                     {
+                        path: Route.admin.USER_ID,
+                        element: <AdminUserDetail/>
+                    },
+                    {
                         path: Route.admin.PAYMENT,
                         element: <AdminPaymentPage/>
                     },
@@ -156,6 +167,10 @@ export const routesConfig = [
                     {
                         path: Route.admin.CUSTOMER,
                         element: <AdminCustomerPage/>
+                    },
+                    {
+                        path: Route.admin.CUSTOMER_ID,
+                        element: <AdminCustomerDetail/>
                     }
 
                 ],

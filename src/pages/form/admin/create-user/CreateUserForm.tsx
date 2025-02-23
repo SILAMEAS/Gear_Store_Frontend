@@ -1,4 +1,4 @@
-import React, {useCallback} from "react"
+import React from "react"
 import {Controller, useForm} from "react-hook-form"
 import {
     Box,
@@ -9,70 +9,16 @@ import {
     InputAdornment,
     InputLabel,
     MenuItem,
-    Paper,
     Select,
     Stack,
     Switch,
     TextField,
-    Typography,
 } from "@mui/material"
 import {Visibility, VisibilityOff} from "@mui/icons-material"
-import {useDropzone} from "react-dropzone"
 import {useAddUserMutation} from "../../../../redux/services/adminApi.ts";
 import {EnumRole, UserFormData} from "../../../../redux/services/types/IUserApi.ts";
+import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
 
-
-const ImageDropzone: React.FC<{
-    onChange: (file: File | null) => void
-    value: File | null
-}> = ({ onChange, value }) => {
-    const onDrop = useCallback(
-        (acceptedFiles: File[]) => {
-            if (acceptedFiles.length > 0) {
-                onChange(acceptedFiles[0])
-            }
-        },
-        [onChange],
-    )
-
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({
-        onDrop,
-        accept: { "image/*": [] },
-        multiple: false,
-    })
-
-    return (
-        <Paper
-            {...getRootProps()}
-            sx={{
-                p: 2,
-                border: "2px dashed",
-                borderColor: isDragActive ? "primary.main" : "grey.300",
-                bgcolor: isDragActive ? "action.hover" : "background.paper",
-                cursor: "pointer",
-                textAlign: "center",
-            }}
-        >
-            <input {...getInputProps()} />
-            {value ? (
-                <Box>
-                    <img
-                        src={URL.createObjectURL(value) || "/placeholder.svg"}
-                        alt="Profile preview"
-                        style={{ maxWidth: "100%", maxHeight: "200px", objectFit: "contain" }}
-                    />
-                    <Typography variant="caption" display="block">
-                        {value.name}
-                    </Typography>
-                </Box>
-            ) : (
-                <Typography>
-                    {isDragActive ? "Drop the image here..." : "Drag & drop a profile image here, or click to select one"}
-                </Typography>
-            )}
-        </Paper>
-    )
-}
 
 const CreateUserForm: React.FC = () => {
     const [addUser]=useAddUserMutation({})

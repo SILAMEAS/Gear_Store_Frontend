@@ -12,7 +12,9 @@ export const Route={
         CATEGORY:"/admin/categories",
         REVIEW:"/admin/reviews",
         CUSTOMER:"/admin/customers",
+        CUSTOMER_ID:"/admin/customers/:id",
         USER:"/admin/users",
+        USER_ID:"/admin/users/:id",
         PAYMENT:"/admin/payment",
         HELP:"/admin/help",
         SETTING:"/admin/settings"

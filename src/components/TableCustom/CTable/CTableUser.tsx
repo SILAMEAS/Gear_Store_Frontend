@@ -8,9 +8,13 @@ import {EnumRole, ResUser, ResUsers} from "../../../redux/services/types/IUserAp
 import {useDeleteUserMutation, useGetUsersQuery} from "../../../redux/services/adminApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import {Route} from "../../../constants/Route.ts";
+import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
+import {setUserSelected} from "../../../redux/store/application.ts";
 
 const CTableUser = <CO extends ResUser>() =>
 {
+    const {navigate,dispatch}=useGlobalHook();
     const {
         setVisibleRows,
         visibleRows,
@@ -48,6 +52,10 @@ const CTableUser = <CO extends ResUser>() =>
             tableContainerSx={{
                 height:"calc( 100vh - 150px )",
                 width:"100%"
+            }}
+            handleViewDetailPage={(row)=>{
+                dispatch(setUserSelected(row));
+                navigate(Route.admin.USER+"/"+row.id)
             }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}

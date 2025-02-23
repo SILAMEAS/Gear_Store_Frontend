@@ -6,9 +6,12 @@ import TableCustom from "../components/TableCustom.tsx";
 import {ResProduct, ResProducts} from "../../../redux/services/types/ProductInterface.tsx";
 import React from "react";
 import {useGetAllProductsQuery} from "../../../redux/services/productApi.ts";
+import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
+import {Route} from "../../../constants/Route.ts";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
+    const {navigate}=useGlobalHook();
     const {
         setVisibleRows,
         visibleRows,
@@ -46,6 +49,9 @@ const CTableProducts = <CO extends ResProduct>() =>
             tableContainerSx={{
                 height:"calc( 100vh - 150px )",
                 width:"100%"
+            }}
+            handleViewDetailPage={(row)=>{
+                navigate(Route.admin.PRODUCT+"/"+row.id)
             }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
@@ -116,6 +122,30 @@ const CTableProducts = <CO extends ResProduct>() =>
                             gap={"15px"} pl={"30px"}>
                             <Typography>
                                 {data.price}
+                            </Typography>
+                        </Stack>
+                    ),
+                },
+                {
+                    id: "stock",
+                    disableSort: false,
+                    label: "Stock",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"500px",
+                        sx:{
+                            paddingLeft:"30px"
+                        }
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} pl={"30px"}>
+                            <Typography>
+                                {data.stock}
                             </Typography>
                         </Stack>
                     ),

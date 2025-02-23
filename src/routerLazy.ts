@@ -28,33 +28,45 @@ const AdminSettingPage=lazy(()=>import("./pages/admin/sidebar/AdminSettingPage.t
 const AdminCustomerPage=lazy(()=>import("./pages/admin/sidebar/AdminCustomerPage.tsx"))
 const AdminProductsPage=lazy(()=>import("./pages/admin/sidebar/AdminProductsPage.tsx"))
 const PublicAboutPage=lazy(()=>import("./pages/public/sidebar/PublicAboutPage.tsx"))
+/** detail page by role admin */
+const PageProductDetail = lazy(()=>import('./pages/admin/sidebar/detail/AdminProductDetail.tsx'))
+const PageCustomerDetail = lazy(()=>import('./pages/admin/sidebar/detail/AdminCustomerDetail.tsx'))
+const PageUserDetail = lazy(()=>import('./pages/admin/sidebar/detail/AdminUserDetail.tsx'))
 export {
-    PublicAboutPage,
-    AdminProductsPage,
-    AdminHelpPage,
-    AdminSettingPage,
-    AdminCustomerPage,
-    LayoutProduct,
-    AdminUserPage,
-    PublicRoute,
-    EndUserRoute,
-    AdminRoute,
+    /** app provider */
     AppProvider,
-    NotFound404,
-    PublicLayout,
+    /** public */
     LayoutProducts,
-    Products,
+    PublicLayout,
+    PublicRoute,
+    PublicAboutPage,
+    SignUp,
+    NotFound404,
     Login,
+    HomePublic,
+    /** user */
+    LayoutProduct,
+    EndUserRoute,
     UserHome,
     ProductDetail,
-    HomePublic,
+    Products,
+    UserLayout,
+    /** admin */
+    AdminUserPage,
+    AdminRoute,
     AdminHome,
     AdminLayout,
-    UserLayout,
     AdminReviewPage,
     AdminOrdersPage,
     AdminCartPage,
     AdminCategoryPage,
-    SignUp,
-    AdminPaymentPage
+    AdminPaymentPage,
+    AdminProductsPage,
+    AdminHelpPage,
+    AdminSettingPage,
+    AdminCustomerPage,
+    /** page detail by admin role */
+    PageProductDetail,
+    PageUserDetail,
+    PageCustomerDetail
 }

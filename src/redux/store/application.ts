@@ -25,13 +25,17 @@ export const applicationSlice = createSlice({
     },
     setUserDetail: (state, { payload }: { payload: ResUser }) => {
       state.userDetail = payload;
-    }
+    },
+    setUserSelected: (state, { payload }: { payload: ResUser }) => {
+      state.userSelected = payload;
+    },
   },
 });
 
 export const {
   dispatchSnackbar,
-  setUserDetail
+  setUserDetail,
+  setUserSelected
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;
