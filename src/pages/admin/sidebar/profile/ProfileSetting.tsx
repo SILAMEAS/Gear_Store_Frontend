@@ -36,7 +36,7 @@ export default function ProfileSetting() {
                 }}
             >
                 <Avatar
-                    src={userDetail?.profile_image}
+                    src={String(userDetail?.profile_image)}
                     sx={{ width: 80, height: 80 }}
                 />
                 <Box>

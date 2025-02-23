@@ -30,6 +30,27 @@ export const darkTheme = createTheme({
             },
         },
         /**  ===========================================================================  */
+        /**                              MuiIconButton                                    */
+        /**  ===========================================================================  */
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    color: "#f97316", // Default icon color (primary orange)
+                    backgroundColor: "transparent", // Transparent background
+                    transition: "all 0.3s ease-in-out",
+                    "&:hover": {
+                        backgroundColor: "#f97316", // Orange background on hover
+                        color: "#ffffff", // White icon on hover
+                    },
+                    "&.Mui-disabled": {
+                        backgroundColor: "rgba(0, 0, 0, 0.12)", // Light grey for disabled state
+                        color: "f9731650", // Muted color for disabled icon
+                        cursor:"pointer"
+                    },
+                },
+            },
+        },
+        /**  ===========================================================================  */
         /**                              MuiAppBar                                        */
         /**  ===========================================================================  */
         MuiAppBar: {

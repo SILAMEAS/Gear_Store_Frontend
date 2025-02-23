@@ -30,6 +30,27 @@ const lightTheme = createTheme({
             },
         },
         /**  ===========================================================================  */
+        /**                              MuiIconButton                                    */
+        /**  ===========================================================================  */
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    color: "#f97316", // Default icon color (primary orange)
+                    backgroundColor: "transparent", // Transparent background
+                    transition: "all 0.3s ease-in-out",
+                    "&:hover": {
+                        // backgroundColor: "#f97316", // Orange background on hover
+                        border:"2px solid #f97316",
+                        color: "#f97316", // White icon on hover
+                    },
+                    "&.Mui-disabled": {
+                        backgroundColor: "rgba(0, 0, 0, 0.12)", // Light grey for disabled state
+                        color: "rgba(0, 0, 0, 0.26)", // Muted color for disabled icon
+                    },
+                },
+            },
+        },
+        /**  ===========================================================================  */
         /**                              MuiAppBar                                        */
         /**  ===========================================================================  */
         MuiAppBar: {

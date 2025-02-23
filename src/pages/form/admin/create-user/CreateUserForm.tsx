@@ -18,23 +18,9 @@ import {
 } from "@mui/material"
 import {Visibility, VisibilityOff} from "@mui/icons-material"
 import {useDropzone} from "react-dropzone"
+import {useAddUserMutation} from "../../../../redux/services/adminApi.ts";
+import {EnumRole, UserFormData} from "../../../../redux/services/types/IUserApi.ts";
 
-interface UserFormData {
-    username: string
-    email: string
-    first_name: string
-    last_name: string
-    is_active: boolean
-    profile_image: File | null
-    role: string
-    phone: string
-    dob: string
-    country: string
-    city: string
-    postal_code: string
-    password: string
-    confirmPassword: string
-}
 
 const ImageDropzone: React.FC<{
     onChange: (file: File | null) => void
@@ -89,6 +75,7 @@ const ImageDropzone: React.FC<{
 }
 
 const CreateUserForm: React.FC = () => {
+    const [addUser]=useAddUserMutation({})
     const {
         control,
         handleSubmit,
@@ -101,8 +88,8 @@ const CreateUserForm: React.FC = () => {
             first_name: "",
             last_name: "",
             is_active: true,
-            profile_image: null,
-            role: "",
+            profile_image:null,
+            role: EnumRole.USER,
             phone: "",
             dob: "",
             country: "",
@@ -114,9 +101,15 @@ const CreateUserForm: React.FC = () => {
     })
     const [showPassword, setShowPassword] = React.useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
-    const onSubmit = (data: UserFormData) => {
-        console.log(data)
-        // Here you would typically send the data to your backend
+
+    const onSubmit =async (data: UserFormData) => {
+        try {
+            console.log(data)
+            await addUser({...data,password:data.password}).unwrap();
+
+        }catch (e:any){
+            console.error(e.data)
+        }
     }
     const password = watch("password")
     const handleClickShowPassword = () => setShowPassword((show) => !show)

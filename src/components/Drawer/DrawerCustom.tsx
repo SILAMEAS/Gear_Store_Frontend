@@ -2,7 +2,7 @@ import * as React from "react";
 import {PropsWithChildren} from "react";
 import Box, {BoxProps} from "@mui/material/Box";
 import {Anchor, DefaultAnchorTemporaryDrawer, PropsDrawerCustom} from "./type.ts";
-import {Button, Drawer, IconButton, Stack} from "@mui/material";
+import {Drawer, IconButton, Stack} from "@mui/material";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
 
 export default function DrawerCustom({children,anchor,renderButton,...contentsProps}:PropsWithChildren&PropsDrawerCustom&BoxProps) {
@@ -24,11 +24,11 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
     return (
         <div>
             <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)}>{renderButton}</Button>
+                <Stack onClick={toggleDrawer(anchor, true)}>{renderButton}</Stack>
                 <Drawer
                     anchor={anchor}
                     open={anchorTemporaryDrawer[anchor]}
-                    // onClose={toggleDrawer(anchor, false)}
+                    onClose={toggleDrawer(anchor, false)}
                 >
                     <Box
                         sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}

@@ -1,4 +1,4 @@
-import {ResUserDetail} from "../services/types/IUserApi.ts";
+import {ResUser} from "../services/types/IUserApi.ts";
 
 export interface IApplication {
   deleteProductId: number | null;
@@ -6,7 +6,7 @@ export interface IApplication {
   productCurrentPage: number;
   snackbarMessage: string | null;
   snackbarStatus: ISnackbarStatus;
-  userDetail?:ResUserDetail;
+  userDetail?:ResUser;
   // role: EnumRole;
 }
 

@@ -1,7 +1,7 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {Method} from "./types/Method.ts";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import {ResUserDetail} from "./types/IUserApi.ts";
+import {ResUser} from "./types/IUserApi.ts";
 import {ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
 
 
@@ -26,7 +26,7 @@ export const userApi = createApi({
       }),
     }),
     /** Get user by ID **/
-    getUserDetail: builder.query<ResUserDetail, object>({
+    getUserDetail: builder.query<ResUser, object>({
       query: () => ({
         headers: {
           ["Authorization"]: `Bearer ${getToken()?.access}`,

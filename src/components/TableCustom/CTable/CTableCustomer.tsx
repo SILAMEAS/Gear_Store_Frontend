@@ -1,11 +1,13 @@
-import {Stack, Typography} from "@mui/material";
+import {Avatar, IconButton, Stack, Typography} from "@mui/material";
 import useTableCustom from "../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../utils/handleProcessPassingData.ts";
 import TableCustom from "../components/TableCustom.tsx";
 import React from "react";
 import {ResUser, ResUsers} from "../../../redux/services/types/IUserApi.ts";
-import {useGetCustomerQuery} from "../../../redux/services/adminApi.ts";
+import {useDeleteUserMutation, useGetCustomerQuery} from "../../../redux/services/adminApi.ts";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const CTableCustomer = <CO extends ResUser>() =>
 {
@@ -21,6 +23,7 @@ const CTableCustomer = <CO extends ResUser>() =>
     } = useTableCustom<CO>(EnumTableFooterType.pagination);
 
     const {currentData, isFetching, isError, error, isLoading} =useGetCustomerQuery({page:filter.page,pageSize:filter.pageSize},{refetchOnMountOrArgChange:true});
+    const [deleteUser]=useDeleteUserMutation({});
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
             const {contents, page} = propData;
@@ -56,9 +59,34 @@ const CTableCustomer = <CO extends ResUser>() =>
             visibleRows={visibleRows}
             headCells={[
                 {
+                    id: "profile_image",
+                    disableSort: false,
+                    label: "Profile",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"500px",
+                        sx:{
+                            paddingLeft:"30px"
+                        }
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} pl={"30px"}>
+                            <Avatar
+                                src={String(data?.profile_image)}
+                                sx={{ width: 36, height: 36 }}
+                            />
+                        </Stack>
+                    ),
+                },
+                {
                     id: "username",
                     disableSort: false,
-                    label: "Username",
+                    label: "First Name",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -74,7 +102,7 @@ const CTableCustomer = <CO extends ResUser>() =>
                             alignItems={"center"}
                             gap={"15px"} pl={"30px"}>
                             <Typography>
-                                {data.username}
+                                {data.first_name} {data.last_name}
                             </Typography>
                         </Stack>
                     ),
@@ -104,9 +132,9 @@ const CTableCustomer = <CO extends ResUser>() =>
                     ),
                 },
                 {
-                    id: "is_active",
+                    id: "id",
                     disableSort: false,
-                    label: "Active",
+                    label: "Actions",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -116,14 +144,24 @@ const CTableCustomer = <CO extends ResUser>() =>
                         }
                     },
                     tableSortLabelProps: {},
+                    stopPropagation:true,
                     render: data => (
                         <Stack
                             direction={"row"}
                             alignItems={"center"}
                             gap={"15px"} pl={"30px"}>
-                            <Typography>
-                                {data.is_active}
-                            </Typography>
+                            <IconButton onClick={async ()=>{
+                                try {
+                                    await deleteUser({id:data.id}).unwrap();
+                                }catch (e){
+                                    console.error(e)
+                                }
+                            }}>
+                                <DeleteIcon/>
+                            </IconButton>
+                            <IconButton>
+                                <EditIcon/>
+                            </IconButton>
                         </Stack>
                     ),
                 }

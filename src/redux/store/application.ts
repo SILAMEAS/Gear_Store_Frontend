@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IApplication, ISnackbarStatus} from "./type.ts";
-import {ResUserDetail} from "../services/types/IUserApi.ts";
+import {ResUser} from "../services/types/IUserApi.ts";
 
 const initialState: IApplication = {
   productCurrentPage: 1,
@@ -23,7 +23,7 @@ export const applicationSlice = createSlice({
       state.snackbarMessage = payload.message;
       state.snackbarStatus = payload.status;
     },
-    setUserDetail: (state, { payload }: { payload: ResUserDetail }) => {
+    setUserDetail: (state, { payload }: { payload: ResUser }) => {
       state.userDetail = payload;
     }
   },

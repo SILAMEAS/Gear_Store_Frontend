@@ -1,11 +1,13 @@
-import {Stack, Typography} from "@mui/material";
+import {Avatar, IconButton, Stack, Typography} from "@mui/material";
 import useTableCustom from "../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../utils/handleProcessPassingData.ts";
 import TableCustom from "../components/TableCustom.tsx";
 import React from "react";
-import {ResUser, ResUsers} from "../../../redux/services/types/IUserApi.ts";
-import {useGetUsersQuery} from "../../../redux/services/adminApi.ts";
+import {EnumRole, ResUser, ResUsers} from "../../../redux/services/types/IUserApi.ts";
+import {useDeleteUserMutation, useGetUsersQuery} from "../../../redux/services/adminApi.ts";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const CTableUser = <CO extends ResUser>() =>
 {
@@ -19,7 +21,7 @@ const CTableUser = <CO extends ResUser>() =>
         setFilter,
         tableFooterType,
     } = useTableCustom<CO>(EnumTableFooterType.pagination);
-
+    const [deleteUser]=useDeleteUserMutation({});
     const {currentData, isFetching, isError, error, isLoading} =useGetUsersQuery({page:filter.page,pageSize:filter.pageSize},{refetchOnMountOrArgChange:true});
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
@@ -56,9 +58,9 @@ const CTableUser = <CO extends ResUser>() =>
             visibleRows={visibleRows}
             headCells={[
                 {
-                    id: "username",
+                    id: "profile_image",
                     disableSort: false,
-                    label: "Username",
+                    label: "Profile",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -73,9 +75,10 @@ const CTableUser = <CO extends ResUser>() =>
                             direction={"row"}
                             alignItems={"center"}
                             gap={"15px"} pl={"30px"}>
-                            <Typography>
-                                {data.username}
-                            </Typography>
+                            <Avatar
+                                src={String(data?.profile_image)}
+                                sx={{ width: 36, height: 36 }}
+                            />
                         </Stack>
                     ),
                 },
@@ -104,33 +107,9 @@ const CTableUser = <CO extends ResUser>() =>
                     ),
                 },
                 {
-                    id: "is_active",
-                    disableSort: false,
-                    label: "Active",
-                    tableCellProps: {
-                        align: "left",
-                        padding: "none",
-                        width:"500px",
-                        sx:{
-                            paddingLeft:"30px"
-                        }
-                    },
-                    tableSortLabelProps: {},
-                    render: data => (
-                        <Stack
-                            direction={"row"}
-                            alignItems={"center"}
-                            gap={"15px"} pl={"30px"}>
-                            <Typography>
-                                {data.is_active}
-                            </Typography>
-                        </Stack>
-                    ),
-                },
-                {
                     id: "role",
                     disableSort: false,
-                    label: "Staff",
+                    label: "Role",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -148,6 +127,40 @@ const CTableUser = <CO extends ResUser>() =>
                             <Typography>
                                 {data.role}
                             </Typography>
+                        </Stack>
+                    ),
+                },
+                {
+                    id: "id",
+                    disableSort: false,
+                    label: "Actions",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"500px",
+                        sx:{
+                            paddingLeft:"30px"
+                        }
+                    },
+                    tableSortLabelProps: {},
+                    stopPropagation:true,
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} pl={"30px"}>
+                            <IconButton onClick={async ()=>{
+                                try {
+                                    await deleteUser({id:data.id}).unwrap();
+                                }catch (e){
+                                    console.error(e)
+                                }
+                            }} disabled={data.role===EnumRole.ADMIN}>
+                                <DeleteIcon/>
+                            </IconButton>
+                            <IconButton>
+                                <EditIcon/>
+                            </IconButton>
                         </Stack>
                     ),
                 }
