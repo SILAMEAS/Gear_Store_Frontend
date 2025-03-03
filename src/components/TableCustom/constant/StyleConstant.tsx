@@ -1,3 +1,5 @@
+import Colors from "../../../theme/mode/Colors.ts";
+
 export const StyleConstant = {
     inputStyleLogin: {
         "& input::placeholder": {
@@ -23,7 +25,7 @@ export const StyleConstant = {
       select: {
         iconDropDownSelectPrimary: {
           ".MuiSvgIcon-root": {
-            color: "white",
+            color:Colors._ffffff,
           },
         },
       },

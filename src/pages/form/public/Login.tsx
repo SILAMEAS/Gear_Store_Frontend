@@ -52,7 +52,7 @@ const Login = () => {
             px: 2
           }}
       >
-          <ThemeToggle/>
+          <ThemeToggle sx={{position:"absolute",top:1}}/>
         <form onSubmit={formData.handleSubmit(handleLogin)} id="login-form" style={{ width: "100%", maxWidth: "400px" }}>
           <Stack spacing={3}>
             <Typography

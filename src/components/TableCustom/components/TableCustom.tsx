@@ -1,26 +1,18 @@
-import {
-  Backdrop,
-  CircularProgress,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-} from "@mui/material";
+import {Backdrop, CircularProgress, Stack, Table, TableBody, TableCell, TableContainer, TableRow,} from "@mui/material";
 import React from "react";
 import {Waypoint} from "react-waypoint";
-import {  ITableCustom } from "./types.ts";
-import { useEffectInTableCustom } from "../hooks/useEffectInTableCustom.tsx";
-import { Ascending, Descending } from "../constant/TableConstant.ts";
-import { SearchTableCustom } from "./SearchTableCustom.tsx";
-import { EnhancedTableHeadCustom } from "./HeaderCustom.tsx";
-import { conditionLoadingSkeleton } from "../utils/conditionLoadingSkeleton.ts";
-import { SkeletonLoadingTableCustom } from "./SkeletonLoadingTableCustom.tsx";
+import {ITableCustom} from "./types.ts";
+import {useEffectInTableCustom} from "../hooks/useEffectInTableCustom.tsx";
+import {Ascending, Descending} from "../constant/TableConstant.ts";
+import {SearchTableCustom} from "./SearchTableCustom.tsx";
+import {EnhancedTableHeadCustom} from "./HeaderCustom.tsx";
+import {conditionLoadingSkeleton} from "../utils/conditionLoadingSkeleton.ts";
+import {SkeletonLoadingTableCustom} from "./SkeletonLoadingTableCustom.tsx";
 import wayPointProcess from "../utils/wayPointProcess.ts";
 import PaginationTableCustom from "./PaginationTableCustom.tsx";
 import CellCustom from "./CellCustom.tsx";
 import EnumTableType from "../constant/enum/EnumTableType.ts";
+import Colors from "../../../theme/mode/Colors.ts";
 
 export default function TableCustom<
   P extends Record<string, any>,
@@ -198,7 +190,7 @@ export default function TableCustom<
       {selectedUI}
       <Backdrop
         sx={{
-          color: "white",
+          color:Colors._ffffff,
           zIndex: th => th.zIndex.drawer + 1,
         }}
         open={loadingSlow}>

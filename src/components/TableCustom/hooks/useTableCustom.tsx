@@ -1,17 +1,17 @@
-import React from 'react';
-import {TableCellProps} from '@mui/material';
-import {Descending} from '../constant/TableConstant.ts';
-import {FilterBy, IFilterTableCustom, ISortFieldUser} from '../components/types.ts';
-import EnumTableFooterType from '../constant/enum/EnumTableFooterType.ts';
+import React from "react";
+import {TableCellProps} from "@mui/material";
+import {Descending} from "../constant/TableConstant.ts";
+import {FilterBy, IFilterTableCustom, ISortFieldUser} from "../components/types.ts";
+import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 const defaultFilter: IFilterTableCustom = {
   page:1,
   pageSize: 10,
   sortDirection: Descending,
-  sortField: 'id',
-  sortByField: 'id',
+  sortField: "id",
+  sortByField: "id",
   filterBy: FilterBy.ENDUSER,
-  search: '',
+  search: "",
 };
 
 
@@ -19,7 +19,7 @@ const useTableCustom = <T extends Record<string, any>>(
   tableFooterType: EnumTableFooterType,
 ) => {
   /** state */
-  const [status, setStatus] = React.useState<string[]>(['']);
+  const [status, setStatus] = React.useState<string[]>([""]);
   const [filter, setFilter] = React.useState<IFilterTableCustom>(defaultFilter);
   const [visibleRows, setVisibleRows] = React.useState<Array<T>>([]);
   const [selected, setSelected] = React.useState<
@@ -34,10 +34,10 @@ const useTableCustom = <T extends Record<string, any>>(
   };
   const tempCol = [
     {
-      id: 'temp',
+      id: "temp",
       disableSort: false,
       hidden: true,
-      label: '',
+      label: "",
       tableCellProps: {},
       stopPropagation: true,
       tableSortLabelProps: {},
@@ -63,10 +63,10 @@ const useTableCustom = <T extends Record<string, any>>(
   };
   const checkStatus = (s: string) => {
     switch (s) {
-      case 'IN_PROGRESS': {
+      case "IN_PROGRESS": {
         return 0;
       }
-      case 'COMPLETED': {
+      case "COMPLETED": {
         return 1;
       }
       default: {
@@ -108,7 +108,7 @@ const useTableCustom = <T extends Record<string, any>>(
   const isSelected = (id: string) => selected.indexOf(id) !== -1;
   const fieldDirectionInfiniteScroll = () => {
     if (tableFooterType === EnumTableFooterType.infiniteScroll) {
-      return {sortField: 'id', sortDirection: Descending};
+      return {sortField: "id", sortDirection: Descending};
     } else {
       return {
         sortField: filter.sortField as ISortFieldUser,

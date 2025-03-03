@@ -5,17 +5,14 @@ import {ListItem, ListItemIcon, ListItemProps, ListItemText} from "@mui/material
 
 const ThemeToggle = ({label,...props}:{label?:string}&ListItemProps) => {
     const { toggleTheme, isDarkMode } = useTheme()
-    return <ListItem onClick={toggleTheme} sx={{cursor:"pointer"}} {...props}>
+    return <ListItem onClick={toggleTheme}  {...props}>
         <ListItemIcon>
-            {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+            {isDarkMode ? <LightModeIcon sx={{cursor:"pointer"}}/> : <DarkModeIcon sx={{cursor:"pointer"}}/>}
         </ListItemIcon>
         {
             label&&<ListItemText primary={label} />
         }
     </ListItem>
-    // <IconButton onClick={toggleTheme} {...IconButtonProps}>
-    //     {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
-    // </IconButton>
 };
 
 export default ThemeToggle;

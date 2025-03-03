@@ -1,5 +1,6 @@
 import {Switch, SwitchProps} from "@mui/material";
 import {styled} from "@mui/material/styles";
+import Colors from "../theme/mode/Colors.ts";
 
 const _webkitBoxShadow = "inset 0 0 6px rgba(0,0,0,0.00)";
 const _outline = "1px solid slategrey";
@@ -41,7 +42,7 @@ export const StyleCustom = {
         },
         gridCard: {
             boxShadow: `-1px 0px 1px 10px ${"#00000" + "02"} inset`,
-            backgroundColor: "white",
+            backgroundColor:Colors._ffffff,
             borderRadius: "8px",
             padding: "20px",
             display: "flex",
@@ -57,7 +58,7 @@ export const StyleCustom = {
             py: "16px",
             px: "20px",
             gap: "20px",
-            bgcolor: "white",
+            bgcolor:Colors._ffffff,
             boxShadow: "0 1px 10px #00000010",
             cursor: "pointer",
         },
@@ -154,7 +155,7 @@ export const StyleCustom = {
         alignItems: "center",
         justifyContent: "center",
         fontSize: 96,
-        color: "white",
+        color:Colors._ffffff,
         // background: "#FFFFFF33",
         textAlign: "center",
         // This is important to preserve the chart interactivity
@@ -267,7 +268,7 @@ export const StyleCustom = {
         },
         enable: {
             backgroundColor: "primary.main",
-            color: "white",
+            color:Colors._ffffff,
             "&:hover": {
                 backgroundColor: "primary.dark",
             },
@@ -315,7 +316,7 @@ export const StyleCustom = {
             webkitBoxShadow: _webkitBoxShadow,
         },
         "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "white",
+            backgroundColor:Colors._ffffff,
             outline: _outline,
         },
     },
@@ -367,7 +368,7 @@ export const StyleCustom = {
         minWidth: "280px",
         borderRadius: "6px",
         p: "7.5px",
-        background: "white",
+        background:Colors._ffffff,
         border: "solid 1px #E9E9E9",
     },
     muiInputOtp: {
@@ -437,7 +438,7 @@ export const IOSSwitch = styled((props: SwitchProps) => (
         color: "grey",
         "&.Mui-checked": {
             transform: "translateX(16px)",
-            color: "white",
+            color:Colors._ffffff,
             "& + .MuiSwitch-track": {
                 backgroundColor:
                     theme.palette.mode === "dark"

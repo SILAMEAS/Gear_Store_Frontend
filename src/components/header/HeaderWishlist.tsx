@@ -4,6 +4,7 @@ import DrawerCustom from "../Drawer/DrawerCustom.tsx";
 import {useGetAllWishlistsQuery} from "../../redux/services/wishlistApi.ts";
 import {BoxProps} from "@mui/material/Box";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
+import Colors from "../../theme/mode/Colors.ts";
 
 const HeaderWishlist = (props: BoxProps) => {
     const defaultStyle = {
@@ -15,7 +16,7 @@ const HeaderWishlist = (props: BoxProps) => {
         <DrawerCustom
             renderButton={<Box sx={defaultStyle} {...props}>
                 <Badge badgeContent={currentData?.total??0} color="primary">
-                    <FavoriteBorderIcon sx={{color:getToken().access? "white":"grey"}}/>
+                    <FavoriteBorderIcon sx={{color:getToken().access?Colors._ffffff:"grey"}}/>
                 </Badge>
             </Box>}
             anchor={"right"}

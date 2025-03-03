@@ -5,6 +5,7 @@ import {useAppSelector} from "../../../../redux/redux.ts";
 import {MenuUser} from "../MenuUser.ts";
 import {MenuPublic} from "../../public/MenuPublic.ts";
 import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
+import Colors from "../../../../theme/mode/Colors.ts";
 
 export const UICenterHeaderMenu=()=>{
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const UICenterHeaderMenu=()=>{
 
     return <>
         {menu.map((item) => (
-            <Button key={item.name} sx={{ color: "white", textTransform: "none" }} onClick={()=>{
+            <Button key={item.name} sx={{ color:Colors._ffffff, textTransform: "none" }} onClick={()=>{
                 navigate(item.url)
             }}>
                 {item.name}
