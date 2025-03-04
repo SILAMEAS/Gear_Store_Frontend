@@ -1,9 +1,10 @@
-import {Avatar, Box, Button, Grid, Paper, Typography} from "@mui/material"
+import {Avatar, Box, Button, Grid, Input, Paper, Typography} from "@mui/material"
 import {ResUser} from "../../../../redux/services/types/IUserApi.ts";
-import {useForm} from 'react-hook-form';
+import {useForm} from "react-hook-form";
 import EditIcon from "@mui/icons-material/Edit";
 import {ReactNode, useState} from "react";
 import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
+import Text from "../../../../components/Text/Text.tsx";
 
 type InfoRowProps = {
     label: string
@@ -40,18 +41,18 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
         // Handle form submission
         const formData = new FormData();
         if (profileImage) {
-            formData.append('profile_image', profileImage); // Append the profile image file
+            formData.append("profile_image", profileImage); // Append the profile image file
         }
         // Append other form data
-        formData.append('first_name', data.first_name);
-        formData.append('last_name', data.last_name);
-        formData.append('dob', data.dob);
-        formData.append('email', data.email);
-        formData.append('phone', data.phone);
-        formData.append('role', data.role);
-        formData.append('country', data.country);
-        formData.append('city', data.city);
-        formData.append('postal_code', data.postal_code);
+        formData.append("first_name", data.first_name);
+        formData.append("last_name", data.last_name);
+        formData.append("dob", data.dob);
+        formData.append("email", data.email);
+        formData.append("phone", data.phone);
+        formData.append("role", data.role);
+        formData.append("country", data.country);
+        formData.append("city", data.city);
+        formData.append("postal_code", data.postal_code);
 
         // Log FormData content
         for (const [key, value] of formData.entries()) {
@@ -95,22 +96,22 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                 <Paper elevation={0} sx={{ p: 3, mb: 3 }}>
                     <Grid container spacing={4}>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="First Name" value={<input {...register('first_name')} />} />
+                            <InfoRow label="First Name" value={<Input {...register("first_name")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Last Name" value={<input {...register('last_name')} />} />
+                            <InfoRow label="Last Name" value={<Input {...register("last_name")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Date of Birth" value={<input {...register('dob')} />} />
+                            <InfoRow label="Date of Birth" value={<Input {...register("dob")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Email Address" value={<input {...register('email')} />} />
+                            <InfoRow label="Email Address" value={<Input {...register("email")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Phone Number" value={<input {...register('phone')} />} />
+                            <InfoRow label="Phone Number" value={<Input {...register("phone")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="User Role" value={<input {...register('role')} />} />
+                            <InfoRow label="User Role" value={<Input {...register("role")} />} />
                         </Grid>
                     </Grid>
                 </Paper>
@@ -118,17 +119,21 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                 <Paper elevation={0} sx={{ p: 3 }}>
                     <Grid container spacing={4}>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Country" value={<input {...register('country')} />} />
+                            <InfoRow label="Country" value={<Input {...register("country")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="City" value={<input {...register('city')} />} />
+                            <InfoRow label="City" value={<Input {...register("city")} />} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InfoRow label="Postal Code" value={<input {...register('postal_code')} />} />
+                            <InfoRow label="Postal Code" value={<Input {...register("postal_code")} />} />
                         </Grid>
                     </Grid>
                 </Paper>
-                <Button type="submit" startIcon={<EditIcon />} fullWidth sx={{mt:"40px"}}>Update User</Button>
+                <Button type="submit" startIcon={<EditIcon />} fullWidth sx={{mt:"40px"}} variant={"contained"}>
+                    <Text>
+                        Update User
+                    </Text>
+                   </Button>
             </form>
         </Box>
     );

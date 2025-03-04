@@ -13,6 +13,7 @@ import {
 import {ExpandLess, ExpandMore} from "@mui/icons-material"
 import {useState} from "react"
 import {StyleCustom} from "../../styles/StyleCustom.tsx";
+import Colors from "../../theme/mode/Colors.ts";
 
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -122,7 +123,7 @@ export default function FilterSidebar() {
                                                 edge="start"
                                                 checked={selectedItems.includes(option)}
                                                 sx={{
-                                                    color: "#666",
+                                                    color: Colors._666,
                                                     "&.Mui-checked": {
                                                         color: "#2196f3",
                                                     },
@@ -144,7 +145,7 @@ export default function FilterSidebar() {
                                 sx={{
                                     py: 0.5,
                                     minHeight: 32,
-                                    color: "#666",
+                                    color: Colors._666,
                                     "&:hover": {
                                         color: "#fff",
                                     },

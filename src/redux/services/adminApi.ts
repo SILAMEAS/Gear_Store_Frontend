@@ -1,7 +1,7 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {ReqHeader} from "../ReqHeader.tsx";
 import {ReqDashboard, ResDashboard, ResOrders, ResPayments} from "./types/IAdminApi.ts";
-import {ReqUserDetail, ResUser, ResUsers} from "./types/IUserApi.ts";
+import {ResUser, ResUsers} from "./types/IUserApi.ts";
 import {ReqPage} from "./types/IPagination.ts";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import {Method} from "./types/Method.ts";
@@ -35,12 +35,12 @@ export const adminApi = createApi({
         params:{pageSize,page},
 
       }),
-      providesTags:['users']
+      providesTags:["users"]
     }),
     /** ==================================== **/
     /**             Add User                 **/
     /** ==================================== **/
-    addUser: builder.mutation<ResUser, ReqUserDetail>({
+    addUser: builder.mutation<ResUser, FormData>({
       query: (body) => ({
         headers: {
           ["Authorization"]: `Bearer ${getToken()?.access}`,
@@ -50,7 +50,7 @@ export const adminApi = createApi({
         body
 
       }),
-      invalidatesTags:['users']
+      invalidatesTags:["users"]
     }),
     /** ==================================== **/
     /**             Delete User                 **/
@@ -64,7 +64,7 @@ export const adminApi = createApi({
         method: Method.DELETE
 
       }),
-      invalidatesTags:()=>['users']
+      invalidatesTags:()=>["users"]
     }),
     /** =======================================================================  **/
     /**                            Customer                                      **/
@@ -82,7 +82,7 @@ export const adminApi = createApi({
         params:{pageSize,page}
 
       }),
-      providesTags:['users']
+      providesTags:["users"]
     }),
     /** =======================================================================  **/
     /**                            Order                                         **/

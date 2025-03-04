@@ -1,4 +1,5 @@
 import {Box, Typography} from "@mui/material";
+import Colors from "../../../../theme/mode/Colors.ts";
 
 const AppFooter = () => {
   return (
@@ -17,7 +18,7 @@ const AppFooter = () => {
         boxShadow: "0px -2px 5px rgba(0, 0, 0, 0.1)"
       }}
     >
-      <Typography variant="body2" color="white">
+      <Typography variant="body2" color={Colors._ffffff}>
         &copy; {new Date().getFullYear()} LA STORE. All rights reserved.
       </Typography>
     </Box>

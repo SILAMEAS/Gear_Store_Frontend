@@ -16,6 +16,10 @@ export const darkTheme = createTheme({
             default: Colors._000000,
             paper: Colors._000000,
         },
+        black:{
+            main:Colors._000000,
+            light:Colors._ffffff,
+        }
     },
     /**  ===========================================================================  */
     /**                              Typography                                       */
@@ -30,7 +34,7 @@ export const darkTheme = createTheme({
                 fontWeight: 700,
                 lineHeight: 1.2,
                 letterSpacing: "0.02em",
-                color: "#212121",
+                // color: "#212121",
                 textTransform: "uppercase",
             },
             h2: {
@@ -38,32 +42,32 @@ export const darkTheme = createTheme({
                 fontWeight: 600,
                 lineHeight: 1.3,
                 letterSpacing: "0.015em",
-                color: "#333",
+                // color: Colors._333,
             },
             h3: {
                 fontSize: "2rem",
                 fontWeight: 600,
                 lineHeight: 1.4,
                 letterSpacing: "0.01em",
-                color: "#444",
+                // color: "#444",
             },
             h4: {
                 fontSize: "1.75rem",
                 fontWeight: 500,
                 lineHeight: 1.5,
-                color: "#555",
+                // color: "#555",
             },
             h5: {
                 fontSize: "1.5rem",
                 fontWeight: 500,
                 lineHeight: 1.6,
-                color: "#666",
+                // color: Colors._666,
             },
             h6: {
                 fontSize: "1.25rem",
                 fontWeight: 500,
                 lineHeight: 1.7,
-                color: "#777",
+                // color: "#777",
             },
 
             // Body text
@@ -71,7 +75,7 @@ export const darkTheme = createTheme({
                 fontSize: "1rem",
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: "#333",
+                color: Colors._ffffff,
             },
             body2: {
                 fontSize: "0.875rem",
@@ -91,7 +95,7 @@ export const darkTheme = createTheme({
                 fontSize: "0.875rem",
                 fontWeight: 500,
                 lineHeight: 1.6,
-                color: "#666",
+                color: Colors._666,
             },
 
             // Button text
@@ -133,7 +137,7 @@ export const darkTheme = createTheme({
                     },
                     "&.MuiButton-contained": {
                         fontWeight: 600,
-                        textTransform: "capitalize",
+                        textTransform: "capitalize"
                     },
                     "&.MuiButton-text": {
                         fontWeight: 600,
@@ -205,18 +209,18 @@ export const darkTheme = createTheme({
             styleOverrides: {
                 root: {
                     fontSize: "1rem",
-                    color: "#333",
-                    backgroundColor: "#fff",
+                    color: "#fff",
+                    backgroundColor: "inherit",
                     borderRadius: "8px",
                     padding: "10px",
                     "&:hover": {
-                        backgroundColor: "#f5f5f5",
+                        backgroundColor: "inherit",
                     },
                 },
                 input: {
                     padding: "12px",
                     fontSize: "1rem",
-                    color: "#222",
+                    color: "#fff",
                 },
             },
         },
@@ -224,12 +228,13 @@ export const darkTheme = createTheme({
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {
+                    backgroundColor: "inherit",
                     borderRadius: "8px",
                     "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#ccc",
+                        borderColor: Colors._ccc,
                     },
                     "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#666",
+                        borderColor: Colors._666,
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                         borderColor: "white",
@@ -237,7 +242,7 @@ export const darkTheme = createTheme({
                     },
                 },
                 input: {
-                    padding: "12px",
+                    padding: "2px",
                 },
             },
         },
@@ -280,6 +285,73 @@ export const darkTheme = createTheme({
         MuiTextField: {
             defaultProps: {
                 variant: "outlined", // Default variant for all <TextField />
+            },
+        },
+        /**  ===========================================================================  */
+        /**                              Menu Item                                        */
+        /**  ===========================================================================  */
+        MuiMenuItem: {
+            styleOverrides: {
+                root: {
+                    fontSize: "1rem",
+                    fontWeight: 500,
+                    color: "#fff", // Text color
+                    backgroundColor: "inherit", // Inherit from parent
+                    borderRadius: "8px", // Rounded corners
+                    padding: "10px 16px", // Adjust padding
+                    transition: "all 0.3s ease",
+
+                    "&:hover": {
+                        backgroundColor: "#FF6B00", // Custom hover color
+                        color: "#fff", // Ensure text stays visible
+                    },
+
+                    "&.Mui-selected": {
+                        backgroundColor: "#FF6B00", // Selected item background
+                        color: "#fff", // Selected item text
+                        "&:hover": {
+                            backgroundColor: "#E65C00", // Darker hover effect on selected
+                        },
+                    },
+                },
+            },
+        },
+
+        MuiMenu: {
+            styleOverrides: {
+                paper: {
+                    backgroundColor: Colors._222, // Dark background for the menu
+                    borderRadius: "10px",
+                    padding: "5px",
+                },
+            },
+        },
+        /**  ===========================================================================  */
+        /**                              Icon                                             */
+        /**  ===========================================================================  */
+        MuiSvgIcon: {
+            styleOverrides: {
+                root: {
+                    fontSize: "1.8rem", // Default icon size
+                    // color: "in", // Default icon color (white)
+                    transition: "all 0.3s ease", // Smooth transition for hover effects
+
+                    // "&:hover": {
+                    //     color: "#FF6B00", // Change color on hover
+                    //     transform: "scale(1.1)", // Slightly enlarge on hover
+                    // },
+                    //
+                    // "&.Mui-disabled": {
+                    //     color: Colors._f97316+"10", // Greyed-out icons when disabled
+                    //     opacity: 0.5,
+                    // },
+                },
+                fontSizeSmall: {
+                    fontSize: "1.2rem", // Custom size for small icons
+                },
+                fontSizeLarge: {
+                    fontSize: "2.5rem", // Custom size for large icons
+                },
             },
         },
 

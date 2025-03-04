@@ -23,11 +23,11 @@ const HeaderWishlist = (props: BoxProps) => {
             bgcolor={"black"}
         >
             <Stack>
-                <Typography color={"white"}>HeaderWishlist</Typography>
+                <Typography color={Colors._ffffff}>HeaderWishlist</Typography>
                 <Stack>
                     {currentData?.contents?.map(item=>
                         <Box key={item.id}>
-                            <Typography color={"white"}>
+                            <Typography color={Colors._ffffff}>
                                 {item.product}
                             </Typography>
                         </Box>

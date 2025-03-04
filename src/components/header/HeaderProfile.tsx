@@ -7,6 +7,7 @@ import useAuth from "../../utils/hooks/useAuth.tsx";
 import LoginIcon from "@mui/icons-material/Login";
 import {Route} from "../../constants/Route.ts";
 import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
+import Colors from "../../theme/mode/Colors.ts";
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const {navigate}=useGlobalHook();
@@ -27,7 +28,7 @@ const HeaderProfile = () => {
           navigate(Route.public.LOGIN)
         }}
     >
-      <LoginIcon sx={{color:"white"}}/>
+      <LoginIcon sx={{color:Colors._ffffff}}/>
     </IconButton>
   }
   return (
@@ -42,7 +43,7 @@ const HeaderProfile = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           >
-          <AccountCircleIcon sx={{color:"white"}}/>
+          <AccountCircleIcon sx={{color:Colors._ffffff}}/>
           </IconButton>
           </Tooltip>
       </Box>

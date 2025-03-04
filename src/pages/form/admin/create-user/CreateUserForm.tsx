@@ -51,7 +51,23 @@ const CreateUserForm: React.FC = () => {
     const onSubmit =async (data: UserFormData) => {
         try {
             console.log(data)
-            await addUser({...data,password:data.password}).unwrap();
+            const formData = new FormData();
+            formData.append("email", data.email);
+            formData.append("password", data.password);
+            formData.append("username", data.username);
+            formData.append("phone", data.phone);
+            formData.append("profile_image", data.profile_image as unknown as string); // File object
+            formData.append("role", data.role);
+            formData.append("country", data.country);
+            formData.append("city", data.city);
+            formData.append("postal_code", data.postal_code);
+            formData.append("dob", data.dob);
+            formData.append("first_name", data.first_name);
+            formData.append("last_name", data.last_name);
+
+            formData.append("is_active", data.is_active as unknown as string);
+
+            await addUser(formData).unwrap();
 
         }catch (e:any){
             console.error(e.data)
@@ -64,7 +80,7 @@ const CreateUserForm: React.FC = () => {
     return (
         <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
             <Stack>
-               <Stack direction={'row'} gap={2}>
+               <Stack direction={"row"} gap={2}>
                    <Controller
                        name="username"
                        control={control}
@@ -101,7 +117,7 @@ const CreateUserForm: React.FC = () => {
                    />
                </Stack>
 
-                <Stack direction={'row'} gap={2}>
+                <Stack direction={"row"} gap={2}>
                     <Controller
                         name="first_name"
                         control={control}
@@ -156,7 +172,7 @@ const CreateUserForm: React.FC = () => {
                 )}
             />
            <Stack>
-               <Stack direction={'row'} gap={2}>
+               <Stack direction={"row"} gap={2}>
                    <Controller
                        name="role"
                        control={control}
@@ -200,7 +216,7 @@ const CreateUserForm: React.FC = () => {
                        )}
                    />
                </Stack>
-               <Stack direction={'row'} gap={2}>
+               <Stack direction={"row"} gap={2}>
                    <Controller
                        name="country"
                        control={control}
@@ -220,7 +236,7 @@ const CreateUserForm: React.FC = () => {
                    />
 
                </Stack>
-               <Stack direction={'row'} gap={2}>
+               <Stack direction={"row"} gap={2}>
                    <Controller
                        name="password"
                        control={control}

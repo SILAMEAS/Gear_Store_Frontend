@@ -34,7 +34,7 @@ const AdminSideBar: React.FC = () => {
                 {/** Sidebar Bottom*/}
                 <List>
                     <Divider sx={{mb:"20px"}}/>
-                        <ThemeToggle label={'Theme'}/>
+                        <ThemeToggle label={"Theme"}/>
 
                         <ListItem onClick={handleLogout} sx={{cursor:"pointer"}}>
                             <ListItemIcon>

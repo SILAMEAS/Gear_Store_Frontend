@@ -4,6 +4,7 @@ import DrawerCustom from "../../../../components/Drawer/DrawerCustom.tsx";
 import UILogo from "../header-navigation/UILogo.tsx";
 import {UICenterHeaderMenu} from "../header-navigation/UICenterHeaderMenu.tsx";
 import UIRightSideHeaderMenu from "../header-navigation/UIRightSideHeaderMenu.tsx";
+import Colors from "../../../../theme/mode/Colors.ts";
 
 const AppHeader = () => {
   return (
@@ -18,7 +19,7 @@ const AppHeader = () => {
           py:"10px",
           height: {sm:80,md:100},
           borderBottom:1,
-          borderColor:"white"
+          borderColor:Colors._ffffff
       }}
     >
       <Toolbar
@@ -33,7 +34,7 @@ const AppHeader = () => {
                   renderButton={<Box
                   sx={{ display: { xs: "visible", md: "none" }}}
               >
-                  <MenuIcon sx={{color:"white"}}/>
+                  <MenuIcon sx={{color:Colors._ffffff}}/>
               </Box>}
                   anchor={"left"}
                   bgcolor={"black"}
