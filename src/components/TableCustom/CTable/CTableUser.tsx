@@ -53,10 +53,10 @@ const CTableUser = <CO extends ResUser>() =>
                 height:"calc( 100vh - 150px )",
                 width:"100%"
             }}
-            handleViewDetailPage={(row)=>{
-                dispatch(setUserSelected(row));
-                navigate(Route.admin.USER+"/"+row.id)
-            }}
+            // handleViewDetailPage={(row)=>{
+            //     dispatch(setUserSelected(row));
+            //     navigate(Route.admin.USER+"/"+row.id)
+            // }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
             setFilter={setFilter}
@@ -166,7 +166,10 @@ const CTableUser = <CO extends ResUser>() =>
                             }} disabled={data.role===EnumRole.ADMIN}>
                                 <DeleteIcon/>
                             </IconButton>
-                            <IconButton>
+                            <IconButton onClick={()=>{
+                                dispatch(setUserSelected(data));
+                                navigate(Route.admin.USER+"/"+data.id)
+                            }}>
                                 <EditIcon/>
                             </IconButton>
                         </Stack>

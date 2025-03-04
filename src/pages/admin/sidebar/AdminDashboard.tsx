@@ -1,39 +1,13 @@
 import {Box, Grid, Stack} from "@mui/material";
 import MetricCard from "./dashboard/MetricCard.tsx";
-import {AttachMoney, Category, LocalShipping, People, ShoppingCart} from "@mui/icons-material";
-import PaymentsIcon from "@mui/icons-material/Payments";
 import SalesChart from "./dashboard/SalesChart.tsx";
 import TopProducts from "./dashboard/TopProducts.tsx";
 import RecentOrders from "./dashboard/RecentOrders.tsx";
 import {useGetDashboardQuery} from "../../../redux/services/adminApi.ts";
 import MainLoading from "../../../components/loading/MainLoading.tsx";
 import {EnumICard} from "../../../redux/services/types/IAdminApi.ts";
+import {RenderIcon} from "../../../components/TableCustom/constant/Constants.tsx";
 
-const RenderIcon=({id}:{id:EnumICard})=>{
-  switch (id){
-    case EnumICard.total_sales:{
-      return <AttachMoney/>
-    }
-    case EnumICard.total_customers:{
-      return <People/>
-    }
-    case EnumICard.total_categories:{
-      return <Category/>
-    }
-    case EnumICard.total_payment:{
-      return <PaymentsIcon/>
-    }
-    case EnumICard.total_orders:{
-      return <LocalShipping/>
-    }
-    case EnumICard.total_products:{
-      return <ShoppingCart/>
-    }
-    default:{
-      return <>D</>
-    }
-  }
-}
 const AdminDashboard = () => {
   const {currentData,isLoading} = useGetDashboardQuery({});
   if(isLoading||!currentData){

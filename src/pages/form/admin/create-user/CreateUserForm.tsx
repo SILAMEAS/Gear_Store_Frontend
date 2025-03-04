@@ -49,8 +49,8 @@ const CreateUserForm: React.FC = () => {
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
 
     const onSubmit =async (data: UserFormData) => {
+        console.log("SUBMIT")
         try {
-            console.log(data)
             const formData = new FormData();
             formData.append("email", data.email);
             formData.append("password", data.password);
@@ -64,11 +64,8 @@ const CreateUserForm: React.FC = () => {
             formData.append("dob", data.dob);
             formData.append("first_name", data.first_name);
             formData.append("last_name", data.last_name);
-
             formData.append("is_active", data.is_active as unknown as string);
-
             await addUser(formData).unwrap();
-
         }catch (e:any){
             console.error(e.data)
         }

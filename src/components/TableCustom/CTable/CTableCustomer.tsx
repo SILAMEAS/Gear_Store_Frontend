@@ -140,6 +140,34 @@ const CTableCustomer = <CO extends ResUser>() =>
                     ),
                 },
                 {
+                    id: "is_active",
+                    disableSort: false,
+                    label: "Actions",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"500px",
+                        sx:{
+                            paddingLeft:"30px"
+                        }
+                    },
+                    tableSortLabelProps: {},
+                    stopPropagation:true,
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} pl={"30px"}>
+                            <IconButton onClick={()=>{
+                                dispatch(setUserSelected(data));
+                                navigate(Route.admin.USER+"/"+data.id)
+                            }}>
+                                <EditIcon/>
+                            </IconButton>
+                        </Stack>
+                    ),
+                },
+                {
                     id: "id",
                     disableSort: false,
                     label: "Actions",
@@ -167,7 +195,10 @@ const CTableCustomer = <CO extends ResUser>() =>
                             }}>
                                 <DeleteIcon/>
                             </IconButton>
-                            <IconButton>
+                            <IconButton onClick={()=>{
+                                dispatch(setUserSelected(data));
+                                navigate(Route.admin.USER+"/"+data.id)
+                            }}>
                                 <EditIcon/>
                             </IconButton>
                         </Stack>

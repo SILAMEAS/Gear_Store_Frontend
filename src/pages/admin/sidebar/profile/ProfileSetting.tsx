@@ -2,9 +2,11 @@ import {Avatar, Box, Button, Grid, Input, Paper, Typography} from "@mui/material
 import {ResUser} from "../../../../redux/services/types/IUserApi.ts";
 import {useForm} from "react-hook-form";
 import EditIcon from "@mui/icons-material/Edit";
-import {ReactNode, useState} from "react";
+import  {ReactNode, useState} from "react";
 import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
 import Text from "../../../../components/Text/Text.tsx";
+import {useUpdateUserMutation} from "../../../../redux/services/adminApi.ts";
+import SwitchWithLabel from "../../../../components/switch/SwitchWithLabel.tsx";
 
 type InfoRowProps = {
     label: string
@@ -21,6 +23,7 @@ const InfoRow = ({ label, value }: InfoRowProps) => (
 )
 
 export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) {
+    const [updateUser,updateUserResult]=useUpdateUserMutation({})
     const { register, handleSubmit } = useForm({
         defaultValues: {
             first_name: userDetail?.first_name,
@@ -37,7 +40,7 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
 
     const [profileImage, setProfileImage] = useState<File | null>(null); // State to hold the uploaded image
 
-    const onSubmit = (data: any) => {
+    const onSubmit =async (data: any) => {
         // Handle form submission
         const formData = new FormData();
         if (profileImage) {
@@ -58,6 +61,7 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
         for (const [key, value] of formData.entries()) {
             console.log(`${key}:`, value);
         }
+        await updateUser({body: formData,userId:userDetail.id}).unwrap();
         // You can send formData to your API here
     };
 
@@ -87,6 +91,42 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                         </Typography>
                     </Box>
                 </Paper>
+                <SwitchWithLabel onChange={()=>{}}>
+                    <Text sx={{
+                        fontSize: "12px",
+                        fontWeight: 500,
+                        lineHeight: 16,
+                    }}>
+                        Active
+                    </Text>
+                </SwitchWithLabel>
+                <SwitchWithLabel onChange={()=>{}}>
+                    <Text sx={{
+                        fontSize: "12px",
+                        fontWeight: 500,
+                        lineHeight: 16,
+                    }}>
+                        Staff
+                    </Text>
+                </SwitchWithLabel>
+                <SwitchWithLabel onChange={()=>{}}>
+                    <Text sx={{
+                        fontSize: "12px",
+                        fontWeight: 500,
+                        lineHeight: 16,
+                    }}>
+                        Moderator
+                    </Text>
+                </SwitchWithLabel>
+                <SwitchWithLabel onChange={()=>{}}>
+                    <Text sx={{
+                        fontSize: "12px",
+                        fontWeight: 500,
+                        lineHeight: 16,
+                    }}>
+                        Admin
+                    </Text>
+                </SwitchWithLabel>
 
                 <ImageDropzone
                     onChange={setProfileImage} // Update the profileImage state with the selected file
@@ -129,9 +169,12 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                         </Grid>
                     </Grid>
                 </Paper>
-                <Button type="submit" startIcon={<EditIcon />} fullWidth sx={{mt:"40px"}} variant={"contained"}>
+                <Button type="submit" startIcon={<EditIcon sx={{color:"primary.main"}}/>} fullWidth sx={{mt:"40px"}} variant={"contained"}>
                     <Text>
-                        Update User
+                        {
+                            updateUserResult?.isLoading?"loading ...":"Update User"
+                        }
+
                     </Text>
                    </Button>
             </form>

@@ -53,6 +53,21 @@ export const adminApi = createApi({
       invalidatesTags:["users"]
     }),
     /** ==================================== **/
+    /**             Update User                 **/
+    /** ==================================== **/
+    updateUser: builder.mutation<ResUser, {body:FormData,userId:string}>({
+      query: ({body,userId}) => ({
+        headers: {
+          ["Authorization"]: `Bearer ${getToken()?.access}`,
+        },
+        url: "/users/"+userId+"/",
+        method: Method.PUT,
+        body
+
+      }),
+      invalidatesTags:["users"]
+    }),
+    /** ==================================== **/
     /**             Delete User                 **/
     /** ==================================== **/
     deleteUser: builder.mutation<ResUser, {id:string}>({
@@ -122,5 +137,6 @@ export const {
     useGetOrdersQuery,
     useGetPaymentsQuery,
     useAddUserMutation,
-    useDeleteUserMutation
+    useDeleteUserMutation,
+    useUpdateUserMutation
 } = adminApi;
