@@ -2,8 +2,8 @@ import {  ITableCustom } from "../components/types.ts";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 
-type typePick = 'tableFooterType' | 'hasNext' | 'visibleRows';
-interface IWayPointProcess<P, T> extends Pick<ITableCustom<P, T>, typePick> {}
+type typePick = "tableFooterType" | "hasNext" | "visibleRows";
+type IWayPointProcess<P, T> = Pick<ITableCustom<P, T>, typePick>
 export default function wayPointProcess<
   P extends Record<string, any>,
   T extends Record<string, any>,

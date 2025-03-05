@@ -167,6 +167,7 @@ export const darkTheme = createTheme({
                     "&:hover": {
                         backgroundColor: Colors._f97316, // Orange background on hover
                         color: "#ffffff", // White icon on hover
+                        padding:"10px"
                     },
                     "&.Mui-disabled": {
                         backgroundColor: "rgba(0, 0, 0, 0.12)", // Light grey for disabled state

@@ -156,7 +156,7 @@ const CTableUser = <CO extends ResUser>() =>
                         <Stack
                             direction={"row"}
                             alignItems={"center"}
-                            gap={"15px"} pl={"30px"}>
+                            gap={"15px"} pl={"10px"}>
                             <IconButton onClick={async ()=>{
                                 try {
                                     await deleteUser({id:data.id}).unwrap();

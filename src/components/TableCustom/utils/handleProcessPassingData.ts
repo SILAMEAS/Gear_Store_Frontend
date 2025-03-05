@@ -1,6 +1,6 @@
-import React from 'react';
-import uniqueArray from './uniqueArray.ts';
-import EnumTableFooterType from '../constant/enum/EnumTableFooterType.ts';
+import React from "react";
+import uniqueArray from "./uniqueArray.ts";
+import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 interface IHandleProcessPassingData<CO> {
   tableFooterType: EnumTableFooterType;
@@ -29,8 +29,8 @@ export default function handleProcessPassingData<CO extends Record<string, any>>
       const result = newMap.filter(obj1 =>
         visibleRows?.every(obj2 => obj1.id !== obj2.id),
       );
-      if ((!search || search === '') && page !== 1) {
-        setVisibleRows(uniqueArray<CO>(visibleRows.concat(result), 'id'));
+      if ((!search || search === "") && page !== 1) {
+        setVisibleRows(uniqueArray<CO>(visibleRows.concat(result), "id"));
         break;
       } else {
         setVisibleRows(newMap);

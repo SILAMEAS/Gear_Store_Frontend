@@ -1,14 +1,13 @@
-import {useNavigate} from "react-router-dom";
-import {Button} from "@mui/material";
 import React from "react";
 import {useAppSelector} from "../../../../redux/redux.ts";
 import {MenuUser} from "../MenuUser.ts";
 import {MenuPublic} from "../../public/MenuPublic.ts";
 import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
-import Colors from "../../../../theme/mode/Colors.ts";
+import Text from "../../../../components/Text/Text.tsx";
+import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
 
 export const UICenterHeaderMenu=()=>{
-    const navigate = useNavigate();
+    const {navigate,pathname}=useGlobalHook();
     const [menu,setMenu]=React.useState<Array<{name:string,url:string}>>(MenuPublic);
     const {userDetail}=useAppSelector(state=>state.application);
     React.useLayoutEffect(()=>{
@@ -22,11 +21,7 @@ export const UICenterHeaderMenu=()=>{
 
     return <>
         {menu.map((item) => (
-            <Button key={item.name} sx={{ color:Colors._ffffff, textTransform: "none" }} onClick={()=>{
-                navigate(item.url)
-            }}>
-                {item.name}
-            </Button>
+            <Text key={item.name} onClick={()=> navigate(item.url)} sx={{color:item.url===pathname?"primary.main":"inherit",cursor:"pointer"}}>{item.name}</Text>
         ))}
     </>
 }

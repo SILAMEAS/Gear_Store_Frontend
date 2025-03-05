@@ -1,9 +1,9 @@
 export const checkStatusTableCustom = (status: string) => {
   switch (status) {
-    case 'IN_PROGRESS': {
+    case "IN_PROGRESS": {
       return 0;
     }
-    case 'COMPLETED': {
+    case "COMPLETED": {
       return 1;
     }
     default: {

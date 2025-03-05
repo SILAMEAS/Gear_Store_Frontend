@@ -7,7 +7,10 @@ export enum EnumICard{
     total_customers="total_customers",
     total_payment="total_payment",
     total_products="total_products",
-    total_categories="total_categories"
+    total_categories="total_categories",
+    total_users="total_users",
+    total_shipping="total_shipping"
+
 
 }
 export interface ICard {id:EnumICard,title: string,value: number}

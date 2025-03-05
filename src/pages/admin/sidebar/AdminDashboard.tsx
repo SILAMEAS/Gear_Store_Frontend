@@ -19,7 +19,7 @@ const AdminDashboard = () => {
         {/** Cards  **/}
         {
           currentData?.cards?.map(card=>
-              <Grid item xs={12} sm={6} md={3} lg={4} key={card.id}>
+              <Grid item xs={12} sm={6} md={3} lg={4} xl={3} key={card.id}>
                 <MetricCard
                     title={card.title}
                     value={`${card.value} ${card.id===EnumICard.total_sales?"$":""}`}

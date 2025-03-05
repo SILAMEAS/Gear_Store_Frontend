@@ -2,9 +2,8 @@ import {  ITableCustom } from "../components/types.ts";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 
-type typePick = 'tableFooterType' | 'visibleRows' | 'actionReq';
-interface IConditionLoadingSkeleton<P, T>
-  extends Pick<ITableCustom<P, T>, typePick> {}
+type typePick = "tableFooterType" | "visibleRows" | "actionReq";
+type IConditionLoadingSkeleton<P, T> = Pick<ITableCustom<P, T>, typePick>
 /** =================================================================================== **/
 /** fun :  condition for loading skeleton for table type pagination and infinite scroll **/
 /** =================================================================================== **/

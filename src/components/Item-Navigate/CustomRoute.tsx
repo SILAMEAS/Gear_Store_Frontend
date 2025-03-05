@@ -4,8 +4,7 @@ import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 import Text from "../Text/Text.tsx";
 
 const CustomRoute = ({Title,route,children}:{Title:string,route:string}&PropsWithChildren) => {
-    const {navigate}=useGlobalHook();
-    const {pathname}=useGlobalHook();
+    const {navigate,pathname}=useGlobalHook();
     return  <ListItem onClick={()=>navigate(route)} sx={{cursor:"pointer"}}>
         <ListItemIcon sx={{color:route===pathname?"primary.main" :"inherit"}}>
             {children}
