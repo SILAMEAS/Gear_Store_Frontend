@@ -25,12 +25,16 @@ export const ImageDropzone: React.FC<{
         <Paper
             {...getRootProps()}
             sx={{
-                p: 2,
+                my:5,
                 border: "2px dashed",
                 borderColor: isDragActive ? "primary.main" : "grey.300",
                 bgcolor: isDragActive ? "action.hover" : "background.paper",
                 cursor: "pointer",
                 textAlign: "center",
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center",
+                height:"250px"
             }}
         >
             <input {...getInputProps()} />

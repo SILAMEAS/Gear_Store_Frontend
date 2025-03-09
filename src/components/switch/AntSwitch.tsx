@@ -6,6 +6,7 @@ export const AntSwitch = styled(Switch)<{overridecolor?: string}>(
         height: 20,
         padding: 0,
         display: "flex",
+        marginLeft:"12px",
         "&:active": {
             "& .MuiSwitch-thumb": {
                 width: 15,

@@ -1,5 +1,6 @@
 import {createTheme} from "@mui/material";
 import Colors from "./Colors.ts";
+
 export const darkTheme = createTheme({
     /**  ===========================================================================  */
     /**                              Palette                                          */
@@ -17,8 +18,8 @@ export const darkTheme = createTheme({
             paper: Colors._000000,
         },
         black:{
-            main:Colors._000000,
-            light:Colors._ffffff,
+            main:Colors._ffffff,
+            light:Colors._000000,
         }
     },
     /**  ===========================================================================  */
@@ -286,6 +287,7 @@ export const darkTheme = createTheme({
         MuiTextField: {
             defaultProps: {
                 variant: "outlined", // Default variant for all <TextField />
+                fullWidth:true
             },
         },
         /**  ===========================================================================  */
