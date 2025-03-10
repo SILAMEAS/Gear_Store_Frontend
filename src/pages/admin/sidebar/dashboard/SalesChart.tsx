@@ -8,7 +8,7 @@ export default function SalesChart({data}: { data:SalesData[] }) {
     const theme = useTheme()
 
     return (
-        <Card sx={{ p: 3, height: 400, bgcolor: "background.paper" }}>
+        <Card sx={{ p: 3,height:"auto", minHeight: 450, bgcolor: "background.paper" }}>
             <Typography variant="h6" gutterBottom>
                 Sales Overview
             </Typography>

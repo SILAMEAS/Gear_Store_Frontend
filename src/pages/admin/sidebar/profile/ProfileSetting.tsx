@@ -85,7 +85,7 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
         <Box sx={{ width: "100%", p: 3, height: "100%" }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/** Header of Setting */}
-                <Stack direction={"row"} justifyContent={'space-between'} alignItems={"center"} height={'auto'}  >
+                <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} height={"auto"}  >
                     {/** Left Side of Header */}
                     <Paper
                         elevation={0}
@@ -149,55 +149,55 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                         {/** ===================================================== **/}
                         {/**                First Name                             **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="First Name" value={<TextField {...register("first_name")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                Last Name                              **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Last Name" value={<TextField {...register("last_name")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                Date of brith                          **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Date of Birth" value={<TextField {...register("dob")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                Email                                  **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Email Address" value={<TextField {...register("email")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                Phone Number                           **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Phone Number" value={<TextField {...register("phone")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                User Role                              **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="User Role" value={<TextField {...register("role")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                  Country                              **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Country" value={<TextField {...register("country")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                  City                                 **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="City" value={<TextField {...register("city")} />} />
                         </Grid>
                         {/** ===================================================== **/}
                         {/**                Postal Code                            **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <InfoRow label="Postal Code" value={<TextField {...register("postal_code")} />} />
                         </Grid>
                     </Grid>

@@ -316,7 +316,7 @@ export const StyleCustom = {
             webkitBoxShadow: _webkitBoxShadow,
         },
         "&::-webkit-scrollbar-thumb": {
-            backgroundColor:Colors._ffffff,
+            backgroundColor:"primary.main",
             outline: _outline,
         },
     },
