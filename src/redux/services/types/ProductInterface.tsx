@@ -12,6 +12,21 @@ export interface ResProduct {
   colors:Array<string>,
   sizes:Array<number>,
   thumbnails:Array<{id:number,image:string}>,
-  isWishlist:boolean|string
+  isWishlist:boolean|string,
+  category:number|null,
+  categoryName:string
 }
-export interface ResProducts extends Pagination<ResProduct>{}
+export type ResProducts = Pagination<ResProduct>
+
+/** Form */
+export interface ProductFormData extends Pick<ResProduct, "name"|"price"|"stock"|"description"|"category">{
+  image:File|null;
+}
+export const DefaultProductFormData:ProductFormData={
+  name:"",
+  image:null,
+  category:NaN,
+  description:"",
+  price:0,
+  stock:0
+}

@@ -1,5 +1,5 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {ResProduct, ResProducts} from "./types/ProductInterface.tsx";
+import {ProductFormData, ResProduct, ResProducts} from "./types/ProductInterface.tsx";
 import {ReqPage} from "./types/IPagination.ts";
 import {ReqHeader, ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
@@ -24,6 +24,15 @@ export const productApi = createApi({
         url: `/${id}`,
         method: "GET"
       }),
+    }),
+    /** Create products */
+    createProducts: builder.query<ResProduct,{body:ProductFormData}>({
+      query: ({body}) => ({
+        url: "/",
+        method: "",
+       body
+      }),
+      providesTags:["Product"]
     }),
   }),
 });

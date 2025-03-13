@@ -7,12 +7,15 @@ import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
 import {Route} from "../../../../constants/Route.ts";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import CreateUserForm from "../../../../pages/form/admin/create-user/CreateUserForm.tsx";
+import CreateProductForm from "../../../../pages/form/admin/create-product/CreateProductForm.tsx";
+import Text from "../../../../components/Text/Text.tsx";
 
 const AdminHeaderHandler = () => {
     const {pathnameRemoveLastSlash}=useCheckUrl();
     switch (pathnameRemoveLastSlash){
         case Route.admin.PRODUCT:{
             return <Stack direction={"row"} width={"100%"} justifyContent={"space-between"}>
+                {/** Filter Side Bar **/}
                 <DrawerCustom renderButton={<IconButton>
                     <FilterList/>
                 </IconButton>} anchor={"left"}
@@ -20,12 +23,19 @@ const AdminHeaderHandler = () => {
                 >
                     <FilterSidebar/>
                 </DrawerCustom>
+                {/** Create Product **/}
                 <DrawerCustom renderButton={<IconButton>
                     <AddCard/>
-                </IconButton>} anchor={"top"}
-                              overflow={"auto"} width={"300px"} sx={{...StyleCustom.scrollNormal}}
+                </IconButton>}
+                              anchor={"top"}
+                              overflow={"auto"}
+                              sx={{...StyleCustom.scrollNormal}}
                 >
-                    <FilterSidebar/>
+                  <Stack justifyContent={"center"} alignItems={"center"} height={"100%"}>
+                      <Text> Create Product</Text>
+                      <CreateProductForm/>
+                  </Stack>
+
                 </DrawerCustom>
             </Stack>
         }
