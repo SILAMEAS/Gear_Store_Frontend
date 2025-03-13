@@ -138,7 +138,8 @@ export const darkTheme = createTheme({
                     },
                     "&.MuiButton-contained": {
                         fontWeight: 600,
-                        textTransform: "capitalize"
+                        textTransform: "capitalize",
+                        color:Colors._ffffff
                     },
                     "&.MuiButton-text": {
                         fontWeight: 600,
@@ -148,6 +149,7 @@ export const darkTheme = createTheme({
                         fontWeight: 600,
                         textTransform: "capitalize",
                         backgroundColor:"inherit",
+                        color:Colors._e65c00,
                     },
                     "&.Mui-disabled": {
                         bgcolor:Colors._ffffff,

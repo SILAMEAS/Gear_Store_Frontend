@@ -7,7 +7,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EmptyCart from "../../utils/ui/end-user/empty/EmptyCart.tsx";
 import {BoxProps} from "@mui/material/Box";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import Colors from "../../theme/mode/Colors.ts";
 
 const HeaderCart = (props: Readonly<BoxProps>) => {
   const defaultStyle = {
@@ -20,14 +19,17 @@ const HeaderCart = (props: Readonly<BoxProps>) => {
   return (
       <DrawerCustom
           renderButton={<Box sx={defaultStyle} {...props}>
-              <Badge badgeContent={currentData?.total??0} color="primary">
-                  <ShoppingCartOutlinedIcon sx={{color:getToken().access?Colors._ffffff:"grey"}}/>
-              </Badge>
+              <IconButton color="inherit">
+                  <Badge badgeContent={currentData?.total??0} color="primary">
+                          <ShoppingCartOutlinedIcon sx={{color:"black.main"}}/>
+                  </Badge>
+              </IconButton>
           </Box>}
           anchor={"right"}
-          bgcolor={"black"}
+          bgcolor={"inherit"}
           py={"20px"}
           px={"50px"}
+          minWidth={"400px"}
       >
               <Box p={2} maxWidth={400} mx="auto" borderRadius={2} boxShadow={2}>
                   {/* Header */}

@@ -17,10 +17,10 @@ const GridListProducts = () => {
 
 
     return (
-        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pb={8} height={"100%"} width={"100%"} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
+        <Stack justifyContent={"space-between"} alignItems={"center"} spacing={2} pt={1} height={"100%"} width={"100%"} overflow={"auto"} sx={{...StyleCustom.scrollNormal}}>
             <Grid container columns={{ xs: 12, sm: 12, md: 12,lg:12,xl:12 }} gap={{xl:0.4}}>
                 {currentData?.contents?.map((item) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} xl={1.7} key={item.id} p={1}>
+                    <Grid item xs={12} sm={6} md={4} lg={3} xl={1.7} key={item.id} p={1} mx={{xs:5,md:0}}>
                         <GamingAccessoryCard
                             isWishlist={item.isWishlist}
                             title={item.name}

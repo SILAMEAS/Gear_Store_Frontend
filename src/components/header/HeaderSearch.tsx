@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 const HeaderSearch = () => {
     return (
         <IconButton color="inherit">
-            <SearchIcon/>
+            <SearchIcon sx={{color:"black.main"}}/>
         </IconButton>
     );
 };

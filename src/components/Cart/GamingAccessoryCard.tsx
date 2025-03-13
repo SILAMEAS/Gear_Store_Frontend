@@ -37,7 +37,7 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
                                                                         }) => {
     const isWishlistString=typeof isWishlist=="string"
     return (
-        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"450px": "500px",bgcolor:"black",color:"white",border:1,p:"10px",borderRadius:"10px"}}>
+        <Card sx={{width:"100%", display: "flex", flexDirection: "column", height:isWishlistString?"480px": "520px",bgcolor:"black",color:"white",border:1,p:"10px",borderRadius:"10px"}}>
             <CardActionArea component="a" href={link} sx={{px:"20px"}}>
                 <CardMedia
                     component="img"

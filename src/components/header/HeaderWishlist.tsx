@@ -1,4 +1,4 @@
-import {Badge, Box, Stack, Typography} from "@mui/material";
+import {Badge, Box, IconButton, Stack, Typography} from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DrawerCustom from "../Drawer/DrawerCustom.tsx";
 import {useGetAllWishlistsQuery} from "../../redux/services/wishlistApi.ts";
@@ -15,9 +15,11 @@ const HeaderWishlist = (props: BoxProps) => {
     return (
         <DrawerCustom
             renderButton={<Box sx={defaultStyle} {...props}>
-                <Badge badgeContent={currentData?.total??0} color="primary">
-                    <FavoriteBorderIcon sx={{color:getToken().access?Colors._ffffff:"grey"}}/>
-                </Badge>
+                <IconButton color="inherit">
+                    <Badge badgeContent={currentData?.total??0} color="primary">
+                        <FavoriteBorderIcon sx={{color:"black.main"}}/>
+                    </Badge>
+                </IconButton>
             </Box>}
             anchor={"right"}
             bgcolor={"black"}

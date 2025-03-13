@@ -1,20 +1,20 @@
+
 import { Card, Typography, Box, useTheme } from "@mui/material"
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
-import {SalesData} from "./types.ts";
+import type { SalesData } from "./types"
 
-
-
-export default function SalesChart({data}: { data:SalesData[] }) {
+export default function SalesChart({ data }: { data: SalesData[] }) {
     const theme = useTheme()
 
     return (
-        <Card sx={{ p: 3,height:"auto", minHeight: 450, bgcolor: "background.paper" }}>
+        <Card sx={{ p: 3, height: "auto", minHeight: 450, bgcolor: "background.paper" }}>
             <Typography variant="h6" gutterBottom>
                 Sales Overview
             </Typography>
-            <Box sx={{ width: "100%", height: "100%" }}>
-                <ResponsiveContainer>
-                    <AreaChart data={data}>
+            <Box sx={{ width: "100%", height: 380 }}>
+                {/* Set a fixed height here */}
+                <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor={theme.palette.primary.main} stopOpacity={0.8} />
@@ -43,4 +43,3 @@ export default function SalesChart({data}: { data:SalesData[] }) {
         </Card>
     )
 }
-

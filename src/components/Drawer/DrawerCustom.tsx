@@ -21,32 +21,26 @@ export default function DrawerCustom({children,anchor,renderButton,...contentsPr
                 setAnchorTemporaryDrawer({ ...anchorTemporaryDrawer, [anchor]: open });
             };
 
-    return (
-        <div>
-            <React.Fragment key={anchor}>
-                <Stack onClick={toggleDrawer(anchor, true)}>{renderButton}</Stack>
-                <Drawer
-                    anchor={anchor}
-                    open={anchorTemporaryDrawer[anchor]}
-                    onClose={toggleDrawer(anchor, false)}
-                >
-                    <Box
-                        sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-                        // role="banner"
-                        // onClick={toggleDrawer(anchor, false)}
-                        // onKeyDown={toggleDrawer(anchor, false)}
-                        height={"100vh"}
-                        {...contentsProps}
-                    >
-                       <>
-                           {children}
-                       </>
-                    </Box>
-                    <Stack alignItems={"center"} justifyContent={"center"}>
-                        {anchor === "top"&& <IconButton sx={{zIndex:100}} onClick={toggleDrawer(anchor, false)}><KeyboardDoubleArrowUpIcon/></IconButton>}
-                    </Stack>
-                </Drawer>
-            </React.Fragment>
-        </div>
-    );
+    return  <Stack key={anchor}>
+        <Stack onClick={toggleDrawer(anchor, true)}>{renderButton}</Stack>
+        <Drawer
+            anchor={anchor}
+            open={anchorTemporaryDrawer[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+        >
+            <Box
+                sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+                // role="banner"
+                // onClick={toggleDrawer(anchor, false)}
+                // onKeyDown={toggleDrawer(anchor, false)}
+                height={"100vh"}
+                {...contentsProps}
+            >
+                {children}
+            </Box>
+            <Stack alignItems={"center"} justifyContent={"center"}>
+                {anchor === "top"&& <IconButton sx={{zIndex:100}} onClick={toggleDrawer(anchor, false)}><KeyboardDoubleArrowUpIcon/></IconButton>}
+            </Stack>
+        </Drawer>
+    </Stack>
 }
