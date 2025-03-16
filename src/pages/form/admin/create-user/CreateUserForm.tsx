@@ -49,14 +49,13 @@ const CreateUserForm: React.FC = () => {
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
 
     const onSubmit =async (data: UserFormData) => {
-        console.log("SUBMIT")
         try {
             const formData = new FormData();
             formData.append("email", data.email);
             formData.append("password", data.password);
             formData.append("username", data.username);
             formData.append("phone", data.phone);
-            formData.append("profile_image", data.profile_image as unknown as string); // File object
+            data.profile_image && formData.append("profile_image", data.profile_image as unknown as string); // File object
             formData.append("role", data.role);
             formData.append("country", data.country);
             formData.append("city", data.city);
@@ -68,6 +67,7 @@ const CreateUserForm: React.FC = () => {
             await addUser(formData).unwrap();
         }catch (e:any){
             console.error(e.data)
+
         }
     }
     const password = watch("password")

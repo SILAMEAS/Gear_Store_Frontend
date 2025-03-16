@@ -13,7 +13,7 @@ export interface ResProduct {
   sizes:Array<number>,
   thumbnails:Array<{id:number,image:string}>,
   isWishlist:boolean|string,
-  category:number|null,
+  category?:number,
   categoryName:string
 }
 export type ResProducts = Pagination<ResProduct>
@@ -25,7 +25,7 @@ export interface ProductFormData extends Pick<ResProduct, "name"|"price"|"stock"
 export const DefaultProductFormData:ProductFormData={
   name:"",
   image:null,
-  category:NaN,
+  // category:NaN,
   description:"",
   price:0,
   stock:0
