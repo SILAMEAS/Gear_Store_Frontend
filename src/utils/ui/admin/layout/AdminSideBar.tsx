@@ -38,7 +38,7 @@ const AdminSideBar: React.FC = () => {
 
                         <ListItem onClick={handleLogout} sx={{cursor:"pointer"}}>
                             <ListItemIcon>
-                                <Logout fontSize="small" />
+                                <Logout fontSize="medium" />
                             </ListItemIcon>
                             <ListItemText primary={"logout"} />
                         </ListItem>

@@ -1,33 +1,40 @@
 import {EnumICard} from "../../../redux/services/types/IAdminApi.ts";
-import {AttachMoney, Category, LocalShipping, People, ShoppingCart} from "@mui/icons-material";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import PaymentsIcon from "@mui/icons-material/Payments";
+import LocalAtmOutlinedIcon from "@mui/icons-material/LocalAtmOutlined";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
+
 export const RenderIcon=({id}:{id:EnumICard})=>{
     switch (id){
         case EnumICard.total_sales:{
-            return <AttachMoney/>
+            return <LocalAtmOutlinedIcon/>
         }
         case EnumICard.total_customers:{
-            return <People/>
+            return <PeopleOutlineIcon/>
         }
         case EnumICard.total_categories:{
-            return <Category/>
+            return <CategoryOutlinedIcon/>
         }
         case EnumICard.total_payment:{
-            return <PaymentsIcon/>
+            return <PaymentsOutlinedIcon/>
         }
         case EnumICard.total_orders:{
             return <BookmarkBorderIcon/>
         }
         case EnumICard.total_products:{
-            return <ShoppingCart/>
+            return <ProductionQuantityLimitsIcon/>
         }
         case EnumICard.total_users:{
-            return <People/>
+            return <AdminPanelSettingsOutlinedIcon/>
         }
         case EnumICard.total_shipping:{
-            return <LocalShipping/>
+            return <LocalShippingOutlinedIcon/>
         }
+
         default:{
             return <>No Icon</>
         }

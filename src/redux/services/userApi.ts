@@ -7,7 +7,7 @@ import {ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: ReqHeaderOnlyBaseUrl('/'),
+  baseQuery: ReqHeaderOnlyBaseUrl("/"),
   tagTypes: ["User"],
   endpoints: (builder) => ({
     login: builder.mutation<{access:string,refresh:string}, {email:string,password:string}>({

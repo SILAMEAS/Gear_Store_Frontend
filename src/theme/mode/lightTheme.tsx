@@ -169,7 +169,7 @@ const lightTheme = createTheme({
                         // backgroundColor: Colors._f97316, // Orange background on hover
                         border:"2px solid #f97316",
                         color: Colors._f97316, // White icon on hover
-                        padding:"10px"
+                        padding:"5px"
                     },
                     "&.Mui-disabled": {
                         backgroundColor: "rgba(0, 0, 0, 0.12)", // Light grey for disabled state

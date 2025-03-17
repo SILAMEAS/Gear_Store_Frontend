@@ -9,7 +9,7 @@ export enum EnumICard{
     total_products="total_products",
     total_categories="total_categories",
     total_users="total_users",
-    total_shipping="total_shipping"
+    total_shipping="total_shipping",
 
 
 }
