@@ -18,6 +18,8 @@ import {Visibility, VisibilityOff} from "@mui/icons-material"
 import {useAddUserMutation} from "../../../../redux/services/adminApi.ts";
 import {EnumRole, UserFormData} from "../../../../redux/services/types/IUserApi.ts";
 import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
+import {enqueueSnackbar} from "notistack";
+import {$handleResponseMessage} from "../../../../utils/common/$handleResponseMessage.ts";
 
 
 const CreateUserForm: React.FC = () => {
@@ -51,11 +53,13 @@ const CreateUserForm: React.FC = () => {
     const onSubmit =async (data: UserFormData) => {
         try {
             const formData = new FormData();
+            if( data.profile_image){
+                formData.append("profile_image", data.profile_image as unknown as string); // File object
+            }
             formData.append("email", data.email);
             formData.append("password", data.password);
             formData.append("username", data.username);
             formData.append("phone", data.phone);
-            data.profile_image && formData.append("profile_image", data.profile_image as unknown as string); // File object
             formData.append("role", data.role);
             formData.append("country", data.country);
             formData.append("city", data.city);
@@ -65,9 +69,14 @@ const CreateUserForm: React.FC = () => {
             formData.append("last_name", data.last_name);
             formData.append("is_active", data.is_active as unknown as string);
             await addUser(formData).unwrap();
+            enqueueSnackbar("User created successfully!", { variant: "success" });
         }catch (e:any){
-            console.error(e.data)
-
+            enqueueSnackbar(
+                $handleResponseMessage({e}),
+                {
+                    variant: "error",
+                },
+            );
         }
     }
     const password = watch("password")
@@ -75,7 +84,7 @@ const CreateUserForm: React.FC = () => {
     const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show)
 
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate >
             <Stack>
                <Stack direction={"row"} gap={2}>
                    <Controller
