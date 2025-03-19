@@ -1,6 +1,6 @@
 import {AppBar, Box, Stack, Toolbar,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import DrawerCustom from "../../../../components/Drawer/DrawerCustom.tsx";
+import DrawerCustom from "../../../../components/drawer/DrawerCustom.tsx";
 import UILogo from "../header-navigation/UILogo.tsx";
 import {UICenterHeaderMenu} from "../header-navigation/UICenterHeaderMenu.tsx";
 import UIRightSideHeaderMenu from "../header-navigation/UIRightSideHeaderMenu.tsx";

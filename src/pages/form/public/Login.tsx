@@ -18,7 +18,7 @@ import {Route} from "../../../constants/Route.ts";
 import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
 import useAuth, {ILogin} from "../../../utils/hooks/useAuth.tsx";
 import {validateEmail} from "../../../utils/common/validateEmail.ts";
-import ButtonContinueAsGuest from "../../../components/Button/ButtonContinueAsGuest.tsx";
+import ButtonContinueAsGuest from "../../../components/button/ButtonContinueAsGuest.tsx";
 import ThemeToggle from "../../../theme/toggle/ThemeToggle.tsx";
 
 const Login = () => {

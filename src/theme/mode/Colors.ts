@@ -1,5 +1,5 @@
 const Colors={
-    _f97316:"#f97316",
+    _primaryMain:"primary.main",
     _f8fafc:"#f8fafc",
     _ffffff:"#ffffff",
     _e65c00:"#e65c00",

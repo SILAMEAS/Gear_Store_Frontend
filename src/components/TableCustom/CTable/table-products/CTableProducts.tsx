@@ -6,7 +6,7 @@ import TableCustom from "../../components/TableCustom.tsx";
 import {ResProduct, ResProducts} from "../../../../redux/services/types/ProductInterface.tsx";
 import React from "react";
 import {useGetAllProductsQuery} from "../../../../redux/services/productApi.ts";
-import Text from "../../../Text/Text.tsx";
+import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";

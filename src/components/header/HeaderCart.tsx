@@ -1,6 +1,6 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import {Badge, Box, Button, Card, CardContent, CircularProgress, IconButton, Typography} from "@mui/material";
-import DrawerCustom from "../Drawer/DrawerCustom.tsx";
+import DrawerCustom from "../drawer/DrawerCustom.tsx";
 import {useDeleteCartMutation, useGetAllCartsQuery} from "../../redux/services/cartApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";

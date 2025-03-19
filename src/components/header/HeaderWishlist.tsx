@@ -1,6 +1,6 @@
 import {Badge, Box, IconButton, Stack, Typography} from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import DrawerCustom from "../Drawer/DrawerCustom.tsx";
+import DrawerCustom from "../drawer/DrawerCustom.tsx";
 import {useGetAllWishlistsQuery} from "../../redux/services/wishlistApi.ts";
 import {BoxProps} from "@mui/material/Box";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";

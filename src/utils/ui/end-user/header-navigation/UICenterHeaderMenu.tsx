@@ -3,7 +3,7 @@ import {useAppSelector} from "../../../../redux/redux.ts";
 import {MenuUser} from "../MenuUser.ts";
 import {MenuPublic} from "../../public/MenuPublic.ts";
 import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
-import Text from "../../../../components/Text/Text.tsx";
+import Text from "../../../../components/text/Text.tsx";
 import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
 
 export const UICenterHeaderMenu=()=>{

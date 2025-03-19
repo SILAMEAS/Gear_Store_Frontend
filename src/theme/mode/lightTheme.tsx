@@ -8,7 +8,7 @@ const lightTheme = createTheme({
     palette: {
         mode: "light",
         primary: {
-            main: Colors._f97316,
+            main:"#D6056A",
         },
         secondary: {
             main: Colors._800080,
@@ -131,7 +131,7 @@ const lightTheme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    backgroundColor: Colors._f97316, // Default background color for button
+                    backgroundColor: Colors._primaryMain, // Default background color for button
                     color:Colors._ffffff, // Text color
                     "&:hover": {
                         backgroundColor: Colors._555, // Darker shade on hover
@@ -162,13 +162,13 @@ const lightTheme = createTheme({
         MuiIconButton: {
             styleOverrides: {
                 root: {
-                    color: Colors._f97316, // Default icon color (primary orange)
+                    color: Colors._primaryMain, // Default icon color (primary orange)
                     backgroundColor: "transparent", // Transparent background
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
                         // backgroundColor: Colors._f97316, // Orange background on hover
                         border:"2px solid #f97316",
-                        color: Colors._f97316, // White icon on hover
+                        color: Colors._primaryMain, // White icon on hover
                         padding:"5px"
                     },
                     "&.Mui-disabled": {
@@ -294,11 +294,11 @@ const lightTheme = createTheme({
             styleOverrides: {
                 root: {
                     fontSize: "1.8rem", // Default icon size
-                    color: "#FF6B00", // Default icon color (white)
+                    color: "primary.main", // Default icon color (white)
                     transition: "all 0.3s ease", // Smooth transition for hover effects
 
                     "&:hover": {
-                        color: "#FF6B00", // Change color on hover
+                        color: "primary.main", // Change color on hover
                         transform: "scale(1.1)", // Slightly enlarge on hover
                     },
 

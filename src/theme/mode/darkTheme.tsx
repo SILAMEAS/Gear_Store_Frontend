@@ -8,7 +8,7 @@ export const darkTheme = createTheme({
     palette: {
         mode: "dark",
         primary: {
-            main: Colors._f97316,
+            main:"#ff00ff",
         },
         secondary: {
             main: "#ff00ff",
@@ -131,7 +131,7 @@ export const darkTheme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    backgroundColor: Colors._f97316, // Default background color for button
+                    backgroundColor:"primary.main", // Default background color for button
                     color: Colors._000000, // Text color
                     "&:hover": {
                         backgroundColor: Colors._e65c00, // Darker shade on hover
@@ -164,11 +164,11 @@ export const darkTheme = createTheme({
         MuiIconButton: {
             styleOverrides: {
                 root: {
-                    color: Colors._f97316, // Default icon color (primary orange)
+                    color:"primary.main", // Default icon color (primary orange)
                     backgroundColor: "transparent", // Transparent background
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
-                        backgroundColor: Colors._f97316, // Orange background on hover
+                        backgroundColor:"primary.main", // Orange background on hover
                         color: "#ffffff", // White icon on hover
                         padding:"5px"
                     },
@@ -213,7 +213,7 @@ export const darkTheme = createTheme({
             styleOverrides: {
                 root: {
                     fontSize: "1rem",
-                    color: "#fff",
+                    color: Colors._ffffff,
                     backgroundColor: "inherit",
                     borderRadius: "8px",
                     padding: "10px",
@@ -224,7 +224,7 @@ export const darkTheme = createTheme({
                 input: {
                     padding: "12px",
                     fontSize: "1rem",
-                    color: "#fff",
+                    color: Colors._ffffff,
                 },
             },
         },
@@ -263,7 +263,7 @@ export const darkTheme = createTheme({
                     },
                 },
                 input: {
-                    color: "#fff", // Ensure text is visible on dark backgrounds
+                    color: Colors._ffffff, // Ensure text is visible on dark backgrounds
                     padding: "12px",
                 },
             },
@@ -300,22 +300,22 @@ export const darkTheme = createTheme({
                 root: {
                     fontSize: "1rem",
                     fontWeight: 500,
-                    color: "#fff", // Text color
+                    color: Colors._ffffff, // Text color
                     backgroundColor: "inherit", // Inherit from parent
                     borderRadius: "8px", // Rounded corners
                     padding: "10px 16px", // Adjust padding
                     transition: "all 0.3s ease",
 
                     "&:hover": {
-                        backgroundColor: "#FF6B00", // Custom hover color
-                        color: "#fff", // Ensure text stays visible
+                        backgroundColor:"primary.main", // Custom hover color
+                        color: Colors._ffffff, // Ensure text stays visible
                     },
 
                     "&.Mui-selected": {
-                        backgroundColor: "#FF6B00", // Selected item background
-                        color: "#fff", // Selected item text
+                        backgroundColor:"primary.main", // Selected item background
+                        color: Colors._ffffff, // Selected item text
                         "&:hover": {
-                            backgroundColor: "#E65C00", // Darker hover effect on selected
+                            backgroundColor:"primary.main", // Darker hover effect on selected
                         },
                     },
                 },
@@ -342,7 +342,7 @@ export const darkTheme = createTheme({
                     transition: "all 0.3s ease", // Smooth transition for hover effects
 
                     // "&:hover": {
-                    //     color: "#FF6B00", // Change color on hover
+                    //     color: Colors._f97316, // Change color on hover
                     //     transform: "scale(1.1)", // Slightly enlarge on hover
                     // },
                     //

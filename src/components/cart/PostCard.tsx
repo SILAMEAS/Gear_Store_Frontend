@@ -2,8 +2,8 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import {Box, Button, Card, CardActions, CardContent, CardMedia, Stack, Typography,} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import {strGreater100, substring100} from "../../utils/common/common.ts";
-import ButtonBuy from "../Button/ButtonBuy.tsx";
-import ButtonCart from "../Button/ButtonCart.tsx";
+import ButtonBuy from "../button/ButtonBuy.tsx";
+import ButtonCart from "../button/ButtonCart.tsx";
 
 const ResponsivePostCard = () => {
   const posts = [

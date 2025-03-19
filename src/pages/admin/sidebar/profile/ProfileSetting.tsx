@@ -18,7 +18,7 @@ import {Controller, useForm} from "react-hook-form";
 import EditIcon from "@mui/icons-material/Edit";
 import {ReactNode, useState} from "react";
 import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
-import Text from "../../../../components/Text/Text.tsx";
+import Text from "../../../../components/text/Text.tsx";
 import {useUpdateUserMutation} from "../../../../redux/services/adminApi.ts";
 import {AntSwitch} from "../../../../components/switch/AntSwitch.tsx";
 

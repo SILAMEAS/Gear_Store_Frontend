@@ -1,4 +1,4 @@
-import {GamingAccessoryCard} from "../../../../components/Cart/GamingAccessoryCard.tsx";
+import {GamingAccessoryCard} from "../../../../components/cart/GamingAccessoryCard.tsx";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import React from "react";

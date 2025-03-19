@@ -1,8 +1,9 @@
 import {Route} from "../../constants/Route.ts";
 import useGlobalHook from "./useGlobalHook.tsx";
 import {storeToken} from "../local-storage/token/storeToken.ts";
-import {snackbarError} from "../common/common.ts";
 import {useLoginMutation} from "../../redux/services/userApi.ts";
+import {enqueueSnackbar} from "notistack";
+import {$handleResponseMessage} from "../common/$handleResponseMessage.ts";
 
 export interface ILogin {
     email: string;
@@ -26,8 +27,13 @@ const useAuth = () => {
                     window.location.reload();
                 }
             })
-            .catch((err) => {
-                snackbarError(err);
+            .catch((e) => {
+                enqueueSnackbar(
+                    $handleResponseMessage({e}),
+                    {
+                        variant: "error",
+                    },
+                );
             });
     };
     return {handleLogout,handleLogin,resultLogin}

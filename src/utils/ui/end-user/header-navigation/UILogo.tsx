@@ -9,7 +9,7 @@ const UILogo = (stackProps:StackProps) => {
             src={"/logo.png"}
             alt={"logo.png"}
             loading="lazy"
-            width={100}
+            height={50}
         />
     </Stack>
 };

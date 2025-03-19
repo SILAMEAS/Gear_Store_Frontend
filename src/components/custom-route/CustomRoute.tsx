@@ -1,7 +1,7 @@
 import {PropsWithChildren} from "react";
 import {ListItem, ListItemIcon} from "@mui/material";
 import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
-import Text from "../Text/Text.tsx";
+import Text from "../text/Text.tsx";
 
 const CustomRoute = ({Title,route,children}:{Title:string,route:string}&PropsWithChildren) => {
     const {navigate,pathname}=useGlobalHook();

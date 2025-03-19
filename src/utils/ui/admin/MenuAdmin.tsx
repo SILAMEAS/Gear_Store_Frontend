@@ -14,7 +14,7 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
     {
         Title:"Dashboard",
-        Icon:<GridViewIcon />,
+        Icon:<GridViewIcon/>,
         route:Route.admin.HOME
     },
     {

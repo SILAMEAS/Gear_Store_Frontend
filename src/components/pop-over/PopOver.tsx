@@ -3,7 +3,7 @@ import Popover from "@mui/material/Popover";
 import {styled} from "@mui/material/styles";
 import React from "react";
 import {PopoverProps} from "@mui/material/Popover/Popover";
-import Text from "../Text/Text.tsx";
+import Text from "../text/Text.tsx";
 import {typePopOver} from "./Type.ts";
 
 const StyledPopover = styled(Popover)(() => ({

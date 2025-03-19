@@ -1,6 +1,6 @@
 import React from "react"
 import {Controller, useForm} from "react-hook-form"
-import {Box, Button, Stack, TextField,} from "@mui/material"
+import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
 import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
 import {DefaultProductFormData, ProductFormData} from "../../../../redux/services/types/ProductInterface.tsx";
 
@@ -44,20 +44,35 @@ const CreateProductForm: React.FC = () => {
                        )}
                    />
 
+                   {/*<Controller*/}
+                   {/*    name="category"*/}
+                   {/*    control={control}*/}
+                   {/*    rules={{ required: "Category is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" } }}*/}
+                   {/*    render={({ field }) => (*/}
+                   {/*        <TextField*/}
+                   {/*            {...field}*/}
+                   {/*            margin="normal"*/}
+                   {/*            fullWidth*/}
+                   {/*            id="category"*/}
+                   {/*            label="category"*/}
+                   {/*            error={!!errors.category}*/}
+                   {/*            helperText={errors.category?.message}*/}
+                   {/*        />*/}
+                   {/*    )}*/}
+                   {/*/>*/}
                    <Controller
                        name="category"
                        control={control}
-                       rules={{ required: "Category is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" } }}
+                       rules={{ required: "category is required" }}
                        render={({ field }) => (
-                           <TextField
-                               {...field}
-                               margin="normal"
-                               fullWidth
-                               id="category"
-                               label="category"
-                               error={!!errors.category}
-                               helperText={errors.category?.message}
-                           />
+                           <FormControl fullWidth margin="normal">
+                               <InputLabel id="category-label">category</InputLabel>
+                               <Select {...field} labelId="role-label" id="category" label="Category" error={!!errors.category}>
+                                   <MenuItem value="user">User</MenuItem>
+                                   <MenuItem value="admin">Admin</MenuItem>
+                                   <MenuItem value="moderator">Moderator</MenuItem>
+                               </Select>
+                           </FormControl>
                        )}
                    />
                </Stack>

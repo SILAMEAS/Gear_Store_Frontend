@@ -1,7 +1,7 @@
 import React from "react";
 import {Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Stack} from "@mui/material";
 import UILogo from "../../end-user/header-navigation/UILogo.tsx";
-import CustomRoute from "../../../../components/Item-Navigate/CustomRoute.tsx";
+import CustomRoute from "../../../../components/custom-route/CustomRoute.tsx";
 import {MenuAdmin} from "../MenuAdmin.tsx";
 import useAuth from "../../../hooks/useAuth.tsx";
 import {Logout} from "@mui/icons-material";
