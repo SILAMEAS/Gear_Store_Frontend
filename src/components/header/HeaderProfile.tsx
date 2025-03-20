@@ -10,7 +10,6 @@ import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 import Colors from "../../theme/mode/Colors.ts";
 
 const HeaderProfile = () => {
-  console.log("HeaderProfile")
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const {navigate}=useGlobalHook();
   const open = Boolean(anchorEl);
@@ -44,7 +43,7 @@ const HeaderProfile = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           >
-          <AccountCircleIcon sx={{color:"primary.main"}}/>
+          <AccountCircleIcon sx={{color:"inherit"}}/>
           </IconButton>
           </Tooltip>
       </Box>

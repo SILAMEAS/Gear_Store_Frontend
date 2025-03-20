@@ -16,7 +16,6 @@ const AdminContent = () =>{
     const handleStyleAdminContent=()=>{
         const sxStyle=defaultSxStyle
         if(pathnameRemoveLastSlash.includes(Route.admin.SETTING)){
-            console.log("in")
             return {...sxStyle,px:0,pt:0}
         }else {
             return sxStyle;

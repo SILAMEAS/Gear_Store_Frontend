@@ -10,12 +10,12 @@ interface IButtonThreeDot<T extends Record<string, any>>{
 
 function ButtonThreeDot<T extends Record<string, any>>({data,setPopUp}:Readonly<IButtonThreeDot<T>>) {
     const handleActionMenuClose=()=>{
+        console.log("ButtonThreeDot",data)
         setPopUp(false)
     }
     const handleActionMenuDelete=()=>{
         setPopUp(false)
     }
-    console.log("data",data)
 
     return (
         <MenuList sx={{width:"200px"}}>

@@ -5,7 +5,7 @@ import HeroSections from "../../../../../utils/ui/shares/HeroSections.tsx";
 const AdminSettingsContent = () =>{
     return  <Stack width={"100%"}>
         <HeroSections Slash={3}/>
-        <Stack p={"20px"}>
+        <Stack p={"20px"} height={"calc( 100vh - 120px)"}>
             <Outlet />
         </Stack>
     </Stack>

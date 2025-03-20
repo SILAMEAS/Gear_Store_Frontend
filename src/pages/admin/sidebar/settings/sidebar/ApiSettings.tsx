@@ -1,10 +1,8 @@
+import SwaggerPage from "../../../../../components/swagger/SwaggerPage.tsx";
 
 const ApiSettings = () => {
-    return (
-        <div>
-            ApiSettings
-        </div>
-    );
+    return  <SwaggerPage/>
+
 };
 
 export default ApiSettings;

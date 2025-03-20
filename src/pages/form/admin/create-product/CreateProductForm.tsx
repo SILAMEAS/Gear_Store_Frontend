@@ -15,8 +15,8 @@ const CreateProductForm: React.FC = () => {
         defaultValues: DefaultProductFormData
     })
     const onSubmit =async (data: ProductFormData) => {
-        console.log("SUBMIT",data)
         try {
+            console.log("data",data)
             // const formData = new FormData();
             // await addUser(formData).unwrap();
         }catch (e:any){
