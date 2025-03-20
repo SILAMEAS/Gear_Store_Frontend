@@ -1,243 +1,14 @@
 import {useState} from "react"
-import {Box, Button, Card, InputAdornment, Paper, TextField, Typography,} from "@mui/material"
-import {Check} from "lucide-react"
+import {Box, Button, InputAdornment, Paper, TextField, Typography,} from "@mui/material"
 import {LoadingSpinner} from "../../../../../components/loading/LoadingSpinner.tsx";
 import EnumTableFooterType from "../../../../../components/TableCustom/constant/enum/EnumTableFooterType.ts";
+import {TableViewPreview} from "./appearance-setting/TableViewPreview.tsx";
+import {ColorOption} from "./appearance-setting/ColorOption.tsx";
+import {ThemePreview} from "./appearance-setting/ThemePreview.tsx";
+import ThemeToggle from "../../../../../theme/toggle/ThemeToggle.tsx";
 
 
-// Theme preview component
-const ThemePreview = ({
-                          theme,
-                          selected,
-                          onClick,
-                      }: {
-    theme: string
-    selected: boolean
-    onClick: () => void
-}) => {
-    const isDark = theme === "Dark"
-    const isSystem = theme === "System preference"
-
-    return (
-        <Box sx={{ textAlign: "center" }}>
-            <Card
-                onClick={onClick}
-                sx={{
-                    width: 190,
-                    height: 120,
-                    cursor: "pointer",
-                    position: "relative",
-                    border: selected ? "2px solid #2C68F6" : "1px solid #e0e0e0",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    mb: 1,
-                }}
-            >
-                {selected && (
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            bottom: 8,
-                            left: 8,
-                            bgcolor: "#2C68F6",
-                            borderRadius: "50%",
-                            width: 24,
-                            height: 24,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: "white",
-                        }}
-                    >
-                        <Check size={16} />
-                    </Box>
-                )}
-                <Box sx={{ display: "flex", height: "100%" }}>
-                    <Box
-                        sx={{
-                            width: "30%",
-                            bgcolor: isSystem ? "#f5f5f5" : isDark ? "#333" : "#f5f5f5",
-                            borderRight: "1px solid #e0e0e0",
-                            p: 1,
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                width: "100%",
-                                height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
-                                mb: 0.5,
-                            }}
-                        />
-                        <Box
-                            sx={{
-                                width: "80%",
-                                height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
-                                mb: 0.5,
-                            }}
-                        />
-                        <Box
-                            sx={{
-                                width: "60%",
-                                height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
-                                mb: 0.5,
-                            }}
-                        />
-                    </Box>
-                    <Box
-                        sx={{
-                            width: "70%",
-                            bgcolor: isSystem ? "#333" : isDark ? "#222" : "#fff",
-                            p: 1,
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                width: "100%",
-                                height: 10,
-                                bgcolor: isSystem || isDark ? "#444" : "#eee",
-                                mb: 1,
-                            }}
-                        />
-                        <Box
-                            sx={{
-                                width: "100%",
-                                height: 60,
-                                bgcolor: isSystem || isDark ? "#444" : "#eee",
-                            }}
-                        />
-                    </Box>
-                </Box>
-            </Card>
-            <Typography variant="body2">{theme}</Typography>
-        </Box>
-    )
-}
-
-// Table view preview component
-const TableViewPreview = ({
-                              view,
-                              selected,
-                              onClick,
-                          }: {
-    view: string
-    selected: boolean
-    onClick: () => void
-}) => {
-    const isCompact = view === "Compact"
-
-    return (
-        <Box sx={{ textAlign: "center" }}>
-            <Card
-                onClick={onClick}
-                sx={{
-                    width: 180,
-                    height: 120,
-                    cursor: "pointer",
-                    position: "relative",
-                    border: selected ? "2px solid #2C68F6" : "1px solid #e0e0e0",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    mb: 1,
-                }}
-            >
-                {selected && (
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            bottom: 8,
-                            left: 8,
-                            bgcolor: "#2C68F6",
-                            borderRadius: "50%",
-                            width: 24,
-                            height: 24,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            color: "white",
-                        }}
-                    >
-                        <Check size={16} />
-                    </Box>
-                )}
-                <Box sx={{ p: 1 }}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                        <Typography variant="caption" sx={{ fontWeight: "bold" }}>
-                            Customer
-                        </Typography>
-                        <Box sx={{ flexGrow: 1 }} />
-                        <Box sx={{ width: 30, height: 8, bgcolor: "#eee", borderRadius: 1 }} />
-                    </Box>
-
-                    {[1, 2, 3, 4].map((row) => (
-                        <Box
-                            key={row}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                mb: isCompact ? 0.5 : 1,
-                                py: isCompact ? 0.25 : 0.5,
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    width: 16,
-                                    height: 16,
-                                    borderRadius: "50%",
-                                    bgcolor: "#ddd",
-                                    mr: 1,
-                                }}
-                            />
-                            <Box
-                                sx={{
-                                    width: "70%",
-                                    height: 6,
-                                    bgcolor: "#eee",
-                                    borderRadius: 1,
-                                }}
-                            />
-                        </Box>
-                    ))}
-                </Box>
-            </Card>
-            <Typography variant="body2">{view}</Typography>
-        </Box>
-    )
-}
-
-// Color option component
-const ColorOption = ({
-                         color,
-                         selected,
-                         onClick,
-                     }: {
-    color: string
-    selected: boolean
-    onClick: () => void
-}) => (
-    <Box
-        onClick={onClick}
-        sx={{
-            width: 32,
-            height: 32,
-            borderRadius: "50%",
-            bgcolor: color,
-            cursor: "pointer",
-            border: selected ? "2px solid #2C68F6" : "none",
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            mr: 1,
-        }}
-    >
-        {selected && <Box sx={{ width: 24, height: 24, borderRadius: "50%", bgcolor: color }} />}
-    </Box>
-)
-
- function AppearanceSettings() {
+function AppearanceSettings() {
     // State for all settings
     // const [logo, setLogo] = useState<string | null>(null)
     const [selectedColor, setSelectedColor] = useState("#2C68F6")
@@ -255,10 +26,9 @@ const ColorOption = ({
         "#2E8B57", // Green
     ]
 
-
     return (
         <Box sx={{width:"100%", mx: "auto", p: 3 ,overflow:"auto"}}>
-            {/** Company Logo */}
+            {/** ========================= Company Logo ========================== */}
             <Box sx={{ mb: 4 }}>
                 <Typography variant="h6" fontWeight="500" gutterBottom>
                     Company logo
@@ -313,7 +83,7 @@ const ColorOption = ({
                 </Box>
             </Box>
 
-            {/** Brand Color */}
+            {/** ========================= Brand Color ========================= */}
             <Box sx={{ mb: 4 }}>
                 <Typography variant="h6" fontWeight="500" gutterBottom>
                     Brand color
@@ -364,7 +134,7 @@ const ColorOption = ({
                 </Box>
             </Box>
 
-            {/* Interface Theme */}
+            {/** ========================= Interface Theme ========================= */}
             <Box sx={{ mb: 4 }}>
                 <Typography variant="h6" fontWeight="500" gutterBottom>
                     Interface theme
@@ -380,12 +150,11 @@ const ColorOption = ({
                     />
                     <ThemePreview theme="Light" selected={theme === "Light"} onClick={() => setTheme("Light")} />
                     <ThemePreview theme="Dark" selected={theme === "Dark"} onClick={() => setTheme("Dark")} />
+                    <ThemeToggle/>
                 </Box>
             </Box>
 
-
-
-            {/* Tables View */}
+            {/** ========================= Tables View ========================= */}
             <Box sx={{ mb: 4 }}>
                 <Typography variant="h6" fontWeight="500" gutterBottom>
                     Tables view
@@ -399,7 +168,7 @@ const ColorOption = ({
                 </Box>
             </Box>
 
-            {/* Action Buttons */}
+            {/** ========================= Action Buttons ========================= */}
             <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
                 <Button
                     variant="outlined"

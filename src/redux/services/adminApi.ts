@@ -9,7 +9,7 @@ import {Method} from "./types/Method.ts";
 export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: ReqHeader("/"),
-  tagTypes: ["users"],
+  tagTypes: ["users","setting"],
   endpoints: (builder) => ({
     /** Get dashboard */
     getDashboard: builder.query<ResDashboard, ReqDashboard>({
@@ -127,6 +127,20 @@ export const adminApi = createApi({
 
       }),
     }),
+    /** ==================================== **/
+    /**             Get Users                **/
+    /** ==================================== **/
+    getSetting: builder.query<any, object>({
+      query: () => ({
+        headers: {
+          ["Authorization"]: `Bearer ${getToken()?.access}`,
+        },
+        url: "/settings/",
+        method: Method.GET
+
+      }),
+      providesTags:["setting"]
+    }),
   }),
 });
 
@@ -138,5 +152,6 @@ export const {
     useGetPaymentsQuery,
     useAddUserMutation,
     useDeleteUserMutation,
-    useUpdateUserMutation
+    useUpdateUserMutation,
+    useGetSettingQuery
 } = adminApi;
