@@ -8,7 +8,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import {Route} from "../../constants/Route.ts";
 import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
 import Colors from "../../theme/mode/Colors.ts";
+
 const HeaderProfile = () => {
+  console.log("HeaderProfile")
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const {navigate}=useGlobalHook();
   const open = Boolean(anchorEl);
@@ -33,17 +35,16 @@ const HeaderProfile = () => {
   }
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center",width:"100%",justifyContent:"flex-end" }}>
         <Tooltip title="Account settings">
           <IconButton
           onClick={handleClick}
           size="small"
-          sx={{ ml: 2 }}
           aria-controls={open ? "account-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           >
-          <AccountCircleIcon sx={{color:Colors._ffffff}}/>
+          <AccountCircleIcon sx={{color:"primary.main"}}/>
           </IconButton>
           </Tooltip>
       </Box>

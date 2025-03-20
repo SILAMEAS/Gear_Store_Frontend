@@ -59,7 +59,7 @@ export default function CellCustom<R extends Record<string, any>>(
                       zIndex: 1,
                       px: item.id === "action" ? "20px" : "inherit",
                       bgcolor: selected.includes(row.id)
-                        ? "#D6056A10"
+                        ? "primary.light"
                         :"inherit",
                       borderBottom: row?.showExtendsRow ? "none" : "",
                     },

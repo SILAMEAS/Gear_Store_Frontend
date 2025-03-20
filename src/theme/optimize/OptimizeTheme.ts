@@ -1,10 +1,13 @@
 declare module "@mui/material/styles" {
     interface Palette {
-        black: Palette["primary"];
+        Black: Palette["primary"];
+        Grey: Palette["primary"];
+        White:  Palette["primary"];
     }
-
     interface PaletteOptions {
-        black: PaletteOptions["primary"];
+        Black: PaletteOptions["primary"];
+        Grey: PaletteOptions["primary"];
+        White: PaletteOptions["primary"];
        
     }
 

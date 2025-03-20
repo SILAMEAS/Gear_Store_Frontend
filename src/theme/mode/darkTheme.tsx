@@ -1,5 +1,4 @@
 import {createTheme} from "@mui/material";
-import Colors from "./Colors.ts";
 
 export const darkTheme = createTheme({
     /**  ===========================================================================  */
@@ -14,12 +13,20 @@ export const darkTheme = createTheme({
             main: "#ff00ff",
         },
         background: {
-            default: Colors._000000,
-            paper: Colors._000000,
+            default: "#000000",
+            paper: "#000000",
         },
-        black:{
-            main:Colors._ffffff,
-            light:Colors._000000,
+        Black:{
+            main:"#ffffff",
+            light:"#000000",
+        },
+        Grey:{
+            main:"#ffffff",
+            light:"#000000",
+        },
+        White:{
+            main:"#ffffff",
+            light:"#000000",
         }
     },
     /**  ===========================================================================  */
@@ -76,13 +83,11 @@ export const darkTheme = createTheme({
                 fontSize: "1rem",
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: Colors._ffffff,
             },
             body2: {
                 fontSize: "0.875rem",
                 fontWeight: 400,
                 lineHeight: 1.5,
-                color: Colors._ffffff,
             },
 
             // Subtitle
@@ -96,7 +101,6 @@ export const darkTheme = createTheme({
                 fontSize: "0.875rem",
                 fontWeight: 500,
                 lineHeight: 1.6,
-                color: Colors._666,
             },
 
             // Button text
@@ -132,14 +136,14 @@ export const darkTheme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor:"primary.main", // Default background color for button
-                    color: Colors._000000, // Text color
-                    "&:hover": {
-                        backgroundColor: Colors._e65c00, // Darker shade on hover
-                    },
+                    // color: Colors._000000, // Text color
+                    // "&:hover": {
+                    //     backgroundColor: Colors._e65c00, // Darker shade on hover
+                    // },
                     "&.MuiButton-contained": {
                         fontWeight: 600,
                         textTransform: "capitalize",
-                        color:Colors._ffffff
+                        // color:Colors._ffffff
                     },
                     "&.MuiButton-text": {
                         fontWeight: 600,
@@ -149,11 +153,11 @@ export const darkTheme = createTheme({
                         fontWeight: 600,
                         textTransform: "capitalize",
                         backgroundColor:"inherit",
-                        color:Colors._e65c00,
+                        // color:Colors._e65c00,
                     },
                     "&.Mui-disabled": {
-                        bgcolor:Colors._ffffff,
-                        color: Colors._e65c00,
+                        // bgcolor:Colors._ffffff,
+                        // color: Colors._e65c00,
                     },
                 },
             },
@@ -186,19 +190,19 @@ export const darkTheme = createTheme({
         MuiAppBar: {
             styleOverrides: {
                 root: {
-                    backgroundColor: Colors._000000, // Solid black
+                    // backgroundColor: Colors._000000, // Solid black
                     backgroundImage: "none", // Remove any default gradient
                     opacity: 1, // Ensure full opacity for the AppBar itself
                     color: "#ffffff", // White text/icons
                     boxShadow: "none", // No shadow
                     borderBottom: "2px solid #f97316", // Orange border
                     "&.MuiAppBar-positionFixed": {
-                        backgroundColor: Colors._000000, // Solid black for fixed position
+                        // backgroundColor: Colors._000000, // Solid black for fixed position
                         backgroundImage: "none", // Ensure no gradient
                         opacity: 1, // Full opacity
                     },
                     "&.MuiAppBar-positionSticky": {
-                        backgroundColor: Colors._000000, // Solid black for sticky position
+                        // backgroundColor: Colors._000000, // Solid black for sticky position
                         backgroundImage: "none", // Ensure no gradient
                         opacity: 1, // Full opacity
                     },
@@ -213,7 +217,7 @@ export const darkTheme = createTheme({
             styleOverrides: {
                 root: {
                     fontSize: "1rem",
-                    color: Colors._ffffff,
+                    // color: Colors._ffffff,
                     backgroundColor: "inherit",
                     borderRadius: "8px",
                     padding: "10px",
@@ -224,7 +228,7 @@ export const darkTheme = createTheme({
                 input: {
                     padding: "12px",
                     fontSize: "1rem",
-                    color: Colors._ffffff,
+                    // color: Colors._ffffff,
                 },
             },
         },
@@ -235,10 +239,10 @@ export const darkTheme = createTheme({
                     backgroundColor: "inherit",
                     borderRadius: "8px",
                     "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: Colors._ccc,
+                        // borderColor: Colors._ccc,
                     },
                     "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: Colors._666,
+                        // borderColor: Colors._666,
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                         borderColor: "white",
@@ -263,7 +267,7 @@ export const darkTheme = createTheme({
                     },
                 },
                 input: {
-                    color: Colors._ffffff, // Ensure text is visible on dark backgrounds
+                    // color: Colors._ffffff, // Ensure text is visible on dark backgrounds
                     padding: "12px",
                 },
             },
@@ -300,7 +304,7 @@ export const darkTheme = createTheme({
                 root: {
                     fontSize: "1rem",
                     fontWeight: 500,
-                    color: Colors._ffffff, // Text color
+                    // color: Colors._ffffff, // Text color
                     backgroundColor: "inherit", // Inherit from parent
                     borderRadius: "8px", // Rounded corners
                     padding: "10px 16px", // Adjust padding
@@ -308,12 +312,12 @@ export const darkTheme = createTheme({
 
                     "&:hover": {
                         backgroundColor:"primary.main", // Custom hover color
-                        color: Colors._ffffff, // Ensure text stays visible
+                        // color: Colors._ffffff, // Ensure text stays visible
                     },
 
                     "&.Mui-selected": {
                         backgroundColor:"primary.main", // Selected item background
-                        color: Colors._ffffff, // Selected item text
+                        // color: Colors._ffffff, // Selected item text
                         "&:hover": {
                             backgroundColor:"primary.main", // Darker hover effect on selected
                         },
@@ -325,7 +329,7 @@ export const darkTheme = createTheme({
         MuiMenu: {
             styleOverrides: {
                 paper: {
-                    backgroundColor: Colors._222, // Dark background for the menu
+                    // backgroundColor: Colors._222, // Dark background for the menu
                     borderRadius: "10px",
                     padding: "5px",
                 },

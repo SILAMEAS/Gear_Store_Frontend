@@ -5,7 +5,7 @@ export const getStatusColor = (status: OrderData["status"]) => {
         case "completed":
             return "success"
         case "pending":
-            return "warning"
+            return "primary"
         case "cancelled":
             return "error"
         default:

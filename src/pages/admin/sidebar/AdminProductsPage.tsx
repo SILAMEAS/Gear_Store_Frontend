@@ -2,10 +2,8 @@ import CTableProducts from "../../../components/TableCustom/CTable/table-product
 import {Stack} from "@mui/material";
 
 const AdminProductsPage = () => {
-    return <Stack  height={"100vh"} width={"100%"}>
-        <Stack width={"100%"} p={"50px"}>
-            <CTableProducts/>
-        </Stack>
+    return <Stack  height={"100%"} width={"100%"}>
+        <CTableProducts/>
     </Stack>
 };
 

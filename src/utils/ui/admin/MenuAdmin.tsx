@@ -28,11 +28,6 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.CATEGORY
     },
     {
-        Title:"Customers",
-        Icon:<PeopleOutlineIcon />,
-        route:Route.admin.CUSTOMER
-    },
-    {
         Title:"Orders",
         Icon:<PendingActionsOutlinedIcon />,
         route:Route.admin.ORDER
@@ -48,9 +43,14 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.PAYMENT
     },
     {
-        Title:"Settings",
-        Icon:<SettingsOutlinedIcon />,
-        route:Route.admin.SETTING
+        Title:"Customers",
+        Icon:<PeopleOutlineIcon />,
+        route:Route.admin.CUSTOMER
+    },
+    {
+        Title:"Users",
+        Icon:<AdminPanelSettingsOutlinedIcon />,
+        route:Route.admin.USER
     },
     {
         Title:"Helps",
@@ -58,9 +58,9 @@ export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
         route:Route.admin.HELP
     },
     {
-        Title:"Users",
-        Icon:<AdminPanelSettingsOutlinedIcon />,
-        route:Route.admin.USER
+        Title:"Settings",
+        Icon:<SettingsOutlinedIcon />,
+        route:Route.admin.SETTING
     },
 
 ]

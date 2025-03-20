@@ -5,20 +5,26 @@ import HeaderWishlist from "../../../../components/header/HeaderWishlist.tsx";
 import HeaderCart from "../../../../components/header/HeaderCart.tsx";
 import HeaderProfile from "../../../../components/header/HeaderProfile.tsx";
 import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
+import useRTKFromStore from "../../../hooks/useRTKFromStore.tsx";
+import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
 
 const UIRightSideHeaderMenu = () => {
     const {IsLoginPage}=useCheckUrl();
+    const {userDetail}=useRTKFromStore();
+    const isUser=userDetail?.role=== EnumRole.USER;
     return (
-        <Stack minWidth={"80px"} direction={"row"} sx={{alignItems: "center"}}>
+        <Stack minWidth={"80px"} direction={"row"} sx={{alignItems: "center",justifyItems:"center"}}>
             {/** Search  **/}
-            <HeaderSearch/>
+            {
+                isUser&&  <HeaderSearch/>
+            }
             {/** Wishlist  **/}
             {
-                getToken().access&&<HeaderWishlist/>
+                getToken().access&&isUser&& <HeaderWishlist/>
             }
             {/** Cart  **/}
             {
-                getToken().access&&<HeaderCart/>
+                getToken().access&&isUser&&<HeaderCart/>
             }
             {/** Profile  **/}
             {

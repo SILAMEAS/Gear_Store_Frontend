@@ -1,27 +1,19 @@
-import React, {useState} from "react";
-import {AppBar, Box, Toolbar, Typography} from "@mui/material";
-import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
-import AdminHeaderHandler from "./AdminHeaderHandler.tsx";
+import React from "react";
+import {AppBar, Box, Toolbar} from "@mui/material";
+import UIRightSideHeaderMenu from "../../end-user/header-navigation/UIRightSideHeaderMenu.tsx";
+import UILogo from "../../end-user/header-navigation/UILogo.tsx";
+import Text from "../../../../components/text/Text.tsx";
 
 const AdminHeader: React.FC = () => {
-    const {location}=useGlobalHook();
-    const [label,setLabel]=useState<string>("Dashboard")
-    React.useEffect(()=>{
-        if(location?.pathname?.split("/")[2]){
-            setLabel(location?.pathname?.split("/")[2])
-        }else {
-            setLabel("Dashboard")
-        }
-    },[location?.pathname])
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{height:"65px",borderColor:"primary.main"}}>
             <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    {label.toLocaleUpperCase()}
-                </Typography>
+                <UILogo/>
+                <Text variant="h6" component="div" sx={{ flexGrow: 1 ,color:"primary.main"}}/>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                    {/** Handler Header of Admin **/}
-                   <AdminHeaderHandler/>
+                   {/*<AdminHeaderHandler/>*/}
+                    <UIRightSideHeaderMenu/>
                 </Box>
             </Toolbar>
         </AppBar>

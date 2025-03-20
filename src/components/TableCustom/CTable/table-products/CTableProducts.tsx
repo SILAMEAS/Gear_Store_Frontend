@@ -49,7 +49,7 @@ const CTableProducts = <CO extends ResProduct>() =>
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
-                height:"calc( 100vh - 200px )",
+                height:"calc( 100vh - 165px )"
             }}
             // handleViewDetailPage={(row)=>{
             //     navigate(Route.admin.PRODUCT+"/"+row.id)

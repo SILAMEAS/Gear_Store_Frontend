@@ -8,18 +8,27 @@ const lightTheme = createTheme({
     palette: {
         mode: "light",
         primary: {
-            main:"#D6056A",
+            main: "#D6056A",
+            light: "#D6056A50",
         },
         secondary: {
-            main: Colors._800080,
+            main: "#800080",
         },
         background: {
             default: Colors._f8fafc,
             paper: Colors._ffffff,
         },
-        black:{
-            main:Colors._000000,
-            light:Colors._ffffff
+        Black: {
+            main:"#ffffff",
+            light:"#000000",
+        },
+        Grey:{
+            main:"#646464",
+            light:"#E9E9E9",
+        },
+        White:{
+            main:"#ffffff",
+            light:"#000000",
         }
     },
     /**  ===========================================================================  */
@@ -132,7 +141,7 @@ const lightTheme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor: Colors._primaryMain, // Default background color for button
-                    color:Colors._ffffff, // Text color
+                    color: Colors._ffffff, // Text color
                     "&:hover": {
                         backgroundColor: Colors._555, // Darker shade on hover
                     },
@@ -147,10 +156,10 @@ const lightTheme = createTheme({
                     "&.MuiButton-outlined": {
                         fontWeight: 600,
                         textTransform: "capitalize",
-                        backgroundColor:"inherit",
+                        backgroundColor: "inherit",
                     },
                     "&.Mui-disabled": {
-                        bgcolor:Colors._ffffff,
+                        bgcolor: Colors._ffffff,
                         color: Colors._555,
                     },
                 },
@@ -167,9 +176,9 @@ const lightTheme = createTheme({
                     transition: "all 0.3s ease-in-out",
                     "&:hover": {
                         // backgroundColor: Colors._f97316, // Orange background on hover
-                        border:"2px solid #f97316",
+                        border: "2px solid primary.main",
                         color: Colors._primaryMain, // White icon on hover
-                        padding:"5px"
+                        padding: "10px"
                     },
                     "&.Mui-disabled": {
                         backgroundColor: "rgba(0, 0, 0, 0.12)", // Light grey for disabled state
@@ -189,7 +198,7 @@ const lightTheme = createTheme({
                     opacity: 1, // Ensure full opacity for the AppBar itself
                     color: Colors._000000, // White text/icons
                     boxShadow: "none", // No shadow
-                    borderBottom: "2px solid #f97316", // Orange border
+                    borderBottom: "1px solid", // Orange border
                     "&.MuiAppBar-positionFixed": {
                         backgroundColor: Colors._000000, // Solid black for fixed position
                         backgroundImage: "none", // Ensure no gradient

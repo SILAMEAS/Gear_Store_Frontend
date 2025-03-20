@@ -1,18 +1,16 @@
-
 import {Skeleton, Stack, TableCell, TableRow, Typography} from "@mui/material";
 
 import React from "react";
 
 export const SkeletonLoadingTableCustom = ({
-  isFetching,
   isLoading,
   emptyData,
-}: {
+}: Readonly<{
   isFetching: boolean;
   isLoading: boolean;
   emptyData?: React.ReactNode;
-}) => {
-  if (isFetching || isLoading) {
+}>) => {
+  if ( isLoading) {
     return (
       <Stack p={2} height={"290px"} width={"100vw"}>
         {Array.from({length: 8}, (_, index: number) => (
