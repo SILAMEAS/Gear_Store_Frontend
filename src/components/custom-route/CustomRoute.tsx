@@ -15,7 +15,17 @@ const CustomRoute = ({Inner=false,Title,route,children}:Readonly<{Inner?:boolean
             </ListItem>
         </ListItem>
     }
-    return  <ListItem onClick={()=>navigate(route)} sx={{cursor:"pointer",bgcolor:route===pathname?"Blue.light" :"transparent",py:"10px",borderRadius:"10px",m:"5px",width:"60px"}} >
+    return  <ListItem onClick={()=>navigate(route)} sx={{
+        cursor:"pointer",
+        bgcolor:route===pathname?"Blue.light" :"transparent",
+        py:"10px",
+        borderRadius:"10px",
+        m:"5px",
+        mr:0,
+        width:"60px",
+        border:route===pathname?1:0,
+        borderRight:route===pathname?5:0,
+        borderColor:"primary.main"}} >
         <Tooltip title={Title} placement="right-start">
             <ListItemIcon sx={{color:activeColor}}>
                 {children}
