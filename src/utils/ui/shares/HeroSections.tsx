@@ -1,21 +1,22 @@
 import React, {useState} from "react";
 import Text from "../../../components/text/Text.tsx";
+import {Stack} from "@mui/material";
 
-const HeroSections = () => {
+const HeroSections = ({Slash=2}:{Slash?:number}) => {
     const [label,setLabel]=useState<string>("Dashboard")
     React.useEffect(()=>{
-        if(location?.pathname?.split("/")[2]){
-            setLabel(location?.pathname?.split("/")[2])
+        if(location?.pathname?.split("/")[Slash]){
+            setLabel(location?.pathname?.split("/")[Slash])
         }else {
             setLabel("Dashboard")
         }
-    },[])
+    },[Slash])
     return (
-        <div>
-            <Text variant="h6" component="div" sx={{ flexGrow: 1 ,color:"primary.main"}}>
+        <Stack borderBottom={"2px solid"} borderColor={"Blue.main"} height={"50px"} justifyContent={"center"} px={"20px"}>
+            <Text variant="subtitle1" component="div" sx={{ color:"Black.main"}}>
                 {label.toLocaleUpperCase()}
             </Text>
-        </div>
+        </Stack>
     );
 };
 

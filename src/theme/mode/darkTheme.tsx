@@ -27,6 +27,10 @@ export const darkTheme = createTheme({
         White:{
             main:"#ffffff",
             light:"#000000",
+        },
+        Blue:{
+            main:"#e4eaea",
+            light:"#F2F5FC"
         }
     },
     /**  ===========================================================================  */

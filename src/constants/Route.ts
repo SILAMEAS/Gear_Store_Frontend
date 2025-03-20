@@ -17,7 +17,11 @@ export const Route={
         USER_ID:"/admin/users/:id",
         PAYMENT:"/admin/payment",
         HELP:"/admin/help",
-        SETTING:"/admin/settings"
+        SETTING:"/admin/settings",
+        settings:{
+            appearance:"/admin/settings/appearance",
+            api:"/admin/settings/api"
+        }
     },
     public:{
         HOME:"/home",

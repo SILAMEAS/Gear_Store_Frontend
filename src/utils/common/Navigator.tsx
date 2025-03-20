@@ -2,10 +2,10 @@
 export const Navigator = (goto: string, companyDefault?: string) => {
     const searchParams = new URLSearchParams(window.location.search);
     const company =
-        companyDefault ?? localStorage.getItem('company') ?? 'certigna';
+        companyDefault ?? localStorage.getItem("company") ?? "certigna";
 
-    if (searchParams.has('company')) {
-        searchParams.set('company', company);
+    if (searchParams.has("company")) {
+        searchParams.set("company", company);
     }
 
 

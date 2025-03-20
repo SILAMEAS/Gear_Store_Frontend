@@ -1,11 +1,21 @@
 import {PropsWithChildren} from "react";
-import {ListItem, ListItemIcon, Tooltip} from "@mui/material";
+import {ListItem, ListItemIcon, Stack, Tooltip} from "@mui/material";
 import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
+import Text from "../text/Text.tsx";
 
-const CustomRoute = ({Title,route,children}:Readonly<{Title:string,route:string}&PropsWithChildren>) => {
+const CustomRoute = ({Inner=false,Title,route,children}:Readonly<{Inner?:boolean,Title:string,route:string}&PropsWithChildren>) => {
     const {navigate,pathname}=useGlobalHook();
-    const activeColor=route===pathname?"primary.main" :"Grey.main"
-    return  <ListItem onClick={()=>navigate(route)} sx={{cursor:"pointer",bgcolor:route===pathname?"primary.light" :"transparent",py:"10px",borderRadius:"10px",m:"5px",width:"60px"}} >
+    const activeColor=route===pathname?"primary.main" :"Grey.main";
+    if(Inner){
+        return  <ListItem onClick={()=>navigate(route)} sx={{cursor:"pointer",borderRadius:"10px",m:"10px",width:"auto",height:"30px",bgcolor:route===pathname?"Blue.main":"inherit"}} >
+            <ListItem>
+                <Stack direction={"row"} gap={"10px"} alignItems={"center"} justifyContent={"center"} >
+                    {children} <Text variant={"body2"} color={"inherit"}>{Title}</Text>
+                </Stack>
+            </ListItem>
+        </ListItem>
+    }
+    return  <ListItem onClick={()=>navigate(route)} sx={{cursor:"pointer",bgcolor:route===pathname?"Blue.light" :"transparent",py:"10px",borderRadius:"10px",m:"5px",width:"60px"}} >
         <Tooltip title={Title} placement="right-start">
             <ListItemIcon sx={{color:activeColor}}>
                 {children}

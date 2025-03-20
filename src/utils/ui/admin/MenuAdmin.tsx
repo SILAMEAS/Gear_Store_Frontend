@@ -14,52 +14,52 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 export const MenuAdmin:Array<{Title:string,route:string,Icon:ReactNode}>=[
     {
         Title:"Dashboard",
-        Icon:<GridViewIcon/>,
+        Icon:<GridViewIcon sx={{width:24,height:24}}/>,
         route:Route.admin.HOME
     },
     {
         Title:"Products",
-        Icon:<ProductionQuantityLimitsIcon />,
+        Icon:<ProductionQuantityLimitsIcon sx={{width:24,height:24}}/>,
         route:Route.admin.PRODUCT
     },
     {
         Title:"Category",
-        Icon:<CategoryOutlinedIcon />,
+        Icon:<CategoryOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.CATEGORY
     },
     {
         Title:"Orders",
-        Icon:<PendingActionsOutlinedIcon />,
+        Icon:<PendingActionsOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.ORDER
     },
     {
         Title:"Reviews",
-        Icon:<StarBorderOutlinedIcon />,
+        Icon:<StarBorderOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.REVIEW
     },
     {
         Title:"Payments",
-        Icon:<PaymentsOutlinedIcon />,
+        Icon:<PaymentsOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.PAYMENT
     },
     {
         Title:"Customers",
-        Icon:<PeopleOutlineIcon />,
+        Icon:<PeopleOutlineIcon sx={{width:24,height:24}}/>,
         route:Route.admin.CUSTOMER
     },
     {
         Title:"Users",
-        Icon:<AdminPanelSettingsOutlinedIcon />,
+        Icon:<AdminPanelSettingsOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.USER
     },
     {
         Title:"Helps",
-        Icon:<SupportAgentIcon />,
+        Icon:<SupportAgentIcon sx={{width:24,height:24}}/>,
         route:Route.admin.HELP
     },
     {
         Title:"Settings",
-        Icon:<SettingsOutlinedIcon />,
+        Icon:<SettingsOutlinedIcon sx={{width:24,height:24}}/>,
         route:Route.admin.SETTING
     },
 

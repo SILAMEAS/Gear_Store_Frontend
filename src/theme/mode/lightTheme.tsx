@@ -19,8 +19,8 @@ const lightTheme = createTheme({
             paper: Colors._ffffff,
         },
         Black: {
-            main:"#ffffff",
-            light:"#000000",
+            main:"#000000",
+            light:"#00000050",
         },
         Grey:{
             main:"#646464",
@@ -29,6 +29,10 @@ const lightTheme = createTheme({
         White:{
             main:"#ffffff",
             light:"#000000",
+        },
+        Blue:{
+            main:"#e4eaea",
+            light:"#F2F5FC"
         }
     },
     /**  ===========================================================================  */

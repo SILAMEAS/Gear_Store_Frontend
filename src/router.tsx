@@ -16,6 +16,8 @@ import {
     AdminRoute,
     AdminSettingPage,
     AdminUserPage,
+    ApiSettings,
+    AppearanceSettings,
     EndUserRoute,
     HomePublic,
     LayoutProduct,
@@ -160,9 +162,24 @@ export const routesConfig = [
                         path: Route.admin.HELP,
                         element: <AdminHelpPage/>
                     },
+                    /** settings page */
                     {
                         path: Route.admin.SETTING,
-                        element: <AdminSettingPage/>
+                        element: <AdminSettingPage/>,
+                        children:[
+                            {
+                                index: true,
+                                element: <Navigate to={`${Navigator(Route.admin.settings.appearance).pathname}`} replace />,
+                            },
+                            {
+                                path: Route.admin.settings.appearance,
+                                element: <AppearanceSettings />,
+                            },
+                            {
+                                path: Route.admin.settings.api,
+                                element: <ApiSettings />,
+                            },
+                        ]
                     },
                     {
                         path: Route.admin.CUSTOMER,

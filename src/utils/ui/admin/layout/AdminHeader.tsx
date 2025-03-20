@@ -6,7 +6,7 @@ import Text from "../../../../components/text/Text.tsx";
 
 const AdminHeader: React.FC = () => {
     return (
-        <AppBar position="static" sx={{height:"65px",borderColor:"primary.main"}}>
+        <AppBar position="static" sx={{height:"65px",borderColor:"Grey.light"}}>
             <Toolbar>
                 <UILogo/>
                 <Text variant="h6" component="div" sx={{ flexGrow: 1 ,color:"primary.main"}}/>
