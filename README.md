@@ -260,3 +260,80 @@
     };
 
     export default PublicRoute;
+
+### * Animation Switching Page
+1️⃣ Install Framer Motion
+
+    npm install framer-motion
+
+2️⃣ Create PageTransition.tsx
+
+This component will handle smooth page transitions.
+
+    import { motion, AnimatePresence } from "framer-motion";
+    import { useLocation } from "react-router-dom";
+    import { ReactNode } from "react";
+    
+    interface PageTransitionProps {
+    children: ReactNode;
+    }
+    
+    const PageTransition = ({ children }: PageTransitionProps) => {
+    const location = useLocation();
+    
+    return (
+    <AnimatePresence mode="wait">
+    <motion.div
+    key={location.pathname}
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.3 }}
+    >
+    {children}
+    </motion.div>
+    </AnimatePresence>
+    );
+    };
+    
+    export default PageTransition;
+
+3️⃣ Create LoadingIndicator.tsx
+
+This will show the MUI LinearProgress bar when changing pages.
+
+    import { LinearProgress } from "@mui/material";
+    import { useNavigation } from "react-router-dom";
+    
+    const LoadingIndicator = () => {
+    const navigation = useNavigation();
+    const isLoading = navigation.state === "loading";
+    
+    return isLoading ? (
+    <LinearProgress sx={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1100 }} />
+    ) : null;
+    };
+    
+    export default LoadingIndicator;
+
+4️⃣ Use PageTransition in App.tsx
+
+Modify your App.tsx to wrap routes with the transition.
+
+    import { RouterProvider } from "react-router-dom";
+    import { router } from "./routesConfig";
+    import PageTransition from "./components/PageTransition";
+    import LoadingIndicator from "./components/LoadingIndicator";
+    
+    const App = () => {
+    return (
+    <>
+    <LoadingIndicator />
+    <PageTransition>
+    <RouterProvider router={router} />
+    </PageTransition>
+    </>
+    );
+    };
+    
+    export default App;

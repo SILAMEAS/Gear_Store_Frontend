@@ -2,6 +2,7 @@ import {Stack} from "@mui/material";
 import AdminHeader from "../../utils/ui/admin/layout/AdminHeader.tsx";
 import AdminSideBar from "../../utils/ui/admin/layout/AdminSideBar.tsx";
 import AdminContent from "../../utils/ui/admin/layout/AdminContent.tsx";
+import PageTransition from "../../components/loading/PageTransition.tsx";
 
 const AdminLayout = () => {
   return  <Stack overflow={"hidden"}>
@@ -11,7 +12,9 @@ const AdminLayout = () => {
           {/** Sidebar **/}
           <AdminSideBar />
           {/*** Content of admin  **/}
-          <AdminContent/>
+          <PageTransition>
+              <AdminContent/>
+          </PageTransition>
       </Stack>
   </Stack>
 };
