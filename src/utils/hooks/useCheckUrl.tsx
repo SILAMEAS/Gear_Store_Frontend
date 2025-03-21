@@ -13,13 +13,15 @@ const useCheckUrl = () => {
     const IsLoginPage = Boolean(
         pathnameRemoveLastSlash === Route.public.LOGIN,
     );
+    const IncludeSettingsPage=pathnameRemoveLastSlash.includes(Route.admin.SETTING)
     return {
         /** =============================================================================== */
         /**                             LOGIN Page                                          */
         /** =============================================================================== */
         IsLoginPage,
         pathname,
-        pathnameRemoveLastSlash
+        pathnameRemoveLastSlash,
+        IncludeSettingsPage
     };
 };
 

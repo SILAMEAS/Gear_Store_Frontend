@@ -1,10 +1,10 @@
 import {Outlet} from "react-router-dom";
 import {Stack} from "@mui/material";
 import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
-import {Route} from "../../../../constants/Route.ts";
+import PageTransition from "../../../../components/loading/PageTransition.tsx";
 
 const AdminContent = () =>{
-    const {pathnameRemoveLastSlash}=useCheckUrl();
+    const {IncludeSettingsPage}=useCheckUrl();
     const defaultSxStyle={
         height:"calc(100vh - 70px)",
         overflow:"hidden",
@@ -15,14 +15,21 @@ const AdminContent = () =>{
     }
     const handleStyleAdminContent=()=>{
         const sxStyle=defaultSxStyle
-        if(pathnameRemoveLastSlash.includes(Route.admin.SETTING)){
+        if(IncludeSettingsPage){
             return {...sxStyle,px:0,pt:0}
         }else {
             return sxStyle;
         }
     }
     return  <Stack  sx={handleStyleAdminContent()} >
-        <Outlet />
+        {
+            IncludeSettingsPage?
+                <Outlet />:
+                <PageTransition>
+                    <Outlet />
+                </PageTransition>
+        }
+
     </Stack>
 }
 
