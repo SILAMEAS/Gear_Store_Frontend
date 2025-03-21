@@ -14,8 +14,6 @@ export const ThemePreview = ({
     onClick: () => void
 }) => {
     const isDark = theme === "Dark"
-    const isSystem = theme === "System preference"
-
     return (
         <Box sx={{ textAlign: "center" }}>
             <Card
@@ -54,7 +52,7 @@ export const ThemePreview = ({
                     <Box
                         sx={{
                             width: "30%",
-                            bgcolor: isSystem ? "#f5f5f5" : isDark ? "#333" : "#f5f5f5",
+                            bgcolor: isDark ? "#333" : "#f5f5f5",
                             borderRight: "1px solid #e0e0e0",
                             p: 1,
                         }}
@@ -63,7 +61,7 @@ export const ThemePreview = ({
                             sx={{
                                 width: "100%",
                                 height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
+                                bgcolor: !isDark ? "#999" : "#666",
                                 mb: 0.5,
                             }}
                         />
@@ -71,7 +69,7 @@ export const ThemePreview = ({
                             sx={{
                                 width: "80%",
                                 height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
+                                bgcolor:  !isDark ? "#999" : "#666",
                                 mb: 0.5,
                             }}
                         />
@@ -79,7 +77,7 @@ export const ThemePreview = ({
                             sx={{
                                 width: "60%",
                                 height: 3,
-                                bgcolor: isSystem || !isDark ? "#999" : "#666",
+                                bgcolor:  !isDark ? "#999" : "#666",
                                 mb: 0.5,
                             }}
                         />
@@ -87,7 +85,7 @@ export const ThemePreview = ({
                     <Box
                         sx={{
                             width: "70%",
-                            bgcolor: isSystem ? "#333" : isDark ? "#222" : "#fff",
+                            bgcolor:  isDark ? "#222" : "#fff",
                             p: 1,
                         }}
                     >
@@ -95,7 +93,7 @@ export const ThemePreview = ({
                             sx={{
                                 width: "100%",
                                 height: 10,
-                                bgcolor: isSystem || isDark ? "#444" : "#eee",
+                                bgcolor: isDark ? "#444" : "#eee",
                                 mb: 1,
                             }}
                         />
@@ -103,7 +101,7 @@ export const ThemePreview = ({
                             sx={{
                                 width: "100%",
                                 height: 60,
-                                bgcolor: isSystem || isDark ? "#444" : "#eee",
+                                bgcolor: isDark ? "#444" : "#eee",
                             }}
                         />
                     </Box>

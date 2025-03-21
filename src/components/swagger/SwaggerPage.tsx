@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Copy from "../copy/Copy.tsx";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import {IconButton, Tooltip} from "@mui/material";
+import {StyleConstant} from "../TableCustom/constant/StyleConstant.tsx";
 
 const SwaggerPage: React.FC = () => {
     return (
@@ -16,7 +17,7 @@ const SwaggerPage: React.FC = () => {
                    <Copy content={`${getToken().access}`}/>
                </IconButton>
             </Tooltip>
-            <CardContent sx={{overflow:"auto",height:"100%"}}>
+            <CardContent sx={{overflow:"auto",height:"100%",...StyleConstant.scrollNormal}}>
                 <Typography variant="h5" gutterBottom>
                     API Documentation
                 </Typography>

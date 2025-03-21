@@ -16,19 +16,7 @@ export const darkTheme = createTheme({
             default: "#000000",
             paper: "#000000",
         },
-        Black:{
-            main:"#ffffff",
-            light:"#000000",
-        },
         Grey:{
-            main:"#ffffff",
-            light:"#000000",
-        },
-        White:{
-            main:"#ffffff",
-            light:"#000000",
-        },
-        Blue:{
             main:"#e4eaea",
             light:"#F2F5FC"
         }

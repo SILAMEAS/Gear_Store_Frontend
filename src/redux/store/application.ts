@@ -1,6 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IApplication, ISnackbarStatus} from "./type.ts";
+import {IApplication, ISnackbarStatus, SettingsResponse} from "./type.ts";
 import {ResUser} from "../services/types/IUserApi.ts";
+import Colors from "../../theme/mode/Colors.ts";
 
 const initialState: IApplication = {
   productCurrentPage: 1,
@@ -8,6 +9,15 @@ const initialState: IApplication = {
   snackbarStatus: "error",
   deleteProductId: null,
   deleteUserId: null,
+  settingsResponse:{
+    Danger:Colors._ffffff,
+    Info:Colors._ffffff,
+    Primary:Colors._ffffff,
+    Success:Colors._ffffff,
+    Warning:Colors._ffffff,
+    Secondary:Colors._ffffff,
+    logo:""
+  }
 };
 
 export const applicationSlice = createSlice({
@@ -29,13 +39,17 @@ export const applicationSlice = createSlice({
     setUserSelected: (state, { payload }: { payload: ResUser }) => {
       state.userSelected = payload;
     },
+    setSetting: (state, { payload }: { payload: SettingsResponse }) => {
+      state.settingsResponse = payload;
+    },
   },
 });
 
 export const {
   dispatchSnackbar,
   setUserDetail,
-  setUserSelected
+  setUserSelected,
+  setSetting
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

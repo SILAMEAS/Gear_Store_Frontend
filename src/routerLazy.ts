@@ -28,8 +28,8 @@ const AdminSettingPage=lazy(()=>import("./pages/admin/sidebar/AdminSettingPage.t
 const AdminCustomerPage=lazy(()=>import("./pages/admin/sidebar/AdminCustomerPage.tsx"))
 const AdminProductsPage=lazy(()=>import("./pages/admin/sidebar/AdminProductsPage.tsx"))
 const PublicAboutPage=lazy(()=>import("./pages/public/sidebar/PublicAboutPage.tsx"))
-const AppearanceSettings=lazy(()=>import("./pages/admin/sidebar/settings/sidebar/AppearanceSettings.tsx"))
-const ApiSettings=lazy(()=>import("./pages/admin/sidebar/settings/sidebar/ApiSettings.tsx"))
+const AppearanceSettings=lazy(()=>import("./pages/admin/sidebar/settings/sidebar/AppearanceSettingsPage.tsx"))
+const ApiSettings=lazy(()=>import("./pages/admin/sidebar/settings/sidebar/ApiSettingsPage.tsx"))
 /** detail page by role admin */
 const PageProductDetail = lazy(()=>import("./pages/admin/sidebar/detail/AdminProductDetail.tsx"))
 const PageCustomerDetail = lazy(()=>import("./pages/admin/sidebar/detail/AdminCustomerDetail.tsx"))

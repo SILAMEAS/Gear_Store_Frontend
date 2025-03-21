@@ -6,11 +6,11 @@ import PageTransition from "../../../../../components/loading/PageTransition.tsx
 const AdminSettingsContent = () =>{
     return  <Stack width={"100%"}>
         <HeroSections Slash={3}/>
-        <Stack p={"20px"} height={"calc( 100vh - 120px)"}>
             <PageTransition>
+                <Stack p={"20px"} height={"calc( 100vh - 120px)"}>
                 <Outlet />
+                </Stack>
             </PageTransition>
-        </Stack>
     </Stack>
 }
 

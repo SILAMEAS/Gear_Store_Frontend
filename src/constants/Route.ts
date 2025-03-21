@@ -20,7 +20,8 @@ export const Route={
         SETTING:"/admin/settings",
         settings:{
             appearance:"/admin/settings/appearance",
-            api:"/admin/settings/api"
+            api:"/admin/settings/api",
+            color:"/admin/settings/color"
         }
     },
     public:{

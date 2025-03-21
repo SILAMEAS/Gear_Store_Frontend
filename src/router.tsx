@@ -23,9 +23,10 @@ import AdminUserPage from "./pages/admin/sidebar/AdminUserPage.tsx";
 import AdminPaymentPage from "./pages/admin/sidebar/AdminPaymentPage.tsx";
 import AdminHelpPage from "./pages/admin/sidebar/AdminHelpPage.tsx";
 import AdminSettingPage from "./pages/admin/sidebar/AdminSettingPage.tsx";
-import AppearanceSettings from "./pages/admin/sidebar/settings/sidebar/AppearanceSettings.tsx";
-import ApiSettings from "./pages/admin/sidebar/settings/sidebar/ApiSettings.tsx";
+import AppearanceSettingsPage from "./pages/admin/sidebar/settings/sidebar/AppearanceSettingsPage.tsx";
+import ApiSettingsPage from "./pages/admin/sidebar/settings/sidebar/ApiSettingsPage.tsx";
 import AdminCustomerPage from "./pages/admin/sidebar/AdminCustomerPage.tsx";
+import ColorSettingsPage from "./pages/admin/sidebar/settings/sidebar/ColorSettingsPage.tsx";
 
 
 export const routesConfig = [
@@ -168,12 +169,17 @@ export const routesConfig = [
                             },
                             {
                                 path: Route.admin.settings.appearance,
-                                element: <AppearanceSettings />,
+                                element: <AppearanceSettingsPage />,
                             },
                             {
                                 path: Route.admin.settings.api,
-                                element: <ApiSettings />,
+                                element: <ApiSettingsPage />,
                             },
+                            {
+                                path: Route.admin.settings.color,
+                                element: <ColorSettingsPage />,
+                            },
+
                         ]
                     },
                     {

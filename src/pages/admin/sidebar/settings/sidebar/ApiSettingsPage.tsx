@@ -1,8 +1,8 @@
 import SwaggerPage from "../../../../../components/swagger/SwaggerPage.tsx";
 
-const ApiSettings = () => {
+const ApiSettingsPage = () => {
     return  <SwaggerPage/>
 
 };
 
-export default ApiSettings;
+export default ApiSettingsPage;

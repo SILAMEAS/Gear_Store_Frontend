@@ -7,7 +7,8 @@ export interface IApplication {
   snackbarMessage: string | null;
   snackbarStatus: ISnackbarStatus;
   userDetail?:ResUser;
-  userSelected?:ResUser
+  userSelected?:ResUser;
+  settingsResponse:SettingsResponse
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";
@@ -21,8 +22,12 @@ export interface IErrorType {
   data: any;
   status: number;
 }
-// export enum EnumRole{
-//   USER="user",
-//   ADMIN="admin",
-//   PUBLIC="public"
-// }
+export interface SettingsResponse {
+  Danger:    string;
+  Info:      string;
+  Primary:   string;
+  Secondary: string;
+  Success:   string;
+  Warning:   string;
+  logo:      string;
+}

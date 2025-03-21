@@ -14,8 +14,8 @@ const HeroSections = ({Slash=2}:{Slash?:number}) => {
         }
     },[pathname,Slash])
     return (
-        <Stack borderBottom={"2px solid"} borderColor={"Blue.main"} height={"50px"} justifyContent={"center"} px={"20px"}>
-            <Text variant="subtitle1" component="div" sx={{ color:"Black.main"}}>
+        <Stack borderBottom={"2px solid"} borderColor={"Grey.main"} height={"50px"} justifyContent={"center"} px={"20px"}>
+            <Text variant="subtitle1" component="div" sx={{ color:"black.main"}}>
                 {label.toLocaleUpperCase()}
             </Text>
         </Stack>

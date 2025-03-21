@@ -15,24 +15,12 @@ const lightTheme = createTheme({
             main: "#800080",
         },
         background: {
-            default: Colors._f8fafc,
-            paper: Colors._ffffff,
-        },
-        Black: {
-            main:"#000000",
-            light:"#00000050",
+            default: "#f8fafc",
+            paper: "#ffffff",
         },
         Grey:{
-            main:"#646464",
-            light:"#E9E9E9",
-        },
-        White:{
-            main:"#ffffff",
-            light:"#000000",
-        },
-        Blue:{
             main:"#e4eaea",
-            light:"#F2F5FC"
+            light:"#e4eaea50"
         }
     },
     /**  ===========================================================================  */

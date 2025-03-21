@@ -1,5 +1,7 @@
 import Colors from "../../../theme/mode/Colors.ts";
 
+const _webkitBoxShadow = "inset 0 0 6px rgba(0,0,0,0.00)";
+const _outline = "1px solid";
 export const StyleConstant = {
     inputStyleLogin: {
         "& input::placeholder": {
@@ -7,14 +9,14 @@ export const StyleConstant = {
         },
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
-            borderColor: "#E9E9E9",
+            borderColor: "primary.main",
             borderWidth: "0.1px",
             // background: 'blue',
             // height: 40,
             background: "inherit",
           },
           "&:hover fieldset": {
-            borderColor: "#E9E9E9",
+            borderColor: "primary.light",
           },
           "&.Mui-focused fieldset": {
             borderColor: "primary.main",
@@ -29,4 +31,31 @@ export const StyleConstant = {
           },
         },
       },
+  scrollNormal: {
+    "&::-webkit-scrollbar": {
+      width: "0.2em"
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: _webkitBoxShadow,
+      webkitBoxShadow: _webkitBoxShadow,
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "primary.main",
+      borderRadius:"20px",
+      outline: _outline,
+    },
+  },
+  scrollNoWidth: {
+    "&::-webkit-scrollbar": {
+      width: "0.00em",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: _webkitBoxShadow,
+      webkitBoxShadow: _webkitBoxShadow,
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "primary.main",
+      outline: _outline,
+    },
+  },
 }
