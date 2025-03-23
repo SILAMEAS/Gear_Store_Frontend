@@ -53,8 +53,8 @@ export default function CellCustom<R extends Record<string, any>>(
                     {
                       display: item.hidden ? "none" : "visible",
                       position: item.id === "action" ? "sticky" : "inherit",
-                      paddingTop: item.noPaddingRow ? 0 : "20px",
-                      paddingBottom: item.noPaddingRow ? 0 : "20px",
+                      paddingTop: item.noPaddingRow ? 0 : "5px",
+                      paddingBottom: item.noPaddingRow ? 0 : "5px",
                       right: -1,
                       zIndex: 1,
                       px: item.id === "action" ? "20px" : "inherit",

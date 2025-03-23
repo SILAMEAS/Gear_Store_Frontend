@@ -1,5 +1,6 @@
 import {createTheme} from "@mui/material";
 import Colors from "./Colors.ts";
+import {grey} from "@mui/material/colors";
 
 const lightTheme = createTheme({
     /**  ===========================================================================  */
@@ -19,8 +20,8 @@ const lightTheme = createTheme({
             paper: "#ffffff",
         },
         Grey:{
-            main:"#e4eaea",
-            light:"#e4eaea50"
+            main:grey[600],
+            light:grey[200]
         }
     },
     /**  ===========================================================================  */
@@ -29,7 +30,6 @@ const lightTheme = createTheme({
     typography: {
         // Global font family
         fontFamily: "'Poppins', sans-serif",
-
         // Headings
         h1: {
             fontSize: "3rem",
@@ -74,10 +74,10 @@ const lightTheme = createTheme({
 
         // Body text
         body1: {
-            fontSize: "1rem",
+            fontSize: "0.7rem",
             fontWeight: 400,
             lineHeight: 1.6,
-            color: Colors._333,
+            color: Colors._333
         },
         body2: {
             fontSize: "0.875rem",
@@ -124,6 +124,7 @@ const lightTheme = createTheme({
             letterSpacing: "0.1em",
             color: Colors._999,
         },
+
     },
     components: {
         /**  ===========================================================================  */
@@ -133,7 +134,7 @@ const lightTheme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundColor: Colors._primaryMain, // Default background color for button
-                    color: Colors._ffffff, // Text color
+                    color: Colors._000000, // Text color
                     "&:hover": {
                         backgroundColor: Colors._555, // Darker shade on hover
                     },

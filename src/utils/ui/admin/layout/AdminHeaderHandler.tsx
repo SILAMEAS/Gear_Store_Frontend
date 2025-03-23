@@ -8,7 +8,7 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import CreateUserForm from "../../../../pages/form/admin/create-user/CreateUserForm.tsx";
 import CreateProductForm from "../../../../pages/form/admin/create-product/CreateProductForm.tsx";
 import Text from "../../../../components/text/Text.tsx";
-import FilterSidebar from "../../../../components/filter-side-bar/FilterSideBar.tsx";
+import FilterSidebar from "../../../../components/Filter-side-bar/FilterSideBar.tsx";
 
 const AdminHeaderHandler = () => {
     const {pathnameRemoveLastSlash}=useCheckUrl();

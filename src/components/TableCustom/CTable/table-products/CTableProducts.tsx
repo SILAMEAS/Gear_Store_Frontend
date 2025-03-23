@@ -77,22 +77,22 @@ const CTableProducts = <CO extends ResProduct>() =>
                         <Text>#{data.id}</Text>
                     ),
                 },
-                {
-                    id: "image",
-                    disableSort: false,
-                    label: "Image",
-                    tableCellProps: {
-                        align: "left",
-                        padding: "none",
-                        width:"auto",
-
-                    },
-                    tableSortLabelProps: {},
-                    render: data => (
-                        <img src={`${data.image}`} alt={`${data.image}`} width={40} height={40}
-                             style={{borderRadius: 8, objectFit: "cover"}}/>
-                    ),
-                },
+                // {
+                //     id: "image",
+                //     disableSort: false,
+                //     label: "Image",
+                //     tableCellProps: {
+                //         align: "left",
+                //         padding: "none",
+                //         width:"auto",
+                //
+                //     },
+                //     tableSortLabelProps: {},
+                //     render: data => (
+                //         <img src={`${data.image}`} alt={`${data.image}`} width={40} height={40}
+                //              style={{borderRadius: 8, objectFit: "cover"}}/>
+                //     ),
+                // },
                 {
                     id: "name",
                     disableSort: false,
@@ -188,7 +188,8 @@ const CTableProducts = <CO extends ResProduct>() =>
                         button={
                             <IconButton size="small"
                             >
-                                <MoreVertIcon />
+                                <MoreVertIcon fontSize={'small'
+                                }/>
                             </IconButton>
                         }
                         onClick={() => setPopUp(true)}
