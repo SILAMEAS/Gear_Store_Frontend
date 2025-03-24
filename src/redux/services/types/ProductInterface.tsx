@@ -8,13 +8,15 @@ export interface ResProduct {
   stock: number,
   orders:Array<string>,
   image:string|null,
-  rating:number,
+  avg_rating:number,
   colors:Array<string>,
   sizes:Array<number>,
   thumbnails:Array<{id:number,image:string}>,
   isWishlist:boolean|string,
   category?:number,
-  categoryName:string
+  categoryName:string,
+  created_at:string,
+  updated_at:string
 }
 export type ResProducts = Pagination<ResProduct>
 

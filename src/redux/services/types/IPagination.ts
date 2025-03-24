@@ -1,4 +1,4 @@
-export interface ReqPage{ pageSize :number, page :number }
+export interface ReqPage{ pageSize :number, page :number ,ordering?:string}
 export interface Pagination<T extends  Record<string, any>>{
     contents: Array<T>,
     hasNext:boolean,

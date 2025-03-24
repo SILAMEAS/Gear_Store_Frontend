@@ -85,7 +85,7 @@ export default function ProductCard() {
                         </Typography>
 
                         {/* Rating */}
-                        <Rating value={product?.rating??0} precision={0.5} readOnly sx={{ mb: 2 }} />
+                        <Rating value={product?.avg_rating??0} precision={0.5} readOnly sx={{ mb: 2 }} />
 
                         {/* Colors */}
                         <Typography variant="subtitle1">Select Color</Typography>
@@ -134,7 +134,7 @@ export default function ProductCard() {
                             >
                                 BUY
                             </Button>
-                           <Stack direction={"row"} justifyContent={'space-evenly'} spacing={isMobile?0:2}>
+                           <Stack direction={"row"} justifyContent={"space-evenly"} spacing={isMobile?0:2}>
                                <IconButton sx={{ border: "1px solid gray"}}>
                                    <FavoriteBorder />
                                </IconButton>

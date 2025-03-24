@@ -12,8 +12,8 @@ import React from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import {visuallyHidden} from "@mui/utils";
-import { Order } from "./types.ts";
-import { Ascending, Descending, styleInTable } from "../constant/TableConstant.ts";
+import {Order} from "./types.ts";
+import {Ascending, Descending, styleInTable} from "../constant/TableConstant.ts";
 import uniqueArray from "../utils/uniqueArray.ts";
 
 export interface HeadCellCustom<T> {
@@ -74,7 +74,7 @@ export function EnhancedTableHeadCustom<T>(
             key={headCell.id as string}
             sortDirection={orderBy === headCell.id ? order : false}>
             {headCell.disableSort ? (
-              <Typography sx={{...styleInTable, cursor: "pointer", mr: 2}}>{headCell.label}</Typography>
+              <Typography sx={{...styleInTable, cursor: "not-allowed", mr: 2}}>{headCell.label}</Typography>
             ) : (
               <TableSortLabel
                 {...headCell.tableSortLabelProps}

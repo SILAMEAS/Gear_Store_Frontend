@@ -26,7 +26,7 @@ const GridListProducts = () => {
                             title={item.name}
                             description={item.description}
                             price={Number(item.price)}
-                            rating={item.rating}
+                            rating={item.avg_rating}
                             link={`products/${item.id}`}
                             image={item?.image!==null?item.image:
                                 "https://resource.logitech.com/content/dam/gaming/en/products/astro-a50-x/product-gallery/astro-a50-x-black-gallery-1.png"}

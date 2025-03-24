@@ -25,7 +25,14 @@ const CTableProducts = <CO extends ResProduct>() =>
         tableFooterType,
     } = useTableCustom<CO>(EnumTableFooterType.pagination);
 
-    const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({page:filter.page,pageSize:filter.pageSize},{refetchOnMountOrArgChange:true});
+    const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({
+        page:filter.page,
+        pageSize:filter.
+            pageSize,
+            ordering:filter.sortDirection==="asc"? filter.sortField:"-"+filter.sortField,
+        },
+        {refetchOnMountOrArgChange:true});
+     
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
             const {contents, page} = propData;
@@ -45,7 +52,7 @@ const CTableProducts = <CO extends ResProduct>() =>
     };
     React.useEffect(() => {
         handleSetVisibleRows(currentData).then(() => {});
-    }, [currentData,handleSetVisibleRows]);
+    }, [currentData]);
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
@@ -64,8 +71,8 @@ const CTableProducts = <CO extends ResProduct>() =>
             headCells={[
                 {
                     id: "image",
-                    disableSort: false,
-                    label: "Product Image",
+                    disableSort: true,
+                    label: "Image",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -85,7 +92,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
+                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -106,7 +113,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
+                        width:"250px",
 
                     },
                     tableSortLabelProps: {},
@@ -128,7 +135,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
+                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -144,12 +151,12 @@ const CTableProducts = <CO extends ResProduct>() =>
                 },
                 {
                     id: "categoryName",
-                    disableSort: false,
+                    disableSort: true,
                     label: "Category",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
+                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -157,7 +164,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                     ),
                 },
                 {
-                    id: "rating",
+                    id: "avg_rating",
                     disableSort: false,
                     label: "Rating",
                     tableCellProps: {
@@ -168,12 +175,28 @@ const CTableProducts = <CO extends ResProduct>() =>
                     },
                     tableSortLabelProps: {},
                     render: data => (
-                        <Rating name="read-only" value={data.rating} precision={0.5} readOnly/>
+                        <Rating name="read-only" value={data.avg_rating} precision={0.5} readOnly/>
                     ),
                 },
                 {
-                    id: "thumbnails",
+                    id: "updated_at",
                     disableSort: false,
+                    label: "Update At",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"auto",
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Text>
+                            {data.updated_at?.replace("T"," ").split(".")[0]}
+                        </Text>
+                    ),
+                },
+                {
+                    id: "id",
+                    disableSort: true,
                     label: "Action",
                     tableCellProps: {
                         align: "center",
