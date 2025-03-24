@@ -1,5 +1,5 @@
 // Table view preview component
-import EnumTableFooterType from "../../../../../../components/TableCustom/constant/enum/EnumTableFooterType.ts";
+import EnumTableFooterType from "../../../../../../../components/TableCustom/constant/enum/EnumTableFooterType.ts";
 import {Box} from "@mui/material";
 import Card from "@mui/material/Card";
 import {Check} from "lucide-react";

@@ -1,4 +1,4 @@
-import {Chip, IconButton, Stack, Typography} from "@mui/material";
+import {Chip, IconButton, Rating, Stack, Typography} from "@mui/material";
 import useTableCustom from "../../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
@@ -45,7 +45,7 @@ const CTableProducts = <CO extends ResProduct>() =>
     };
     React.useEffect(() => {
         handleSetVisibleRows(currentData).then(() => {});
-    }, [currentData]);
+    }, [currentData,handleSetVisibleRows]);
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
@@ -63,9 +63,9 @@ const CTableProducts = <CO extends ResProduct>() =>
             visibleRows={visibleRows}
             headCells={[
                 {
-                    id: "id",
+                    id: "image",
                     disableSort: false,
-                    label: "ID",
+                    label: "Product Image",
                     tableCellProps: {
                         align: "left",
                         padding: "none",
@@ -74,25 +74,10 @@ const CTableProducts = <CO extends ResProduct>() =>
                     },
                     tableSortLabelProps: {},
                     render: data => (
-                        <Text>#{data.id}</Text>
+                        <img src={`${data.image}`} alt={`${data.image}`} width={40} height={40}
+                             style={{borderRadius: 8, objectFit: "cover"}}/>
                     ),
                 },
-                // {
-                //     id: "image",
-                //     disableSort: false,
-                //     label: "Image",
-                //     tableCellProps: {
-                //         align: "left",
-                //         padding: "none",
-                //         width:"auto",
-                //
-                //     },
-                //     tableSortLabelProps: {},
-                //     render: data => (
-                //         <img src={`${data.image}`} alt={`${data.image}`} width={40} height={40}
-                //              style={{borderRadius: 8, objectFit: "cover"}}/>
-                //     ),
-                // },
                 {
                     id: "name",
                     disableSort: false,
@@ -172,6 +157,21 @@ const CTableProducts = <CO extends ResProduct>() =>
                     ),
                 },
                 {
+                    id: "rating",
+                    disableSort: false,
+                    label: "Rating",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                        width:"auto",
+
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Rating name="read-only" value={data.rating} precision={0.5} readOnly/>
+                    ),
+                },
+                {
                     id: "thumbnails",
                     disableSort: false,
                     label: "Action",
@@ -188,7 +188,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                         button={
                             <IconButton size="small"
                             >
-                                <MoreVertIcon fontSize={'small'
+                                <MoreVertIcon fontSize={"small"
                                 }/>
                             </IconButton>
                         }

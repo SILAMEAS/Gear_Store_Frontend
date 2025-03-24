@@ -26,7 +26,6 @@ import AdminSettingPage from "./pages/admin/sidebar/AdminSettingPage.tsx";
 import AppearanceSettingsPage from "./pages/admin/sidebar/settings/sidebar/AppearanceSettingsPage.tsx";
 import ApiSettingsPage from "./pages/admin/sidebar/settings/sidebar/ApiSettingsPage.tsx";
 import AdminCustomerPage from "./pages/admin/sidebar/AdminCustomerPage.tsx";
-import ColorSettingsPage from "./pages/admin/sidebar/settings/sidebar/ColorSettingsPage.tsx";
 
 
 export const routesConfig = [
@@ -175,10 +174,10 @@ export const routesConfig = [
                                 path: Route.admin.settings.api,
                                 element: <ApiSettingsPage />,
                             },
-                            {
-                                path: Route.admin.settings.color,
-                                element: <ColorSettingsPage />,
-                            },
+                            // {
+                            //     path: Route.admin.settings.color,
+                            //     element: <ColorSetting />,
+                            // },
 
                         ]
                     },

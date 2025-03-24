@@ -17,8 +17,8 @@ export const darkTheme = createTheme({
             paper: "#000000",
         },
         Grey:{
-            main:"#e4eaea",
-            light:"#F2F5FC"
+            main:"#656769",
+            light:"#65676950"
         }
     },
     /**  ===========================================================================  */
