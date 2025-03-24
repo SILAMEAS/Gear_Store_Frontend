@@ -48,6 +48,11 @@ export interface ResPayment {
     order:          string;
     payment_method: string;
 }
+export interface ResCategory {
+    id:number;
+    name: string;
+}
 /** Pagination */
 export interface ResOrders extends Pagination<ResOrder>{}
 export interface ResPayments extends Pagination<ResPayment>{}
+export interface ResCategories extends Pagination<ResCategory>{}

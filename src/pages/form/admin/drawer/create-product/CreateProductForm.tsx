@@ -3,6 +3,7 @@ import {Controller, useForm} from "react-hook-form"
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
 import {ImageDropzone} from "../../../../../components/drop-zone/ImageDropzone.tsx";
 import {DefaultProductFormData, ProductFormData} from "../../../../../redux/services/types/ProductInterface.tsx";
+import {useGetCategoriesQuery} from "../../../../../redux/services/adminApi.ts";
 
 
 const CreateProductForm: React.FC = () => {
@@ -14,6 +15,7 @@ const CreateProductForm: React.FC = () => {
     } = useForm<ProductFormData>({
         defaultValues: DefaultProductFormData
     })
+    const {currentData:currentDataCategories}=useGetCategoriesQuery({});
     const onSubmit =async (data: ProductFormData) => {
         try {
             console.log("data",data)
@@ -30,14 +32,14 @@ const CreateProductForm: React.FC = () => {
                    <Controller
                        name="name"
                        control={control}
-                       rules={{ required: "Username is required" }}
+                       rules={{ required: "Product name is required" }}
                        render={({ field }) => (
                            <TextField
                                {...field}
                                margin="normal"
                                fullWidth
-                               id="username"
-                               label="Username"
+                               id="product"
+                               label="Product Name"
                                error={!!errors.name}
                                helperText={errors.name?.message}
                            />
@@ -68,9 +70,11 @@ const CreateProductForm: React.FC = () => {
                            <FormControl fullWidth margin="normal">
                                <InputLabel id="category-label">category</InputLabel>
                                <Select {...field} labelId="role-label" id="category" label="Category" error={!!errors.category}>
-                                   <MenuItem value="user">User</MenuItem>
-                                   <MenuItem value="admin">Admin</MenuItem>
-                                   <MenuItem value="moderator">Moderator</MenuItem>
+                                   {
+                                       currentDataCategories?.contents?.map(item=>
+                                           <MenuItem value="user" key={item.id} >{item.name}</MenuItem>
+                                       )
+                                   }
                                </Select>
                            </FormControl>
                        )}

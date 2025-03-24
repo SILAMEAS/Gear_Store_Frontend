@@ -8,13 +8,13 @@ export const StyleConstant = {
           fontSize: "12px",
         },
         "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "primary.main",
-            borderWidth: "0.1px",
-            // background: 'blue',
-            // height: 40,
-            background: "inherit",
-          },
+          // "& fieldset": {
+          //   borderColor: "primary.main",
+          //   borderWidth: "0.1px",
+          //   // background: 'blue',
+          //   // height: 40,
+          //   // background: "inherit",
+          // },
           "&:hover fieldset": {
             borderColor: "primary.light",
           },

@@ -1,6 +1,6 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import {ReqHeader} from "../ReqHeader.tsx";
-import {ReqDashboard, ResDashboard, ResOrders, ResPayments} from "./types/IAdminApi.ts";
+import {ReqDashboard, ResCategories, ResDashboard, ResOrders, ResPayments} from "./types/IAdminApi.ts";
 import {ResUser, ResUsers} from "./types/IUserApi.ts";
 import {ReqPage} from "./types/IPagination.ts";
 import getToken from "../../utils/local-storage/token/useGetToken.ts";
@@ -9,7 +9,7 @@ import {Method} from "./types/Method.ts";
 export const adminApi = createApi({
   reducerPath: "adminApi",
   baseQuery: ReqHeader("/"),
-  tagTypes: ["users","setting"],
+  tagTypes: ["users","setting","categories"],
   endpoints: (builder) => ({
     /** Get dashboard */
     getDashboard: builder.query<ResDashboard, ReqDashboard>({
@@ -141,6 +141,20 @@ export const adminApi = createApi({
       }),
       providesTags:["setting"]
     }),
+    /** ==================================== **/
+    /**             Get Users                **/
+    /** ==================================== **/
+    getCategories: builder.query<ResCategories, object>({
+      query: () => ({
+        headers: {
+          ["Authorization"]: `Bearer ${getToken()?.access}`,
+        },
+        url: "/settings/",
+        method: Method.GET
+
+      }),
+      providesTags:["categories"]
+    }),
   }),
 });
 
@@ -153,5 +167,5 @@ export const {
     useAddUserMutation,
     useDeleteUserMutation,
     useUpdateUserMutation,
-    useGetSettingQuery
+    useGetCategoriesQuery
 } = adminApi;

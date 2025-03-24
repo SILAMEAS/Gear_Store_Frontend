@@ -1,7 +1,5 @@
 import {Stack} from "@mui/material";
-import {NGLeftArrowIcon, NGRightArrowIcon} from "../../../../../assets/CreateSvgIcon.tsx";
-import Text from "../../../../../components/text/Text.tsx";
-import ButtonCustom from "../../../../../components/button/ButtonCustom.tsx";
+import {NGLeftArrowIcon} from "../../../../../assets/CreateSvgIcon.tsx";
 import {useAppDispatch} from "../../../../../redux/redux.ts";
 import {setDialogRTK} from "../../../../../redux/store/application.ts";
 
@@ -26,42 +24,42 @@ const TopNav = () => {
                     }}
                 />
             </Stack>
-            <Text
-                sx={{
-                    fontWeight: 700,
-                    fontSize: "17px",
-                    color: "white",
-                    textDecorationLine: "underline",
-                    fontFamily: "Poppins",
-                    width: "fit-content",
-                }}>
-                new_project_model
-            </Text>
+            {/*<Text*/}
+            {/*    sx={{*/}
+            {/*        fontWeight: 700,*/}
+            {/*        fontSize: "17px",*/}
+            {/*        color: "white",*/}
+            {/*        textDecorationLine: "underline",*/}
+            {/*        fontFamily: "Poppins",*/}
+            {/*        width: "fit-content",*/}
+            {/*    }}>*/}
+            {/*    Create Product*/}
+            {/*</Text>*/}
         </Stack>
 
-        <Stack direction="row" alignItems="center">
-            <ButtonCustom
-                variant="contained"
-                onClick={() => {
+        {/*<Stack direction="row" alignItems="center" >*/}
+        {/*    <ButtonCustom*/}
+        {/*        variant="contained"*/}
+        {/*        onClick={() => {*/}
 
-                }}
-                endIcon={
-                    <NGRightArrowIcon
-                        sx={{
-                            mt: "6px",
-                        }}
-                    />
-                }
-                sx={{
-                    textTransform: "none",
-                    fontFamily: "Poppins",
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    mr: "20px",
-                }}>
-                Next
-            </ButtonCustom>
-        </Stack>
+        {/*        }}*/}
+        {/*        endIcon={*/}
+        {/*            <NGRightArrowIcon*/}
+        {/*                sx={{*/}
+        {/*                    mt: "6px",*/}
+        {/*                }}*/}
+        {/*            />*/}
+        {/*        }*/}
+        {/*        sx={{*/}
+        {/*            textTransform: "none",*/}
+        {/*            fontFamily: "Poppins",*/}
+        {/*            fontSize: "11px",*/}
+        {/*            fontWeight: 600,*/}
+        {/*            mr: "20px",*/}
+        {/*        }}>*/}
+        {/*        Next*/}
+        {/*    </ButtonCustom>*/}
+        {/*</Stack>*/}
     </Stack>
 };
 

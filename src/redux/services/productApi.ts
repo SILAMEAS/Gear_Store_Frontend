@@ -11,10 +11,10 @@ export const productApi = createApi({
   endpoints: (builder) => ({
     /** Get all products */
     getAllProducts: builder.query<ResProducts,ReqPage>({
-      query: ({ pageSize = 10, page = 1,ordering }) => ({
+      query: ({ pageSize = 10, page = 1,ordering,search }) => ({
         url: "/",
         method: "GET",
-        params: { pageSize, page,ordering },
+        params: { pageSize, page,ordering ,search},
       }),
       providesTags:["Product"]
     }),

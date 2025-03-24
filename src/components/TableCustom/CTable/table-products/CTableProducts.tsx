@@ -30,6 +30,7 @@ const CTableProducts = <CO extends ResProduct>() =>
         pageSize:filter.
             pageSize,
             ordering:filter.sortDirection==="asc"? filter.sortField:"-"+filter.sortField,
+            search:filter.search
         },
         {refetchOnMountOrArgChange:true});
      
@@ -53,6 +54,7 @@ const CTableProducts = <CO extends ResProduct>() =>
     React.useEffect(() => {
         handleSetVisibleRows(currentData).then(() => {});
     }, [currentData]);
+    console.log(filter)
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
@@ -61,6 +63,7 @@ const CTableProducts = <CO extends ResProduct>() =>
             // handleViewDetailPage={(row)=>{
             //     navigate(Route.admin.PRODUCT+"/"+row.id)
             // }}
+            onlySearch={true}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
             setFilter={setFilter}
@@ -68,7 +71,28 @@ const CTableProducts = <CO extends ResProduct>() =>
             actionReq={{error, isLoading, isError, isFetching}}
             tableFooterType={tableFooterType}
             visibleRows={visibleRows}
+            placeholder={"Search Product"}
             headCells={[
+                {
+                    id: "id",
+                    disableSort: false,
+                    label: "Code",
+                    tableCellProps: {
+                        align: "left",
+                        padding: "none",
+                    },
+                    tableSortLabelProps: {},
+                    render: data => (
+                        <Stack
+                            direction={"row"}
+                            alignItems={"center"}
+                            gap={"15px"} >
+                            <Typography>
+                                # {data.id}
+                            </Typography>
+                        </Stack>
+                    ),
+                },
                 {
                     id: "image",
                     disableSort: true,
@@ -76,7 +100,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
 
                     },
                     tableSortLabelProps: {},
@@ -92,7 +115,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -113,7 +135,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"250px",
 
                     },
                     tableSortLabelProps: {},
@@ -135,7 +156,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -156,7 +176,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"250px",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -170,7 +189,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
 
                     },
                     tableSortLabelProps: {},
@@ -185,7 +203,6 @@ const CTableProducts = <CO extends ResProduct>() =>
                     tableCellProps: {
                         align: "left",
                         padding: "none",
-                        width:"auto",
                     },
                     tableSortLabelProps: {},
                     render: data => (
@@ -195,13 +212,12 @@ const CTableProducts = <CO extends ResProduct>() =>
                     ),
                 },
                 {
-                    id: "id",
+                    id: "created_at",
                     disableSort: true,
-                    label: "Action",
+                    label: "",
                     tableCellProps: {
                         align: "center",
                         padding: "none",
-                        width:"200px",
 
                     },
                     tableSortLabelProps: {},

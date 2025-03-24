@@ -1,8 +1,9 @@
-import { debounce, InputAdornment, TextField } from "@mui/material";
+import {debounce, InputAdornment, TextField} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { IFilterTableCustom } from "./types.ts";
-import { useCallback } from "react";
-import { StyleConstant } from "../constant/StyleConstant.tsx";
+import {IFilterTableCustom} from "./types.ts";
+import {useCallback} from "react";
+import {StyleConstant} from "../constant/StyleConstant.tsx";
+
 export const SearchFormTableCustom = ({
     setFilter,
     filter,
@@ -30,7 +31,7 @@ export const SearchFormTableCustom = ({
           ...StyleConstant.inputStyleLogin,
           width: "500px",
           borderRadius:"6px",
-          height: "20px",
+          height: "20px"
           // ...sx,
         }}
         InputProps={{

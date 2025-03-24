@@ -1,7 +1,9 @@
-import {Backdrop, CircularProgress} from "@mui/material";
+import {Backdrop, CircularProgress, Stack} from "@mui/material";
 import DialogCustom from "../../../../../components/dailog/DialogCustom.tsx";
 import {useTheme} from "../../../../../theme/provider/ThemeProvider.tsx";
 import TopNav from "./TopNav.tsx";
+import CreateProductForm from "../../drawer/create-product/CreateProductForm.tsx";
+import Text from "../../../../../components/text/Text.tsx";
 
 const DialogCreateProduct = () => {
     const {colorBackWhite}=useTheme();
@@ -19,7 +21,10 @@ const DialogCreateProduct = () => {
         titleDialog={
            <TopNav/>
         }
-        contentDialog={<>Content</>}>
+        contentDialog={<Stack p={10}>
+            <Text>Create new Product</Text>
+            <CreateProductForm/>
+    </Stack>}>
         <Backdrop
             sx={{
                 color:colorBackWhite,
