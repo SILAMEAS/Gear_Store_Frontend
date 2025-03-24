@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IApplication, ISnackbarStatus, SettingsResponse} from "./type.ts";
+import {IApplication, IDialogRTK, ISnackbarStatus, SettingsResponse} from "./type.ts";
 import {ResUser} from "../services/types/IUserApi.ts";
 import Colors from "../../theme/mode/Colors.ts";
 
@@ -17,6 +17,9 @@ const initialState: IApplication = {
     Warning:Colors._ffffff,
     Secondary:Colors._ffffff,
     logo:""
+  },
+  dialogRTK:{
+    adminCreateProduct:false
   }
 };
 
@@ -42,6 +45,9 @@ export const applicationSlice = createSlice({
     setSetting: (state, { payload }: { payload: SettingsResponse }) => {
       state.settingsResponse = payload;
     },
+    setDialogRTK: (state, { payload }: { payload: IDialogRTK }) => {
+      state.dialogRTK = payload;
+    },
   },
 });
 
@@ -49,7 +55,8 @@ export const {
   dispatchSnackbar,
   setUserDetail,
   setUserSelected,
-  setSetting
+  setSetting,
+    setDialogRTK
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

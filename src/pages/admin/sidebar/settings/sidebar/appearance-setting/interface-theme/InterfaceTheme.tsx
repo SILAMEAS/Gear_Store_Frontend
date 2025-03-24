@@ -1,10 +1,9 @@
-import {useState} from "react";
 import {Box, Typography} from "@mui/material";
 import {ThemePreview} from "./ThemePreview.tsx";
-import ThemeToggle from "../../../../../../../theme/toggle/ThemeToggle.tsx";
+import {useTheme} from "../../../../../../../theme/provider/ThemeProvider.tsx";
 
 const InterfaceTheme = () => {
-    const [theme, setTheme] = useState("Light")
+    const { toggleTheme, isDarkMode } = useTheme()
     return  <Box sx={{ mb: 4 }}>
         <Typography variant="h6" fontWeight="500" gutterBottom>
             Interface theme
@@ -13,9 +12,8 @@ const InterfaceTheme = () => {
             Select or customize your UI theme.
         </Typography>
         <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-            <ThemePreview theme="Light" selected={theme === "Light"} onClick={() => setTheme("Light")} />
-            <ThemePreview theme="Dark" selected={theme === "Dark"} onClick={() => setTheme("Dark")} />
-            <ThemeToggle/>
+            <ThemePreview theme="Light" selected={!isDarkMode} onClick={() => toggleTheme("light")} />
+            <ThemePreview theme="Dark" selected={isDarkMode} onClick={() => toggleTheme("dark")} />
         </Box>
     </Box>
 };

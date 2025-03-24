@@ -1,8 +1,8 @@
 import React from "react"
 import {Controller, useForm} from "react-hook-form"
 import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
-import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
-import {DefaultProductFormData, ProductFormData} from "../../../../redux/services/types/ProductInterface.tsx";
+import {ImageDropzone} from "../../../../../components/drop-zone/ImageDropzone.tsx";
+import {DefaultProductFormData, ProductFormData} from "../../../../../redux/services/types/ProductInterface.tsx";
 
 
 const CreateProductForm: React.FC = () => {

@@ -8,7 +8,8 @@ export interface IApplication {
   snackbarStatus: ISnackbarStatus;
   userDetail?:ResUser;
   userSelected?:ResUser;
-  settingsResponse:SettingsResponse
+  settingsResponse:SettingsResponse;
+  dialogRTK:IDialogRTK
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";
@@ -30,4 +31,7 @@ export interface SettingsResponse {
   Success:   string;
   Warning:   string;
   logo:      string;
+}
+export interface IDialogRTK{
+  adminCreateProduct:boolean
 }
