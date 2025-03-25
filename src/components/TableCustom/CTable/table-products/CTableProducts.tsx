@@ -1,4 +1,4 @@
-import {Chip, IconButton, Rating, Stack, Typography} from "@mui/material";
+import {Chip, IconButton, Stack, Typography} from "@mui/material";
 import useTableCustom from "../../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
@@ -10,11 +10,18 @@ import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";
-import HeaderNavigationTable from "./HeaderNavigationTableProduct.tsx";
+import RatingCustom from "../../../rating/RatingCustom.tsx";
+import AdvancedFilterTable from "../../../Filter-side-bar/AdanvateFilter.tsx";
+import {SearchFormTableCustom} from "../../components/NGSearch.tsx";
+import ButtonCustom from "../../../button/ButtonCustom.tsx";
+import {setDialogRTK} from "../../../../redux/store/application.ts";
+import {CirclePlus} from "lucide-react";
+import {useAppDispatch} from "../../../../redux/redux.ts";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
     const [popUp, setPopUp] = React.useState<boolean>(true);
+    const dispatch =useAppDispatch();
     const {
         setVisibleRows,
         visibleRows,
@@ -187,9 +194,7 @@ const CTableProducts = <CO extends ResProduct>() =>
 
                     },
                     tableSortLabelProps: {},
-                    render: data => (
-                        <Rating name="read-only" value={data.avg_rating} precision={0.5} readOnly/>
-                    ),
+                    render: data =>  <RatingCustom Value={data.avg_rating}/>
                 },
                 {
                     id: "updated_at",
@@ -245,7 +250,14 @@ const CTableProducts = <CO extends ResProduct>() =>
             }
         >
             {/** Header Navigation of Table Product **/}
-            <HeaderNavigationTable setFilter={setFilter} filter={filter} placeholder={'Search Product'}/>
+            <AdvancedFilterTable
+                LeftSideComponent={<SearchFormTableCustom setFilter={setFilter} filter={filter} placeholder={'Search Product'}/>}
+                RightSideComponent={
+                    <ButtonCustom variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1,height:"40px"}}>
+                <CirclePlus />
+                <Text color={"primary.main"} variant={"subtitle2"} ml={"5px"}>Create Product</Text>
+            </ButtonCustom>}
+            />
         </TableCustom>
     );
 };
