@@ -5,6 +5,7 @@ import ButtonCustom from "../../../components/button/ButtonCustom.tsx";
 import Text from "../../../components/text/Text.tsx";
 import {useAppDispatch} from "../../../redux/redux.ts";
 import {setDialogRTK} from "../../../redux/store/application.ts";
+import {CirclePlus} from "lucide-react";
 
 const AdminProductsPage = () => {
     const dispatch=useAppDispatch()
@@ -12,8 +13,9 @@ const AdminProductsPage = () => {
         <HeroSections padding={false}>
             <Stack direction={"row"} gap={"20px"}>
                 {/** Create Product **/}
-                <ButtonCustom variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))}>
-                    <Text color={"primary.main"} variant={"subtitle2"}>Create Product</Text>
+                <ButtonCustom variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1}}>
+                    <CirclePlus />
+                    <Text color={"primary.main"} variant={"subtitle2"} ml={"5px"}>Create Product</Text>
                 </ButtonCustom>
             </Stack>
         </HeroSections>

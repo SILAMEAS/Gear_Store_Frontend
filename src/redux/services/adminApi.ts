@@ -149,7 +149,7 @@ export const adminApi = createApi({
         headers: {
           ["Authorization"]: `Bearer ${getToken()?.access}`,
         },
-        url: "/settings/",
+        url: "/categories/",
         method: Method.GET
 
       }),

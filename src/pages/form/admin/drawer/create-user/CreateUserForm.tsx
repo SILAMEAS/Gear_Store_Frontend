@@ -50,35 +50,45 @@ const CreateUserForm: React.FC = () => {
     const [showPassword, setShowPassword] = React.useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
 
-    const onSubmit =async (data: UserFormData) => {
+    const onSubmit = async (data: UserFormData) => {
         try {
             const formData = new FormData();
-            if( data.profile_image){
-                formData.append("profile_image", data.profile_image as unknown as string); // File object
+
+            // Object containing all fields except profile_image
+            const fields = {
+                email: data.email,
+                password: data.password,
+                username: data.username,
+                phone: data.phone,
+                role: data.role,
+                country: data.country,
+                city: data.city,
+                postal_code: data.postal_code,
+                dob: data.dob,
+                first_name: data.first_name,
+                last_name: data.last_name,
+                is_active: String(data.is_active), // Convert boolean to string
+            };
+
+            // Append profile image if it exists
+            if (data.profile_image) {
+                formData.append("profile_image", data.profile_image);
             }
-            formData.append("email", data.email);
-            formData.append("password", data.password);
-            formData.append("username", data.username);
-            formData.append("phone", data.phone);
-            formData.append("role", data.role);
-            formData.append("country", data.country);
-            formData.append("city", data.city);
-            formData.append("postal_code", data.postal_code);
-            formData.append("dob", data.dob);
-            formData.append("first_name", data.first_name);
-            formData.append("last_name", data.last_name);
-            formData.append("is_active", data.is_active as unknown as string);
+
+            // Append all other fields using a single loop
+            Object.entries(fields).forEach(([key, value]) => {
+                formData.append(key, value);
+            });
+
             await addUser(formData).unwrap();
             enqueueSnackbar("User created successfully!", { variant: "success" });
-        }catch (e:any){
+        } catch (e) {
             enqueueSnackbar(
-                $handleResponseMessage({e}),
-                {
-                    variant: "error",
-                },
+                $handleResponseMessage({ e }),
+                { variant: "error" }
             );
         }
-    }
+    };
     const password = watch("password")
     const handleClickShowPassword = () => setShowPassword((show) => !show)
     const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show)

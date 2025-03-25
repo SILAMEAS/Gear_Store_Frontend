@@ -1,13 +1,17 @@
 import React from "react"
 import {Controller, useForm} from "react-hook-form"
-import {Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
+import {Box, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
 import {ImageDropzone} from "../../../../../components/drop-zone/ImageDropzone.tsx";
 import {DefaultProductFormData, ProductFormData} from "../../../../../redux/services/types/ProductInterface.tsx";
 import {useGetCategoriesQuery} from "../../../../../redux/services/adminApi.ts";
+import {useCreateProductsMutation} from "../../../../../redux/services/productApi.ts";
+import {enqueueSnackbar} from "notistack";
+import {$handleResponseMessage} from "../../../../../utils/common/$handleResponseMessage.ts";
+import {FormID} from "../../../FormID.tsx";
 
 
 const CreateProductForm: React.FC = () => {
-    // const [addUser]=useAddUserMutation({})
+    const [addProduct]=useCreateProductsMutation()
     const {
         control,
         handleSubmit,
@@ -16,17 +20,27 @@ const CreateProductForm: React.FC = () => {
         defaultValues: DefaultProductFormData
     })
     const {currentData:currentDataCategories}=useGetCategoriesQuery({});
-    const onSubmit =async (data: ProductFormData) => {
+    const onSubmit = async (data: ProductFormData) => {
         try {
-            console.log("data",data)
-            // const formData = new FormData();
-            // await addUser(formData).unwrap();
-        }catch (e:any){
-            console.error(e.data)
+            const formData = new FormData();
+
+
+            // Append all other fields using a single loop
+            Object.entries(data).forEach(([key, value]) => {
+                formData.append(key, value);
+            });
+
+            await addProduct({body:formData}).unwrap();
+            enqueueSnackbar("User created successfully!", { variant: "success" });
+        } catch (e) {
+            enqueueSnackbar(
+                $handleResponseMessage({ e }),
+                { variant: "error" }
+            );
         }
-    }
+    };
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate id={FormID["#create-product"]}>
             <Stack>
                <Stack direction={"row"} gap={2}>
                    <Controller
@@ -45,23 +59,6 @@ const CreateProductForm: React.FC = () => {
                            />
                        )}
                    />
-
-                   {/*<Controller*/}
-                   {/*    name="category"*/}
-                   {/*    control={control}*/}
-                   {/*    rules={{ required: "Category is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" } }}*/}
-                   {/*    render={({ field }) => (*/}
-                   {/*        <TextField*/}
-                   {/*            {...field}*/}
-                   {/*            margin="normal"*/}
-                   {/*            fullWidth*/}
-                   {/*            id="category"*/}
-                   {/*            label="category"*/}
-                   {/*            error={!!errors.category}*/}
-                   {/*            helperText={errors.category?.message}*/}
-                   {/*        />*/}
-                   {/*    )}*/}
-                   {/*/>*/}
                    <Controller
                        name="category"
                        control={control}
@@ -72,7 +69,7 @@ const CreateProductForm: React.FC = () => {
                                <Select {...field} labelId="role-label" id="category" label="Category" error={!!errors.category}>
                                    {
                                        currentDataCategories?.contents?.map(item=>
-                                           <MenuItem value="user" key={item.id} >{item.name}</MenuItem>
+                                           <MenuItem value={item.id} key={item.id} >{item.name}</MenuItem>
                                        )
                                    }
                                </Select>
@@ -115,26 +112,27 @@ const CreateProductForm: React.FC = () => {
                             />
                         )}
                     />
-                    <Controller
-                        name="description"
-                        control={control}
-                        rules={{ required: "description is required" }}
-                        render={({ field }) => (
-                            <TextField
-                                {...field}
-                                margin="normal"
-                                fullWidth
-                                id="description"
-                                label="description"
-                                error={!!errors.description}
-                                helperText={errors.description?.message}
-                            />
-                        )}
-                    />
                 </Stack>
             </Stack>
 
-
+            <Controller
+                name="description"
+                control={control}
+                rules={{ required: "description is required" }}
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        rows={5}
+                        multiline
+                        margin="normal"
+                        fullWidth
+                        id="description"
+                        label="description"
+                        error={!!errors.description}
+                        helperText={errors.description?.message}
+                    />
+                )}
+            />
             <Controller
                 name="image"
                 control={control}
@@ -144,10 +142,7 @@ const CreateProductForm: React.FC = () => {
                     </Box>
                 )}
             />
-
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                Create Product
-            </Button>
+            
         </Box>
     )
 }

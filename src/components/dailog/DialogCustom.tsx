@@ -24,7 +24,10 @@ const DialogCustom = ({
                       ...props
                   }: INGDialog & DialogProps & PropsWithChildren) => {
     return (
-        <Dialog {...props} open={open} onClose={handleClose}>
+        <Dialog
+            maxWidth='lg'
+            fullWidth
+            {...props} open={open} onClose={handleClose}>
             {titleDialog && (
                 <DialogTitle sx={{...sxProp?.titleSx}}>{titleDialog}</DialogTitle>
             )}
