@@ -97,7 +97,7 @@ export interface IAdvancedFilterTable{RightSideComponent:ReactNode,LeftSideCompo
 
 export default function AdvancedFilterTable({RightSideComponent,LeftSideComponent}:IAdvancedFilterTable) {
     // State for filter panel visibility
-    const [filterOpen, setFilterOpen] = useState(true)
+    const [filterOpen, setFilterOpen] = useState(false)
 
     // State for filter values
     const [filters, setFilters] = useState<FilterValue>({
