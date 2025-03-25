@@ -1,5 +1,5 @@
 import {Backdrop, CircularProgress, Stack, Table, TableBody, TableCell, TableContainer, TableRow,} from "@mui/material";
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import {Waypoint} from "react-waypoint";
 import {ITableCustom} from "./types.ts";
 import {useEffectInTableCustom} from "../hooks/useEffectInTableCustom.tsx";
@@ -40,7 +40,8 @@ export default function TableCustom<
   selectedUI,
   actionReq,
   loadingSlow = false,
-}: Readonly<ITableCustom<P, T>>) {
+    children
+}: Readonly<ITableCustom<P, T>>&PropsWithChildren) {
   /** ======================================================== **/
   /** hook : use effect to handle process of table custom **/
   /** ======================================================== **/
@@ -77,7 +78,7 @@ export default function TableCustom<
     });
   };
   return (
-    <Stack spacing={onlySearch ? 5 : 0}>
+    <Stack spacing={onlySearch ? 5 : 0} position={'relative'}>
       {/** ============================================================================================== **/}
       {/**                         Search Option if you need                                              **/}
       {/** ============================================================================================== **/}
@@ -87,6 +88,7 @@ export default function TableCustom<
         filter={filter}
         placeholder={placeholder}
       />
+      {children}
       {/** ============================================================================================== **/}
       {/**                         Handle to display Table or Grid                                        **/}
       {/** ============================================================================================== **/}

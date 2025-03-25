@@ -1,4 +1,4 @@
-import {AddCard, FilterList} from "@mui/icons-material";
+import {AddCard} from "@mui/icons-material";
 import DrawerCustom from "../../../../components/drawer/DrawerCustom.tsx";
 import {StyleCustom} from "../../../../styles/StyleCustom.tsx";
 import {IconButton, Stack} from "@mui/material";
@@ -8,21 +8,12 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import CreateUserForm from "../../../../pages/form/admin/drawer/create-user/CreateUserForm.tsx";
 import CreateProductForm from "../../../../pages/form/admin/drawer/create-product/CreateProductForm.tsx";
 import Text from "../../../../components/text/Text.tsx";
-import FilterSidebar from "../../../../components/filter-side-bar/FilterSideBar.tsx";
 
 const AdminHeaderHandler = () => {
     const {pathnameRemoveLastSlash}=useCheckUrl();
     switch (pathnameRemoveLastSlash){
         case Route.admin.PRODUCT:{
             return <Stack direction={"row"} width={"100%"} justifyContent={"space-between"}>
-                {/** Filter Side Bar **/}
-                <DrawerCustom renderButton={<IconButton>
-                    <FilterList/>
-                </IconButton>} anchor={"left"}
-                              overflow={"auto"} width={"300px"} sx={{...StyleCustom.scrollNormal}}
-                >
-                    <FilterSidebar/>
-                </DrawerCustom>
                 {/** Create Product **/}
                 <DrawerCustom renderButton={<IconButton>
                     <AddCard/>

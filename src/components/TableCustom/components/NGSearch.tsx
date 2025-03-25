@@ -1,18 +1,19 @@
 import {debounce, InputAdornment, TextField} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import {IFilterTableCustom} from "./types.ts";
-import {useCallback} from "react";
+import React, {useCallback} from "react";
 import {StyleConstant} from "../constant/StyleConstant.tsx";
 
+export interface ISearchFormTableCustom{
+    filter: IFilterTableCustom;
+    setFilter: React.Dispatch<React.SetStateAction<IFilterTableCustom>>;
+    placeholder?: string;
+}
 export const SearchFormTableCustom = ({
     setFilter,
     filter,
     placeholder = "default placeholder",
-  }: {
-    filter: IFilterTableCustom;
-    setFilter: React.Dispatch<React.SetStateAction<IFilterTableCustom>>;
-    placeholder?: string;
-  }) => {
+  }: ISearchFormTableCustom) => {
     /** search when stop typing **/
     const handleSearchDebounce = useCallback(
       debounce(async (search: string) => {
@@ -31,7 +32,7 @@ export const SearchFormTableCustom = ({
           ...StyleConstant.inputStyleLogin,
           width: "500px",
           borderRadius:"6px",
-          height: "20px"
+          height: "auto"
           // ...sx,
         }}
         InputProps={{

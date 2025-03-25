@@ -10,6 +10,7 @@ import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";
+import HeaderNavigationTable from "./HeaderNavigationTableProduct.tsx";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
@@ -24,7 +25,6 @@ const CTableProducts = <CO extends ResProduct>() =>
         setFilter,
         tableFooterType,
     } = useTableCustom<CO>(EnumTableFooterType.pagination);
-
     const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({
         page:filter.page,
         pageSize:filter.
@@ -54,16 +54,11 @@ const CTableProducts = <CO extends ResProduct>() =>
     React.useEffect(() => {
         handleSetVisibleRows(currentData).then(() => {});
     }, [currentData]);
-    console.log(filter)
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
-                height:"calc( 100vh - 165px )"
+                height:"calc( 100vh - 265px )"
             }}
-            // handleViewDetailPage={(row)=>{
-            //     navigate(Route.admin.PRODUCT+"/"+row.id)
-            // }}
-            onlySearch={true}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
             setFilter={setFilter}
@@ -248,7 +243,10 @@ const CTableProducts = <CO extends ResProduct>() =>
             emptyData={
                 <Text>No Result</Text>
             }
-        />
+        >
+            {/** Header Navigation of Table Product **/}
+            <HeaderNavigationTable setFilter={setFilter} filter={filter} placeholder={'Search Product'}/>
+        </TableCustom>
     );
 };
 
