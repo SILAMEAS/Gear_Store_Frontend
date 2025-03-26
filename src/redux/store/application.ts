@@ -3,6 +3,10 @@ import {IApplication, IDialogRTK, ISnackbarStatus, SettingsResponse} from "./typ
 import {ResUser} from "../services/types/IUserApi.ts";
 import Colors from "../../theme/mode/Colors.ts";
 
+const defaultDailogRTK={
+  adminCreateProduct:false,
+  adminEditProduct:false
+}
 const initialState: IApplication = {
   productCurrentPage: 1,
   snackbarMessage: null,
@@ -18,9 +22,7 @@ const initialState: IApplication = {
     Secondary:Colors._ffffff,
     logo:""
   },
-  dialogRTK:{
-    adminCreateProduct:false
-  }
+  dialogRTK:defaultDailogRTK
 };
 
 export const applicationSlice = createSlice({

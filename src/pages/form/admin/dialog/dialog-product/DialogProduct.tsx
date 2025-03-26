@@ -1,18 +1,18 @@
 import {Backdrop, CircularProgress, IconButton, Stack} from "@mui/material";
 import DialogCustom from "../../../../../components/dailog/DialogCustom.tsx";
 import {useTheme} from "../../../../../theme/provider/ThemeProvider.tsx";
-import TopNav from "./TopNav.tsx";
+import TopNav from "../share/TopNav.tsx";
 import CreateProductForm from "../../drawer/create-product/CreateProductForm.tsx";
 import Text from "../../../../../components/text/Text.tsx";
-import ButtonCustom from "../../../../../components/button/ButtonCustom.tsx";
 import {useAppDispatch} from "../../../../../redux/redux.ts";
-import {FormID} from "../../../FormID.tsx";
 import {ChevronLeft, CircleX} from "lucide-react";
 import {setDialogRTK} from "../../../../../redux/store/application.ts";
+import {EnumAction} from "../../../../../constants/GlobalConstants.tsx";
+import ActionCreateProduct from "./action/ActionCreateProduct.tsx";
 
-const DialogCreateProduct = () => {
+const DialogProduct = ({action}:{action:EnumAction}) => {
     const {colorBackWhite}=useTheme();
-    const dispatch=useAppDispatch()
+    const dispatch=useAppDispatch();
     return <DialogCustom
         open={true}
         sxProp={{
@@ -46,11 +46,9 @@ const DialogCreateProduct = () => {
 
         }
         contentDialog={<Stack p={10}><CreateProductForm/></Stack>}
-        actionDialog={<Stack width={"100%"} height={"auto"} pt={"20px"} borderTop={1} direction={"row"}  alignItems={"center"} justifyContent={"flex-end"}>
-            <ButtonCustom type={"submit"} form={FormID["#create-product"]} >
-                <Text>Create Product</Text>
-            </ButtonCustom>
-        </Stack>}
+        actionDialog={
+            action===EnumAction.create?<ActionCreateProduct/>:<>update</>
+        }
     >
         <Backdrop
             sx={{
@@ -63,4 +61,4 @@ const DialogCreateProduct = () => {
     </DialogCustom>
 };
 
-export default DialogCreateProduct;
+export default DialogProduct;

@@ -5,7 +5,7 @@ const TopNav = ({leftSide,rightSide,children} :{leftSide:ReactNode,rightSide:Rea
     return <Stack
         height="60px"
         width="100%"
-        bgcolor={"#121232"}
+        bgcolor={"primary.main"}
         direction="row"
         sx={{
             position: "relative",

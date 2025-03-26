@@ -2,7 +2,7 @@ import {styled, TextField, TextFieldProps} from "@mui/material";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
     "& label": {
-        color: theme.palette.primary.main, // Label color
+        color: theme.palette.Grey.main, // Label color
     },
     "& label.Mui-focused": {
         color: "#d63384", // Focused label color (pinkish)

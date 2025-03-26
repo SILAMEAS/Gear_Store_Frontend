@@ -120,7 +120,7 @@ export const darkTheme = createTheme({
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                color: "#999",
+                color: "#ffffff",
             },
     },
     components: {
