@@ -112,8 +112,7 @@ const lightTheme = createTheme({
         caption: {
             fontSize: "0.75rem",
             fontWeight: 400,
-            lineHeight: 1.5,
-            color: Colors._888,
+            lineHeight: 1.5
         },
 
         // Overline text (very small labels)

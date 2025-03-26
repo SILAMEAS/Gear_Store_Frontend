@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import {TypographyProps} from "@mui/material";
 
 const Text = ({children,...typographyProps}:PropsWithChildren&TypographyProps) => {
-    return <Typography  {...typographyProps}>
+    return <Typography variant={"caption"}  {...typographyProps}>
         {children}
     </Typography>
 };

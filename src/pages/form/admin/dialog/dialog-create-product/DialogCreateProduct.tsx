@@ -33,14 +33,7 @@ const DialogCreateProduct = () => {
 
                            </Stack>
                            <Text
-                               sx={{
-                                   fontWeight: 700,
-                                   fontSize: "17px",
-                                   color: "white",
-                                   textDecorationLine: "underline",
-                                   fontFamily: "Poppins",
-                                   width: "fit-content",
-                               }}>
+                             variant={"overline"}>
                                Create Product
                            </Text>
                        </Stack>}
@@ -53,8 +46,10 @@ const DialogCreateProduct = () => {
 
         }
         contentDialog={<Stack p={10}><CreateProductForm/></Stack>}
-        actionDialog={<Stack>
-            <ButtonCustom type={"submit"} form={FormID["#create-product"]}>Create Product</ButtonCustom>
+        actionDialog={<Stack width={"100%"} height={"auto"} pt={"20px"} borderTop={1} direction={"row"}  alignItems={"center"} justifyContent={"flex-end"}>
+            <ButtonCustom type={"submit"} form={FormID["#create-product"]} >
+                <Text>Create Product</Text>
+            </ButtonCustom>
         </Stack>}
     >
         <Backdrop

@@ -1,6 +1,5 @@
 import {PropsWithChildren} from "react";
 import {Button, ButtonProps, SxProps} from "@mui/material";
-import Colors from "../../theme/mode/Colors.ts";
 
 interface IButtonCustom {
     MuiButtonHover?: SxProps;
@@ -23,14 +22,14 @@ const ButtonCustom = ({
     };
 
     const sxStyles: SxProps = {
-        "&:hover": { backgroundColor: Colors._555, ...MuiButtonHover } as SxProps,
+        "&:hover": { backgroundColor: "inherit", ...MuiButtonHover } as SxProps,
         "&.MuiButton-contained": { ...defaultNormal, ...MuiButtonContained } as SxProps,
         "&.MuiButton-text": { ...defaultNormal, ...MuiButtonText } as SxProps,
         "&.MuiButton-outlined": { ...defaultNormal, ...MuiButtonOutlined } as SxProps,
     } as SxProps;
 
     return (
-        <Button variant="contained" {...buttonProps} sx={sxStyles}>
+        <Button variant="outlined" {...buttonProps} sx={{height:"40px", ...sxStyles}}>
             {children}
         </Button>
     );

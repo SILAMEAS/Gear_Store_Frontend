@@ -1,6 +1,9 @@
 import React, {ReactNode, useEffect, useState} from "react"
-import {Box, Button, Chip, Collapse, Divider, Grid, MenuItem, Paper, Stack, TextField, Typography} from "@mui/material"
+import {Box, Chip, Collapse, Divider, Grid, MenuItem, Paper, Stack, Typography} from "@mui/material"
 import {Clear, ExpandLess, ExpandMore, FilterList, Search} from "@mui/icons-material"
+import ButtonCustom from "../button/ButtonCustom.tsx";
+import Text from "../text/Text.tsx";
+import TextFieldCustom from "../text/TextFieldCustom.tsx";
 
 // Define types for our data and filters
 type DataItem = {
@@ -114,11 +117,9 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
     const [activeFilters, setActiveFilters] = useState<string[]>([])
 
     // State for filtered data
-    const [filteredData, setFilteredData] = useState<DataItem[]>(sampleData)
+    const [_, setFilteredData] = useState<DataItem[]>(sampleData)
 
     // Pagination state
-    const [page, setPage] = useState(0)
-    const [rowsPerPage, setRowsPerPage] = useState(5)
 
     // Handle filter changes
     const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -182,7 +183,7 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
         })
 
         setFilteredData(filtered)
-        setPage(0) // Reset to first page when filters change
+        // setPage(0) // Reset to first page when filters change
     }
 
     // Clear all filters
@@ -235,17 +236,17 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
     }, [filters])
 
     return (
-            <Paper elevation={3} sx={{ p: 2, mb: 3 }}>
+            <Paper elevation={0} sx={{ p: 2, mb: 3 }}>
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
                     {LeftSideComponent}
-                    <Stack direction={'row'} gap={2}>
-                        <Button
+                    <Stack direction={"row"} gap={2}>
+                        <ButtonCustom
                             variant="outlined"
                             startIcon={filterOpen ? <ExpandLess /> : <ExpandMore />}
                             onClick={() => setFilterOpen(!filterOpen)}
                         >
-                            {filterOpen ? "Hide Filters" : "Show Filters"}
-                        </Button>
+                            <Text>{filterOpen ? "Hide Filters" : "Show Filters"}</Text>
+                        </ButtonCustom>
                         {RightSideComponent}
                     </Stack>
                 </Box>
@@ -255,27 +256,22 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
 
                     <Grid container spacing={2} sx={{ mb: 2 }}>
                         {/*<Grid item xs={12} sm={6} md={3}>*/}
-                        {/*    <TextField*/}
-                        {/*        fullWidth*/}
+                        {/*    <TextFieldCustom*/}
                         {/*        label="Name"*/}
                         {/*        name="name"*/}
                         {/*        value={filters.name}*/}
                         {/*        onChange={handleFilterChange}*/}
-                        {/*        variant="outlined"*/}
-                        {/*        size="small"*/}
                         {/*    />*/}
                         {/*</Grid>*/}
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
+                            <TextFieldCustom
                                 select
-                                fullWidth
                                 label="Category"
                                 name="category"
                                 value={filters.category}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
+
                             >
                                 <MenuItem value="">All Categories</MenuItem>
                                 {categories.map((category) => (
@@ -283,19 +279,16 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
                                         {category}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextFieldCustom>
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
+                            <TextFieldCustom
                                 select
-                                fullWidth
                                 label="Status"
                                 name="status"
                                 value={filters.status}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
                             >
                                 <MenuItem value="">All Statuses</MenuItem>
                                 {statuses.map((status) => (
@@ -303,72 +296,60 @@ export default function AdvancedFilterTable({RightSideComponent,LeftSideComponen
                                         {status.charAt(0).toUpperCase() + status.slice(1)}
                                     </MenuItem>
                                 ))}
-                            </TextField>
+                            </TextFieldCustom>
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
-                                fullWidth
+                            <TextFieldCustom
                                 label="From Date"
                                 name="dateFrom"
                                 type="date"
                                 value={filters.dateFrom}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
                                 InputLabelProps={{ shrink: true }}
                             />
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
-                                fullWidth
+                            <TextFieldCustom
                                 label="To Date"
                                 name="dateTo"
                                 type="date"
                                 value={filters.dateTo}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
                                 InputLabelProps={{ shrink: true }}
                             />
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
-                                fullWidth
+                            <TextFieldCustom
                                 label="Min Amount"
                                 name="amountMin"
                                 type="number"
                                 value={filters.amountMin}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
                                 InputProps={{ startAdornment: "$" }}
                             />
                         </Grid>
 
                         <Grid item xs={12} sm={6} md={3}>
-                            <TextField
-                                fullWidth
+                            <TextFieldCustom
                                 label="Max Amount"
                                 name="amountMax"
                                 type="number"
                                 value={filters.amountMax}
                                 onChange={handleFilterChange}
-                                variant="outlined"
-                                size="small"
                                 InputProps={{ startAdornment: "$" }}
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={6} md={3} sx={{ display: "flex", alignItems: "center" }}>
-                            <Button variant="contained" startIcon={<Search />} onClick={applyFilters} sx={{ mr: 1 }}>
-                                Apply
-                            </Button>
-                            <Button variant="outlined" startIcon={<Clear />} onClick={clearFilters}>
-                                Clear
-                            </Button>
+                        <Grid item xs={12} sm={6} md={3} sx={{ display: "flex", alignItems: "center",gap:"10px",width:"100%",justifyContent:"space-between" }}>
+                            <ButtonCustom  startIcon={<Search />} onClick={applyFilters} sx={{ mr: 1 }} fullWidth>
+                                <Text variant={"button"}>Apply</Text>
+                            </ButtonCustom>
+                            <ButtonCustom  startIcon={<Clear/>} onClick={clearFilters} fullWidth color={"error"}>
+                                <Text variant={"button"} >Clear</Text>
+                            </ButtonCustom>
                         </Grid>
                     </Grid>
                 </Collapse>

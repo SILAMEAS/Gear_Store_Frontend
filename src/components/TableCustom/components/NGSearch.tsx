@@ -32,14 +32,12 @@ export const SearchFormTableCustom = ({
           ...StyleConstant.inputStyleLogin,
           width: "500px",
           borderRadius:"6px",
-          height: "auto"
-          // ...sx,
         }}
         InputProps={{
           // ...params.InputProps,
           startAdornment: (
             <InputAdornment position="end" sx={{mr: 2}}>
-              <SearchIcon />
+              <SearchIcon fontSize={"small"}/>
             </InputAdornment>
           ),
         }}

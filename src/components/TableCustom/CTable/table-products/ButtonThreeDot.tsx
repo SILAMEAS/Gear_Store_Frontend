@@ -22,11 +22,11 @@ function ButtonThreeDot<T extends Record<string, any>>({data,setPopUp}:Readonly<
         <MenuList sx={{width:"200px"}}>
             <MenuItem onClick={handleActionMenuClose}>
                 <EditNoteIcon style={{ marginRight: 8 }} fontSize={"small"} />
-               <Text variant={"body2"}> Edit Product</Text>
+               <Text> Edit Product</Text>
             </MenuItem>
             <MenuItem onClick={handleActionMenuDelete} sx={{ color: "error.main" }}>
                 <DeleteOutlineIcon  style={{ marginRight: 8 }}  fontSize={"small"}/>
-                <Text variant={"body2"}>  Delete Product</Text>
+                <Text>  Delete Product</Text>
             </MenuItem>
         </MenuList>
 

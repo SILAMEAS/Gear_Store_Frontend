@@ -7,7 +7,8 @@ export const darkTheme = createTheme({
     palette: {
         mode: "dark",
         primary: {
-            main:"#ff00ff",
+            main:"#e61d94",
+            light:"#b5056e50",
         },
         secondary: {
             main: "#ff00ff",
@@ -97,18 +98,20 @@ export const darkTheme = createTheme({
 
             // Button text
             button: {
-                fontSize: "1rem",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
+                // fontSize: "1rem",
+                // fontWeight: 500,
+                // textTransform: "uppercase",
+                // letterSpacing: "0.05em",
+                fontSize: "0.75rem",
+                fontWeight: 500,
+                // lineHeight: 1.5
             },
 
             // Caption text (small labels)
             caption: {
                 fontSize: "0.75rem",
                 fontWeight: 400,
-                lineHeight: 1.5,
-                color: "#888",
+                lineHeight: 1.5
             },
 
             // Overline text (very small labels)
@@ -323,7 +326,7 @@ export const darkTheme = createTheme({
                 paper: {
                     // backgroundColor: Colors._222, // Dark background for the menu
                     borderRadius: "10px",
-                    padding: "5px",
+                    padding: "5px"
                 },
             },
         },

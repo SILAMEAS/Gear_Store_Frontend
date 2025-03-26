@@ -1,4 +1,4 @@
-import {Chip, IconButton, Stack, Typography} from "@mui/material";
+import {Chip, IconButton, Stack} from "@mui/material";
 import useTableCustom from "../../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
@@ -11,11 +11,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";
 import RatingCustom from "../../../rating/RatingCustom.tsx";
-import AdvancedFilterTable from "../../../Filter-side-bar/AdanvateFilter.tsx";
+import AdvancedFilterTable from "../../../filter/AdanvateFilter.tsx";
 import {SearchFormTableCustom} from "../../components/NGSearch.tsx";
 import ButtonCustom from "../../../button/ButtonCustom.tsx";
 import {setDialogRTK} from "../../../../redux/store/application.ts";
-import {CirclePlus} from "lucide-react";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import {useAppDispatch} from "../../../../redux/redux.ts";
 
 const CTableProducts = <CO extends ResProduct>() =>
@@ -89,9 +89,9 @@ const CTableProducts = <CO extends ResProduct>() =>
                             direction={"row"}
                             alignItems={"center"}
                             gap={"15px"} >
-                            <Typography>
+                            <Text>
                                 # {data.id}
-                            </Typography>
+                            </Text>
                         </Stack>
                     ),
                 },
@@ -124,9 +124,9 @@ const CTableProducts = <CO extends ResProduct>() =>
                             direction={"row"}
                             alignItems={"center"}
                             gap={"15px"} >
-                            <Typography>
+                            <Text>
                                 {data.name}
-                            </Typography>
+                            </Text>
                         </Stack>
                     ),
                 },
@@ -145,9 +145,9 @@ const CTableProducts = <CO extends ResProduct>() =>
                             direction={"row"}
                             alignItems={"center"}
                             gap={"15px"} >
-                            <Typography>
+                            <Text>
                                 {data.price}
-                            </Typography>
+                            </Text>
                         </Stack>
                     ),
                 },
@@ -228,7 +228,7 @@ const CTableProducts = <CO extends ResProduct>() =>
                             <IconButton size="small"
                             >
                                 <MoreVertIcon fontSize={"small"
-                                }/>
+                                } color={"primary"}/>
                             </IconButton>
                         }
                         onClick={() => setPopUp(true)}
@@ -251,12 +251,14 @@ const CTableProducts = <CO extends ResProduct>() =>
         >
             {/** Header Navigation of Table Product **/}
             <AdvancedFilterTable
-                LeftSideComponent={<SearchFormTableCustom setFilter={setFilter} filter={filter} placeholder={'Search Product'}/>}
+                LeftSideComponent={<SearchFormTableCustom setFilter={setFilter} filter={filter} placeholder={"Search Product"}/>}
                 RightSideComponent={
-                    <ButtonCustom variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1,height:"40px"}}>
-                <CirclePlus />
-                <Text color={"primary.main"} variant={"subtitle2"} ml={"5px"}>Create Product</Text>
-            </ButtonCustom>}
+                    <ButtonCustom
+                        variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1}}
+                    >
+                        <AddCircleOutlineOutlinedIcon fontSize={"small"}/>
+                        <Text color={"primary.main"} ml={"5px"}>Create Product</Text>
+                    </ButtonCustom>}
             />
         </TableCustom>
     );
