@@ -9,9 +9,12 @@ import {ChevronLeft, CircleX} from "lucide-react";
 import {setDialogRTK} from "../../../../../redux/store/application.ts";
 import {EnumAction} from "../../../../../constants/GlobalConstants.tsx";
 import ActionCreateProduct from "./action/ActionCreateProduct.tsx";
+import useGlobalHook from "../../../../../utils/hooks/useGlobalHook.tsx";
+import {Route} from "../../../../../constants/Route.ts";
 
 const DialogProduct = ({action}:{action:EnumAction}) => {
     const {colorBackWhite}=useTheme();
+    const {navigate}=useGlobalHook();
     const dispatch=useAppDispatch();
     return <DialogCustom
         open={true}
@@ -27,14 +30,22 @@ const DialogProduct = ({action}:{action:EnumAction}) => {
            <TopNav
                leftSide={ <Stack width="fit-content" direction="row" alignItems="center">
                            <Stack width="60px" alignItems="center">
-                               <IconButton onClick={()=>   dispatch(setDialogRTK({adminCreateProduct:false}))}>
+                               <IconButton onClick={()=>{
+                                   if(action===EnumAction.create){
+                                       dispatch(setDialogRTK({adminCreateProduct:false}))
+                                   }
+                                   else{
+                                       navigate(Route.admin.PRODUCT)
+                                   }
+
+                               }}>
                                    <ChevronLeft />
                                </IconButton>
 
                            </Stack>
                            <Text
                              variant={"overline"}>
-                               Create Product
+                               {action===EnumAction.create? "Create Product":"Edit Product"}
                            </Text>
                        </Stack>}
                rightSide={

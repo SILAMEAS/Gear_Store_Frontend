@@ -3,7 +3,6 @@ import NotFound404 from "./NotFound404.tsx";
 import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import {Navigator} from "./utils/common/Navigator.tsx";
-import AdminProductDetail from "./pages/admin/sidebar/detail/AdminProductDetail.tsx";
 import AdminCustomerDetail from "./pages/admin/sidebar/detail/AdminCustomerDetail.tsx";
 import AdminUserDetail from "./pages/admin/sidebar/detail/AdminUserDetail.tsx";
 import PublicRoute from "./pages/protect-route/PublicRoute.tsx";
@@ -123,7 +122,7 @@ export const routesConfig = [
                     },
                     {
                         path: Route.admin.PRODUCT_ID,
-                        element: <AdminProductDetail />,
+                        element: <AdminProductsPage />,
                     },
                     {
                         path: Route.admin.CART,

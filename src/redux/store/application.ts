@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {IApplication, IDialogRTK, ISnackbarStatus, SettingsResponse} from "./type.ts";
 import {ResUser} from "../services/types/IUserApi.ts";
 import Colors from "../../theme/mode/Colors.ts";
+import {ResProduct} from "../services/types/ProductInterface.tsx";
 
 const defaultDailogRTK={
   adminCreateProduct:false,
@@ -50,6 +51,9 @@ export const applicationSlice = createSlice({
     setDialogRTK: (state, { payload }: { payload: IDialogRTK }) => {
       state.dialogRTK = payload;
     },
+    setProductSelected: (state, { payload }: { payload: ResProduct }) => {
+      state.productSelected = payload;
+    },
   },
 });
 
@@ -57,7 +61,7 @@ export const {
   dispatchSnackbar,
   setUserDetail,
   setUserSelected,
-  setSetting,
+  setProductSelected,
     setDialogRTK
 } = applicationSlice.actions;
 

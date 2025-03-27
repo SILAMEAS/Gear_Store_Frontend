@@ -1,4 +1,5 @@
 import {ResUser} from "../services/types/IUserApi.ts";
+import {ResProduct} from "../services/types/ProductInterface.tsx";
 
 export interface IApplication {
   deleteProductId: number | null;
@@ -9,7 +10,8 @@ export interface IApplication {
   userDetail?:ResUser;
   userSelected?:ResUser;
   settingsResponse:SettingsResponse;
-  dialogRTK:IDialogRTK
+  dialogRTK:IDialogRTK;
+  productSelected?:ResProduct
 }
 
 export type ISnackbarStatus = "error" | "success" | "info" | "warning";

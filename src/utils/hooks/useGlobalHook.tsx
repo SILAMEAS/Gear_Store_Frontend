@@ -1,5 +1,5 @@
-import {useLocation, useNavigate, useParams, useSearchParams,} from 'react-router-dom';
-import {useTheme} from '@mui/material';
+import {useLocation, useNavigate, useParams, useSearchParams,} from "react-router-dom";
+import {useTheme} from "@mui/material";
 import {useAppDispatch} from "../../redux/redux.ts";
 
 const useGlobalHook = () => {
@@ -10,7 +10,10 @@ const useGlobalHook = () => {
     const theme = useTheme();
     const [search] = useSearchParams();
     const dispatch = useAppDispatch();
-    return {location, param, navigate, theme, search, pathname, dispatch};
+    const clearParams = () => {
+        navigate(window.location.pathname, { replace: true }); // Navigates without query params
+    };
+    return {location, param, navigate, theme, search, pathname, dispatch,clearParams};
 };
 
 export default useGlobalHook;

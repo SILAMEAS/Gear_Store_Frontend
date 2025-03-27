@@ -7,7 +7,7 @@ export const Route={
         DASHBOARD:"/admin/dashboard",
         CART:"/admin/carts",
         PRODUCT:"/admin/products",
-        PRODUCT_ID:"/admin/products/:id",
+        PRODUCT_ID:"/admin/products/:productId",
         ORDER:"/admin/orders",
         CATEGORY:"/admin/categories",
         REVIEW:"/admin/reviews",

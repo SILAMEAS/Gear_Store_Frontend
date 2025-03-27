@@ -10,14 +10,14 @@ import {$handleResponseMessage} from "../../../../../utils/common/$handleRespons
 import {FormID} from "../../../FormID.tsx";
 
 
-const CreateProductForm: React.FC = () => {
-    const [addProduct]=useCreateProductsMutation()
+const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
+    const [addProduct]=useCreateProductsMutation();
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm<ProductFormData>({
-        defaultValues: DefaultProductFormData
+        defaultValues: data || DefaultProductFormData
     })
     const {currentData:currentDataCategories}=useGetCategoriesQuery({});
     const onSubmit = async (data: ProductFormData) => {
