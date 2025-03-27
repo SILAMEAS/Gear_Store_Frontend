@@ -4,13 +4,15 @@ import MainLoading from "../../components/loading/MainLoading.tsx";
 import {useAppSelector} from "../../redux/redux.ts";
 import AppProvider from "../../theme/provider/AppProvider.tsx";
 import {Navigate} from "react-router-dom";
-import {RedirectUrlByRole} from "../../constants/Route.ts";
+import {RedirectUrlByRole, Route} from "../../constants/Route.ts";
 import {EnumRole} from "../../redux/services/types/IUserApi.ts";
+import useCheckUrlDependOnRole from "../../utils/local-storage/url/useCheckUrlDependOnRole.tsx";
 
 
 const PublicRoute = () => {
     const {userDetail}=useAppSelector(state=>state.application);
     const {resultRefreshToken,resultUserDetail}=useProtectedRoute();
+    const {urlRedirect}=useCheckUrlDependOnRole({root:RedirectUrlByRole[userDetail?.role as EnumRole],objectUrl:Route.admin});
     /** When refresh token and user detail is loading or fetching it will log in main loading **/
     if(resultRefreshToken.isLoading||resultUserDetail.isLoading||resultUserDetail.isFetching){
         return <MainLoading/>
@@ -24,9 +26,10 @@ const PublicRoute = () => {
             example : if you log in as user  it will redirect to /user  routes
                       if you log in as admin it will redirect to /admin routes
          */
-        else
+        else{
             /** navigate to url user log in  **/
-            return <Navigate to={RedirectUrlByRole[userDetail?.role as EnumRole]} replace/>
+            return <Navigate to={urlRedirect} replace/>
+        }
     }else {
         /** if your user detail is null or undefined it will return route of public */
         return <AppProvider> <PublicLayout/></AppProvider>
