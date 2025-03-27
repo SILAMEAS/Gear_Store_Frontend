@@ -43,3 +43,8 @@ export const RedirectUrlByRole = {
     [EnumRole.USER]: Route.endUser.HOME,
     [EnumRole.MODERATOR]: Route.admin.HOME,
 };
+export const ObjectUrlByRole = {
+    [EnumRole.ADMIN]: Route.admin,
+    [EnumRole.USER]: Route.endUser,
+    [EnumRole.MODERATOR]: Route.admin,
+};
