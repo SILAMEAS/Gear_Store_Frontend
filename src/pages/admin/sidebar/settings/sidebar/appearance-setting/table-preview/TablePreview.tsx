@@ -1,7 +1,9 @@
 import {useState} from "react";
 import {Box, Typography} from "@mui/material";
-import {TableViewPreview} from "./TableViewPreview.tsx";
-import EnumTableFooterType from "../../../../../../../components/TableCustom/constant/enum/EnumTableFooterType.ts";
+import EnumTableFooterType from "@components/TableCustom/constant/enum/EnumTableFooterType.ts";
+import {
+    TableViewPreview
+} from "@pages/admin/sidebar/settings/sidebar/appearance-setting/table-preview/TableViewPreview.tsx";
 
 const TablePreview = () => {
     const [tableView, setTableView] = useState<EnumTableFooterType>(EnumTableFooterType.pagination)

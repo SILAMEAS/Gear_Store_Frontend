@@ -1,6 +1,6 @@
 import {useLocation, useNavigate, useParams, useSearchParams,} from "react-router-dom";
 import {useTheme} from "@mui/material";
-import {useAppDispatch} from "../../redux/redux.ts";
+import {useAppDispatch} from "@redux/redux.ts";
 
 const useGlobalHook = () => {
     const location = useLocation();

@@ -1,10 +1,10 @@
 import React from "react";
-import {useAppSelector} from "../../../../redux/redux.ts";
-import {MenuUser} from "../MenuUser.ts";
-import {MenuPublic} from "../../public/MenuPublic.ts";
-import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
-import Text from "../../../../components/text/Text.tsx";
-import useGlobalHook from "../../../hooks/useGlobalHook.tsx";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import {useAppSelector} from "@redux/redux.ts";
+import {EnumRole} from "@redux/services/types/IUserApi.ts";
+import {MenuUser} from "@utils/ui/end-user/MenuUser.ts";
+import {MenuPublic} from "@utils/ui/public/MenuPublic.ts";
+import Text from "@components/text/Text.tsx";
 
 export const UICenterHeaderMenu=()=>{
     const {navigate,pathname}=useGlobalHook();

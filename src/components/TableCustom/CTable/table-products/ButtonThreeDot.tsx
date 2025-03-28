@@ -4,7 +4,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import React from "react";
 import Text from "../../../text/Text.tsx";
 import useGlobalHook from "../../../../utils/hooks/useGlobalHook.tsx";
-import {Route} from "../../../../constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
 
 interface IButtonThreeDot<T extends Record<string, any>>{
     data:T,

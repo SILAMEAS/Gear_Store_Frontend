@@ -1,10 +1,10 @@
 import {createContext, type ReactNode, Suspense, useCallback, useContext, useEffect, useMemo, useState} from "react";
 import {ThemeProvider as MUIThemeProvider} from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import darkTheme from "../mode/darkTheme.tsx";
-import lightTheme from "../mode/lightTheme.tsx";
-import useLastUrlStorage from "../../utils/local-storage/url/useLastUrlStorage.tsx";
-import MainLoading from "../../components/loading/MainLoading.tsx";
+import useLastUrlStorage from "@utils/local-storage/url/useLastUrlStorage.tsx";
+import MainLoading from "@components/loading/MainLoading.tsx";
+import darkTheme from "@theme/mode/darkTheme.tsx";
+import lightTheme from "@theme/mode/lightTheme.tsx";
 
 type ThemeContextType = {
     toggleTheme: (mode?:"light"|"dark") => void;
@@ -18,6 +18,7 @@ const ThemeContext = createContext<ThemeContextType>({
     colorBackWhite:""
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => useContext(ThemeContext);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

@@ -1,5 +1,5 @@
 import {Box, Typography} from "@mui/material";
-import Colors from "../../../../theme/mode/Colors.ts";
+import Colors from "@theme/mode/Colors.ts";
 
 const AppFooter = () => {
   return (

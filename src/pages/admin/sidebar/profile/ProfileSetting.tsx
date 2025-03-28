@@ -13,14 +13,14 @@ import {
     TextField,
     Typography
 } from "@mui/material"
-import {ResUser} from "../../../../redux/services/types/IUserApi.ts";
 import {Controller, useForm} from "react-hook-form";
 import EditIcon from "@mui/icons-material/Edit";
 import {ReactNode, useState} from "react";
-import {ImageDropzone} from "../../../../components/drop-zone/ImageDropzone.tsx";
-import Text from "../../../../components/text/Text.tsx";
-import {useUpdateUserMutation} from "../../../../redux/services/adminApi.ts";
-import {AntSwitch} from "../../../../components/switch/AntSwitch.tsx";
+import {useUpdateUserMutation} from "@redux/services/adminApi.ts";
+import {ResUser} from "@redux/services/types/IUserApi.ts";
+import {AntSwitch} from "@components/switch/AntSwitch.tsx";
+import {ImageDropzone} from "@components/drop-zone/ImageDropzone.tsx";
+import Text from "@components/text/Text.tsx";
 
 type InfoRowProps = {
     label: string

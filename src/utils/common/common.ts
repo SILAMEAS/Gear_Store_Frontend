@@ -1,6 +1,6 @@
-import {store} from "../../redux/redux.ts";
-import {dispatchSnackbar} from "../../redux/store/application.ts";
-import {IErrorConnection, IErrorType} from "../../redux/store/type.ts";
+import {store} from "@redux/redux.ts";
+import {dispatchSnackbar} from "@redux/store/application.ts";
+import {IErrorConnection, IErrorType} from "@redux/store/type.ts";
 
 export const substring100 = (str: string) => {
   if (str.length > 100) {

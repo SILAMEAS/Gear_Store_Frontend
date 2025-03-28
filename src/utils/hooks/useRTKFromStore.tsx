@@ -1,4 +1,4 @@
-import {store} from "../../redux/redux.ts";
+import {store} from "@redux/redux.ts";
 
 const useRKTFromStore = () => {
     const storeLocal = store.getState();

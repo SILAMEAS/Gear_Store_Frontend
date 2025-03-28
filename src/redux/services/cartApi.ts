@@ -1,7 +1,8 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {productApi} from "./productApi.ts";
-import {ReqHeader} from "../ReqHeader.tsx";
-import {Pagination} from "./types/IPagination.ts";
+import {ReqHeader} from "@redux/ReqHeader.tsx";
+import {Pagination} from "@redux/services/types/IPagination.ts";
+import {productApi} from "@redux/services/productApi.ts";
+
 
 export const cartApi = createApi({
   reducerPath: "cartApi",

@@ -15,7 +15,7 @@ import {
     useTheme,
 } from "@mui/material";
 import {FavoriteBorder, ShoppingCart} from "@mui/icons-material";
-import {useGetProductsByIdQuery} from "../../../../../../redux/services/productApi.ts";
+import {useGetProductsByIdQuery} from "@redux/services/productApi.ts";
 import {useParams} from "react-router-dom";
 
 

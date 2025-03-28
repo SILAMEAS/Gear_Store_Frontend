@@ -1,13 +1,14 @@
 import {Box, Grid, Stack} from "@mui/material";
-import MetricCard from "./dashboard/MetricCard.tsx";
-import SalesChart from "./dashboard/SalesChart.tsx";
-import TopProducts from "./dashboard/TopProducts.tsx";
-import RecentOrders from "./dashboard/RecentOrders.tsx";
-import {useGetDashboardQuery} from "../../../redux/services/adminApi.ts";
-import MainLoading from "../../../components/loading/MainLoading.tsx";
-import {EnumICard} from "../../../redux/services/types/IAdminApi.ts";
-import {RenderIcon} from "../../../components/TableCustom/constant/Constants.tsx";
-import {StyleCustom} from "../../../styles/StyleCustom.tsx";
+import {useGetDashboardQuery} from "@redux/services/adminApi.ts";
+import MainLoading from "@components/loading/MainLoading.tsx";
+import MetricCard from "@pages/admin/sidebar/dashboard/MetricCard.tsx";
+import {RenderIcon} from "@components/TableCustom/constant/Constants.tsx";
+import SalesChart from "@pages/admin/sidebar/dashboard/SalesChart.tsx";
+import TopProducts from "@pages/admin/sidebar/dashboard/TopProducts.tsx";
+import RecentOrders from "@pages/admin/sidebar/dashboard/RecentOrders.tsx";
+import {EnumICard} from "@redux/services/types/IAdminApi.ts";
+import {StyleCustom} from "@/styles/StyleCustom.tsx";
+
 
 const AdminDashboard = () => {
   const {currentData,isLoading} = useGetDashboardQuery({});

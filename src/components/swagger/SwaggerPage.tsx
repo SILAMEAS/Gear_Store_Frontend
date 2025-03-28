@@ -4,10 +4,10 @@ import "swagger-ui-react/swagger-ui.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Copy from "../copy/Copy.tsx";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
 import {IconButton, Tooltip} from "@mui/material";
-import {StyleConstant} from "../TableCustom/constant/StyleConstant.tsx";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import Copy from "@components/copy/Copy.tsx";
+import {StyleConstant} from "@components/TableCustom/constant/StyleConstant.tsx";
 
 const SwaggerPage: React.FC = () => {
     return (

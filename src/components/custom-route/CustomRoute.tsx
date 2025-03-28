@@ -1,7 +1,7 @@
 import {PropsWithChildren} from "react";
 import {ListItem, ListItemIcon, Stack, Tooltip} from "@mui/material";
-import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
-import Text from "../text/Text.tsx";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import Text from "@components/text/Text.tsx";
 
 const CustomRoute = ({Inner=false,Title,route,children}:Readonly<{Inner?:boolean,Title:string,route:string}&PropsWithChildren>) => {
     const {navigate,pathname}=useGlobalHook();

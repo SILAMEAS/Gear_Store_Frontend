@@ -12,7 +12,7 @@ import {
     Typography,
 } from "@mui/material"
 import {styled} from "@mui/material/styles"
-import {StyleConstant} from "../../../../../../../components/TableCustom/constant/StyleConstant.tsx";
+import {StyleConstant} from "@components/TableCustom/constant/StyleConstant.tsx";
 
 // Custom styled components
 const ColorPreview = styled(Box)(({ color }:{ color :string}) => ({

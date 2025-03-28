@@ -12,8 +12,8 @@ import {
 } from "@mui/material"
 import {ExpandLess, ExpandMore} from "@mui/icons-material"
 import {useState} from "react"
-import {StyleCustom} from "../../styles/StyleCustom.tsx";
-import Colors from "../../theme/mode/Colors.ts";
+import {StyleCustom} from "@/styles/StyleCustom.tsx";
+import Colors from "@theme/mode/Colors.ts";
 
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({

@@ -1,16 +1,16 @@
 import {Backdrop, CircularProgress, IconButton, Stack} from "@mui/material";
 import DialogCustom from "@components/dailog/DialogCustom.tsx";
 import {useTheme} from "@theme/provider/ThemeProvider.tsx";
-import TopNav from "../share/TopNav.tsx";
-import CreateProductForm from "../../drawer/create-product/CreateProductForm.tsx";
 import Text from "@components/text/Text.tsx";
-import {useAppDispatch} from "@/redux/redux.ts";
+import {useAppDispatch} from "@redux/redux.ts";
 import {ChevronLeft, CircleX} from "lucide-react";
-import {EnumAction} from "@/constants/GlobalConstants.tsx";
-import ActionCreateProduct from "./action/ActionCreateProduct.tsx";
+import {EnumAction} from "@constant/GlobalConstants.tsx";
 import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
-import {Route} from "@/constants/Route.ts";
-import {setDialogRTK} from "@/redux/store/application.ts";
+import {Route} from "@constant/Route.ts";
+import {setDialogRTK} from "@redux/store/application.ts";
+import TopNav from "@pages/form/admin/dialog/share/TopNav.tsx";
+import CreateProductForm from "@pages/form/admin/drawer/create-product/CreateProductForm.tsx";
+import ActionCreateProduct from "@pages/form/admin/dialog/dialog-product/action/ActionCreateProduct.tsx";
 
 const DialogProduct = ({action}:{action:EnumAction}) => {
     const {colorBackWhite}=useTheme();

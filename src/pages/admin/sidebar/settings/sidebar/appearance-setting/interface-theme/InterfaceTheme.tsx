@@ -1,6 +1,6 @@
 import {Box, Typography} from "@mui/material";
-import {ThemePreview} from "./ThemePreview.tsx";
-import {useTheme} from "../../../../../../../theme/provider/ThemeProvider.tsx";
+import {useTheme} from "@theme/provider/ThemeProvider.tsx";
+import {ThemePreview} from "@pages/admin/sidebar/settings/sidebar/appearance-setting/interface-theme/ThemePreview.tsx";
 
 const InterfaceTheme = () => {
     const { toggleTheme, isDarkMode } = useTheme()

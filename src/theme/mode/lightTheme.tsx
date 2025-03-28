@@ -1,6 +1,6 @@
 import {createTheme} from "@mui/material";
-import Colors from "./Colors.ts";
 import {grey} from "@mui/material/colors";
+import Colors from "@theme/mode/Colors.ts";
 
 const lightTheme = createTheme({
     /**  ===========================================================================  */

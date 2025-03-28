@@ -1,5 +1,5 @@
 import {Box, Breadcrumbs} from "@mui/material";
-import Text from "../../../components/text/Text.tsx";
+import Text from "@components/text/Text.tsx";
 
 {/* Breadcrumb navigation */}
 const BreadcrumbNavigation=()=>{

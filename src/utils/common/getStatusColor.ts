@@ -1,4 +1,4 @@
-import {OrderData} from "../../pages/admin/sidebar/dashboard/types.ts";
+import {OrderData} from "@pages/admin/sidebar/dashboard/types.ts";
 
 export const getStatusColor = (status: OrderData["status"]) => {
     switch (status) {

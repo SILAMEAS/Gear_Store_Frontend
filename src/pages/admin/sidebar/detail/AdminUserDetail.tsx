@@ -1,5 +1,6 @@
-import useRKTFromStore from "../../../../utils/hooks/useRTKFromStore.tsx";
-import ProfileSetting from "../profile/ProfileSetting.tsx";
+import useRKTFromStore from "@utils/hooks/useRTKFromStore.tsx";
+import ProfileSetting from "@pages/admin/sidebar/profile/ProfileSetting.tsx";
+
 
 const AdminUserDetail = () => {
     const {userSelected}=useRKTFromStore();

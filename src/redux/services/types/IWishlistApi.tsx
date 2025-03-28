@@ -1,4 +1,4 @@
-import {Pagination} from "./IPagination.ts";
+import {Pagination} from "@redux/services/types/IPagination.ts";
 
 export interface ResWishlist{id:string,product:number,quantity:number}
-export interface ResWishlists extends Pagination<ResWishlist>{}
+export type ResWishlists = Pagination<ResWishlist>

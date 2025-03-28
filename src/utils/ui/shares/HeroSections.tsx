@@ -1,8 +1,8 @@
 import React, {PropsWithChildren, useState} from "react";
-import Text from "../../../components/text/Text.tsx";
 import {Stack} from "@mui/material";
-import useCheckUrl from "../../hooks/useCheckUrl.tsx";
-import {useTheme} from "../../../theme/provider/ThemeProvider.tsx";
+import useCheckUrl from "@utils/hooks/useCheckUrl.tsx";
+import {useTheme} from "@theme/provider/ThemeProvider.tsx";
+import Text from "@components/text/Text.tsx";
 
 interface IHeroSections{Slash?:number,padding?:boolean}
 const HeroSections = ({Slash=2,padding=true,children}:IHeroSections&PropsWithChildren) => {

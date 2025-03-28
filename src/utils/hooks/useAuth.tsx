@@ -1,9 +1,9 @@
-import {Route} from "../../constants/Route.ts";
-import useGlobalHook from "./useGlobalHook.tsx";
-import {storeToken} from "../local-storage/token/storeToken.ts";
-import {useLoginMutation} from "../../redux/services/userApi.ts";
+import {Route} from "@/constant/Route.ts";
+import {useLoginMutation} from "@redux/services/userApi.ts";
 import {enqueueSnackbar} from "notistack";
-import {$handleResponseMessage} from "../common/$handleResponseMessage.ts";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import {storeToken} from "@utils/local-storage/token/storeToken.ts";
+import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
 
 export interface ILogin {
     email: string;

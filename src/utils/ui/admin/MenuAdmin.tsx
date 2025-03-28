@@ -1,4 +1,4 @@
-import {Route} from "../../../constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
 import {ReactNode} from "react";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";

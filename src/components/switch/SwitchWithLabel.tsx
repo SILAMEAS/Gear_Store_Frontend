@@ -1,6 +1,6 @@
 import {Stack} from "@mui/material";
-import {AntSwitch} from "./AntSwitch.tsx";
 import React, {PropsWithChildren} from "react";
+import {AntSwitch} from "@components/switch/AntSwitch.tsx";
 
 interface ISwitchAccess {
   disabled?: boolean;

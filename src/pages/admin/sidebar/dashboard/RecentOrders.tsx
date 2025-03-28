@@ -12,7 +12,7 @@ import {
     Typography,
 } from "@mui/material"
 import {OrderData} from "./types.ts";
-import {getStatusColor} from "../../../../utils/common/getStatusColor.ts";
+import {getStatusColor} from "@utils/common/getStatusColor.ts";
 
 
 export default function RecentOrders({ orders}:{ orders: OrderData[]}) {

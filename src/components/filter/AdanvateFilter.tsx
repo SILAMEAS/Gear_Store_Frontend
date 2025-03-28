@@ -1,9 +1,10 @@
 import React, {ReactNode, useEffect, useState} from "react"
 import {Box, Chip, Collapse, Divider, Grid, MenuItem, Paper, Stack, Typography} from "@mui/material"
 import {Clear, ExpandLess, ExpandMore, FilterList, Search} from "@mui/icons-material"
-import ButtonCustom from "../button/ButtonCustom.tsx";
-import Text from "../text/Text.tsx";
-import TextFieldCustom from "../text/TextFieldCustom.tsx";
+import ButtonCustom from "@components/button/ButtonCustom.tsx";
+import TextFieldCustom from "@components/text/TextFieldCustom.tsx";
+import Text from "@components/text/Text.tsx";
+
 
 // Define types for our data and filters
 type DataItem = {

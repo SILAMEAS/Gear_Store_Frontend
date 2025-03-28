@@ -1,8 +1,8 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {ResProduct, ResProducts} from "./types/ProductInterface.tsx";
-import {ReqPage} from "./types/IPagination.ts";
-import {ReqHeader, ReqHeaderOnlyBaseUrl} from "../ReqHeader.tsx";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import {ReqHeader, ReqHeaderOnlyBaseUrl} from "@redux/ReqHeader.tsx";
+import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
+import {ReqPage} from "@redux/services/types/IPagination.ts";
 
 export const productApi = createApi({
   reducerPath: "productApi",

@@ -1,8 +1,9 @@
 import {Box, Stack} from "@mui/material";
-import AppHeader from "../../utils/ui/end-user/layout/Header.tsx";
-import AppContent from "../../utils/ui/end-user/layout/Content.tsx";
-import AppFooter from "../../utils/ui/end-user/layout/Footer.tsx";
-import useCheckUrl from "../../utils/hooks/useCheckUrl.tsx";
+import useCheckUrl from "@utils/hooks/useCheckUrl.tsx";
+import AppHeader from "@utils/ui/end-user/layout/Header.tsx";
+import AppContent from "@utils/ui/end-user/layout/Content.tsx";
+import AppFooter from "@utils/ui/end-user/layout/Footer.tsx";
+
 
 const PublicLayout = () => {
     const {IsLoginPage}=useCheckUrl();

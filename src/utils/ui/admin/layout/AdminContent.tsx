@@ -1,7 +1,8 @@
 import {Outlet} from "react-router-dom";
 import {Stack} from "@mui/material";
-import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
-import PageTransition from "../../../../components/loading/PageTransition.tsx";
+import useCheckUrl from "@utils/hooks/useCheckUrl.tsx";
+import PageTransition from "@components/loading/PageTransition.tsx";
+
 
 const AdminContent = () =>{
     const {IncludeSettingsPage}=useCheckUrl();

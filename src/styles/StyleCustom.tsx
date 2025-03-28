@@ -1,9 +1,10 @@
 import {Switch, SwitchProps} from "@mui/material";
 import {styled} from "@mui/material/styles";
-import Colors from "../theme/mode/Colors.ts";
+import Colors from "@theme/mode/Colors.ts";
 
 const _webkitBoxShadow = "inset 0 0 6px rgba(0,0,0,0.00)";
 const _outline = "1px solid slategrey";
+// eslint-disable-next-line react-refresh/only-export-components
 export const StyleCustom = {
     line: {
         lineIdentityPage: {

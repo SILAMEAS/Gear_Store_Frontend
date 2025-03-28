@@ -1,13 +1,13 @@
 import {AddCard} from "@mui/icons-material";
-import DrawerCustom from "../../../../components/drawer/DrawerCustom.tsx";
-import {StyleCustom} from "../../../../styles/StyleCustom.tsx";
 import {IconButton, Stack} from "@mui/material";
-import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
-import {Route} from "../../../../constants/Route.ts";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import CreateUserForm from "../../../../pages/form/admin/drawer/create-user/CreateUserForm.tsx";
-import CreateProductForm from "../../../../pages/form/admin/drawer/create-product/CreateProductForm.tsx";
-import Text from "../../../../components/text/Text.tsx";
+import useCheckUrl from "@utils/hooks/useCheckUrl.tsx";
+import {Route} from "@constant/Route.ts";
+import DrawerCustom from "@components/drawer/DrawerCustom.tsx";
+import {StyleCustom} from "@/styles/StyleCustom.tsx";
+import CreateProductForm from "@pages/form/admin/drawer/create-product/CreateProductForm.tsx";
+import Text from "@components/text/Text.tsx";
+import CreateUserForm from "@pages/form/admin/drawer/create-user/CreateUserForm.tsx";
 
 const AdminHeaderHandler = () => {
     const {pathnameRemoveLastSlash}=useCheckUrl();

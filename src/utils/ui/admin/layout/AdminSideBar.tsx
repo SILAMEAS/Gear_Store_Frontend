@@ -1,8 +1,7 @@
 import React from "react";
 import {List, Stack} from "@mui/material";
-import CustomRoute from "../../../../components/custom-route/CustomRoute.tsx";
-import {MenuAdmin} from "../MenuAdmin.tsx";
-
+import {MenuAdmin} from "@utils/ui/admin/MenuAdmin.tsx";
+import CustomRoute from "@components/custom-route/CustomRoute.tsx";
 
 const AdminSideBar: React.FC = () => {
      return  <Stack justifyContent={"space-between"} height={"100%"} width={"fit-content"} borderRight={1} borderColor={"Grey.light"} >

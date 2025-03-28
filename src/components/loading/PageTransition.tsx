@@ -1,7 +1,7 @@
 import {AnimatePresence, motion} from "framer-motion";
 import {useLocation} from "react-router-dom";
 import {ReactNode} from "react";
-import LoadingIndicator from "./LoadingIndicator.tsx";
+import LoadingIndicator from "@components/loading/LoadingIndicator.tsx";
 
 interface PageTransitionProps {
     children: ReactNode;

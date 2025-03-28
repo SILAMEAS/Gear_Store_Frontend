@@ -1,4 +1,4 @@
-import {EnumRole} from "../redux/services/types/IUserApi.ts";
+import {EnumRole} from "@redux/services/types/IUserApi.ts";
 
 export const Route={
     ROOT:"/",

@@ -4,9 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import {Box, CardActionArea, CardMedia, IconButton, Rating} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import TruncatedText from "../text/TruncatedText.tsx";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import {FavoriteOutlined} from "@mui/icons-material";
+import TruncatedText from "@components/text/TruncatedText.tsx";
 
 export interface IGamingAccessory {
     image: string;

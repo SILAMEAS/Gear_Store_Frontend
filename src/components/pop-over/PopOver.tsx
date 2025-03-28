@@ -3,8 +3,9 @@ import Popover from "@mui/material/Popover";
 import {styled} from "@mui/material/styles";
 import React from "react";
 import {PopoverProps} from "@mui/material/Popover/Popover";
-import Text from "../text/Text.tsx";
-import {typePopOver} from "./Type.ts";
+import {typePopOver} from "@components/pop-over/Type.ts";
+import Text from "@components/text/Text.tsx";
+
 
 const StyledPopover = styled(Popover)(() => ({
   "& .MuiPopover-paper": {

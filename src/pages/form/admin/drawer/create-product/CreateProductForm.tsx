@@ -1,13 +1,13 @@
 import React from "react"
 import {Controller, useForm} from "react-hook-form"
 import {Box, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
-import {ImageDropzone} from "../../../../../components/drop-zone/ImageDropzone.tsx";
-import {DefaultProductFormData, ProductFormData} from "../../../../../redux/services/types/ProductInterface.tsx";
-import {useGetCategoriesQuery} from "../../../../../redux/services/adminApi.ts";
-import {useCreateProductsMutation} from "../../../../../redux/services/productApi.ts";
 import {enqueueSnackbar} from "notistack";
-import {$handleResponseMessage} from "../../../../../utils/common/$handleResponseMessage.ts";
-import {FormID} from "../../../FormID.tsx";
+import {DefaultProductFormData, ProductFormData} from "@redux/services/types/ProductInterface.tsx";
+import {useCreateProductsMutation} from "@redux/services/productApi.ts";
+import {useGetCategoriesQuery} from "@redux/services/adminApi.ts";
+import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
+import {FormID} from "@pages/form/FormID.tsx";
+import {ImageDropzone} from "@components/drop-zone/ImageDropzone.tsx";
 
 
 const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {

@@ -1,7 +1,7 @@
-import {useTheme} from "../provider/ThemeProvider.tsx";
 import {ListItem, ListItemIcon, ListItemProps} from "@mui/material";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import BedtimeOutlinedIcon from "@mui/icons-material/BedtimeOutlined";
+import {useTheme} from "@theme/provider/ThemeProvider.tsx";
 
 const ThemeToggle = ({...props}:{label?:string}&ListItemProps) => {
     const { toggleTheme, isDarkMode } = useTheme()

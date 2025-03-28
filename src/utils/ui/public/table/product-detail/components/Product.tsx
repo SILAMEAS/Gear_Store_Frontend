@@ -1,5 +1,5 @@
 import {Card, CardActionArea, CardContent, CardMedia, Link, Typography} from "@mui/material";
-import {ResProduct} from "../../../../../../redux/services/types/ProductInterface.tsx";
+import {ResProduct} from "@redux/services/types/ProductInterface.tsx";
 
 const Product = (props: ResProduct) => {
     return (

@@ -1,4 +1,4 @@
-import {Pagination} from "./IPagination.ts";
+import {Pagination} from "@redux/services/types/IPagination.ts";
 
 export interface ResProduct {
   id: number,

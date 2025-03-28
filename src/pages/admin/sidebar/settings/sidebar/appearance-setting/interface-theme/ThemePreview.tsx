@@ -2,7 +2,7 @@
 import {Box} from "@mui/material";
 import Card from "@mui/material/Card";
 import {Check} from "lucide-react";
-import Text from "../../../../../../../components/text/Text.tsx";
+import Text from "@components/text/Text.tsx";
 
 export const ThemePreview = ({
                           theme,

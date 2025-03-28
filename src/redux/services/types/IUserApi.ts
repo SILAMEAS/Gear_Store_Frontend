@@ -1,4 +1,4 @@
-import {Pagination} from "./IPagination.ts";
+import {Pagination} from "@redux/services/types/IPagination.ts";
 
 export enum EnumRole{
     ADMIN="admin",
@@ -24,7 +24,7 @@ export interface ReqUserDetail extends Omit<ResUser, "id">{
     password: string
 }
 
-export interface ResUsers extends Pagination<ResUser>{}
+export type ResUsers = Pagination<ResUser>
 /** Form */
 export interface UserFormData extends ReqUserDetail{
     password: string

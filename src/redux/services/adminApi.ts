@@ -1,10 +1,10 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {ReqHeader} from "../ReqHeader.tsx";
-import {ReqDashboard, ResCategories, ResDashboard, ResOrders, ResPayments} from "./types/IAdminApi.ts";
-import {ResUser, ResUsers} from "./types/IUserApi.ts";
-import {ReqPage} from "./types/IPagination.ts";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import {Method} from "./types/Method.ts";
+import {ReqHeader} from "@redux/ReqHeader.tsx";
+import {ReqDashboard, ResCategories, ResDashboard, ResOrders, ResPayments} from "@redux/services/types/IAdminApi.ts";
+import {ResUser, ResUsers} from "@redux/services/types/IUserApi.ts";
+import {ReqPage} from "@redux/services/types/IPagination.ts";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import {Method} from "@redux/services/types/Method.ts";
 
 export const adminApi = createApi({
   reducerPath: "adminApi",

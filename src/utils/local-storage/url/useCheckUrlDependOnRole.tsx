@@ -1,5 +1,5 @@
-import {useGetUrlBeforeRefresh} from "./useGetUrlBeforeRefresh.tsx";
-import {$ok} from "../../common/$ok.ts";
+import {$ok} from "@utils/common/$ok.ts";
+import {useGetUrlBeforeRefresh} from "@utils/local-storage/url/useGetUrlBeforeRefresh.tsx";
 
 const useCheckUrlDependOnRole = ({root,objectUrl}:{root:string, objectUrl:Record<string,any>}) => {
     const {lastUrl}=useGetUrlBeforeRefresh();

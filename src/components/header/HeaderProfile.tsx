@@ -2,12 +2,12 @@ import {Logout, PersonAdd, Settings} from "@mui/icons-material";
 import {Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip,} from "@mui/material";
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
-import useAuth from "../../utils/hooks/useAuth.tsx";
 import LoginIcon from "@mui/icons-material/Login";
-import {Route} from "../../constants/Route.ts";
-import useGlobalHook from "../../utils/hooks/useGlobalHook.tsx";
-import Colors from "../../theme/mode/Colors.ts";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import useAuth from "@utils/hooks/useAuth.tsx";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import {Route} from "@constant/Route.ts";
+import Colors from "@theme/mode/Colors.ts";
 
 const HeaderProfile = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

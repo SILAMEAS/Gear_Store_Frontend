@@ -1,5 +1,5 @@
 import {Backdrop, CircularProgress} from "@mui/material";
-import Colors from "../../theme/mode/Colors.ts";
+import Colors from "@theme/mode/Colors.ts";
 
 const MainLoading = () => {
     return <Backdrop

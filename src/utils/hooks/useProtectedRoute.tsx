@@ -1,11 +1,11 @@
-import {useLazyGetUserDetailQuery, useRefreshTokenMutation} from "../../redux/services/userApi.ts";
+import {useLazyGetUserDetailQuery, useRefreshTokenMutation} from "@redux/services/userApi.ts";
 import {useEffect} from "react";
-import getToken from "../local-storage/token/useGetToken.ts";
-import {storeToken} from "../local-storage/token/storeToken.ts";
-import {store} from "../../redux/redux.ts";
-import {setUserDetail} from "../../redux/store/application.ts";
-import {Route} from "../../constants/Route.ts";
+import {store} from "@redux/redux.ts";
+import {setUserDetail} from "@redux/store/application.ts";
+import {Route} from "@/constant/Route.ts";
 import {useNavigate} from "react-router-dom";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import {storeToken} from "@utils/local-storage/token/storeToken.ts";
 
 export const useProtectedRoute=()=>{
     const [getRefreshToken, resultRefreshToken] = useRefreshTokenMutation();

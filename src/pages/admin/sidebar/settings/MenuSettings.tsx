@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {Route} from "../../../../constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import ApiOutlinedIcon from "@mui/icons-material/ApiOutlined";
 

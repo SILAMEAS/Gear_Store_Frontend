@@ -8,7 +8,7 @@ import {ResUser, ResUsers} from "../../../redux/services/types/IUserApi.ts";
 import {useDeleteUserMutation, useGetCustomerQuery} from "../../../redux/services/adminApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import {Route} from "../../../constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
 import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
 import {setUserSelected} from "../../../redux/store/application.ts";
 

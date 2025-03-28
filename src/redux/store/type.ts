@@ -1,5 +1,6 @@
-import {ResUser} from "../services/types/IUserApi.ts";
-import {ResProduct} from "../services/types/ProductInterface.tsx";
+import {ResUser} from "@redux/services/types/IUserApi.ts";
+import {ResProduct} from "@redux/services/types/ProductInterface.tsx";
+
 
 export interface IApplication {
   deleteProductId: number | null;

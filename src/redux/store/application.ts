@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IApplication, IDialogRTK, ISnackbarStatus, SettingsResponse} from "./type.ts";
-import {ResUser} from "../services/types/IUserApi.ts";
-import Colors from "../../theme/mode/Colors.ts";
-import {ResProduct} from "../services/types/ProductInterface.tsx";
+import Colors from "@theme/mode/Colors.ts";
+import {IApplication, IDialogRTK, ISnackbarStatus, SettingsResponse} from "@redux/store/type.ts";
+import {ResUser} from "@redux/services/types/IUserApi.ts";
+import {ResProduct} from "@redux/services/types/ProductInterface.tsx";
+
 
 const defaultDailogRTK={
   adminCreateProduct:false,

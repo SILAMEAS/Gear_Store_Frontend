@@ -1,6 +1,6 @@
-import {cleanPath} from "../common/cleaPath.ts";
-import useGlobalHook from "./useGlobalHook.tsx";
-import {Route} from "../../constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import {cleanPath} from "@utils/common/cleaPath.ts";
 
 
 const useCheckUrl = () => {

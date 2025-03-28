@@ -1,8 +1,8 @@
 import React from "react";
 import {List, Stack} from "@mui/material";
-import {MenuSettings} from "../MenuSettings.tsx";
-import CustomRoute from "../../../../../components/custom-route/CustomRoute.tsx";
-import HeroSections from "../../../../../utils/ui/shares/HeroSections.tsx";
+import HeroSections from "@utils/ui/shares/HeroSections.tsx";
+import CustomRoute from "@components/custom-route/CustomRoute.tsx";
+import {MenuSettings} from "@pages/admin/sidebar/settings/MenuSettings.tsx";
 
 
 const SettingsSideBar: React.FC = () => {

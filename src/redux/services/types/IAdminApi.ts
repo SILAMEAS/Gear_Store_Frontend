@@ -1,5 +1,5 @@
-import {OrderData, ProductData, SalesData} from "../../../pages/admin/sidebar/dashboard/types.ts";
-import {Pagination} from "./IPagination.ts";
+import {OrderData, ProductData, SalesData} from "@pages/admin/sidebar/dashboard/types.ts";
+import {Pagination} from "@redux/services/types/IPagination.ts";
 
 export enum EnumICard{
     total_sales="total_sales",
@@ -53,6 +53,6 @@ export interface ResCategory {
     name: string;
 }
 /** Pagination */
-export interface ResOrders extends Pagination<ResOrder>{}
-export interface ResPayments extends Pagination<ResPayment>{}
-export interface ResCategories extends Pagination<ResCategory>{}
+export type ResOrders = Pagination<ResOrder>
+export type ResPayments = Pagination<ResPayment>
+export type ResCategories = Pagination<ResCategory>

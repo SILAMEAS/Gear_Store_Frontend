@@ -15,11 +15,11 @@ import {
     TextField,
 } from "@mui/material"
 import {Visibility, VisibilityOff} from "@mui/icons-material"
-import {useAddUserMutation} from "../../../../../redux/services/adminApi.ts";
-import {EnumRole, UserFormData} from "../../../../../redux/services/types/IUserApi.ts";
-import {ImageDropzone} from "../../../../../components/drop-zone/ImageDropzone.tsx";
 import {enqueueSnackbar} from "notistack";
-import {$handleResponseMessage} from "../../../../../utils/common/$handleResponseMessage.ts";
+import {useAddUserMutation} from "@redux/services/adminApi.ts";
+import {EnumRole, UserFormData} from "@redux/services/types/IUserApi.ts";
+import {ImageDropzone} from "@components/drop-zone/ImageDropzone.tsx";
+import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
 
 
 const CreateUserForm: React.FC = () => {

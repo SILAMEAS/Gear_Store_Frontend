@@ -1,8 +1,9 @@
 import {Box,} from "@mui/material"
-import CompanyLogo from "./appearance-setting/logo-setting/CompanyLogo.tsx";
-import InterfaceTheme from "./appearance-setting/interface-theme/InterfaceTheme.tsx";
-import TablePreview from "./appearance-setting/table-preview/TablePreview.tsx";
-import ColorSetting from "./appearance-setting/color-setting/ColorSetting.tsx";
+import CompanyLogo from "@pages/admin/sidebar/settings/sidebar/appearance-setting/logo-setting/CompanyLogo.tsx";
+import InterfaceTheme
+    from "@pages/admin/sidebar/settings/sidebar/appearance-setting/interface-theme/InterfaceTheme.tsx";
+import TablePreview from "@pages/admin/sidebar/settings/sidebar/appearance-setting/table-preview/TablePreview.tsx";
+import ColorSetting from "@pages/admin/sidebar/settings/sidebar/appearance-setting/color-setting/ColorSetting.tsx";
 
 
 function AppearanceSettingsPage() {

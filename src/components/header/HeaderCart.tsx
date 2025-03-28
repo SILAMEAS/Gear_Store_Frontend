@@ -1,12 +1,12 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import {Badge, Box, Button, Card, CardContent, CircularProgress, IconButton, Typography} from "@mui/material";
-import DrawerCustom from "../drawer/DrawerCustom.tsx";
-import {useDeleteCartMutation, useGetAllCartsQuery} from "../../redux/services/cartApi.ts";
+import {useDeleteCartMutation, useGetAllCartsQuery} from "@redux/services/cartApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import EmptyCart from "../../utils/ui/end-user/empty/EmptyCart.tsx";
 import {BoxProps} from "@mui/material/Box";
-import getToken from "../../utils/local-storage/token/useGetToken.ts";
+import EmptyCart from "@utils/ui/end-user/empty/EmptyCart.tsx";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import DrawerCustom from "@components/drawer/DrawerCustom.tsx";
 
 const HeaderCart = (props: Readonly<BoxProps>) => {
   const defaultStyle = {

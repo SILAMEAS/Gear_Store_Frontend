@@ -1,12 +1,12 @@
-import {GamingAccessoryCard} from "../../../../components/cart/GamingAccessoryCard.tsx";
+import {GamingAccessoryCard} from "@components/cart/GamingAccessoryCard.tsx";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import React from "react";
 import {Stack} from "@mui/material";
-import {useAddCartMutation} from "../../../../redux/services/cartApi.ts";
+import {useAddCartMutation} from "@redux/services/cartApi.ts";
 import {useAddWishlistMutation, useDeleteWishlistMutation} from "../../../../redux/services/wishlistApi.ts";
-import {useGetAllProductsQuery} from "../../../../redux/services/productApi.ts";
-import {StyleCustom} from "../../../../styles/StyleCustom.tsx";
+import {useGetAllProductsQuery} from "@redux/services/productApi.ts";
+import {StyleCustom} from "@/styles/StyleCustom.tsx";
 
 const GridListProducts = () => {
     const [page, setPage] = React.useState(1);

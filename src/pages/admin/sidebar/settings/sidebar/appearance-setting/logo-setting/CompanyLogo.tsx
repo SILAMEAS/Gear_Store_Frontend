@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Box, Button, Paper, Typography} from "@mui/material";
-import {LoadingSpinner} from "../../../../../../../components/loading/LoadingSpinner.tsx";
+import {LoadingSpinner} from "@components/loading/LoadingSpinner.tsx";
 
 const CompanyLogo = () => {
     const [logo, _] = useState<string | null>("http://localhost:4000/media/logo/image_2023_08_18T06_22_30_931Z.png")

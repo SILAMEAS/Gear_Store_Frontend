@@ -1,10 +1,10 @@
 import {AppBar, Box, Stack, Toolbar,} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import DrawerCustom from "../../../../components/drawer/DrawerCustom.tsx";
-import UILogo from "../header-navigation/UILogo.tsx";
-import {UICenterHeaderMenu} from "../header-navigation/UICenterHeaderMenu.tsx";
-import UIRightSideHeaderMenu from "../header-navigation/UIRightSideHeaderMenu.tsx";
-import Colors from "../../../../theme/mode/Colors.ts";
+import Colors from "@theme/mode/Colors.ts";
+import DrawerCustom from "@components/drawer/DrawerCustom.tsx";
+import UILogo from "@utils/ui/end-user/header-navigation/UILogo.tsx";
+import {UICenterHeaderMenu} from "@utils/ui/end-user/header-navigation/UICenterHeaderMenu.tsx";
+import UIRightSideHeaderMenu from "@utils/ui/end-user/header-navigation/UIRightSideHeaderMenu.tsx";
 
 const AppHeader = () => {
   return (

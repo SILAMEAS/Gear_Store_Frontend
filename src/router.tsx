@@ -1,4 +1,4 @@
-import {Route} from "./constants/Route.ts";
+import {Route} from "@/constant/Route.ts";
 import NotFound404 from "./NotFound404.tsx";
 import App from "./App.tsx";
 import {createBrowserRouter, Navigate} from "react-router-dom";

@@ -1,5 +1,6 @@
 import {fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import getToken from "../utils/local-storage/token/useGetToken.ts";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+
 
 export const ReqHeader=(route:string)=>{
     return fetchBaseQuery({

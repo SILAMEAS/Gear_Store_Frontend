@@ -1,7 +1,7 @@
-import useRKTFromStore from "../../../utils/hooks/useRTKFromStore.tsx";
 import {Stack} from "@mui/material";
-import AdminSettingsContent from "./settings/layout/AdminSettingsContent.tsx";
-import SettingsSideBar from "./settings/layout/SettingsSideBar.tsx";
+import useRKTFromStore from "@utils/hooks/useRTKFromStore.tsx";
+import SettingsSideBar from "@pages/admin/sidebar/settings/layout/SettingsSideBar.tsx";
+import AdminSettingsContent from "@pages/admin/sidebar/settings/layout/AdminSettingsContent.tsx";
 
 const AdminSettingPage = () => {
     const {userDetail}=useRKTFromStore();

@@ -1,12 +1,12 @@
 import {Stack} from "@mui/material";
-import HeaderSearch from "../../../../components/header/HeaderSearch.tsx";
-import getToken from "../../../local-storage/token/useGetToken.ts";
-import HeaderWishlist from "../../../../components/header/HeaderWishlist.tsx";
-import HeaderCart from "../../../../components/header/HeaderCart.tsx";
-import HeaderProfile from "../../../../components/header/HeaderProfile.tsx";
-import useCheckUrl from "../../../hooks/useCheckUrl.tsx";
-import useRTKFromStore from "../../../hooks/useRTKFromStore.tsx";
-import {EnumRole} from "../../../../redux/services/types/IUserApi.ts";
+import useCheckUrl from "@utils/hooks/useCheckUrl.tsx";
+import useRTKFromStore from "@utils/hooks/useRTKFromStore.tsx";
+import {EnumRole} from "@redux/services/types/IUserApi.ts";
+import HeaderSearch from "@components/header/HeaderSearch.tsx";
+import getToken from "@utils/local-storage/token/useGetToken.ts";
+import HeaderWishlist from "@components/header/HeaderWishlist.tsx";
+import HeaderCart from "@components/header/HeaderCart.tsx";
+import HeaderProfile from "@components/header/HeaderProfile.tsx";
 
 const UIRightSideHeaderMenu = () => {
     const {IsLoginPage}=useCheckUrl();

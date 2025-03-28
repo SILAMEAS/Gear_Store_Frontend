@@ -34,7 +34,8 @@
       "@constant/*": ["src/constant/*"],
       "@env.config": ["env.config.ts"],
       "@utils/*": ["src/utils/*"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@redux/*": ["src/redux/*"]
     }
   },
   "include": ["src"]

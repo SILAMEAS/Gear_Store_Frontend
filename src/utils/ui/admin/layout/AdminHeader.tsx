@@ -1,8 +1,8 @@
 import React from "react";
 import {AppBar, Box, Toolbar} from "@mui/material";
-import UIRightSideHeaderMenu from "../../end-user/header-navigation/UIRightSideHeaderMenu.tsx";
-import UILogo from "../../end-user/header-navigation/UILogo.tsx";
-import Text from "../../../../components/text/Text.tsx";
+import UILogo from "@utils/ui/end-user/header-navigation/UILogo.tsx";
+import UIRightSideHeaderMenu from "@utils/ui/end-user/header-navigation/UIRightSideHeaderMenu.tsx";
+import Text from "@components/text/Text.tsx";
 
 const AdminHeader: React.FC = () => {
     return (

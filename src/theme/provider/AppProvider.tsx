@@ -1,6 +1,6 @@
 import {PropsWithChildren} from "react";
-import {ThemeProvider} from "./ThemeProvider.tsx";
 import {SnackbarProvider} from "notistack";
+import {ThemeProvider} from "@theme/provider/ThemeProvider.tsx";
 
 const AppProvider = ({children}: PropsWithChildren) => {
     return (

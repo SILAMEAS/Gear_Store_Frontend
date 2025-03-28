@@ -1,4 +1,4 @@
-import CTableCustomer from "../../../components/TableCustom/CTable/CTableCustomer.tsx";
+import CTableCustomer from "@components/TableCustom/CTable/CTableCustomer.tsx";
 
 const AdminCustomerPage = () => {
     return <CTableCustomer/>
