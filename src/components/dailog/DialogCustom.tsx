@@ -1,12 +1,12 @@
 import {Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, SxProps,} from "@mui/material";
-import {PropsWithChildren} from "react";
+import {PropsWithChildren, ReactNode} from "react";
 
 type INGDialog = {
     open: boolean;
     handleClose?: () => void;
-    titleDialog?: JSX.Element;
-    contentDialog?: JSX.Element;
-    actionDialog?: JSX.Element;
+    titleDialog?: ReactNode;
+    contentDialog?: ReactNode;
+    actionDialog?: ReactNode;
     sxProp?: {
         titleSx?: SxProps;
         contentsSx?: SxProps;
