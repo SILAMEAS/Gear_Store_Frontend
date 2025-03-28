@@ -3,6 +3,7 @@ import getToken from "@utils/local-storage/token/useGetToken.ts";
 import {ReqHeader, ReqHeaderOnlyBaseUrl} from "@redux/ReqHeader.tsx";
 import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import {ReqPage} from "@redux/services/types/IPagination.ts";
+import {IDType} from "@redux/services/types/IAdminApi.ts";
 
 export const productApi = createApi({
   reducerPath: "productApi",
@@ -19,7 +20,7 @@ export const productApi = createApi({
       providesTags:["Product"]
     }),
     /** Get products By Id */
-    getProductsById: builder.query<ResProduct, {id:number}>({
+    getProductsById: builder.query<ResProduct, {id:IDType}>({
       query: ({ id }) => ({
         url: `/${id}`,
         method: "GET"

@@ -4,20 +4,21 @@ import {useTheme} from "@theme/provider/ThemeProvider.tsx";
 import Text from "@components/text/Text.tsx";
 import {useAppDispatch} from "@redux/redux.ts";
 import {ChevronLeft, CircleX} from "lucide-react";
-import {EnumAction} from "@constant/GlobalConstants.tsx";
 import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
 import {Route} from "@constant/Route.ts";
 import {setDialogRTK} from "@redux/store/application.ts";
 import TopNav from "@pages/form/admin/dialog/share/TopNav.tsx";
 import CreateProductForm from "@pages/form/admin/drawer/create-product/CreateProductForm.tsx";
 import ActionCreateProduct from "@pages/form/admin/dialog/dialog-product/action/ActionCreateProduct.tsx";
+import {useGetProductsByIdQuery} from "@redux/services/productApi.ts";
+import {IDType} from "@redux/services/types/IAdminApi.ts";
 
-const DialogProduct = ({action}:{action:EnumAction}) => {
+const DialogProduct = ({productId}:{productId?:IDType}) => {
     const {colorBackWhite}=useTheme();
     const {navigate}=useGlobalHook();
     const dispatch=useAppDispatch();
     const handleClickClose=()=>{
-        if(action===EnumAction.create){
+        if(!productId){
             dispatch(setDialogRTK({adminCreateProduct:false}))
         }
         else{
@@ -25,6 +26,7 @@ const DialogProduct = ({action}:{action:EnumAction}) => {
             navigate(Route.admin.PRODUCT)
         }
     }
+const {currentData}=useGetProductsByIdQuery({id:productId!},{skip:!productId});
 
     return <DialogCustom
         open={true}
@@ -47,7 +49,7 @@ const DialogProduct = ({action}:{action:EnumAction}) => {
                            </Stack>
                            <Text
                              variant={"overline"}>
-                               {action===EnumAction.create? "Create Product":"Edit Product"}
+                               {!productId? "Create Product":"Edit Product"}
                            </Text>
                        </Stack>}
                rightSide={
@@ -58,9 +60,9 @@ const DialogProduct = ({action}:{action:EnumAction}) => {
            />
 
         }
-        contentDialog={<Stack p={10}><CreateProductForm/></Stack>}
+        contentDialog={<Stack p={10}><CreateProductForm data={currentData}/></Stack>}
         actionDialog={
-            action===EnumAction.create?<ActionCreateProduct/>:<>update</>
+            !productId?<ActionCreateProduct />:<>update</>
         }
     >
         <Backdrop

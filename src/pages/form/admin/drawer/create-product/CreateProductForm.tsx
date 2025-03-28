@@ -1,24 +1,37 @@
-import React from "react"
 import {Controller, useForm} from "react-hook-form"
 import {Box, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
 import {enqueueSnackbar} from "notistack";
-import {DefaultProductFormData, ProductFormData} from "@redux/services/types/ProductInterface.tsx";
+import {DefaultProductFormData, ProductFormData, ResProduct} from "@redux/services/types/ProductInterface.tsx";
 import {useCreateProductsMutation} from "@redux/services/productApi.ts";
 import {useGetCategoriesQuery} from "@redux/services/adminApi.ts";
 import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
 import {FormID} from "@pages/form/FormID.tsx";
 import {ImageDropzone} from "@components/drop-zone/ImageDropzone.tsx";
+import {useEffect} from "react";
+import {StyleConstant} from "@components/TableCustom/constant/StyleConstant.tsx";
 
 
-const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
+const CreateProductForm= ({data}:{data?: ResProduct}) => {
     const [addProduct]=useCreateProductsMutation();
     const {
         control,
         handleSubmit,
         formState: { errors },
+        setValue,
+        watch
     } = useForm<ProductFormData>({
-        defaultValues: data || DefaultProductFormData
+        defaultValues: DefaultProductFormData
     })
+    useEffect(()=>{
+        if(data){
+            setValue("name",data.name);
+            setValue("category",data.id);
+            setValue("price",data.price);
+            setValue("stock",data.stock);
+            setValue("description",data.description);
+        }
+
+    },[data])
     const {currentData:currentDataCategories}=useGetCategoriesQuery({});
     const onSubmit = async (data: ProductFormData) => {
         try {
@@ -40,50 +53,58 @@ const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
         }
     };
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate id={FormID["#create-product"]}>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate id={FormID["#create-product"]} overflow={"hidden"} sx={{...StyleConstant.scrollNormal}}>
+            <Stack justifyContent={"center"} alignItems={"center"} mb={2} >
+                {
+                    data?.image && !watch("image")&&
+                    <img src={`${data.image}`} alt={`${data.image}`} width={"30%"}
+                         style={{borderRadius: 8, objectFit: "cover"}}/>
+                }
+            </Stack>
             <Stack>
-               <Stack direction={"row"} gap={2}>
-                   <Controller
-                       name="name"
-                       control={control}
-                       rules={{ required: "Product name is required" }}
-                       render={({ field }) => (
-                           <TextField
-                               {...field}
-                               margin="normal"
-                               fullWidth
-                               id="product"
-                               label="Product Name"
-                               error={!!errors.name}
-                               helperText={errors.name?.message}
-                           />
-                       )}
-                   />
-                   <Controller
-                       name="category"
-                       control={control}
-                       rules={{ required: "category is required" }}
-                       render={({ field }) => (
-                           <FormControl fullWidth margin="normal">
-                               <InputLabel id="category-label">category</InputLabel>
-                               <Select {...field} labelId="role-label" id="category" label="Category" error={!!errors.category}>
-                                   {
-                                       currentDataCategories?.contents?.map(item=>
-                                           <MenuItem value={item.id} key={item.id} >{item.name}</MenuItem>
-                                       )
-                                   }
-                               </Select>
-                           </FormControl>
-                       )}
-                   />
-               </Stack>
+                <Stack direction={"row"} gap={2}>
+                    <Controller
+                        name="name"
+                        control={control}
+                        rules={{required: "Product name is required"}}
+                        render={({field}) => (
+                            <TextField
+                                {...field}
+                                margin="normal"
+                                fullWidth
+                                id="product"
+                                label="Product Name"
+                                error={!!errors.name}
+                                helperText={errors.name?.message}
+                            />
+                        )}
+                    />
+                    <Controller
+                        name="category"
+                        control={control}
+                        rules={{required: "category is required"}}
+                        render={({field}) => (
+                            <FormControl fullWidth margin="normal">
+                                <InputLabel id="category-label">category</InputLabel>
+                                <Select {...field} labelId="role-label" id="category" label="Category"
+                                        error={!!errors.category}>
+                                    {
+                                        currentDataCategories?.contents?.map(item =>
+                                            <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
+                                        )
+                                    }
+                                </Select>
+                            </FormControl>
+                        )}
+                    />
+                </Stack>
 
                 <Stack direction={"row"} gap={2}>
                     <Controller
                         name="price"
                         control={control}
-                        rules={{ required: "Price is required" }}
-                        render={({ field }) => (
+                        rules={{required: "Price is required"}}
+                        render={({field}) => (
                             <TextField
                                 {...field}
                                 margin="normal"
@@ -99,8 +120,8 @@ const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
                     <Controller
                         name="stock"
                         control={control}
-                        rules={{ required: "stock is required" }}
-                        render={({ field }) => (
+                        rules={{required: "stock is required"}}
+                        render={({field}) => (
                             <TextField
                                 {...field}
                                 margin="normal"
@@ -118,8 +139,8 @@ const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
             <Controller
                 name="description"
                 control={control}
-                rules={{ required: "description is required" }}
-                render={({ field }) => (
+                rules={{required: "description is required"}}
+                render={({field}) => (
                     <TextField
                         {...field}
                         rows={5}
@@ -136,13 +157,13 @@ const CreateProductForm: React.FC = ({data}:{data?: ProductFormData}) => {
             <Controller
                 name="image"
                 control={control}
-                render={({ field: { onChange, value } }) => (
-                    <Box sx={{ mt: 2, mb: 2 }}>
-                        <ImageDropzone onChange={onChange} value={value} />
+                render={({field: {onChange, value}}) => (
+                    <Box sx={{mt: 2, mb: 2}}>
+                        <ImageDropzone onChange={onChange} value={value}/>
                     </Box>
                 )}
             />
-            
+
         </Box>
     )
 }

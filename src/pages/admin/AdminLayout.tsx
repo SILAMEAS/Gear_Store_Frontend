@@ -1,5 +1,4 @@
 import {Stack} from "@mui/material";
-import {EnumAction} from "@/constant/GlobalConstants.tsx";
 import {useEffect} from "react";
 import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
 import useRKTFromStore from "@utils/hooks/useRTKFromStore.tsx";
@@ -28,9 +27,9 @@ const AdminLayout = () => {
           <AdminContent/>
       </Stack>
       {/** Dialog Product Creation */}
-      {Boolean(adminCreateProduct)&&<DialogProduct action={EnumAction.create}/>}
+      {Boolean(adminCreateProduct)&&<DialogProduct/>}
       {/** Dialog Product Edition */}
-      {Boolean(adminEditProduct)&&<DialogProduct action={EnumAction.update}/>}
+      {Boolean(adminEditProduct)&&<DialogProduct productId={productId}/>}
   </Stack>
 };
 

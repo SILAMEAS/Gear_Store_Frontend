@@ -52,6 +52,7 @@ export interface ResCategory {
     id:number;
     name: string;
 }
+export type IDType=number|string
 /** Pagination */
 export type ResOrders = Pagination<ResOrder>
 export type ResPayments = Pagination<ResPayment>
