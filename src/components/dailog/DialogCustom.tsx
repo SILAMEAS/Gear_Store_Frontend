@@ -1,7 +1,18 @@
-import {Dialog, DialogActions, DialogContent, DialogProps, DialogTitle, SxProps,} from "@mui/material";
+import {
+    Backdrop,
+    CircularProgress,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogProps,
+    DialogTitle,
+    SxProps,
+} from "@mui/material";
 import {PropsWithChildren, ReactNode} from "react";
+import {useTheme} from "@theme/provider/ThemeProvider.tsx";
 
 type INGDialog = {
+    isFetching?:boolean;
     open: boolean;
     handleClose?: () => void;
     titleDialog?: ReactNode;
@@ -15,6 +26,7 @@ type INGDialog = {
 };
 
 const DialogCustom = ({
+                     isFetching=false,
                       open,
                       handleClose,
                       titleDialog,
@@ -23,6 +35,7 @@ const DialogCustom = ({
                       sxProp,
                       ...props
                   }: INGDialog & DialogProps & PropsWithChildren) => {
+    const {colorBackWhite}=useTheme();
     return (
         <Dialog
             maxWidth='lg'
@@ -40,6 +53,14 @@ const DialogCustom = ({
                 <DialogActions sx={{...sxProp?.actionSx}}>{actionDialog}</DialogActions>
             )}
             {props.children}
+            <Backdrop
+                sx={{
+                    color:colorBackWhite,
+                    zIndex: theme => theme.zIndex.drawer + 1,
+                }}
+                open={isFetching}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </Dialog>
     );
 };

@@ -78,7 +78,7 @@ export default function TableCustom<
     });
   };
   return (
-    <Stack spacing={onlySearch ? 5 : 0} position={'relative'}>
+    <Stack spacing={onlySearch ? 5 : 0} position={"relative"}>
       {/** ============================================================================================== **/}
       {/**                         Search Option if you need                                              **/}
       {/** ============================================================================================== **/}

@@ -2,7 +2,7 @@ import {Controller, useForm} from "react-hook-form"
 import {Box, FormControl, InputLabel, MenuItem, Select, Stack, TextField,} from "@mui/material"
 import {enqueueSnackbar} from "notistack";
 import {DefaultProductFormData, ProductFormData, ResProduct} from "@redux/services/types/ProductInterface.tsx";
-import {useCreateProductsMutation} from "@redux/services/productApi.ts";
+import {useCreateProductsMutation, useUpdateProductsMutation} from "@redux/services/productApi.ts";
 import {useGetCategoriesQuery} from "@redux/services/adminApi.ts";
 import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
 import {FormID} from "@pages/form/FormID.tsx";
@@ -13,6 +13,7 @@ import {StyleConstant} from "@components/TableCustom/constant/StyleConstant.tsx"
 
 const CreateProductForm= ({data}:{data?: ResProduct}) => {
     const [addProduct]=useCreateProductsMutation();
+    const [updateProduct]=useUpdateProductsMutation()
     const {
         control,
         handleSubmit,
@@ -25,26 +26,33 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
     useEffect(()=>{
         if(data){
             setValue("name",data.name);
-            setValue("category",data.id);
+            setValue("category",data.category);
             setValue("price",data.price);
             setValue("stock",data.stock);
             setValue("description",data.description);
-        }
 
+        }
     },[data])
     const {currentData:currentDataCategories}=useGetCategoriesQuery({});
-    const onSubmit = async (data: ProductFormData) => {
+    const onSubmit = async (dataSubmit: ProductFormData) => {
         try {
             const formData = new FormData();
 
-
-            // Append all other fields using a single loop
-            Object.entries(data).forEach(([key, value]) => {
-                formData.append(key, value);
+            /** Append all other fields using a single loop */
+            Object.entries(dataSubmit).forEach(([key, value]) => {
+                if(value){
+                    return formData.append(key, value);
+                }
             });
+            /** handle action update or create */
+            if(data?.id){
+                await updateProduct({id:data?.id, body:formData}).unwrap();
+                return  enqueueSnackbar("Product updated successfully!", { variant: "success" });
+            }else {
+                await addProduct({body:formData}).unwrap();
+                return  enqueueSnackbar("Product created successfully!", { variant: "success" });
+            }
 
-            await addProduct({body:formData}).unwrap();
-            enqueueSnackbar("User created successfully!", { variant: "success" });
         } catch (e) {
             enqueueSnackbar(
                 $handleResponseMessage({ e }),
@@ -53,11 +61,11 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
         }
     };
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate id={FormID["#create-product"]} overflow={"hidden"} sx={{...StyleConstant.scrollNormal}}>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate id={FormID[data?.id? "#update-product":"#create-product"]} overflow={"hidden"} sx={{...StyleConstant.scrollNormal}}>
             <Stack justifyContent={"center"} alignItems={"center"} mb={2} >
                 {
                     data?.image && !watch("image")&&
-                    <img src={`${data.image}`} alt={`${data.image}`} width={"30%"}
+                    <img src={`${data.image}`} alt={`${data.image}`} width={"150px"}
                          style={{borderRadius: 8, objectFit: "cover"}}/>
                 }
             </Stack>
@@ -83,6 +91,7 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
                         name="category"
                         control={control}
                         rules={{required: "category is required"}}
+                        defaultValue={data?.id}
                         render={({field}) => (
                             <FormControl fullWidth margin="normal">
                                 <InputLabel id="category-label">category</InputLabel>

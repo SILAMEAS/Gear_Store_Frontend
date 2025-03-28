@@ -4,6 +4,7 @@ import {ReqHeader, ReqHeaderOnlyBaseUrl} from "@redux/ReqHeader.tsx";
 import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import {ReqPage} from "@redux/services/types/IPagination.ts";
 import {IDType} from "@redux/services/types/IAdminApi.ts";
+import {Method} from "@redux/services/types/Method.ts";
 
 export const productApi = createApi({
   reducerPath: "productApi",
@@ -35,11 +36,30 @@ export const productApi = createApi({
       }),
       invalidatesTags:["Product"]
     }),
+    /** Update products */
+    updateProducts: builder.mutation<ResProduct,{id:IDType,body:FormData}>({
+      query: ({body,id}) => ({
+        url: "/"+id+"/",
+        method: Method.PATCH,
+        body
+      }),
+      invalidatesTags:["Product"]
+    }),
+    /** Update products */
+    deleteProducts: builder.mutation<ResProduct,{id:IDType}>({
+      query: ({id}) => ({
+        url: "/"+id+"/",
+        method: Method.DELETE,
+      }),
+      invalidatesTags:["Product"]
+    }),
   }),
 });
 
 export const {
   useGetAllProductsQuery,
     useGetProductsByIdQuery,
-    useCreateProductsMutation
+    useCreateProductsMutation,
+    useUpdateProductsMutation,
+    useDeleteProductsMutation
 } = productApi;
