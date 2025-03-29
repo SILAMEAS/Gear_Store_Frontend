@@ -16,7 +16,6 @@ const useAuth = () => {
     const handleLogout=()=>{
         localStorage.clear();
         navigate(Route.public.LOGIN);
-        window.location.reload();
     }
     const handleLogin = async (data: ILogin) => {
         return login(data)

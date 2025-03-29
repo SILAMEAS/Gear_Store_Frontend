@@ -5,6 +5,23 @@ declare module "@mui/material/styles" {
     interface PaletteOptions {
         Grey: PaletteOptions["primary"];
     }
+    interface BreakpointOverrides {
+        xs: true;
+        sm: true;
+        smd: true;
+        md: true;
+        lg: true;
+        xl: true;
+        xxl: true;
+        hd: true;
+        fhd: true;
+        qhd: true;
+        uhd: true;
+        uhd2: true;
+        uhd4k: true;
+        uhd8k: true;
+    }
+
 
 }
 

@@ -1,6 +1,6 @@
 import {lazy} from "react";
 
-const Products= lazy(()=>import("@utils/ui/public/table/GridListProducts.tsx"));
+// const Products= lazy(()=>import("@utils/ui/public/table/GridListProducts.tsx"));
 const Login = lazy(()=>import("@pages/form/public/Login.tsx"));
 const UserHome= lazy(()=>import( "@pages/user/sidebar/UserHomePage.tsx"))
 const AdminHome=lazy(()=>import( "@pages/admin/sidebar/AdminDashboard.tsx"))
@@ -51,7 +51,7 @@ export {
     EndUserRoute,
     UserHome,
     ProductDetail,
-    Products,
+    // Products,
     UserLayout,
     /** admin */
     AdminUserPage,

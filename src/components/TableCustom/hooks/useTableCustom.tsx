@@ -4,7 +4,7 @@ import {Descending} from "../constant/TableConstant.ts";
 import {FilterBy, IFilterTableCustom, ISortFieldUser} from "../components/types.ts";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
-const defaultFilter: IFilterTableCustom = {
+export const defaultFilter: IFilterTableCustom = {
   page:1,
   pageSize: 10,
   sortDirection: Descending,
@@ -17,10 +17,11 @@ const defaultFilter: IFilterTableCustom = {
 
 const useTableCustom = <T extends Record<string, any>>(
   tableFooterType: EnumTableFooterType,
+  defaultTableFilter?:IFilterTableCustom
 ) => {
   /** state */
   const [status, setStatus] = React.useState<string[]>([""]);
-  const [filter, setFilter] = React.useState<IFilterTableCustom>(defaultFilter);
+  const [filter, setFilter] = React.useState<IFilterTableCustom>(defaultTableFilter??defaultFilter);
   const [visibleRows, setVisibleRows] = React.useState<Array<T>>([]);
   const [selected, setSelected] = React.useState<
     Readonly<Array<number | string>>

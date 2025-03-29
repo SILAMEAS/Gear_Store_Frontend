@@ -1,5 +1,5 @@
 import {Chip, IconButton, Stack} from "@mui/material";
-import useTableCustom from "../../hooks/useTableCustom.tsx";
+import useTableCustom, {defaultFilter} from "../../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
 import TableCustom from "../../components/TableCustom.tsx";
@@ -12,10 +12,16 @@ import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";
 import RatingCustom from "../../../rating/RatingCustom.tsx";
 import NavHeaderCTableProduct from "@components/TableCustom/CTable/table-products/NavHeaderCTableProduct.tsx";
+import useRTKFromStore from "@utils/hooks/useRTKFromStore.tsx";
+import GridProduct from "@components/TableCustom/CTable/table-products/GridProduct.tsx";
+import EnumTableType from "@components/TableCustom/constant/enum/EnumTableType.ts";
+import {EnumRole} from "@redux/services/types/IUserApi.ts";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
     const [popUp, setPopUp] = React.useState<boolean>(true);
+    const {userDetail}=useRTKFromStore();
+    const IsAdmin=userDetail?.role===EnumRole.ADMIN;
     const {
         setVisibleRows,
         visibleRows,
@@ -25,7 +31,7 @@ const CTableProducts = <CO extends ResProduct>() =>
         filter,
         setFilter,
         tableFooterType,
-    } = useTableCustom<CO>(EnumTableFooterType.pagination);
+    } = useTableCustom<CO>(IsAdmin?EnumTableFooterType.pagination:EnumTableFooterType.infiniteScroll,{...defaultFilter,pageSize:IsAdmin?10:25});
     const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({
         page:filter.page,
         pageSize:filter.
@@ -55,10 +61,14 @@ const CTableProducts = <CO extends ResProduct>() =>
     React.useEffect(() => {
         handleSetVisibleRows(currentData).then(() => {});
     }, [currentData]);
+    const wayPointProcess =
+        Boolean(tableFooterType === EnumTableFooterType.infiniteScroll &&
+            visibleRows.length > 0 &&
+            currentData?.hasNext);
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
-                height:"calc( 100vh - 400px )"
+                height:`calc( 100vh - ${IsAdmin?400:330}px )`
             }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
@@ -69,6 +79,8 @@ const CTableProducts = <CO extends ResProduct>() =>
             visibleRows={visibleRows}
             placeholder={"Search Product"}
             paginationCollapse={false}
+            display={IsAdmin?EnumTableType.table :EnumTableType.grid}
+            onlySearch={userDetail?.role!==EnumRole.ADMIN}
             headCells={[
                 {
                     id: "id",
@@ -243,10 +255,19 @@ const CTableProducts = <CO extends ResProduct>() =>
             emptyData={
                 <Text>No Result</Text>
             }
+            gridLayout={
+                <GridProduct
+                    filter={filter}
+                    setFilter={setFilter}
+                    visibleRows={visibleRows}
+                    wayPointProcess={wayPointProcess}
+                />
+            }
         >
             {/** Navigation of Header Table Product **/}
-            <NavHeaderCTableProduct filter={filter} setFilter={setFilter} />
-
+            {
+                IsAdmin && <NavHeaderCTableProduct filter={filter} setFilter={setFilter} />
+            }
         </TableCustom>
     );
 };

@@ -1,6 +1,24 @@
 import {createTheme} from "@mui/material";
 
 export const darkTheme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 320,  // Small Phones
+            sm: 375,  // Medium Phones
+            smd: 414, // Large Phones
+            md: 480,  // Extra Large Phones
+            lg: 600,  // Small Tablets
+            xl: 768,  // Medium Tablets
+            xxl: 820, // Large Tablets
+            hd: 1024, // Laptops
+            fhd: 1280, // Standard Laptop
+            qhd: 1366, // Larger Laptop
+            uhd: 1440, // 2K Screens
+            uhd2: 1920, // Full HD
+            uhd4k: 2560, // 4K
+            uhd8k: 3840, // 8K
+        },
+    },
     /**  ===========================================================================  */
     /**                              Palette                                          */
     /**  ===========================================================================  */

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import {Box, CardActionArea, CardMedia, IconButton} from "@mui/material";
+import {Box, CardActionArea, CardMedia, IconButton, Stack} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import {FavoriteOutlined} from "@mui/icons-material";
@@ -27,7 +27,6 @@ interface GamingAccessoryCardProps extends IGamingAccessory {
 export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> = ({
     image,
                                                                             title,
-                                                                            description,
                                                                             price,
                                                                             link,
                                                                             addToCart,
@@ -40,22 +39,18 @@ export const GamingAccessoryCard: React.FC<Readonly<GamingAccessoryCardProps>> =
             <CardActionArea component="a" href={link} sx={{px:"20px"}}>
                 <CardMedia
                     component="img"
-                    height={100}
+                    height={"100px"}
                     image={image}
                     alt="green iguana"
                     sx={{ objectFit: "contain" ,pb:"30px"}}
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
-                    <TruncatedText text= {title} />
-                    <Text variant="body2" color="text.secondary" noWrap>
-                        {description}
-                    </Text>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 1 }}>
+                <CardContent sx={{ flexGrow: 1,direction:"row" }}>
+                    <Stack direction={'row'}>
+                        <TruncatedText text= {title} />
                         <Text color="white">
                             ${price.toFixed(2)} {/* Format price to two decimal places */}
                         </Text>
-                        {/*<Rating name="read-only" value={rating} precision={0.5} readOnly/>*/}
-                    </Box>
+                    </Stack>
                 </CardContent>
             </CardActionArea>
             <Box sx={{ display:isWishlistString?"none": "flex", justifyContent: "flex-end", padding: 1,gap:2 }}>

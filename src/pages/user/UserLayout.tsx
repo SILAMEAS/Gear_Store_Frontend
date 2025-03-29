@@ -18,7 +18,7 @@ const UserLayout = () => {
           <AppHeader />
           <Stack
               sx={{
-                  width: "100%",
+                  width: "100%"
               }}
           >
               <AppContent />
