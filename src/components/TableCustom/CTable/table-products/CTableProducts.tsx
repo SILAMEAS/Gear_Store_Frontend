@@ -3,25 +3,19 @@ import useTableCustom from "../../hooks/useTableCustom.tsx";
 import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
 import TableCustom from "../../components/TableCustom.tsx";
-import {ResProduct, ResProducts} from "../../../../redux/services/types/ProductInterface.tsx";
+import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import React from "react";
-import {useGetAllProductsQuery} from "../../../../redux/services/productApi.ts";
+import {useGetAllProductsQuery} from "@redux/services/productApi.ts";
 import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
 import PopOver from "../../../pop-over/PopOver.tsx";
 import RatingCustom from "../../../rating/RatingCustom.tsx";
-import AdvancedFilterTable from "../../../filter/AdanvateFilter.tsx";
-import {SearchFormTableCustom} from "../../components/NGSearch.tsx";
-import ButtonCustom from "../../../button/ButtonCustom.tsx";
-import {setDialogRTK} from "../../../../redux/store/application.ts";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
-import {useAppDispatch} from "../../../../redux/redux.ts";
+import NavHeaderCTableProduct from "@components/TableCustom/CTable/table-products/NavHeaderCTableProduct.tsx";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
     const [popUp, setPopUp] = React.useState<boolean>(true);
-    const dispatch =useAppDispatch();
     const {
         setVisibleRows,
         visibleRows,
@@ -40,7 +34,7 @@ const CTableProducts = <CO extends ResProduct>() =>
             search:filter.search
         },
         {refetchOnMountOrArgChange:true});
-     
+
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
             const {contents, page} = propData;
@@ -64,7 +58,7 @@ const CTableProducts = <CO extends ResProduct>() =>
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
-                height:"calc( 100vh - 265px )"
+                height:"calc( 100vh - 400px )"
             }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
@@ -74,6 +68,7 @@ const CTableProducts = <CO extends ResProduct>() =>
             tableFooterType={tableFooterType}
             visibleRows={visibleRows}
             placeholder={"Search Product"}
+            paginationCollapse={false}
             headCells={[
                 {
                     id: "id",
@@ -249,17 +244,9 @@ const CTableProducts = <CO extends ResProduct>() =>
                 <Text>No Result</Text>
             }
         >
-            {/** Header Navigation of Table Product **/}
-            <AdvancedFilterTable
-                LeftSideComponent={<SearchFormTableCustom setFilter={setFilter} filter={filter} placeholder={"Search Product"}/>}
-                RightSideComponent={
-                    <ButtonCustom
-                        variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1}}
-                    >
-                        <AddCircleOutlineOutlinedIcon fontSize={"small"}/>
-                        <Text color={"primary.main"} ml={"5px"}>Create Product</Text>
-                    </ButtonCustom>}
-            />
+            {/** Navigation of Header Table Product **/}
+            <NavHeaderCTableProduct filter={filter} setFilter={setFilter} />
+
         </TableCustom>
     );
 };

@@ -1,5 +1,6 @@
 import React from "react";
-import {Tooltip, Typography} from "@mui/material";
+import {Tooltip} from "@mui/material";
+import Text from "@components/text/Text.tsx";
 
 interface TruncatedTextProps {
     text: string;
@@ -10,9 +11,9 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({ text, maxLength = 20 }) =
     const isLong = text.length > maxLength;
     return (
         <Tooltip title={isLong ? text : ""} arrow>
-            <Typography
+            <Text
                 gutterBottom
-                variant="h5"
+                // variant="h5"
                 noWrap
                 sx={{
                     width: "100%",              // Make the width responsive
@@ -21,7 +22,7 @@ const TruncatedText: React.FC<TruncatedTextProps> = ({ text, maxLength = 20 }) =
                 }}
             >
                 {isLong ? `${text.slice(0, maxLength)}...` : text}
-            </Typography>
+            </Text>
         </Tooltip>
     );
 };

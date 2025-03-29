@@ -38,7 +38,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }, [isDarkMode]);
     // ✅ Now `useMemo` will only update when `isDarkMode` changes
     const contextValue = useMemo(() => ({ isDarkMode, toggleTheme ,colorBackWhite}), [isDarkMode,toggleTheme,colorBackWhite]);
-    /** Trigger URL before refresh */
+    /** Trigger URL before refresh
+     ✅ Make Sure You Apply this hook : useLastUrlStorage On Provider Of Your Application
+     * */
     useLastUrlStorage();
     return (
        <Suspense fallback={<MainLoading/>}>

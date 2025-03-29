@@ -1,6 +1,6 @@
 import {Stack} from "@mui/material";
-import HeroSections from "@utils/ui/shares/HeroSections.tsx";
 import CTableProducts from "@components/TableCustom/CTable/table-products/CTableProducts.tsx";
+import HeroSections from "@utils/ui/shares/HeroSections.tsx";
 
 const AdminProductsPage = () => {
 

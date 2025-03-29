@@ -19,7 +19,8 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
         handleSubmit,
         formState: { errors },
         setValue,
-        watch
+        watch,
+        reset
     } = useForm<ProductFormData>({
         defaultValues: DefaultProductFormData
     })
@@ -50,6 +51,7 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
                 return  enqueueSnackbar("Product updated successfully!", { variant: "success" });
             }else {
                 await addProduct({body:formData}).unwrap();
+                reset();
                 return  enqueueSnackbar("Product created successfully!", { variant: "success" });
             }
 
@@ -91,7 +93,7 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
                         name="category"
                         control={control}
                         rules={{required: "category is required"}}
-                        defaultValue={data?.id}
+                        defaultValue={data?.id??0}
                         render={({field}) => (
                             <FormControl fullWidth margin="normal">
                                 <InputLabel id="category-label">category</InputLabel>

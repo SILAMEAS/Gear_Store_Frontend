@@ -379,3 +379,294 @@ Modify your App.tsx to wrap routes with the transition.
     };
     
     export default App;
+
+
+### Best Config To Protect Route By Role and last reload Page and Trying to Access not found page
+
+---
+
+#### Specific Page Route
+
+---
+
+** useProtectedRoute
+
+    import {useLazyGetUserDetailQuery, useRefreshTokenMutation} from "@redux/services/userApi.ts";
+    import {useEffect} from "react";
+    import {store} from "@redux/redux.ts";
+    import {setUserDetail} from "@redux/store/application.ts";
+    import {Route} from "@/constant/Route.ts";
+    import {useNavigate} from "react-router-dom";
+    import getToken from "@utils/local-storage/token/useGetToken.ts";
+    import {storeToken} from "@utils/local-storage/token/storeToken.ts";
+    
+    export const useProtectedRoute=()=>{
+    const [getRefreshToken, resultRefreshToken] = useRefreshTokenMutation();
+    const [userDetail,resultUserDetail]=useLazyGetUserDetailQuery();
+    const navigate=useNavigate();
+    const clearStorage=()=>{
+    localStorage.clear();
+    navigate(Route.public.LOGIN);
+    window.location.reload();
+    }
+    const handleRefreshToken=async ()=>{
+    try {
+    const refreshToken = getToken()?.refresh;
+    if (refreshToken) {
+    const res= await  getRefreshToken({ refresh:refreshToken })
+    .unwrap();
+    if (res) {
+    storeToken(res);
+    userDetail({}).unwrap().then(r=>{
+    store.dispatch(setUserDetail(r))
+    })
+    }
+
+            }
+        }catch (e){
+            console.log(e)
+            clearStorage()
+        }
+    }
+    useEffect(() => {
+        handleRefreshToken().then(r=>r)
+    }, [getRefreshToken]);
+
+    return {resultRefreshToken,resultUserDetail}
+    }
+
+
+** PublicRoute
+
+    import {Navigate} from "react-router-dom";
+    import {ObjectUrlByRole, RedirectUrlByRole} from "@/constant/Route.ts";
+    import {useAppSelector} from "@redux/redux.ts";
+    import {useProtectedRoute} from "@utils/hooks/useProtectedRoute.tsx";
+    import useCheckUrlDependOnRole from "@utils/local-storage/url/useCheckUrlDependOnRole.tsx";
+    import {$ok} from "@utils/common/$ok.ts";
+    import MainLoading from "@components/loading/MainLoading.tsx";
+    import {AppProvider, PublicLayout} from "@/routerLazy.ts";
+    
+    
+    const PublicRoute = () => {
+    const {userDetail}=useAppSelector(state=>state.application);
+    const {resultRefreshToken,resultUserDetail}=useProtectedRoute();
+    const role=$ok(userDetail?.role)?userDetail?.role:`${userDetail?.role}`
+    const {urlRedirect}=useCheckUrlDependOnRole({root:RedirectUrlByRole[role],objectUrl:ObjectUrlByRole[role]});
+    /** When refresh token and user detail is loading or fetching it will log in main loading **/
+    if(resultRefreshToken.isLoading||resultUserDetail.isLoading||resultUserDetail.isFetching){
+    return <MainLoading/>
+    }
+    /** if data of refresh token and get user detail is finish it will check depend on role of user login **/
+    if(resultUserDetail.currentData){
+    /** if you are public it will show public layout */
+    if(!userDetail)
+    return <AppProvider> <PublicLayout/></AppProvider>
+    /** else if user is not public it will redirect to url of role that user login
+    example : if you log in as user  it will redirect to /user  routes
+    if you log in as admin it will redirect to /admin routes
+    */
+    else{
+    /** navigate to url user log in  **/
+    return <Navigate to={urlRedirect} replace/>
+    }
+    }else {
+    /** if your user detail is null or undefined it will return route of public */
+    return <AppProvider> <PublicLayout/></AppProvider>
+    }
+    };
+    
+    export default PublicRoute;
+
+** EndUserRoute
+
+    import {Navigate} from "react-router-dom";
+    import {Route} from "@/constant/Route.ts";
+    import {useAppSelector} from "@redux/redux.ts";
+    import {EnumRole} from "@redux/services/types/IUserApi.ts";
+    import {UserLayout} from "@/routerLazy.ts";
+    
+    
+    const EndUserRoute = () => {
+    const {userDetail}=useAppSelector(state=>state.application);
+    return userDetail?.role===EnumRole.USER ? <UserLayout/>:<Navigate to={Route.ROOT} replace/>
+    };
+    
+    export default EndUserRoute;
+
+** AdminRoute
+
+    import {AdminLayout} from "@/routerLazy.ts";
+    import {Navigate} from "react-router-dom";
+    import {EnumRole} from "@/redux/services/types/IUserApi.ts";
+    import {useAppSelector} from "@/redux/redux.ts";
+    import {Route} from "@constant/Route";
+    
+    const AdminRoute = () => {
+    const {userDetail}=useAppSelector(state=>state.application);
+    return  userDetail?.role === EnumRole.ADMIN ? <AdminLayout/>:<Navigate to={Route.ROOT} replace/>
+    };
+    
+    
+    export default AdminRoute;
+
+
+
+
+---
+
+#### Hook to Get and Set Data : To Handle When reload goto previous page if you have permission
+
+---
+
+** useCheckUrlDependOnRole
+
+    import {$ok} from "@utils/common/$ok.ts";
+    import {useGetUrlBeforeRefresh} from "@utils/local-storage/url/useGetUrlBeforeRefresh.tsx";
+    
+    export function isRouteIncluded(url: string, routes: string[]): boolean {
+    return routes.some(route => {
+    // Convert route to a regex pattern, replacing dynamic segments
+    const pattern = route?.replace(/:\w+/g, "[^/]+");
+    const regex = new RegExp(`^${pattern}$`);
+    return regex.test(url);
+    });
+    }
+    const useCheckUrlDependOnRole = ({root,objectUrl}:{root:string, objectUrl:Record<string,any>}) => {
+    const {lastUrl}=useGetUrlBeforeRefresh();
+    const arrayUrlRoute=Object.values(objectUrl);
+    const active= $ok(lastUrl)?isRouteIncluded(lastUrl,arrayUrlRoute):false;
+    const lastUrlActive= $ok (lastUrl) &&active;
+    return {urlRedirect: lastUrlActive?lastUrl: root}
+    
+    };
+    
+    export default useCheckUrlDependOnRole;
+
+** useGetUrlBeforeRefresh
+
+    export const useGetUrlBeforeRefresh = () => {
+    const lastUrl =localStorage.getItem("lastUrl");
+    return  {lastUrl}
+    };
+** useLastUrlStorage
+
+    import {useEffect} from "react";
+    import {useLocation} from "react-router-dom";
+    import {$ok} from "@utils/common/$ok.ts";
+    import {isRouteIncluded} from "@utils/local-storage/url/useCheckUrlDependOnRole.tsx";
+    import {Route} from "@constant/Route.ts";
+    
+    const useLastUrlStorage = () => {
+    const location = useLocation();
+    useEffect(() => {
+    const handleBeforeUnload = () => {
+    const arrayPublicUrlRoute=Object.values(Route.public);
+    if($ok(location.pathname)&&!isRouteIncluded(`${location.pathname}`,arrayPublicUrlRoute))
+    localStorage.setItem("lastUrl", location.pathname + location.search);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    
+            return () => {
+                window.removeEventListener("beforeunload", handleBeforeUnload);
+            };
+        }, [location]);
+    };
+    
+    export default useLastUrlStorage;
+
+
+** Make Sure You Apply this hook : useLastUrlStorage On Provider Of Your Application
+
+#### example : 
+    import {createContext, type ReactNode, Suspense, useCallback, useContext, useEffect, useMemo, useState} from "react";
+    import {ThemeProvider as MUIThemeProvider} from "@mui/material/styles";
+    import CssBaseline from "@mui/material/CssBaseline";
+    import useLastUrlStorage from "@utils/local-storage/url/useLastUrlStorage.tsx";
+    import MainLoading from "@components/loading/MainLoading.tsx";
+    import darkTheme from "@theme/mode/darkTheme.tsx";
+    import lightTheme from "@theme/mode/lightTheme.tsx";
+    
+    type ThemeContextType = {
+    toggleTheme: (mode?:"light"|"dark") => void;
+    isDarkMode: boolean;
+    colorBackWhite:string
+    };
+    
+    const ThemeContext = createContext<ThemeContextType>({
+    toggleTheme: () => {},
+    isDarkMode: false,
+    colorBackWhite:""
+    });
+    
+    // eslint-disable-next-line react-refresh/only-export-components
+    export const useTheme = () => useContext(ThemeContext);
+    
+    export function ThemeProvider({ children }: { children: ReactNode }) {
+    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [colorBackWhite,setColorBackWhite]=useState("")
+    
+        // ✅ useCallback ensures the function reference remains stable
+        const toggleTheme = useCallback((mode?:"light"|"dark") => {
+            if(mode){
+                setIsDarkMode(mode==="dark");
+                setColorBackWhite("white")
+            }else
+            setIsDarkMode((prev) => !prev);
+        }, []);
+        useEffect(() => {
+            setColorBackWhite(isDarkMode?"white":"black")
+        }, [isDarkMode]);
+        // ✅ Now `useMemo` will only update when `isDarkMode` changes
+        const contextValue = useMemo(() => ({ isDarkMode, toggleTheme ,colorBackWhite}), [isDarkMode,toggleTheme,colorBackWhite]);
+         /** Trigger URL before refresh
+         ✅ Make Sure You Apply this hook : useLastUrlStorage On Provider Of Your Application
+         * */
+        useLastUrlStorage();
+        return (
+           <Suspense fallback={<MainLoading/>}>
+               <ThemeContext.Provider value={contextValue}>
+                   <MUIThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+                       <CssBaseline />
+                       {children}
+                   </MUIThemeProvider>
+               </ThemeContext.Provider>
+           </Suspense>
+        );
+    }
+
+### NOTE : make sure you already creat api slice before follow above step
+
+    export const userApi = createApi({
+    reducerPath: "userApi",
+    baseQuery: ReqHeaderOnlyBaseUrl("/"),
+    tagTypes: ["User"],
+    endpoints: (builder) => ({
+    login: builder.mutation<{access:string,refresh:string}, {email:string,password:string}>({
+    query: (body) => ({
+    url: "/token/",
+    method: Method.POST,
+    body,
+    }),
+    }),
+    /** Get access_token / refresh_token by refresh_token */
+    refreshToken: builder.mutation<any, { refresh: string }>({
+    query: (body) => ({
+    url: "/token/refresh/",
+    method: Method.POST,
+    body,
+    }),
+    }),
+    /** Get user by ID **/
+    getUserDetail: builder.query<ResUser, object>({
+    query: () => ({
+    headers: {
+    ["Authorization"]: `Bearer ${getToken()?.access}`,
+    },
+    url: "/users/info/",
+    method: Method.GET,
+    
+          }),
+        }),
+    }),
+    });

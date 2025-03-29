@@ -4,7 +4,6 @@ import {useAppSelector} from "@redux/redux.ts";
 import {useProtectedRoute} from "@utils/hooks/useProtectedRoute.tsx";
 import useCheckUrlDependOnRole from "@utils/local-storage/url/useCheckUrlDependOnRole.tsx";
 import {$ok} from "@utils/common/$ok.ts";
-import {EnumRole} from "@redux/services/types/IUserApi.ts";
 import MainLoading from "@components/loading/MainLoading.tsx";
 import {AppProvider, PublicLayout} from "@/routerLazy.ts";
 
@@ -12,7 +11,8 @@ import {AppProvider, PublicLayout} from "@/routerLazy.ts";
 const PublicRoute = () => {
     const {userDetail}=useAppSelector(state=>state.application);
     const {resultRefreshToken,resultUserDetail}=useProtectedRoute();
-    const {urlRedirect}=useCheckUrlDependOnRole({root:RedirectUrlByRole[$ok(userDetail?.role)?userDetail?.role:EnumRole.ADMIN],objectUrl:ObjectUrlByRole[$ok(userDetail?.role)?userDetail?.role:EnumRole.ADMIN]});
+    const role=$ok(userDetail?.role)?userDetail?.role:`${userDetail?.role}`
+    const {urlRedirect}=useCheckUrlDependOnRole({root:RedirectUrlByRole[role],objectUrl:ObjectUrlByRole[role]});
     /** When refresh token and user detail is loading or fetching it will log in main loading **/
     if(resultRefreshToken.isLoading||resultUserDetail.isLoading||resultUserDetail.isFetching){
         return <MainLoading/>
