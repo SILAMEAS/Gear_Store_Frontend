@@ -21,6 +21,7 @@ import PopOver from "@components/pop-over/PopOver.tsx";
 import ButtonThreeDot from "@components/TableCustom/CTable/table-products/ButtonThreeDot.tsx";
 import TableCustom from "@components/TableCustom/components/TableCustom.tsx";
 import useTableCustom, {defaultFilter} from "@components/TableCustom/hooks/useTableCustom.tsx";
+import {SelectedCTableCustom} from "@components/selection/SelectedCTableCustom.tsx";
 
 const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
 {
@@ -78,6 +79,23 @@ const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
     const handleViewDetailPage = (data: CO) => {
         handleClick(data.id);
     };
+    const handleDeleteParticipants = async () => {
+        alert("handleDeleteParticipants")
+        // if (flowId) {
+        //     const select = [...selected];
+        //     const participant = await handleDeleteParticipant(flowId, select);
+        //     if (participant) {
+        //         const temp = participants.filter(value => selected.includes(value.ids));
+        //         const tempIds: number[] = [];
+        //         temp.forEach(i => {
+        //             tempIds.push(participants.findIndex(item => item.ids === i.ids));
+        //         });
+        //
+        //         remove(tempIds);
+        //         setSelected([]);
+        //     }
+        // }
+    };
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
@@ -94,7 +112,14 @@ const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
             paginationCollapse={false}
             display={IsAdmin?EnumTableType.table :EnumTableType.grid}
             onlySearch={userDetail?.role!==EnumRole.ADMIN}
-            selectedUI={<Text>NO</Text>}
+            selectedUI={
+                selected.length > 0 && (
+                    <SelectedCTableCustom
+                        amount={selected.length}
+                        handleDelete={handleDeleteParticipants}
+                        handleCancelSelected={() => setSelected([])}
+                    />)
+            }
             headCells={[
                 {
                     id: 'id',
