@@ -5,7 +5,7 @@ import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
 import TableCustom from "../../components/TableCustom.tsx";
 import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import React from "react";
-import {useGetAllProductsQuery} from "@redux/services/productApi.ts";
+import {useDeleteProductsMutation, useGetAllProductsQuery} from "@redux/services/productApi.ts";
 import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ButtonThreeDot from "./ButtonThreeDot.tsx";
@@ -16,10 +16,17 @@ import useRTKFromStore from "@utils/hooks/useRTKFromStore.tsx";
 import GridProduct from "@components/TableCustom/CTable/table-products/GridProduct.tsx";
 import EnumTableType from "@components/TableCustom/constant/enum/EnumTableType.ts";
 import {EnumRole} from "@redux/services/types/IUserApi.ts";
+import {enqueueSnackbar} from "notistack";
+import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
+import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import {Route} from "@constant/Route.ts";
+import {EnumButtonThreeDot} from "@constant/GlobalConstants.tsx";
 
 const CTableProducts = <CO extends ResProduct>() =>
 {
     const [popUp, setPopUp] = React.useState<boolean>(true);
+    const {navigate}=useGlobalHook();
+    const [deleteProduct]=useDeleteProductsMutation()
     const {userDetail}=useRTKFromStore();
     const IsAdmin=userDetail?.role===EnumRole.ADMIN;
     const {
@@ -241,8 +248,23 @@ const CTableProducts = <CO extends ResProduct>() =>
                         onClick={() => setPopUp(true)}
                         contain={
                             <ButtonThreeDot<CO>
+                                route={EnumButtonThreeDot.product}
                                 setPopUp={setPopUp}
                                 data={data}
+                                handleConfirmDeleteOuter={async ()=>{
+                                   try {
+                                       await deleteProduct({id: data.id}).unwrap();
+                                   }
+                                   catch (e){
+                                       enqueueSnackbar(
+                                           $handleResponseMessage({ e }),
+                                           { variant: "error" }
+                                       );
+                                   }
+                                }}
+                                handleEditOuter={()=>{
+                                    navigate(`${Route.admin.PRODUCT}/${data.id}`);
+                                }}
                             />
                         }
                         horizontal={"center"}

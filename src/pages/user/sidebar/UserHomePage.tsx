@@ -1,9 +1,10 @@
-import {Box, Card, CardContent, CardMedia, Container, Grid, Typography} from "@mui/material";
+import {Box, Card, CardContent, CardMedia, Container, Grid} from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ReplayIcon from "@mui/icons-material/Replay";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import BackGroundCart from "@assets/BackGroundCart.jpg"
+import Text from "@components/text/Text.tsx";
 
 const benefits = [
     { icon: <LocalShippingIcon />, title: "Free Shipping", description: "Free Shipping to Make Your Shopping Experience Seamless." },
@@ -21,31 +22,31 @@ const categories = [
 
 const UserHomePage = () => {
     return   <Box sx={{backgroundImage:BackGroundCart, color: "#fff", py: 5 }}>
-        <Container>
+        <Container maxWidth={'fhd'}>
             <Grid container spacing={3} justifyContent="center">
                 {benefits.map((benefit, index) => (
                     <Grid item xs={12} sm={6} md={3} key={index} textAlign="center">
                         <Box sx={{ mb: 2 }}>{benefit.icon}</Box>
-                        <Typography variant="h6">{benefit.title}</Typography>
-                        <Typography variant="body2">{benefit.description}</Typography>
+                        <Text variant="h6">{benefit.title}</Text>
+                        <Text variant="body2">{benefit.description}</Text>
                     </Grid>
                 ))}
             </Grid>
 
-            <Typography variant="h4" align="center" sx={{ mt: 5, mb: 3 }}>
+            <Text variant="h4" align="center" sx={{ mt: 5, mb: 3 }}>
                 SHOP BY CATEGORIES
-            </Typography>
+            </Text>
 
             <Grid container spacing={3} justifyContent="center">
                 {categories.map((category, index) => (
-                    <Grid item xs={12} sm={6} md={3} key={index}>
+                    <Grid item xs={12} sm={6} md={3}  key={index}>
                         <Card sx={{ backgroundColor: "#1e1e1e", color: "#fff" }}>
                             <CardMedia component="img" height="200" image={category.image} alt={category.title} />
                             <CardContent>
-                                <Typography variant="h6" align="center">{category.title}</Typography>
-                                <Typography variant="body2" align="center" color="#aaa">
+                                <Text variant="h6" align="center">{category.title}</Text>
+                                <Text variant="body2" align="center" color="#aaa">
                                     Shop Now ➝
-                                </Typography>
+                                </Text>
                             </CardContent>
                         </Card>
                     </Grid>

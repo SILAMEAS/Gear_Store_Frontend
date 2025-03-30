@@ -38,7 +38,7 @@ const DialogCustom = ({
     const {colorBackWhite}=useTheme();
     return (
         <Dialog
-            maxWidth='lg'
+            maxWidth='hd'
             fullWidth
             {...props} open={open} onClose={handleClose}>
             {titleDialog && (

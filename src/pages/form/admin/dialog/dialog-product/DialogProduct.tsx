@@ -29,6 +29,7 @@ const {currentData,isFetching}=useGetProductsByIdQuery({id:productId!},{skip:!pr
     return <DialogCustom
         isFetching={isFetching}
         open={true}
+
         sxProp={{
             titleSx: {
                 p: 0

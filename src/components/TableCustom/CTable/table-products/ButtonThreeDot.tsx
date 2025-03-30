@@ -2,24 +2,25 @@ import {MenuItem, MenuList} from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import React, {useState} from "react";
-import {Route} from "@/constant/Route.ts";
 import {DeleteConfirmationDialog} from "@components/dailog/DeleteConfirmationDialog.tsx";
 import Text from "@components/text/Text.tsx";
-import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
+import {EnumButtonThreeDot} from "@constant/GlobalConstants.tsx";
 
 interface IButtonThreeDot<T extends Record<string, any>>{
     data:T,
     setPopUp: React.Dispatch<React.SetStateAction<boolean>>;
-    handleConfirmDeleteOuter?:()=>void
+    handleConfirmDeleteOuter?:()=>void,
+    handleEditOuter?:()=>void,
+    route:EnumButtonThreeDot
 }
 
-function ButtonThreeDot<T extends Record<string, any>>({data,setPopUp,handleConfirmDeleteOuter=()=>{
-    console.log("handleConfirmDeleteOuter")
-}}:Readonly<IButtonThreeDot<T>>) {
-    const {navigate}=useGlobalHook();
+function ButtonThreeDot<T extends Record<string, any>>({data,setPopUp,route,
+                                                           handleConfirmDeleteOuter=()=>{console.log("handleConfirmDeleteOuter")},
+                                                           handleEditOuter=()=>{console.log("handleEditOuter")}
+}:Readonly<IButtonThreeDot<T>>) {
     const [deleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false)
-    const handleEditProduct=()=>{
-        navigate(`${Route.admin.PRODUCT}/${data.id}`)
+    const handleEdit=()=>{
+        handleEditOuter()
     }
     const handleClose=()=>{
         setPopUp(false)
@@ -35,25 +36,37 @@ function ButtonThreeDot<T extends Record<string, any>>({data,setPopUp,handleConf
         setDeleteDialogOpen(false);
         handleClose();
     }
-    return (
-        <MenuList sx={{width:"200px"}}>
-            <MenuItem onClick={handleEditProduct}>
-                <EditNoteIcon style={{ marginRight: 8 }} fontSize={"small"} />
-               <Text> Edit Product</Text>
-            </MenuItem>
-            <MenuItem onClick={handleDeleteDialog} sx={{ color: "error.main" }}>
-                <DeleteOutlineIcon  style={{ marginRight: 8 }}  fontSize={"small"}/>
-                <Text>  Delete Product</Text>
-            </MenuItem>
-            <DeleteConfirmationDialog
-                open={deleteDialogOpen}
-                title="Confirm Delete"
-                content={`Are you sure you want to delete ${data?.name}? This action cannot be undone.`}
-                onConfirm={handleConfirmDelete}
-                onCancel={handleCancelDelete}
-            />
-        </MenuList>
-    );
+    const Render=()=>{
+        switch (route) {
+            case EnumButtonThreeDot.product: {
+                return <React.Fragment>
+                    <MenuItem onClick={handleEdit}>
+                        <EditNoteIcon style={{marginRight: 8}} fontSize={"small"}/>
+                        <Text> Edit Product</Text>
+                    </MenuItem>
+                    <MenuItem onClick={handleDeleteDialog} sx={{color: "error.main"}}>
+                        <DeleteOutlineIcon style={{marginRight: 8}} fontSize={"small"}/>
+                        <Text> Delete Product</Text>
+                    </MenuItem>
+                    <DeleteConfirmationDialog
+                        open={deleteDialogOpen}
+                        title="Confirm Delete"
+                        content={`Are you sure you want to delete ${data?.name}? This action cannot be undone.`}
+                        onConfirm={handleConfirmDelete}
+                        onCancel={handleCancelDelete}
+                    />
+                </React.Fragment>
+            }
+            default: {
+                return <React.Fragment></React.Fragment>
+            }
+        }
+    }
+    return <MenuList sx={{width: "200px"}}>
+        {
+            Render()
+        }
+    </MenuList>
 }
 
 export default ButtonThreeDot;

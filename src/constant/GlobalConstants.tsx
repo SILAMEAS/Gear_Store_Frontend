@@ -4,3 +4,11 @@ export enum EnumAction{
     delete="delete"
 
 }
+
+export enum EnumButtonThreeDot{
+    product="product",
+    category="category",
+    order="order",
+    review='review',
+    payment='payment'
+}

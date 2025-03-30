@@ -7,6 +7,7 @@ const LayoutProducts = () => {
             {/*<Grid item xl={2}>*/}
             {/*    <FilterSidebar/>*/}
             {/*</Grid>*/}
+            <>sdf</>
             <Grid item  xl={12} mx={'auto'}>
                 <CTableProducts/>
             </Grid>
