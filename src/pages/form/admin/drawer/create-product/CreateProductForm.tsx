@@ -93,7 +93,7 @@ const CreateProductForm= ({data}:{data?: ResProduct}) => {
                         name="category"
                         control={control}
                         rules={{required: "category is required"}}
-                        defaultValue={data?.id??0}
+                        defaultValue={Number(data?.id)??0}
                         render={({field}) => (
                             <FormControl fullWidth margin="normal">
                                 <InputLabel id="category-label">category</InputLabel>

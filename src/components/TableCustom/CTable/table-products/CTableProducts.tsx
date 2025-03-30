@@ -1,16 +1,8 @@
-import {Chip, IconButton, Stack} from "@mui/material";
-import useTableCustom, {defaultFilter} from "../../hooks/useTableCustom.tsx";
-import EnumTableFooterType from "../../constant/enum/EnumTableFooterType.ts";
-import handleProcessPassingData from "../../utils/handleProcessPassingData.ts";
-import TableCustom from "../../components/TableCustom.tsx";
+import {Checkbox, Chip, IconButton, Stack} from "@mui/material";
 import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import React from "react";
 import {useDeleteProductsMutation, useGetAllProductsQuery} from "@redux/services/productApi.ts";
-import Text from "../../../text/Text.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ButtonThreeDot from "./ButtonThreeDot.tsx";
-import PopOver from "../../../pop-over/PopOver.tsx";
-import RatingCustom from "../../../rating/RatingCustom.tsx";
 import NavHeaderCTableProduct from "@components/TableCustom/CTable/table-products/NavHeaderCTableProduct.tsx";
 import useRTKFromStore from "@utils/hooks/useRTKFromStore.tsx";
 import GridProduct from "@components/TableCustom/CTable/table-products/GridProduct.tsx";
@@ -21,8 +13,16 @@ import {$handleResponseMessage} from "@utils/common/$handleResponseMessage.ts";
 import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
 import {Route} from "@constant/Route.ts";
 import {EnumButtonThreeDot} from "@constant/GlobalConstants.tsx";
+import handleProcessPassingData from "@components/TableCustom/utils/handleProcessPassingData.ts";
+import EnumTableFooterType from "@components/TableCustom/constant/enum/EnumTableFooterType.ts";
+import Text from "@components/text/Text.tsx";
+import RatingCustom from "@components/rating/RatingCustom.tsx";
+import PopOver from "@components/pop-over/PopOver.tsx";
+import ButtonThreeDot from "@components/TableCustom/CTable/table-products/ButtonThreeDot.tsx";
+import TableCustom from "@components/TableCustom/components/TableCustom.tsx";
+import useTableCustom, {defaultFilter} from "@components/TableCustom/hooks/useTableCustom.tsx";
 
-const CTableProducts = <CO extends ResProduct>() =>
+const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
 {
     const [popUp, setPopUp] = React.useState<boolean>(true);
     const {navigate}=useGlobalHook();
@@ -38,6 +38,9 @@ const CTableProducts = <CO extends ResProduct>() =>
         filter,
         setFilter,
         tableFooterType,
+        handleSelectedAllOrCancelAll,
+        isSelected,
+        handleClick
     } = useTableCustom<CO>(IsAdmin?EnumTableFooterType.pagination:EnumTableFooterType.infiniteScroll,{...defaultFilter,pageSize:IsAdmin?10:25});
     const {currentData, isFetching, isError, error, isLoading} =useGetAllProductsQuery({
         page:filter.page,
@@ -51,8 +54,8 @@ const CTableProducts = <CO extends ResProduct>() =>
     const handleSetVisibleRows = async (propData?: typeof currentData) => {
         if (propData) {
             const {contents, page} = propData;
-            const newMap: CO[] = contents.map(item => {
-                return item as CO;
+            const newMap: CO[] = contents.map((item,index) => {
+                return {...item,arrayIndex: index,} as CO;
             });
 
             handleProcessPassingData<CO>({
@@ -72,6 +75,9 @@ const CTableProducts = <CO extends ResProduct>() =>
         Boolean(tableFooterType === EnumTableFooterType.infiniteScroll &&
             visibleRows.length > 0 &&
             currentData?.hasNext);
+    const handleViewDetailPage = (data: CO) => {
+        handleClick(data.id);
+    };
     return (
         <TableCustom<ResProducts, CO>
             tableContainerSx={{
@@ -88,26 +94,46 @@ const CTableProducts = <CO extends ResProduct>() =>
             paginationCollapse={false}
             display={IsAdmin?EnumTableType.table :EnumTableType.grid}
             onlySearch={userDetail?.role!==EnumRole.ADMIN}
+            selectedUI={<Text>NO</Text>}
             headCells={[
                 {
-                    id: "id",
+                    id: 'id',
                     disableSort: false,
-                    label: "Code",
+                    label: (
+                        <Stack direction={'row'} alignItems={'center'}>
+                            <Checkbox
+                                color="primary"
+                                checked={selected.length === visibleRows.length}
+                                onClick={handleSelectedAllOrCancelAll}
+                            />
+                            <Text>ID</Text>
+                        </Stack>
+                    ),
                     tableCellProps: {
                         align: "left",
                         padding: "none",
+
                     },
                     tableSortLabelProps: {},
-                    render: data => (
-                        <Stack
-                            direction={"row"}
-                            alignItems={"center"}
-                            gap={"15px"} >
-                            <Text>
-                                # {data.id}
-                            </Text>
-                        </Stack>
-                    ),
+                    render: row => {
+                        const isItemSelected = isSelected((row.id));
+                        const labelId = `enhanced-table-checkbox-${row.arrayIndex}`;
+                        return (
+                            <Stack direction={'row'} alignItems={'center'}>
+                                <Checkbox
+                                    color="primary"
+                                    checked={isItemSelected}
+                                    inputProps={{
+                                        'aria-labelledby': labelId,
+                                    }}
+                                    onClick={() => handleViewDetailPage(row)}
+                                />
+                                <Text>
+                                    #{row.id}
+                                </Text>
+                            </Stack>
+                        );
+                    },
                 },
                 {
                     id: "image",

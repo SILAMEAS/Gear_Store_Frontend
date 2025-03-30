@@ -1,7 +1,9 @@
 import {Pagination} from "@redux/services/types/IPagination.ts";
-
+/**  ======================================== */
+/**                 PRODUCT                   */
+/**  ======================================== */
 export interface ResProduct {
-  id: number,
+  id: string,
   name: string,
   description: string,
   price: number,
@@ -31,4 +33,26 @@ export const DefaultProductFormData:ProductFormData={
   description:"",
   price:0,
   stock:0
+}
+/**  ======================================== */
+/**                 CATEGORY                  */
+/**  ======================================== */
+export interface ResCategory {
+  id:    number;
+  name:  string;
+  image: null;
+}
+export interface Price {
+  max: number;
+  min: number;
+}
+export interface DataFilter {
+  category: ResCategory[];
+  price:    Price;
+}
+export interface ResFilterProduct {
+  filterset_fields:Array<string>,
+  ordering_fields:Array<string>,
+  search_fields:Array<string>,
+  data_filter:      DataFilter;
 }

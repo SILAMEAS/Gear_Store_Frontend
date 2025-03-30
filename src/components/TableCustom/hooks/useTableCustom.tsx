@@ -117,6 +117,14 @@ const useTableCustom = <T extends Record<string, any>>(
       };
     }
   };
+  /** handle select all row and cancel all row */
+  const handleSelectedAllOrCancelAll = () => {
+    if (visibleRows.length !== selected.length) {
+      setSelected(visibleRows?.map(i => i.id) ?? []);
+    } else {
+      setSelected([]);
+    }
+  };
   return {
     visibleRows,
     selected,
@@ -138,6 +146,7 @@ const useTableCustom = <T extends Record<string, any>>(
     checkStatus,
     handleClick,
     isSelected,
+    handleSelectedAllOrCancelAll,
     isInfiniteScroll: tableFooterType === EnumTableFooterType.infiniteScroll,
   };
 };

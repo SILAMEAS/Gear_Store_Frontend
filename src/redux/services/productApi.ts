@@ -1,7 +1,7 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
 import getToken from "@utils/local-storage/token/useGetToken.ts";
 import {ReqHeader, ReqHeaderOnlyBaseUrl} from "@redux/ReqHeader.tsx";
-import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
+import {ResFilterProduct, ResProduct, ResProducts} from "@redux/services/types/ProductInterface.tsx";
 import {ReqPage} from "@redux/services/types/IPagination.ts";
 import {IDType} from "@redux/services/types/IAdminApi.ts";
 import {Method} from "@redux/services/types/Method.ts";
@@ -53,6 +53,14 @@ export const productApi = createApi({
       }),
       invalidatesTags:["Product"]
     }),
+    /** Filter products */
+    filterProducts: builder.query<ResFilterProduct,Object>({
+      query: () => ({
+        url: "/filter_fields",
+        method: Method.GET,
+      }),
+      providesTags:["Product"]
+    }),
   }),
 });
 
@@ -61,5 +69,6 @@ export const {
     useGetProductsByIdQuery,
     useCreateProductsMutation,
     useUpdateProductsMutation,
-    useDeleteProductsMutation
+    useDeleteProductsMutation,
+    useFilterProductsQuery
 } = productApi;
