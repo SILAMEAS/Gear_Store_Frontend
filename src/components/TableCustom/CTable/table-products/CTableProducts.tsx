@@ -122,10 +122,10 @@ const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
             }
             headCells={[
                 {
-                    id: 'id',
+                    id: "id",
                     disableSort: false,
                     label: (
-                        <Stack direction={'row'} alignItems={'center'}>
+                        <Stack direction={"row"} alignItems={"center"}>
                             <Checkbox
                                 color="primary"
                                 checked={selected.length === visibleRows.length}
@@ -144,12 +144,12 @@ const CTableProducts = <CO extends ResProduct&{arrayIndex:number}>() =>
                         const isItemSelected = isSelected((row.id));
                         const labelId = `enhanced-table-checkbox-${row.arrayIndex}`;
                         return (
-                            <Stack direction={'row'} alignItems={'center'}>
+                            <Stack direction={"row"} alignItems={"center"}>
                                 <Checkbox
                                     color="primary"
                                     checked={isItemSelected}
                                     inputProps={{
-                                        'aria-labelledby': labelId,
+                                        "aria-labelledby": labelId,
                                     }}
                                     onClick={() => handleViewDetailPage(row)}
                                 />

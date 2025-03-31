@@ -7,9 +7,10 @@ import AdminHeader from "@utils/ui/admin/layout/AdminHeader.tsx";
 import AdminSideBar from "@utils/ui/admin/layout/AdminSideBar.tsx";
 import AdminContent from "@utils/ui/admin/layout/AdminContent.tsx";
 import DialogProduct from "@pages/form/admin/dialog/dialog-product/DialogProduct.tsx";
+import CreateUserForm from "@pages/form/admin/drawer/create-user/CreateUserForm.tsx";
 
 const AdminLayout = () => {
-    const {dialogRTK:{adminCreateProduct,adminEditProduct}}=useRKTFromStore();
+    const {dialogRTK:{adminCreateProduct,adminEditProduct,adminCreateUser}}=useRKTFromStore();
     const {dispatch,param}=useGlobalHook();
     const {productId}=param;
     useEffect(() => {
@@ -30,6 +31,9 @@ const AdminLayout = () => {
       {Boolean(adminCreateProduct)&&<DialogProduct/>}
       {/** Dialog Product Edition */}
       {Boolean(adminEditProduct)&&<DialogProduct productId={productId}/>}
+      {/** Dialog User Creation */}
+      {Boolean(adminCreateUser)&& <CreateUserForm/>}
+
   </Stack>
 };
 

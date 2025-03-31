@@ -3,12 +3,11 @@ import CTableProducts from "@components/TableCustom/CTable/table-products/CTable
 
 const LayoutProducts = () => {
     return (
-        <Grid container height={'calc( 100vh - 50px )'} overflow={'hidden'}>
+        <Grid container height={"calc( 100vh - 50px )"} overflow={"hidden"}>
             {/*<Grid item xl={2}>*/}
             {/*    <FilterSidebar/>*/}
             {/*</Grid>*/}
-            <>sdf</>
-            <Grid item  xl={12} mx={'auto'}>
+            <Grid item  xl={12} mx={"auto"}>
                 <CTableProducts/>
             </Grid>
         </Grid>

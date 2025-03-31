@@ -179,9 +179,9 @@ export default function ProfileSetting({ userDetail }: { userDetail: ResUser }) 
                         {/** ===================================================== **/}
                         {/**                User Role                              **/}
                         {/** ===================================================== **/}
-                        <Grid item xs={12} md={6} lg={4}>
-                            <InfoRow label="User Role" value={<TextField {...register("role")} />} />
-                        </Grid>
+                        {/*<Grid item xs={12} md={6} lg={4}>*/}
+                        {/*    <InfoRow label="User Role" value={<TextField {...register("role")} />} />*/}
+                        {/*</Grid>*/}
                         {/** ===================================================== **/}
                         {/**                  Country                              **/}
                         {/** ===================================================== **/}

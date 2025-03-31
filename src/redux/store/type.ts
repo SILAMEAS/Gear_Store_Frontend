@@ -36,6 +36,8 @@ export interface SettingsResponse {
   logo:      string;
 }
 export interface IDialogRTK{
-  adminCreateProduct?:boolean
-  adminEditProduct?:boolean
+  adminCreateProduct?:boolean;
+  adminEditProduct?:boolean;
+  adminCreateUser?:boolean;
+  adminEditUser?:boolean;
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {ListItemIcon, ListItemText, MenuItem, Stack} from "@mui/material";
 import {SearchFormTableCustom} from "@components/TableCustom/components/NGSearch.tsx";
 import ButtonCustom from "@components/button/ButtonCustom.tsx";
@@ -10,12 +10,12 @@ import useGlobalHook from "@utils/hooks/useGlobalHook.tsx";
 import {IFilterTableCustom} from "@components/TableCustom/components/types.ts";
 import {useFilterProductsQuery} from "@redux/services/productApi.ts";
 import PopOver from "@components/pop-over/PopOver.tsx";
-import ChevronLeftOutlinedIcon from '@mui/icons-material/ChevronLeftOutlined';
+import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
 import {$handleContainerRender} from "@components/TableCustom/CTable/table-products/HandleContainerRender.tsx";
 
 const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<React.SetStateAction<IFilterTableCustom>>,filter:IFilterTableCustom}) => {
     const [popUp, setPopUp] = useState<boolean>(false);
-    const [popUpItem, setPopUpItem] = useState<{key:string,popUp:boolean}>({key:'',popUp:false});
+    const [popUpItem, setPopUpItem] = useState<{key:string,popUp:boolean}>({key:"",popUp:false});
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const {dispatch}=useGlobalHook();
     const filterProductsQuery=useFilterProductsQuery({},{refetchOnMountOrArgChange:true});
@@ -23,11 +23,11 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
     const filterset_fields=filterProductsQuery?.currentData?.filterset_fields;
     const data_filter=filterProductsQuery?.currentData?.data_filter;
 
-    return  <Stack gap={'20px'} mb={'20px'}>
+    return  <Stack gap={"20px"} mb={"20px"}>
         {/** Header Navigation of Table Product **/}
-        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} width={'100%'}>
+        <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} width={"100%"}>
             <SearchFormTableCustom setFilter={setFilter} filter={filter} placeholder={"Search By : "+search_fields}/>
-            <Stack direction={'row'} gap={'10px'}>
+            <Stack direction={"row"} gap={"10px"}>
                 {/** Filter Button **/}
                 <PopOver
                     open={popUp}
@@ -46,6 +46,7 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
                             {
                                 filterset_fields?.map(item=>
                                     <PopOver
+                                        key={item}
                                         open={popUpItem.popUp}
                                         onClose={() => setPopUpItem({key:item,popUp:false})}
                                         onClick={() => setPopUpItem({key:item,popUp:true})}
@@ -55,25 +56,25 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
                                         onMouseEnter={() => setHoveredItem(item)}
                                         onMouseLeave={() => setHoveredItem(null)}>
                                         {hoveredItem === item ? (
-                                            <>
+                                            <React.Fragment>
                                                 <ListItemIcon >
-                                                    <ChevronLeftOutlinedIcon color={'primary'} />
+                                                    <ChevronLeftOutlinedIcon color={"primary"} />
                                                 </ListItemIcon>
                                                 <ListItemText primary={item}/>
-                                            </>
+                                            </React.Fragment>
                                         ) : (
                                             item
                                         )}
                                     </MenuItem>}
                                         horizontal={"left"}
-                                        vertical={'top'}
+                                        vertical={"top"}
                                     />
                                 )
                             }
                         </Stack>
                     }
                     horizontal={"left"}
-                    vertical={'top'}
+                    vertical={"top"}
                 />
                 <ButtonCustom
                     variant={"outlined"} onClick={()=>dispatch(setDialogRTK({adminCreateProduct:true}))} sx={{px:2,py:1}}
@@ -84,7 +85,7 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
 
             </Stack>
         </Stack>
-        <Stack direction={'row'}>
+        <Stack direction={"row"}>
             <ButtonCustom
                 variant={"text"} sx={{px:2,py:1}}
             >

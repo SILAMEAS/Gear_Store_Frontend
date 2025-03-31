@@ -4,16 +4,17 @@ import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../utils/handleProcessPassingData.ts";
 import TableCustom from "../components/TableCustom.tsx";
 import React from "react";
-import {EnumRole, ResUser, ResUsers} from "../../../redux/services/types/IUserApi.ts";
-import {useDeleteUserMutation, useGetUsersQuery} from "../../../redux/services/adminApi.ts";
+import {EnumRole, ResUser, ResUsers} from "@redux/services/types/IUserApi.ts";
+import {useDeleteUserMutation, useGetUsersQuery} from "@redux/services/adminApi.ts";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import useGlobalHook from "../../../utils/hooks/useGlobalHook.tsx";
-import {setUserSelected} from "../../../redux/store/application.ts";
+import {setUserSelected} from "@redux/store/application.ts";
+import {Route} from "@constant/Route.ts";
 
 const CTableUser = <CO extends ResUser>() =>
 {
-    const {dispatch}=useGlobalHook();
+    const {navigate,dispatch}=useGlobalHook();
     const {
         setVisibleRows,
         visibleRows,
@@ -52,10 +53,6 @@ const CTableUser = <CO extends ResUser>() =>
                 height:"calc( 100vh - 150px )",
                 width:"100%"
             }}
-            // handleViewDetailPage={(row)=>{
-            //     dispatch(setUserSelected(row));
-            //     navigate(Route.admin.USER+"/"+row.id)
-            // }}
             setVisibleRows={setVisibleRows}
             currentData={currentData}
             setFilter={setFilter}
@@ -167,7 +164,7 @@ const CTableUser = <CO extends ResUser>() =>
                             </IconButton>
                             <IconButton onClick={()=>{
                                 dispatch(setUserSelected(data));
-                                // navigate(Route.admin.USER+"/"+data.id)
+                                navigate(Route.admin.USER+"/"+data.id)
                             }}>
                                 <EditIcon/>
                             </IconButton>
