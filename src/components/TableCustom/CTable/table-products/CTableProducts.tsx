@@ -3,7 +3,8 @@ import {ResProduct, ResProducts} from "@redux/services/types/ProductInterface.ts
 import React from "react";
 import {useDeleteProductsMutation, useGetAllProductsQuery} from "@redux/services/productApi.ts";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import NavHeaderCTableProduct from "@components/TableCustom/CTable/table-products/NavHeaderCTableProduct.tsx";
+import NavHeaderCTableProduct
+    from "@components/TableCustom/CTable/table-products/nav-header-table/NavHeaderCTableProduct.tsx";
 import useRTKFromStore from "@utils/hooks/useRTKFromStore.tsx";
 import GridProduct from "@components/TableCustom/CTable/table-products/GridProduct.tsx";
 import EnumTableType from "@components/TableCustom/constant/enum/EnumTableType.ts";
@@ -18,7 +19,7 @@ import EnumTableFooterType from "@components/TableCustom/constant/enum/EnumTable
 import Text from "@components/text/Text.tsx";
 import RatingCustom from "@components/rating/RatingCustom.tsx";
 import PopOver from "@components/pop-over/PopOver.tsx";
-import ButtonThreeDot from "@components/TableCustom/CTable/table-products/ButtonThreeDot.tsx";
+import ButtonThreeDot from "@components/TableCustom/CTable/table-products/button-three-dot/ButtonThreeDot.tsx";
 import TableCustom from "@components/TableCustom/components/TableCustom.tsx";
 import useTableCustom, {defaultFilter} from "@components/TableCustom/hooks/useTableCustom.tsx";
 import {SelectedCTableCustom} from "@components/selection/SelectedCTableCustom.tsx";

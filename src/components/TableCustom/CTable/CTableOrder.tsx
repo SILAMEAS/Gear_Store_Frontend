@@ -4,9 +4,9 @@ import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 import handleProcessPassingData from "../utils/handleProcessPassingData.ts";
 import TableCustom from "../components/TableCustom.tsx";
 import React from "react";
-import {useGetOrdersQuery} from "../../../redux/services/adminApi.ts";
-import {ResOrder, ResOrders} from "../../../redux/services/types/IAdminApi.ts";
-import {getStatusColor} from "../../../utils/common/getStatusColor.ts";
+import {useGetOrdersQuery} from "@redux/services/adminApi.ts";
+import {ResOrder, ResOrders} from "@redux/services/types/IAdminApi.ts";
+import {getStatusColor} from "@utils/common/getStatusColor.ts";
 
 const CTableOrder = <CO extends  ResOrder>() =>
 {

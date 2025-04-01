@@ -141,6 +141,7 @@ export default function TableCustom<
               }) ? (
                 SkeletonLoadingTableCustom({
                   emptyData,
+                  tableFooterType,
                   isLoading: actionReq.isLoading,
                   isFetching: actionReq.isFetching,
                 })

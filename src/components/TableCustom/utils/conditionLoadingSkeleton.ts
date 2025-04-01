@@ -1,4 +1,4 @@
-import {  ITableCustom } from "../components/types.ts";
+import {ITableCustom} from "../components/types.ts";
 import EnumTableFooterType from "../constant/enum/EnumTableFooterType.ts";
 
 
@@ -13,8 +13,10 @@ export function conditionLoadingSkeleton<
 >({tableFooterType, visibleRows, actionReq}: IConditionLoadingSkeleton<P, T>) {
 
   if (tableFooterType === EnumTableFooterType.pagination) {
-    return visibleRows.length <= 0 || actionReq.isFetching;
-  } else {
+    return actionReq.isFetching||actionReq.isLoading;
+  } else if (tableFooterType === EnumTableFooterType.infiniteScroll) {
+    return actionReq.isFetching||actionReq.isLoading;
+  }else {
     return visibleRows.length <= 0;
   }
 }

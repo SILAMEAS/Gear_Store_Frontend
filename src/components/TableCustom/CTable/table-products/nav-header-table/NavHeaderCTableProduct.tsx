@@ -11,7 +11,10 @@ import {IFilterTableCustom} from "@components/TableCustom/components/types.ts";
 import {useFilterProductsQuery} from "@redux/services/productApi.ts";
 import PopOver from "@components/pop-over/PopOver.tsx";
 import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
-import {$handleContainerRender} from "@components/TableCustom/CTable/table-products/HandleContainerRender.tsx";
+import {
+    HandleContainerRender
+} from "@components/TableCustom/CTable/table-products/nav-header-table/HandleContainerRender.tsx";
+
 
 const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<React.SetStateAction<IFilterTableCustom>>,filter:IFilterTableCustom}) => {
     const [popUp, setPopUp] = useState<boolean>(false);
@@ -50,7 +53,7 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
                                         open={popUpItem.popUp}
                                         onClose={() => setPopUpItem({key:item,popUp:false})}
                                         onClick={() => setPopUpItem({key:item,popUp:true})}
-                                        contain={$handleContainerRender(popUpItem.key,data_filter)}
+                                        contain={<HandleContainerRender KEY={item} data_filter={data_filter} />}
                                         button={<MenuItem
                                         key={item}
                                         onMouseEnter={() => setHoveredItem(item)}
@@ -60,11 +63,12 @@ const NavHeaderCTableProduct = ({setFilter,filter}:{setFilter: React.Dispatch<Re
                                                 <ListItemIcon >
                                                     <ChevronLeftOutlinedIcon color={"primary"} />
                                                 </ListItemIcon>
-                                                <ListItemText primary={item}/>
+                                                <ListItemText primary={<Text variant={"body2"} color={"primary"}>{item}</Text>}/>
                                             </React.Fragment>
-                                        ) : (
-                                            item
-                                        )}
+                                        ) : <React.Fragment>
+                                            <ListItemIcon />
+                                            <ListItemText primary={<Text variant={"body2"}>{item}</Text>}/>
+                                        </React.Fragment>}
                                     </MenuItem>}
                                         horizontal={"left"}
                                         vertical={"top"}
