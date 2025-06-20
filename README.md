@@ -1,3 +1,67 @@
+# Gear Store Frontend 🎒
+
+A sleek, responsive frontend for an outdoor gear e-commerce platform.
+
+---
+
+## 🚀 Demo
+
+> Add your live demo link here, if available
+
+---
+
+## 🛠️ Tech Stack
+
+| Category            | Technology / Library                         |
+|---------------------|----------------------------------------------|
+| Framework           | React (Create React App / Vite / Next.js)    |
+| Language            | JavaScript (ES6+) / TypeScript (optional)    |
+| State Management    | Redux / Context API                          |
+| Styling             | CSS Modules / SASS / Styled-components / Tailwind CSS |
+| UI Library          | Material‑UI / Ant Design / React Bootstrap   |
+| Routing             | React Router                                 |
+| HTTP Requests       | Axios / Fetch                                |
+| Form Handling       | Formik / React Hook Form                     |
+| Icons               | React Icons / Font Awesome                   |
+| Linting & Formatting| ESLint & Prettier                            |
+| Testing (Optional)  | Jest & React Testing Library                 |
+| Build Tool          | Webpack (CRA) / Vite                         |
+
+---
+
+## 📦 Features
+
+- **Homepage** with featured products and categories
+- **Product Listings** – Grid/list view with filters and sorting
+- **Product Details** – Image gallery, description, pricing, add-to-cart
+- **Shopping Cart** – View, update quantities, remove items
+- **Checkout Flow** – User info form and simulated payment
+- **User Authentication** (Optional) – Login, signup, session handling
+- **Responsive Design** – Optimized for mobile, tablet, desktop
+
+---
+
+## 🎯 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (v14+)
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/SILAMEAS/Gear_Store_Frontend.git
+cd Gear_Store_Frontend
+npm install
+# or
+yarn install
+
+
+
+
 ### Admin Interface
 #### Dashbaord
 ![image](https://github.com/user-attachments/assets/a2b77b75-fb36-4651-a5c8-9e26ba8666cb)
