@@ -6,7 +6,7 @@ A sleek, responsive frontend for an outdoor gear e-commerce platform.
 
 ## 🚀 Demo
 
-> Add your live demo link here, if available
+https://sila-store.vercel.app/
 
 ---
 
